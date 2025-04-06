@@ -135,14 +135,14 @@
     align-items: center;
     min-height: 2rem;
     position: relative;
-    overflow: hidden;
     width: 100%;
   }
 
   .typewriter-text {
-    white-space: nowrap;
     display: inline-block;
-    overflow: hidden;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
 
   .typewriter-container .cursor {

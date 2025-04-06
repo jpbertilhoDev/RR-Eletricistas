@@ -91,10 +91,10 @@ const Hero = () => {
             variants={fadeInUp}
           >
             <motion.h1 
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight min-h-[3rem] md:min-h-[3.5rem] lg:min-h-[4rem] flex items-center"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight min-h-[6rem] md:min-h-[6.5rem] lg:min-h-[7rem] flex items-center"
               variants={fadeInUp}
             >
-              <div className="w-full overflow-hidden">
+              <div className="w-full">
                 <TypeWriter />
               </div>
             </motion.h1>
