@@ -4,10 +4,17 @@ const Footer = () => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
+      // Usando uma animação mais suave para transição entre seções
       window.scrollTo({
         top: element.offsetTop - 80,
         behavior: "smooth"
       });
+      
+      // Prevenção de cliques múltiplos durante a animação
+      document.body.style.pointerEvents = "none";
+      setTimeout(() => {
+        document.body.style.pointerEvents = "auto";
+      }, 800);
     }
   };
 

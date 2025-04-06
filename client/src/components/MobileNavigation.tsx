@@ -12,6 +12,12 @@ const MobileNavigation = () => {
         top: element.offsetTop - 80,
         behavior: "smooth"
       });
+
+      // Evita cliques múltiplos durante a animação
+      document.body.style.pointerEvents = "none";
+      setTimeout(() => {
+        document.body.style.pointerEvents = "auto";
+      }, 800); // Tempo um pouco mais longo que a duração da animação
     }
   };
 

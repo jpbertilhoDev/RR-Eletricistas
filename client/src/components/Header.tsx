@@ -22,10 +22,17 @@ const Header = () => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
+      // Ajustando para uma animação mais suave
       window.scrollTo({
         top: element.offsetTop - 80,
         behavior: "smooth"
       });
+      
+      // Evita cliques múltiplos durante a animação
+      document.body.style.pointerEvents = "none";
+      setTimeout(() => {
+        document.body.style.pointerEvents = "auto";
+      }, 800);
     }
   };
   
