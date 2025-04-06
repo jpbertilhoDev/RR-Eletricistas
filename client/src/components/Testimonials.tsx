@@ -60,7 +60,7 @@ const Testimonials = () => {
             Veja o que nossos clientes têm a dizer sobre nossos serviços e atendimento.
           </p>
           
-          {/* Google Reviews Rating Badge */}
+          {/* Google Reviews Rating Badge - Estilo melhorado */}
           <motion.div 
             className="flex items-center justify-center mt-6"
             initial={{ scale: 0.9, opacity: 0 }}
@@ -68,29 +68,21 @@ const Testimonials = () => {
             transition={{ delay: 0.2, duration: 0.4 }}
             viewport={{ once: true }}
           >
-            <div className="bg-white shadow-lg rounded-lg px-6 py-4 flex items-center border border-gray-100 mx-auto">
-              <div className="mr-4 bg-[#4285F4] bg-opacity-10 p-3 rounded-full">
-                <i className="fab fa-google text-2xl text-[#4285F4]"></i>
-              </div>
-              <div className="text-left">
-                <div className="flex items-center mb-1">
-                  <div className="flex text-yellow-500 mr-2">
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                  </div>
-                  <span className="font-bold text-lg">5.0</span>
-                </div>
-                <div className="text-gray-600 text-sm">
-                  Empresa com classificação máxima no Google
+            <div className="bg-primary text-white rounded-xl px-6 py-5 mx-auto text-center max-w-lg shadow-lg">
+              <div className="flex items-center justify-center mb-2">
+                <i className="fab fa-google text-2xl mr-3"></i>
+                <div className="flex text-yellow-400 text-xl">
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
                 </div>
               </div>
-              <div className="ml-4 pl-4 border-l border-gray-200">
-                <div className="text-gray-900 font-bold">102+</div>
-                <div className="text-gray-600 text-xs">Avaliações</div>
-              </div>
+              <h3 className="text-xl font-bold mb-1">Avaliação 5 Estrelas no Google</h3>
+              <p className="text-white/80">
+                Mais de 100 clientes satisfeitos nos avaliaram com nota máxima
+              </p>
             </div>
           </motion.div>
         </motion.div>

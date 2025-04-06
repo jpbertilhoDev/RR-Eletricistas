@@ -53,27 +53,34 @@ const WhyChooseUs = () => {
             <span className="text-blue-600 font-semibold">POR QUE NOS ESCOLHER</span>
             <h2 className="text-3xl font-bold mt-2 mb-6">Compromisso com a Qualidade e Segurança</h2>
             
-            {/* Google 5 Star Rating */}
+            {/* Google 5 Star Rating - Estilo melhorado */}
             <motion.div
-              className="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-6 flex items-center"
+              className="bg-primary rounded-lg p-5 mb-6 text-white"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <div className="flex items-center mr-3 bg-white p-2 rounded-lg">
-                <i className="fab fa-google text-[#4285F4] text-xl mr-2"></i>
-                <div className="flex text-yellow-500">
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
-                  <i className="fas fa-star"></i>
+              <div className="flex items-center gap-4">
+                <div className="bg-white/10 p-3 rounded-full">
+                  <i className="fab fa-google text-2xl"></i>
                 </div>
-              </div>
-              <div>
-                <p className="font-semibold">Empresa com avaliação 5 estrelas no Google</p>
-                <p className="text-sm text-gray-600">Nosso compromisso com a excelência é reconhecido por mais de 100 clientes</p>
+                <div className="flex-1">
+                  <div className="flex items-center mb-2">
+                    <div className="flex text-yellow-400 mr-2">
+                      <i className="fas fa-star"></i>
+                      <i className="fas fa-star"></i>
+                      <i className="fas fa-star"></i>
+                      <i className="fas fa-star"></i>
+                      <i className="fas fa-star"></i>
+                    </div>
+                    <span className="font-bold text-lg">5.0</span>
+                  </div>
+                  <h3 className="font-bold text-lg">Empresa 5 Estrelas no Google</h3>
+                  <p className="text-white/80 mt-1">
+                    Nossa qualidade reconhecida em mais de 100 avaliações
+                  </p>
+                </div>
               </div>
             </motion.div>
             

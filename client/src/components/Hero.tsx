@@ -102,30 +102,22 @@ const Hero = () => {
               className="rounded-xl shadow-2xl w-full h-auto object-cover relative z-10"
             />
             
-            {/* Certificações e Avaliações */}
+            {/* Certificações e Avaliações - Estilo melhorado */}
             <div 
-              className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 bg-white py-2 sm:py-3 px-4 sm:px-6 rounded-full shadow-xl flex flex-wrap justify-center items-center space-x-3 sm:space-x-6 z-20"
+              className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 bg-white py-3 px-5 rounded-full shadow-xl flex justify-center items-center z-20"
             >
-              <span className="text-primary font-semibold text-sm sm:text-base">Empresa Certificada</span>
-              <div className="flex items-center">
-                <i className="fas fa-certificate text-yellow-500 mr-1"></i>
-                <i className="fas fa-shield-alt text-primary mr-1"></i>
-                <i className="fas fa-check-circle text-green-600"></i>
-              </div>
-              
-              <div className="h-8 w-px bg-gray-300 mx-1 hidden sm:block"></div>
-              
-              <div className="flex items-center bg-red-50 py-1 px-3 rounded-lg">
-                <i className="fab fa-google text-[#4285F4] mr-2"></i>
-                <div>
-                  <div className="flex items-center">
-                    <i className="fas fa-star text-yellow-500"></i>
-                    <i className="fas fa-star text-yellow-500"></i>
-                    <i className="fas fa-star text-yellow-500"></i>
-                    <i className="fas fa-star text-yellow-500"></i>
-                    <i className="fas fa-star text-yellow-500"></i>
+              <div className="flex flex-col items-center">
+                <span className="text-primary font-semibold mb-1">Empresa Certificada</span>
+                <div className="flex items-center mt-1">
+                  <i className="fab fa-google text-[#4285F4] mr-2 text-lg"></i>
+                  <div className="flex text-yellow-500">
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
                   </div>
-                  <span className="text-xs text-gray-600 font-medium">Avaliações Google</span>
+                  <span className="ml-2 text-sm text-gray-700 font-medium">Avaliações Google</span>
                 </div>
               </div>
             </div>
@@ -150,16 +142,8 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Onda decorativa na parte inferior */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" className="w-full h-auto">
-          <path 
-            fill="#ffffff" 
-            fillOpacity="1"
-            d="M0,96L60,85.3C120,75,240,53,360,53.3C480,53,600,75,720,90.7C840,107,960,117,1080,112C1200,107,1320,85,1380,74.7L1440,64L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"
-          />
-        </svg>
-      </div>
+      {/* Separador simples na parte inferior */}
+      <div className="absolute bottom-0 left-0 right-0 h-8 bg-white"></div>
     </section>
   );
 };
