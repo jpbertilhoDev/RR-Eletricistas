@@ -4,11 +4,6 @@ export default {
   darkMode: ["class"],
   content: ["./client/index.html", "./client/src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    fontFamily: {
-      sans: ['Inter', 'system-ui', 'sans-serif'],
-      heading: ['Inter', 'system-ui', 'sans-serif'],
-      mono: ['Menlo', 'Monaco', 'Courier New', 'monospace'],
-    },
     extend: {
       borderRadius: {
         lg: "var(--radius)",
