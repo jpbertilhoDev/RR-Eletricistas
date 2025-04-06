@@ -5,6 +5,35 @@
 @layer base {
   * {
     @apply border-border;
+
+/* Electric particles */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.electric-particle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(229, 231, 255, 0.3);
+  filter: blur(3px);
+  pointer-events: none;
+}
+
+
   }
 
   body {

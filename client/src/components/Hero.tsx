@@ -4,6 +4,7 @@ import { WHATSAPP_NUMBER } from "@/lib/constants";
 import { useAnimateOnScroll } from "@/hooks/useAnimateOnScroll";
 import { motion } from "framer-motion";
 import TypeWriter from "./TypeWriter";
+import ElectricParticles from "./ElectricParticles";
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -50,8 +51,11 @@ const Hero = () => {
     <section 
       id="inicio" 
       ref={heroRef}
-      className="pt-28 pb-16 md:pt-36 md:pb-24 bg-primary overflow-hidden"
+      className="pt-28 pb-16 md:pt-36 md:pb-24 bg-primary overflow-hidden relative"
     >
+      {/* Electric particles */}
+      <ElectricParticles />
+      
       {/* Elementos decorativos animados */}
       <motion.div 
         className="absolute top-20 left-10 w-32 h-32 rounded-full bg-blue-400/10 blur-3xl"
