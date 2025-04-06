@@ -123,13 +123,19 @@
   .animate-blink {
     animation: blink 0.75s step-end infinite;
   }
-  }
 
   @keyframes blink-caret {
     from, to { border-color: transparent; }
     50% { border-color: rgb(66, 153, 225); }
   }
   
+  /* Estilo para o TypeWriter */
+  .typewriter-container {
+    display: inline-flex;
+    align-items: center;
+    min-height: 3rem;
+  }
+
   /* Estilo para botões com efeito empresarial */
   .btn-business {
     @apply px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;

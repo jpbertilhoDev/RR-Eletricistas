@@ -8,7 +8,7 @@ import TypeWriter from "./TypeWriter";
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   useAnimateOnScroll(heroRef);
-  
+
   const heroTexts = [
     "Serviços Elétricos com Qualidade e Precisão",
     "Soluções Completas para sua Segurança Elétrica",
@@ -20,7 +20,7 @@ const Hero = () => {
     "Projetos Elétricos Personalizados",
     "Automação Residencial Inteligente"
   ];
-  
+
   // Variantes de animação
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
@@ -30,7 +30,7 @@ const Hero = () => {
       transition: { duration: 0.6 }
     }
   };
-  
+
   const staggerChildren = {
     hidden: { opacity: 0 },
     visible: {
@@ -40,12 +40,12 @@ const Hero = () => {
       }
     }
   };
-  
+
   const buttonHoverEffect = {
     scale: 1.03,
     transition: { duration: 0.2 }
   };
-  
+
   return (
     <section 
       id="inicio" 
@@ -65,7 +65,7 @@ const Hero = () => {
           repeatType: "reverse"
         }}
       />
-      
+
       <motion.div 
         className="absolute bottom-20 right-10 w-40 h-40 rounded-full bg-blue-400/10 blur-3xl"
         animate={{
@@ -78,7 +78,7 @@ const Hero = () => {
           repeatType: "reverse"
         }}
       />
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <motion.div 
           className="flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto"
@@ -103,14 +103,14 @@ const Hero = () => {
                 className="inline-block"
               />
             </motion.h1>
-            
+
             <motion.p 
               className="text-lg md:text-xl text-white/90 mb-8"
               variants={fadeInUp}
             >
               Especialistas em instalações e manutenções elétricas residenciais e comerciais com mais de 10 anos de experiência.
             </motion.p>
-            
+
             <motion.div 
               className="flex flex-col sm:flex-row items-center sm:items-start gap-4"
               variants={fadeInUp}
@@ -132,7 +132,7 @@ const Hero = () => {
                   Solicitar orçamento
                 </Button>
               </motion.a>
-              
+
               <motion.div
                 whileHover={buttonHoverEffect}
                 whileTap={{ scale: 0.98 }}
@@ -154,7 +154,7 @@ const Hero = () => {
                 </Button>
               </motion.div>
             </motion.div>
-            
+
             <motion.div 
               className="flex items-center mt-8"
               variants={fadeInUp}
@@ -176,7 +176,7 @@ const Hero = () => {
               <span className="text-white text-sm">5.0 no Google (102+ avaliações)</span>
             </motion.div>
           </motion.div>
-          
+
           <motion.div 
             className="md:w-1/2"
             variants={fadeInUp}
@@ -194,7 +194,7 @@ const Hero = () => {
                 transition={{ duration: 0.5 }}
                 whileHover={{ scale: 1.02 }}
               />
-              
+
               <motion.div 
                 className="absolute -bottom-4 right-4 bg-white py-2 px-4 rounded-lg shadow-md"
                 initial={{ opacity: 0, y: 20 }}
@@ -217,7 +217,7 @@ const Hero = () => {
             </div>
           </motion.div>
         </motion.div>
-        
+
         {/* Indicadores com animação */}
         <motion.div 
           className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 max-w-5xl mx-auto"
@@ -252,7 +252,7 @@ const Hero = () => {
           ))}
         </motion.div>
       </div>
-      
+
       {/* Separador com animação */}
       <motion.div 
         className="absolute bottom-0 left-0 right-0 h-4 bg-white"

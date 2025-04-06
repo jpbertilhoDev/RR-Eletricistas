@@ -1,95 +1,55 @@
+import React, { useState, useEffect, useCallback } from 'react';
 
-import { useState, useEffect, useCallback } from 'react';
+const TypeWriter = () => {
+  // Array de textos que serão exibidos em sequência
+  const texts = [
+    "Especialistas em instalações e manutenções elétricas residenciais e comerciais com mais de 10 anos de experiência.",
+    "Atendimento rápido e eficiente para resolver qualquer problema elétrico.",
+    "Equipe qualificada e comprometida com a excelência em serviços elétricos.",
+    "Soluções personalizadas para projetos elétricos residenciais e comerciais."
+  ];
 
-interface TypeWriterProps {
-  texts: string[];
-  typingSpeed?: number;
-  deletingSpeed?: number;
-  delayAfterText?: number;
-  delayAfterDelete?: number;
-  className?: string;
-}
-
-const TypeWriter = ({
-  texts,
-  typingSpeed = 70,
-  deletingSpeed = 40,
-  delayAfterText = 1500,
-  delayAfterDelete = 300,
-  className = ""
-}: TypeWriterProps) => {
-  const [currentTextIndex, setCurrentTextIndex] = useState(0);
-  const [currentText, setCurrentText] = useState('');
+  const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-  const [isWaiting, setIsWaiting] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(100);
 
-  // Função para continuar para o próximo texto de forma contínua
-  const moveToNextText = useCallback(() => {
-    setCurrentTextIndex((prevIndex) => (prevIndex + 1) % texts.length);
-  }, [texts.length]);
+  const handleTyping = useCallback(() => {
+    const currentText = texts[currentIndex];
 
-  useEffect(() => {
-    if (texts.length === 0) return;
+    if (!isDeleting) {
+      // Digitando o texto
+      setDisplayText(currentText.substring(0, displayText.length + 1));
+      setTypingSpeed(80);
 
-    let timeout: NodeJS.Timeout;
-
-    if (isWaiting) {
-      // Tempo para aguardar antes de começar a próxima ação
-      timeout = setTimeout(() => {
-        setIsWaiting(false);
-        if (isDeleting) {
-          // Se terminou de apagar, avance para o próximo texto
-          moveToNextText();
-        } else {
-          // Se terminou de escrever, comece a apagar
-          setIsDeleting(true);
-        }
-      }, isDeleting ? delayAfterDelete : delayAfterText);
-    } else if (isDeleting) {
-      if (currentText.length === 0) {
-        // Quando terminar de apagar
-        setIsDeleting(false);
-        setIsWaiting(true);
-      } else {
-        // Continue apagando
-        timeout = setTimeout(() => {
-          setCurrentText(currentText.slice(0, -1));
-        }, deletingSpeed);
+      // Se completou a digitação, espere um pouco e comece a apagar
+      if (displayText.length === currentText.length) {
+        setTimeout(() => setIsDeleting(true), 1500);
+        setTypingSpeed(50);
       }
     } else {
-      const targetText = texts[currentTextIndex];
-      if (currentText.length < targetText.length) {
-        // Continue digitando
-        timeout = setTimeout(() => {
-          setCurrentText(targetText.slice(0, currentText.length + 1));
-        }, typingSpeed);
-      } else {
-        // Quando terminar de digitar
-        setIsWaiting(true);
+      // Apagando o texto
+      setDisplayText(currentText.substring(0, displayText.length - 1));
+      setTypingSpeed(30);
+
+      // Se terminou de apagar, vá para o próximo texto
+      if (displayText.length === 0) {
+        setIsDeleting(false);
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
       }
     }
+  }, [currentIndex, displayText, isDeleting, texts]);
 
-    return () => clearTimeout(timeout);
-  }, [
-    currentText,
-    currentTextIndex,
-    isDeleting,
-    isWaiting,
-    texts,
-    typingSpeed,
-    deletingSpeed,
-    delayAfterText,
-    delayAfterDelete,
-    moveToNextText
-  ]);
+  useEffect(() => {
+    const timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [displayText, handleTyping, typingSpeed]);
 
   return (
-    <span className={className}>
-      {currentText}
-      <span className="inline-block w-1 h-[1em] ml-1 bg-white animate-blink align-middle">
-        {/* Cursor animado */}
-      </span>
-    </span>
+    <div className="typewriter-container">
+      <span>{displayText}</span>
+      <span className="animate-blink">|</span>
+    </div>
   );
 };
 
