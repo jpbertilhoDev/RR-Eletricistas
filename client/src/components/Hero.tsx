@@ -25,7 +25,7 @@ const Hero = () => {
     }, 5000);
     
     return () => clearInterval(interval);
-  }, [controls]);
+  }, [controls, heroTexts.length]);
   
   // Elementos decorativos animados
   const decorationItems = [
@@ -66,7 +66,7 @@ const Hero = () => {
       
       {/* Efeito de partículas elétricas */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        {[...Array(8)].map((_, i) => (
+        {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-10 bg-blue-300 rounded-full opacity-60"

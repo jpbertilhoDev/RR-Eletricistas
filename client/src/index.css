@@ -54,17 +54,49 @@
     background-size: 20px 20px;
   }
 
-  /* Animações */
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
+  /* Animações Responsivas */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float,
+    .animate-pulse-slow,
+    .animate-bounce-slow,
+    .animate-glow,
+    .animate-slide-up,
+    .animate-fade-in,
+    .animate-scale,
+    .animate-rotate,
+    .animate-typing {
+      animation: none !important;
+      transition: none !important;
+    }
   }
-  
-  @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
+
+  /* Animações personalizadas para desktop */
+  @media (min-width: 1024px) {
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
   }
-  
+
+  /* Animações personalizadas para tablet/mobile */
+  @media (max-width: 1023px) {
+    .animate-float {
+      animation: float-mobile 4s ease-in-out infinite;
+    }
+    
+    @keyframes float-mobile {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0px); }
+    }
+  }
+
+  /* Animações compartilhadas */
   .animate-pulse-slow {
     animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
@@ -78,6 +110,14 @@
     50% { transform: translateY(-12px); }
   }
 
+  /* Versão mobile do bounce */
+  @media (max-width: 767px) {
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+  }
+
   .animate-glow {
     animation: glow 3s ease-in-out infinite alternate;
   }
@@ -87,6 +127,14 @@
     to { box-shadow: 0 0 15px 5px rgba(66, 153, 225, 0.4); }
   }
 
+  /* Versão mobile do glow - menos intensa */
+  @media (max-width: 767px) {
+    @keyframes glow {
+      from { box-shadow: 0 0 3px -3px rgba(66, 153, 225, 0.5); }
+      to { box-shadow: 0 0 10px 3px rgba(66, 153, 225, 0.3); }
+    }
+  }
+
   .animate-slide-up {
     animation: slideUp 0.8s ease-out forwards;
   }
@@ -94,6 +142,14 @@
   @keyframes slideUp {
     from { transform: translateY(30px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
+  }
+
+  /* Versão mobile do slideUp - menor distância */
+  @media (max-width: 767px) {
+    @keyframes slideUp {
+      from { transform: translateY(15px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
   }
 
   .animate-fade-in {
@@ -114,8 +170,23 @@
     to { transform: scale(1); opacity: 1; }
   }
 
+  /* Versão mobile do scale - menos intensa */
+  @media (max-width: 767px) {
+    @keyframes scale {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  }
+
   .animate-rotate {
     animation: rotate 30s linear infinite;
+  }
+
+  /* Versão mobile do rotate - mais lenta */
+  @media (max-width: 767px) {
+    .animate-rotate {
+      animation: rotate 40s linear infinite;
+    }
   }
 
   @keyframes rotate {
@@ -129,6 +200,13 @@
     animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
   }
 
+  /* Versão mobile do typing - mais rápida */
+  @media (max-width: 767px) {
+    .animate-typing {
+      animation: typing 2.5s steps(30, end), blink-caret .75s step-end infinite;
+    }
+  }
+
   @keyframes typing {
     from { width: 0; }
     to { width: 100%; }
@@ -139,32 +217,59 @@
     50% { border-color: rgb(66, 153, 225); }
   }
   
+  /* Animações otimizadas para dispositivos de baixo desempenho */
+  @media (max-width: 480px) {
+    .performance-critical {
+      animation-duration: 0.3s !important;
+      transition-duration: 0.3s !important;
+    }
+    
+    /* Desabilitar efeitos paralaxe em dispositivos ultra-mobile */
+    .parallax-effect {
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+  
   /* Estilo para botões com efeito empresarial */
   .btn-business {
     @apply px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
   }
 
-  /* Efeitos em hover */
-  .hover-lift {
-    @apply transition-all duration-300;
-  }
-  .hover-lift:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
+  /* Efeitos em hover - desktop */
+  @media (min-width: 1024px) {
+    .hover-lift {
+      @apply transition-all duration-300;
+    }
+    .hover-lift:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
+    }
+
+    .hover-scale {
+      @apply transition-all duration-300;
+    }
+    .hover-scale:hover {
+      transform: scale(1.05);
+    }
+
+    .hover-rotate {
+      @apply transition-all duration-500;
+    }
+    .hover-rotate:hover {
+      transform: rotate(5deg);
+    }
   }
 
-  .hover-scale {
-    @apply transition-all duration-300;
-  }
-  .hover-scale:hover {
-    transform: scale(1.05);
-  }
-
-  .hover-rotate {
-    @apply transition-all duration-500;
-  }
-  .hover-rotate:hover {
-    transform: rotate(5deg);
+  /* Efeitos em toque para dispositivos móveis */
+  @media (max-width: 1023px) {
+    .touch-feedback {
+      @apply transition-all duration-200;
+    }
+    .touch-feedback:active {
+      transform: scale(0.97);
+      opacity: 0.9;
+    }
   }
 
   /* Elementos decorativos */
@@ -174,5 +279,28 @@
     background: linear-gradient(to right, rgba(var(--color-primary), 0.2), rgba(var(--color-primary), 0.05));
     opacity: 0.6;
     z-index: 0;
+  }
+  
+  /* Ajustes de tamanho para elementos decorativos em mobile */
+  @media (max-width: 767px) {
+    .circle-decoration {
+      /* Reduzir tamanho para melhor desempenho */
+      transform: scale(0.8);
+    }
+  }
+  
+  /* Classes para animações escalonáveis */
+  .animation-delay-100 { animation-delay: 0.1s; }
+  .animation-delay-200 { animation-delay: 0.2s; }
+  .animation-delay-300 { animation-delay: 0.3s; }
+  .animation-delay-400 { animation-delay: 0.4s; }
+  .animation-delay-500 { animation-delay: 0.5s; }
+  
+  /* Duração mais curta para mobile */
+  @media (max-width: 767px) {
+    .mobile-duration-short {
+      animation-duration: 0.3s !important;
+      transition-duration: 0.3s !important;
+    }
   }
 }
