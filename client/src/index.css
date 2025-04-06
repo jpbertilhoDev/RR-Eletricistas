@@ -114,6 +114,16 @@
     from { width: 0; }
     to { width: 100%; }
   }
+  
+  @keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  
+  .animate-blink {
+    animation: blink 0.75s step-end infinite;
+  }
+  }
 
   @keyframes blink-caret {
     from, to { border-color: transparent; }

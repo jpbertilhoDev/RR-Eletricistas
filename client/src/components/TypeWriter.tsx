@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useCallback } from 'react';
 
 interface TypeWriterProps {
@@ -11,10 +12,10 @@ interface TypeWriterProps {
 
 const TypeWriter = ({
   texts,
-  typingSpeed = 70,  // Velocidade mais rápida para que pareça mais natural
-  deletingSpeed = 40, // Velocidade mais rápida para apagar
-  delayAfterText = 1500, // Menos tempo de espera após completar o texto
-  delayAfterDelete = 300, // Menos tempo de espera após deletar
+  typingSpeed = 70,
+  deletingSpeed = 40,
+  delayAfterText = 1500,
+  delayAfterDelete = 300,
   className = ""
 }: TypeWriterProps) => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);

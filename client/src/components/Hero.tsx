@@ -97,9 +97,9 @@ const Hero = () => {
               <TypeWriter
                 texts={heroTexts}
                 typingSpeed={70}
-                deletingSpeed={40}
-                delayAfterText={1500}
-                delayAfterDelete={300}
+                deletingSpeed={30}
+                delayAfterText={2000}
+                delayAfterDelete={500}
                 className="inline-block"
               />
             </motion.h1>
