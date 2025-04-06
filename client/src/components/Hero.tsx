@@ -14,7 +14,11 @@ const Hero = () => {
     "Soluções Completas para sua Segurança Elétrica",
     "Eletricistas Profissionais à sua Disposição",
     "Manutenção Preventiva e Corretiva",
-    "Instalações Elétricas Residenciais e Comerciais"
+    "Instalações Elétricas Residenciais e Comerciais",
+    "Atendimento 24 horas para Emergências",
+    "10+ Anos de Experiência no Mercado",
+    "Projetos Elétricos Personalizados",
+    "Automação Residencial Inteligente"
   ];
   
   // Variantes de animação
@@ -87,15 +91,16 @@ const Hero = () => {
             variants={fadeInUp}
           >
             <motion.h1 
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight min-h-[4.5rem] md:min-h-[5.2rem] lg:min-h-[6rem]"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight min-h-[4.5rem] md:min-h-[5.2rem] lg:min-h-[6rem] flex items-center"
               variants={fadeInUp}
             >
               <TypeWriter
                 texts={heroTexts}
-                typingSpeed={80}
-                deletingSpeed={50}
-                delayAfterText={2000}
-                delayAfterDelete={500}
+                typingSpeed={70}
+                deletingSpeed={40}
+                delayAfterText={1500}
+                delayAfterDelete={300}
+                className="inline-block"
               />
             </motion.h1>
             

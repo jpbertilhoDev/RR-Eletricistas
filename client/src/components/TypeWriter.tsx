@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 interface TypeWriterProps {
   texts: string[];
@@ -11,10 +11,10 @@ interface TypeWriterProps {
 
 const TypeWriter = ({
   texts,
-  typingSpeed = 100,
-  deletingSpeed = 50,
-  delayAfterText = 2000,
-  delayAfterDelete = 500,
+  typingSpeed = 70,  // Velocidade mais rápida para que pareça mais natural
+  deletingSpeed = 40, // Velocidade mais rápida para apagar
+  delayAfterText = 1500, // Menos tempo de espera após completar o texto
+  delayAfterDelete = 300, // Menos tempo de espera após deletar
   className = ""
 }: TypeWriterProps) => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
@@ -22,25 +22,35 @@ const TypeWriter = ({
   const [isDeleting, setIsDeleting] = useState(false);
   const [isWaiting, setIsWaiting] = useState(false);
 
+  // Função para continuar para o próximo texto de forma contínua
+  const moveToNextText = useCallback(() => {
+    setCurrentTextIndex((prevIndex) => (prevIndex + 1) % texts.length);
+  }, [texts.length]);
+
   useEffect(() => {
     if (texts.length === 0) return;
 
     let timeout: NodeJS.Timeout;
 
     if (isWaiting) {
+      // Tempo para aguardar antes de começar a próxima ação
       timeout = setTimeout(() => {
         setIsWaiting(false);
-        setIsDeleting(true);
+        if (isDeleting) {
+          // Se terminou de apagar, avance para o próximo texto
+          moveToNextText();
+        } else {
+          // Se terminou de escrever, comece a apagar
+          setIsDeleting(true);
+        }
       }, isDeleting ? delayAfterDelete : delayAfterText);
-      return () => clearTimeout(timeout);
-    }
-
-    if (isDeleting) {
+    } else if (isDeleting) {
       if (currentText.length === 0) {
+        // Quando terminar de apagar
         setIsDeleting(false);
-        setCurrentTextIndex((prevIndex) => (prevIndex + 1) % texts.length);
         setIsWaiting(true);
       } else {
+        // Continue apagando
         timeout = setTimeout(() => {
           setCurrentText(currentText.slice(0, -1));
         }, deletingSpeed);
@@ -48,10 +58,12 @@ const TypeWriter = ({
     } else {
       const targetText = texts[currentTextIndex];
       if (currentText.length < targetText.length) {
+        // Continue digitando
         timeout = setTimeout(() => {
           setCurrentText(targetText.slice(0, currentText.length + 1));
         }, typingSpeed);
       } else {
+        // Quando terminar de digitar
         setIsWaiting(true);
       }
     }
@@ -67,6 +79,7 @@ const TypeWriter = ({
     deletingSpeed,
     delayAfterText,
     delayAfterDelete,
+    moveToNextText
   ]);
 
   return (
