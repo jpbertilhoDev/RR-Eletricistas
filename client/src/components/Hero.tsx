@@ -1,28 +1,21 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { WHATSAPP_NUMBER } from "@/lib/constants";
 import { useAnimateOnScroll } from "@/hooks/useAnimateOnScroll";
 import { motion } from "framer-motion";
+import TypeWriter from "./TypeWriter";
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   useAnimateOnScroll(heroRef);
-  const [textIndex, setTextIndex] = useState(0);
   
   const heroTexts = [
     "Serviços Elétricos com Qualidade e Precisão",
     "Soluções Completas para sua Segurança Elétrica",
-    "Eletricistas Profissionais à sua Disposição"
+    "Eletricistas Profissionais à sua Disposição",
+    "Manutenção Preventiva e Corretiva",
+    "Instalações Elétricas Residenciais e Comerciais"
   ];
-
-  useEffect(() => {
-    // Animação para trocar os textos a cada 5 segundos
-    const interval = setInterval(() => {
-      setTextIndex((prevIndex) => (prevIndex + 1) % heroTexts.length);
-    }, 5000);
-    
-    return () => clearInterval(interval);
-  }, []);
   
   // Variantes de animação
   const fadeInUp = {
@@ -94,10 +87,16 @@ const Hero = () => {
             variants={fadeInUp}
           >
             <motion.h1 
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight min-h-[4.5rem] md:min-h-[5.2rem] lg:min-h-[6rem]"
               variants={fadeInUp}
             >
-              {heroTexts[textIndex]}
+              <TypeWriter
+                texts={heroTexts}
+                typingSpeed={80}
+                deletingSpeed={50}
+                delayAfterText={2000}
+                delayAfterDelete={500}
+              />
             </motion.h1>
             
             <motion.p 
