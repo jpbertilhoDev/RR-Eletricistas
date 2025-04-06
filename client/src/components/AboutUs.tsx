@@ -193,28 +193,28 @@ const AboutUs = () => {
         >
           <h3 className="text-dark-blue text-xl font-semibold mb-4">Certificações e Parcerias</h3>
           <div className="flex flex-wrap justify-center gap-8 mt-6">
-            <div className="w-28 h-20 bg-white border border-gray-100 rounded-lg flex items-center justify-center p-2 shadow-sm overflow-hidden">
+            <div className="w-28 h-20 bg-white rounded-lg flex items-center justify-center p-2 shadow-sm">
               <img 
                 src="https://images.unsplash.com/photo-1557200134-90327ee9fafa?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=80&q=80" 
                 alt="Certificação 1" 
                 className="max-w-full max-h-full object-contain"
               />
             </div>
-            <div className="w-28 h-20 bg-white border border-gray-100 rounded-lg flex items-center justify-center p-2 shadow-sm overflow-hidden">
+            <div className="w-28 h-20 bg-white rounded-lg flex items-center justify-center p-2 shadow-sm">
               <img 
                 src="https://images.unsplash.com/photo-1607893378714-007fd47c8719?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=80&q=80" 
                 alt="Certificação 2" 
                 className="max-w-full max-h-full object-contain"
               />
             </div>
-            <div className="w-28 h-20 bg-white border border-gray-100 rounded-lg flex items-center justify-center p-2 shadow-sm overflow-hidden">
+            <div className="w-28 h-20 bg-white rounded-lg flex items-center justify-center p-2 shadow-sm">
               <img 
                 src="https://images.unsplash.com/photo-1617791160536-598cf32026fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=80&q=80" 
                 alt="Certificação 3" 
                 className="max-w-full max-h-full object-contain"
               />
             </div>
-            <div className="w-28 h-20 bg-white border border-gray-100 rounded-lg flex items-center justify-center p-2 shadow-sm overflow-hidden">
+            <div className="w-28 h-20 bg-white rounded-lg flex items-center justify-center p-2 shadow-sm">
               <img 
                 src="https://images.unsplash.com/photo-1560439514-4e9645039924?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=80&q=80" 
                 alt="Certificação 4" 
