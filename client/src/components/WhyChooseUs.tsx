@@ -44,8 +44,8 @@ const WhyChooseUs = () => {
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="text-center mb-12">
           <span className="text-blue-600 font-medium text-sm tracking-wider">VANTAGENS</span>
-          <h2 className="text-3xl font-bold mt-2 mb-4">Por que escolher a RR Manutenções Elétricas</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-dark-blue text-3xl font-bold mt-2 mb-4">Por que escolher a RR Manutenções Elétricas</h2>
+          <p className="text-deep-blue max-w-2xl mx-auto">
             Segurança, qualidade e confiabilidade são os pilares do nosso trabalho. 
             Confie em profissionais certificados para suas necessidades elétricas.
           </p>
@@ -64,8 +64,8 @@ const WhyChooseUs = () => {
               <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center mb-4">
                 <i className="fas fa-check text-blue-600"></i>
               </div>
-              <h3 className="font-medium text-lg mb-2">{item.title}</h3>
-              <p className="text-gray-600 text-sm">{item.description}</p>
+              <h3 className="font-medium text-lg mb-2 text-dark-blue">{item.title}</h3>
+              <p className="text-deep-blue text-sm">{item.description}</p>
             </motion.div>
           ))}
         </div>
@@ -87,14 +87,14 @@ const WhyChooseUs = () => {
                 <i className="fas fa-star"></i>
                 <i className="fas fa-star"></i>
               </div>
-              <span className="text-sm text-gray-600">5.0 no Google</span>
+              <span className="text-sm text-deep-blue">5.0 no Google</span>
             </div>
-            <h3 className="text-xl font-bold mb-3">Compromisso com Excelência</h3>
-            <p className="text-gray-600 mb-4">
+            <h3 className="text-xl font-bold mb-3 text-dark-blue">Compromisso com Excelência</h3>
+            <p className="text-deep-blue mb-4">
               Nossa equipe é formada por profissionais certificados e treinados para oferecer 
               soluções elétricas seguras e eficientes para residências e empresas.
             </p>
-            <div className="flex items-center gap-4 text-sm text-gray-600">
+            <div className="flex items-center gap-4 text-sm text-deep-blue">
               <div className="flex items-center">
                 <i className="fas fa-certificate text-blue-500 mr-1"></i>
                 <span>Certificados</span>

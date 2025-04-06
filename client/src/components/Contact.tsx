@@ -121,8 +121,8 @@ const Contact = () => {
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="text-center mb-10">
           <span className="text-blue-600 font-medium text-sm tracking-wider">CONTATO</span>
-          <h2 className="text-3xl font-bold mt-2 mb-3">Entre em contato</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-dark-blue text-3xl font-bold mt-2 mb-3">Entre em contato</h2>
+          <p className="text-deep-blue max-w-2xl mx-auto">
             Solicite um orçamento sem compromisso ou tire suas dúvidas com nossa equipe
           </p>
         </div>
@@ -130,7 +130,7 @@ const Contact = () => {
         <div className="flex flex-col md:flex-row gap-6">
           <div className="md:w-1/3">
             <div className="bg-white p-6 rounded-lg border border-gray-200 h-full">
-              <h3 className="font-semibold text-lg mb-4">Informações de Contato</h3>
+              <h3 className="font-semibold text-lg mb-4 text-dark-blue">Informações de Contato</h3>
               
               <div className="space-y-4">
                 {[
@@ -147,13 +147,13 @@ const Contact = () => {
                       <i className={`${item.icon} text-primary text-sm`}></i>
                     </div>
                     <div>
-                      <h4 className="font-medium text-gray-800 text-sm">{item.title}</h4>
+                      <h4 className="font-medium text-dark-blue text-sm">{item.title}</h4>
                       {Array.isArray(item.content) ? (
                         item.content.map((line, i) => (
-                          <p key={i} className="text-gray-600 text-sm">{line}</p>
+                          <p key={i} className="text-deep-blue text-sm">{line}</p>
                         ))
                       ) : (
-                        <p className="text-gray-600 text-sm">{item.content}</p>
+                        <p className="text-deep-blue text-sm">{item.content}</p>
                       )}
                     </div>
                   </div>
@@ -161,7 +161,7 @@ const Contact = () => {
               </div>
               
               <div className="mt-6 pt-4 border-t border-gray-100">
-                <h4 className="font-medium mb-3">Redes Sociais</h4>
+                <h4 className="font-medium mb-3 text-dark-blue">Redes Sociais</h4>
                 <div className="flex gap-2">
                   {SOCIAL_MEDIA.map((social, index) => (
                     <a 
@@ -169,7 +169,7 @@ const Contact = () => {
                       href={social.url} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="w-8 h-8 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full flex items-center justify-center transition-colors"
+                      className="w-8 h-8 bg-blue-50 hover:bg-blue-100 text-primary rounded-full flex items-center justify-center transition-colors"
                     >
                       <i className={`${social.icon} text-sm`}></i>
                     </a>
@@ -181,7 +181,7 @@ const Contact = () => {
           
           <div className="md:w-2/3">
             <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg border border-gray-200">
-              <h3 className="font-semibold text-lg mb-4">Envie sua mensagem</h3>
+              <h3 className="font-semibold text-lg mb-4 text-dark-blue">Envie sua mensagem</h3>
               
               <div className="space-y-5">
                 {[
@@ -197,7 +197,7 @@ const Contact = () => {
                     whileInView="visible"
                     viewport={{ once: true }}
                   >
-                    <label htmlFor={field.id} className="block text-gray-700 font-medium mb-2 flex items-center">
+                    <label htmlFor={field.id} className="block text-dark-blue font-medium mb-2 flex items-center">
                       <i className={`${field.icon} text-primary mr-2 text-sm`}></i>
                       {field.label}
                     </label>
@@ -221,7 +221,7 @@ const Contact = () => {
                   whileInView="visible"
                   viewport={{ once: true }}
                 >
-                  <label htmlFor="service" className="block text-gray-700 font-medium mb-2 flex items-center">
+                  <label htmlFor="service" className="block text-dark-blue font-medium mb-2 flex items-center">
                     <i className="fas fa-tools text-primary mr-2 text-sm"></i>
                     Serviço
                   </label>
@@ -251,7 +251,7 @@ const Contact = () => {
                   whileInView="visible"
                   viewport={{ once: true }}
                 >
-                  <label htmlFor="message" className="block text-gray-700 font-medium mb-2 flex items-center">
+                  <label htmlFor="message" className="block text-dark-blue font-medium mb-2 flex items-center">
                     <i className="fas fa-comment-alt text-primary mr-2 text-sm"></i>
                     Mensagem
                   </label>
@@ -303,7 +303,7 @@ const Contact = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.6 }}
                 >
-                  <p className="text-gray-500 text-sm my-3">
+                  <p className="text-deep-blue text-sm my-3">
                     Ou entre em contato diretamente pelo WhatsApp
                   </p>
                   

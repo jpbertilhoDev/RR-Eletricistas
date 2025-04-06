@@ -99,7 +99,7 @@ const Services = () => {
               SERVIÇOS
             </motion.span>
             <motion.h2 
-              className="text-3xl font-bold mt-2 mb-3"
+              className="text-dark-blue text-3xl font-bold mt-2 mb-3"
               variants={titleVariants}
               initial="hidden"
               whileInView="visible"
@@ -108,7 +108,7 @@ const Services = () => {
               Soluções Elétricas Completas
             </motion.h2>
             <motion.p 
-              className="text-gray-600 max-w-2xl mx-auto"
+              className="text-deep-blue max-w-2xl mx-auto"
               variants={textVariants}
               initial="hidden"
               whileInView="visible"
@@ -141,9 +141,9 @@ const Services = () => {
                   >
                     <i className={`${service.icon} text-blue-600 text-lg`}></i>
                   </motion.div>
-                  <h3 className="font-semibold text-lg">{service.title}</h3>
+                  <h3 className="font-semibold text-lg text-dark-blue">{service.title}</h3>
                 </div>
-                <p className="text-gray-600">
+                <p className="text-deep-blue">
                   {service.description}
                 </p>
               </div>

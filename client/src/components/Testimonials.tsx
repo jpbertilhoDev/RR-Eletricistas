@@ -51,7 +51,7 @@ const Testimonials = () => {
           <div className="md:w-1/3">
             <div className="mb-6">
               <span className="text-blue-600 font-medium text-sm tracking-wider">AVALIAÇÕES</span>
-              <h2 className="text-2xl md:text-3xl font-bold mt-2">O que nossos clientes dizem</h2>
+              <h2 className="text-dark-blue text-2xl md:text-3xl font-bold mt-2">O que nossos clientes dizem</h2>
             </div>
             
             <div className="bg-gray-50 p-4 rounded-lg border border-gray-100">
@@ -66,7 +66,7 @@ const Testimonials = () => {
                 </div>
                 <span className="font-semibold">5.0</span>
               </div>
-              <p className="text-gray-600 text-sm">
+              <p className="text-deep-blue text-sm">
                 Mais de 100 avaliações no Google com nota máxima
               </p>
             </div>
@@ -89,7 +89,7 @@ const Testimonials = () => {
                   <div className="flex text-yellow-500 text-sm mb-3">
                     {renderStars(testimonial.rating)}
                   </div>
-                  <p className="text-gray-700 text-sm mb-4 line-clamp-3">
+                  <p className="text-deep-blue text-sm mb-4 line-clamp-3">
                     "{testimonial.content}"
                   </p>
                   <div className="flex items-center">
@@ -97,8 +97,8 @@ const Testimonials = () => {
                       <i className="fas fa-user text-gray-500 text-xs"></i>
                     </div>
                     <div>
-                      <p className="font-medium text-sm">{testimonial.name}</p>
-                      <p className="text-gray-500 text-xs">{testimonial.role}</p>
+                      <p className="font-medium text-sm text-dark-blue">{testimonial.name}</p>
+                      <p className="text-deep-blue text-xs">{testimonial.role}</p>
                     </div>
                   </div>
                 </motion.div>

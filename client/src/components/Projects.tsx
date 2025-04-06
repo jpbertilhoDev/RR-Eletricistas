@@ -75,8 +75,8 @@ const Projects = () => {
           transition={{ duration: 0.7 }}
         >
           <span className="text-blue-600 font-medium text-sm tracking-wider">NOSSOS PROJETOS</span>
-          <h2 className="text-3xl font-bold mt-2 mb-3">Trabalhos Realizados</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-dark-blue text-3xl font-bold mt-2 mb-3">Trabalhos Realizados</h2>
+          <p className="text-deep-blue max-w-2xl mx-auto">
             Conheça alguns dos nossos trabalhos realizados com excelência e profissionalismo.
             Nossa equipe executa projetos para residências, comércios e pequenas indústrias.
           </p>
@@ -138,8 +138,8 @@ const Projects = () => {
               </div>
               
               <div className="p-5">
-                <h3 className="font-semibold text-lg text-gray-900">{project.title}</h3>
-                <p className="text-gray-600 mt-2">{project.description}</p>
+                <h3 className="font-semibold text-lg text-dark-blue">{project.title}</h3>
+                <p className="text-deep-blue mt-2">{project.description}</p>
                 
                 {/* Indicadores de serviço */}
                 <div className="flex mt-4">
@@ -171,7 +171,7 @@ const Projects = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.6 }}
         >
-          <p className="text-gray-600">
+          <p className="text-deep-blue">
             Estes são apenas alguns exemplos de nossos trabalhos recentes. 
             Entre em contato para mais informações ou para solicitar um orçamento personalizado.
           </p>
