@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { CONTACT_INFO, SOCIAL_MEDIA, WHATSAPP_NUMBER } from "@/lib/constants";
 import { useAnimateOnScroll } from "@/hooks/useAnimateOnScroll";
 import { useToast } from "@/hooks/use-toast";
+import { apiRequest } from "@/lib/queryClient";
+import { useMutation } from "@tanstack/react-query";
 
 const Contact = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -17,11 +19,59 @@ const Contact = () => {
     service: "",
     message: ""
   });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { id, value } = e.target;
     setFormData(prev => ({ ...prev, [id]: value }));
   };
+  
+  const contactMutation = useMutation({
+    mutationFn: async (data: typeof formData) => {
+      return await apiRequest('/api/contact', {
+        method: 'POST',
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          service_type: data.service,
+          message: data.message,
+          read: 0  // Mensagem não lida inicialmente
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+    },
+    onSuccess: () => {
+      toast({
+        title: "Mensagem enviada!",
+        description: "Entraremos em contato em breve.",
+        variant: "default"
+      });
+      
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        service: "",
+        message: ""
+      });
+    },
+    onError: (error) => {
+      console.error("Erro ao enviar mensagem:", error);
+      toast({
+        title: "Erro ao enviar mensagem",
+        description: "Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.",
+        variant: "destructive"
+      });
+    },
+    onSettled: () => {
+      setIsSubmitting(false);
+    }
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,21 +86,8 @@ const Contact = () => {
       return;
     }
     
-    // Show success message (in a real app we would send this data to a server)
-    toast({
-      title: "Mensagem enviada!",
-      description: "Entraremos em contato em breve.",
-      variant: "default"
-    });
-    
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      service: "",
-      message: ""
-    });
+    setIsSubmitting(true);
+    contactMutation.mutate(formData);
   };
 
   return (
@@ -226,8 +263,9 @@ const Contact = () => {
                 <Button 
                   type="submit" 
                   className="w-full bg-primary hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all"
+                  disabled={isSubmitting || contactMutation.isPending}
                 >
-                  Enviar Mensagem
+                  {isSubmitting || contactMutation.isPending ? 'Enviando...' : 'Enviar Mensagem'}
                 </Button>
                 
                 <p className="text-center text-gray-500 text-sm mt-4">
