@@ -56,7 +56,6 @@ const Header = () => {
               onClick={() => scrollToSection(item.id)}
               className="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap"
             >
-              <i className={`${item.icon} mr-1 text-xs opacity-70`}></i>
               {item.label}
             </button>
           ))}
