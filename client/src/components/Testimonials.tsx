@@ -59,6 +59,40 @@ const Testimonials = () => {
           <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
             Veja o que nossos clientes têm a dizer sobre nossos serviços e atendimento.
           </p>
+          
+          {/* Google Reviews Rating Badge */}
+          <motion.div 
+            className="flex items-center justify-center mt-6"
+            initial={{ scale: 0.9, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <div className="bg-white shadow-lg rounded-lg px-6 py-4 flex items-center border border-gray-100 mx-auto">
+              <div className="mr-4 bg-[#4285F4] bg-opacity-10 p-3 rounded-full">
+                <i className="fab fa-google text-2xl text-[#4285F4]"></i>
+              </div>
+              <div className="text-left">
+                <div className="flex items-center mb-1">
+                  <div className="flex text-yellow-500 mr-2">
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
+                  </div>
+                  <span className="font-bold text-lg">5.0</span>
+                </div>
+                <div className="text-gray-600 text-sm">
+                  Empresa com classificação máxima no Google
+                </div>
+              </div>
+              <div className="ml-4 pl-4 border-l border-gray-200">
+                <div className="text-gray-900 font-bold">102+</div>
+                <div className="text-gray-600 text-xs">Avaliações</div>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
         
         <motion.div 

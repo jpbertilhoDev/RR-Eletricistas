@@ -102,15 +102,31 @@ const Hero = () => {
               className="rounded-xl shadow-2xl w-full h-auto object-cover relative z-10"
             />
             
-            {/* Certificações */}
+            {/* Certificações e Avaliações */}
             <div 
-              className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 bg-white py-2 sm:py-3 px-4 sm:px-6 rounded-full shadow-xl flex flex-wrap justify-center items-center space-x-2 sm:space-x-4 z-20"
+              className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 bg-white py-2 sm:py-3 px-4 sm:px-6 rounded-full shadow-xl flex flex-wrap justify-center items-center space-x-3 sm:space-x-6 z-20"
             >
               <span className="text-primary font-semibold text-sm sm:text-base">Empresa Certificada</span>
               <div className="flex items-center">
                 <i className="fas fa-certificate text-yellow-500 mr-1"></i>
                 <i className="fas fa-shield-alt text-primary mr-1"></i>
                 <i className="fas fa-check-circle text-green-600"></i>
+              </div>
+              
+              <div className="h-8 w-px bg-gray-300 mx-1 hidden sm:block"></div>
+              
+              <div className="flex items-center bg-red-50 py-1 px-3 rounded-lg">
+                <i className="fab fa-google text-[#4285F4] mr-2"></i>
+                <div>
+                  <div className="flex items-center">
+                    <i className="fas fa-star text-yellow-500"></i>
+                    <i className="fas fa-star text-yellow-500"></i>
+                    <i className="fas fa-star text-yellow-500"></i>
+                    <i className="fas fa-star text-yellow-500"></i>
+                    <i className="fas fa-star text-yellow-500"></i>
+                  </div>
+                  <span className="text-xs text-gray-600 font-medium">Avaliações Google</span>
+                </div>
               </div>
             </div>
           </div>

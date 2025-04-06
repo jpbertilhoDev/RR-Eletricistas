@@ -53,6 +53,30 @@ const WhyChooseUs = () => {
             <span className="text-blue-600 font-semibold">POR QUE NOS ESCOLHER</span>
             <h2 className="text-3xl font-bold mt-2 mb-6">Compromisso com a Qualidade e Segurança</h2>
             
+            {/* Google 5 Star Rating */}
+            <motion.div
+              className="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-6 flex items-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="flex items-center mr-3 bg-white p-2 rounded-lg">
+                <i className="fab fa-google text-[#4285F4] text-xl mr-2"></i>
+                <div className="flex text-yellow-500">
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
+                </div>
+              </div>
+              <div>
+                <p className="font-semibold">Empresa com avaliação 5 estrelas no Google</p>
+                <p className="text-sm text-gray-600">Nosso compromisso com a excelência é reconhecido por mais de 100 clientes</p>
+              </div>
+            </motion.div>
+            
             <motion.div 
               className="space-y-4"
               variants={containerVariants}
