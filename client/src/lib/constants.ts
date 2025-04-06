@@ -129,12 +129,41 @@ export const WHYCHOOSEUS = [
 ];
 
 export const NAVIGATION_ITEMS = [
-  { id: "inicio", icon: "fas fa-home", label: "Início" },
-  { id: "servicos", icon: "fas fa-tools", label: "Serviços" },
-  { id: "projetos", icon: "fas fa-bolt", label: "Projetos" },
-  { id: "porque-escolher", icon: "fas fa-check-circle", label: "Vantagens" },
-  { id: "depoimentos", icon: "fas fa-star", label: "Depoimentos" },
-  { id: "contato", icon: "fas fa-phone-alt", label: "Contato" }
+  {
+    id: "inicio",
+    label: "Início",
+    icon: "fas fa-home",
+  },
+  {
+    id: "servicos",
+    label: "Serviços",
+    icon: "fas fa-bolt",
+  },
+  {
+    id: "projetos",
+    label: "Projetos",
+    icon: "fas fa-briefcase",
+  },
+  {
+    id: "quem-somos",
+    label: "Quem Somos",
+    icon: "fas fa-users",
+  },
+  {
+    id: "porque-escolher",
+    label: "Diferenciais",
+    icon: "fas fa-certificate",
+  },
+  {
+    id: "depoimentos",
+    label: "Depoimentos",
+    icon: "fas fa-star",
+  },
+  {
+    id: "contato",
+    label: "Contato",
+    icon: "fas fa-envelope",
+  },
 ];
 
 export const CONTACT_INFO = {

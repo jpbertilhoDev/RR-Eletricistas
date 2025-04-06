@@ -2,6 +2,7 @@ import Layout from "@/components/Layout";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Projects from "@/components/Projects";
+import AboutUs from "@/components/AboutUs";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
@@ -47,6 +48,7 @@ const Home = () => {
       <Hero />
       <Services />
       <Projects />
+      <AboutUs />
       <WhyChooseUs />
       <Testimonials />
       <Contact />

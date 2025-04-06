@@ -84,19 +84,19 @@
   .text-dark-blue {
     color: hsl(215, 50%, 15%);
   }
-  
+
   .text-deep-blue {
     color: hsl(215, 50%, 10%);
   }
-  
+
   .bg-dark-blue {
     background-color: hsl(215, 50%, 15%);
   }
-  
+
   .bg-grid-white {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
   }
-  
+
   .bg-dotted-white {
     background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1H1.01' stroke='white' stroke-opacity='0.1' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
     background-size: 20px 20px;
@@ -106,13 +106,13 @@
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
-  
+
   @keyframes float {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
     100% { transform: translateY(0px); }
   }
-  
+
   .animate-pulse-slow {
     animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
@@ -181,12 +181,12 @@
     from { width: 0; }
     to { width: 100%; }
   }
-  
+
   @keyframes blink {
     from, to { opacity: 1; }
     50% { opacity: 0; }
   }
-  
+
   .animate-blink {
     animation: blink 0.75s step-end infinite;
   }
@@ -195,7 +195,7 @@
     from, to { border-color: transparent; }
     50% { border-color: rgb(66, 153, 225); }
   }
-  
+
   /* Estilo para o TypeWriter */
   .typewriter-container {
     display: inline-flex;
@@ -259,4 +259,32 @@
     opacity: 0.6;
     z-index: 0;
   }
+
+  .electric-particle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(229, 231, 255, 0.3);
+  filter: blur(3px);
+  pointer-events: none;
+}
+
+/* About Us page styles */
+#quem-somos .team-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#quem-somos .team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 768px) {
+  #quem-somos .grid {
+    gap: 1.5rem;
+  }
+
+  #quem-somos .relative {
+    margin-bottom: 2rem;
+  }
+}
 }
