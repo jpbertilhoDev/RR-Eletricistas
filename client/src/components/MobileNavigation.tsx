@@ -190,9 +190,7 @@ const MobileNavigation = () => {
                     
                     <motion.span 
                       className={`text-xs mt-1 font-medium ${isActive ? 'text-primary' : 'text-gray-600'}`}
-                      animate={isActive ? { 
-                        opacity: [0.8, 1, 0.8] 
-                      } : {}}
+                      animate={isActive ? { opacity: [0.8, 1, 0.8] } : {}}
                       transition={{ 
                         repeat: isActive ? Infinity : 0,
                         duration: 2,
