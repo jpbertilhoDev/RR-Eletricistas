@@ -94,7 +94,9 @@ const Hero = () => {
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight min-h-[3rem] md:min-h-[3.5rem] lg:min-h-[4rem] flex items-center"
               variants={fadeInUp}
             >
-              <TypeWriter />
+              <div className="w-full">
+                <TypeWriter />
+              </div>
             </motion.h1>
 
             <motion.p 

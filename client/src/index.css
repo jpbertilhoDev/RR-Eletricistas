@@ -134,11 +134,16 @@
     display: inline-flex;
     align-items: center;
     min-height: 2rem;
+    position: relative;
+  }
+
+  .typewriter-text {
+    white-space: nowrap;
   }
 
   .typewriter-container .cursor {
     display: inline-block;
-    margin-left: 2px;
+    margin-left: 1px;
     animation: blink 0.75s step-end infinite;
   }
 

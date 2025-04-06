@@ -50,7 +50,7 @@ const TypeWriter = () => {
 
   return (
     <div className="typewriter-container">
-      <span>{displayText}</span>
+      <span className="typewriter-text">{displayText}</span>
       <span className="cursor">|</span>
     </div>
   );
