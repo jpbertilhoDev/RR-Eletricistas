@@ -25,21 +25,6 @@ const WhatsAppButton = () => {
     return () => clearTimeout(timer);
   }, [hasAnimated]);
   
-  // Pulse animation
-  const pulseAnimation = {
-    initial: { boxShadow: "0 0 0 0 rgba(72, 187, 120, 0.7)" },
-    animate: {
-      boxShadow: ["0 0 0 0 rgba(72, 187, 120, 0.7)", "0 0 0 15px rgba(72, 187, 120, 0)"],
-      scale: [1, 1.1, 1],
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        repeatType: "loop",
-        times: [0, 0.5, 1]
-      }
-    }
-  };
-  
   // Tooltip animation
   const tooltipAnimation = {
     hidden: { opacity: 0, y: 20, scale: 0.8 },
@@ -85,9 +70,16 @@ const WhatsAppButton = () => {
         target="_blank"
         rel="noopener noreferrer"
         className="bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all flex items-center justify-center"
-        variants={pulseAnimation}
-        initial="initial"
-        animate="animate"
+        initial={{ boxShadow: "0 0 0 0 rgba(72, 187, 120, 0.7)" }}
+        animate={{ 
+          boxShadow: ["0 0 0 0 rgba(72, 187, 120, 0.7)", "0 0 0 15px rgba(72, 187, 120, 0)"],
+          scale: [1, 1.1, 1]
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          repeatType: "loop"
+        }}
         whileHover={{ 
           scale: 1.15,
           transition: { duration: 0.2 }

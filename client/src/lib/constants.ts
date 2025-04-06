@@ -42,37 +42,37 @@ export const PROJECTS = [
     id: 1,
     title: "Instalação Residencial",
     description: "Projeto completo de instalação elétrica em casa nova, incluindo quadro de distribuição e iluminação.",
-    imageSrc: "https://images.unsplash.com/photo-1594818379496-da1e345388c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+    imageSrc: "https://images.pexels.com/photos/3890198/pexels-photo-3890198.jpeg?auto=compress&cs=tinysrgb&w=600&h=400"
   },
   {
     id: 2,
     title: "Instalação Comercial",
     description: "Projeto e execução de instalação elétrica para loja, com ênfase em iluminação e segurança.",
-    imageSrc: "https://images.unsplash.com/photo-1573168710465-7f7da9a23a19?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+    imageSrc: "https://images.pexels.com/photos/3825523/pexels-photo-3825523.jpeg?auto=compress&cs=tinysrgb&w=600&h=400"
   },
   {
     id: 3,
     title: "Quadro de Distribuição",
     description: "Montagem de quadro de distribuição com organização e segurança para residência de alto padrão.",
-    imageSrc: "https://images.unsplash.com/photo-1652575285071-3379987ebe5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+    imageSrc: "https://images.pexels.com/photos/4481326/pexels-photo-4481326.jpeg?auto=compress&cs=tinysrgb&w=600&h=400"
   },
   {
     id: 4,
     title: "Manutenção Preventiva",
     description: "Serviço de manutenção e inspeção para evitar falhas e garantir o funcionamento seguro em escritório.",
-    imageSrc: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+    imageSrc: "https://images.pexels.com/photos/8961251/pexels-photo-8961251.jpeg?auto=compress&cs=tinysrgb&w=600&h=400"
   },
   {
     id: 5,
     title: "Reparo Emergencial",
     description: "Solução rápida para curto-circuito que causou queda de energia em estabelecimento comercial.",
-    imageSrc: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+    imageSrc: "https://images.pexels.com/photos/8960325/pexels-photo-8960325.jpeg?auto=compress&cs=tinysrgb&w=600&h=400"
   },
   {
     id: 6,
     title: "Projeto de Iluminação",
     description: "Instalação de sistema de iluminação eficiente com luminárias LED em residência.",
-    imageSrc: "https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+    imageSrc: "https://images.pexels.com/photos/5965826/pexels-photo-5965826.jpeg?auto=compress&cs=tinysrgb&w=600&h=400"
   }
 ];
 
