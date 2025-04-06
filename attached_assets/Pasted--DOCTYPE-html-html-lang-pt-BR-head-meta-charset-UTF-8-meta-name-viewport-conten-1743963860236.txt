@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>R.R Manutenções Elétricas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f8f8f8;
+      color: #333;
+    }
+
+    .hero {
+      background: linear-gradient(to right, #facc15, #fbbf24);
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    .btn-whatsapp {
+      display: inline-block;
+      background-color: #25d366;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: #111;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    .testimonial, .services, .trust {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    blockquote {
+      font-style: italic;
+      border-left: 4px solid #facc15;
+      padding-left: 15px;
+      color: #444;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 14px;
+      padding: 30px 10px;
+      color: #888;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 24px;
+      }
+
+      .btn-whatsapp {
+        padding: 12px 20px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <h1>⚡ Serviços Elétricos com Qualidade e Rapidez</h1>
+    <p>Especialistas em instalações e manutenções elétricas residenciais e comerciais.</p>
+    <a class="btn-whatsapp" href="https://wa.me/5511999999999" target="_blank">💬 Falar com um eletricista agora</a>
+  </section>
+
+  <div class="container">
+
+    <section class="services">
+      <h2>🔧 Nossos Serviços</h2>
+      <ul>
+        <li>Instalação de tomadas, luminárias, ventiladores</li>
+        <li>Troca de disjuntores e quadros elétricos</li>
+        <li>Correções de curto-circuitos e sobrecargas</li>
+        <li>Projetos elétricos completos para residências e comércios</li>
+        <li>Manutenções preventivas e emergenciais</li>
+      </ul>
+    </section>
+
+    <section class="testimonial">
+      <h2>📢 O que dizem nossos clientes</h2>
+      <blockquote>“Serviço excelente, rápido e limpo. Super recomendo a R.R para qualquer instalação elétrica!”<br>– Marcos, cliente residencial</blockquote>
+      <blockquote>“A equipe da R.R resolveu o problema da minha loja no mesmo dia. Atendimento via WhatsApp facilitou demais.”<br>– Camila, comerciante</blockquote>
+    </section>
+
+    <section class="trust">
+      <h2>✅ Por que escolher a R.R?</h2>
+      <ul>
+        <li>Profissionais certificados e experientes</li>
+        <li>Atendimento rápido e personalizado</li>
+        <li>Garantia de serviço e suporte pós-atendimento</li>
+        <li>Orçamento gratuito e transparente</li>
+        <li>Nota fiscal e segurança em primeiro lugar</li>
+      </ul>
+    </section>
+
+    <div style="text-align: center; margin-top: 30px;">
+      <a class="btn-whatsapp" href="https://wa.me/5511999999999" target="_blank">✅ QUERO UM ORÇAMENTO PELO WHATSAPP</a>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    © 2025 R.R Manutenções e Instalações Elétricas • Todos os direitos reservados
+  </footer>
+
+</body>
+</html>
