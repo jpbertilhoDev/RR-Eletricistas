@@ -91,17 +91,10 @@ const Hero = () => {
             variants={fadeInUp}
           >
             <motion.h1 
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight min-h-[4.5rem] md:min-h-[5.2rem] lg:min-h-[6rem] flex items-center"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight min-h-[3rem] md:min-h-[3.5rem] lg:min-h-[4rem] flex items-center"
               variants={fadeInUp}
             >
-              <TypeWriter
-                texts={heroTexts}
-                typingSpeed={70}
-                deletingSpeed={30}
-                delayAfterText={2000}
-                delayAfterDelete={500}
-                className="inline-block"
-              />
+              <TypeWriter />
             </motion.h1>
 
             <motion.p 

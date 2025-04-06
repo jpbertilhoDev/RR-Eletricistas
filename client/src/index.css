@@ -133,7 +133,18 @@
   .typewriter-container {
     display: inline-flex;
     align-items: center;
-    min-height: 3rem;
+    min-height: 2rem;
+  }
+
+  .typewriter-container .cursor {
+    display: inline-block;
+    margin-left: 2px;
+    animation: blink 0.75s step-end infinite;
+  }
+
+  @keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
   }
 
   /* Estilo para botões com efeito empresarial */

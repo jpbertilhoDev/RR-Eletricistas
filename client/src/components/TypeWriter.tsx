@@ -1,12 +1,15 @@
+
 import React, { useState, useEffect, useCallback } from 'react';
 
 const TypeWriter = () => {
-  // Array de textos que serão exibidos em sequência
+  // Array de textos curtos e objetivos
   const texts = [
-    "Especialistas em instalações e manutenções elétricas residenciais e comerciais com mais de 10 anos de experiência.",
-    "Atendimento rápido e eficiente para resolver qualquer problema elétrico.",
-    "Equipe qualificada e comprometida com a excelência em serviços elétricos.",
-    "Soluções personalizadas para projetos elétricos residenciais e comerciais."
+    "Especialistas em instalações elétricas.",
+    "Manutenção residencial e comercial.",
+    "Mais de 10 anos de experiência.",
+    "Atendimento rápido e eficiente.",
+    "Equipe qualificada e comprometida.",
+    "Soluções personalizadas em elétrica."
   ];
 
   const [displayText, setDisplayText] = useState('');
@@ -48,7 +51,7 @@ const TypeWriter = () => {
   return (
     <div className="typewriter-container">
       <span>{displayText}</span>
-      <span className="animate-blink">|</span>
+      <span className="cursor">|</span>
     </div>
   );
 };
