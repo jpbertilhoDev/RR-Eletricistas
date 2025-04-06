@@ -9,7 +9,7 @@ const Footer = () => {
         top: element.offsetTop - 80,
         behavior: "smooth"
       });
-      
+
       // Prevenção de cliques múltiplos durante a animação
       document.body.style.pointerEvents = "none";
       setTimeout(() => {
@@ -44,7 +44,7 @@ const Footer = () => {
               ))}
             </div>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-semibold mb-4 flex items-center">
               <i className="fas fa-bolt text-primary mr-2" />
@@ -65,13 +65,13 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-semibold mb-4 flex items-center">
               <i className="fas fa-link text-primary mr-2" />
               Links Rápidos
             </h3>
-            <ul className="space-y-3 text-blue-200">
+            <ul className="space-y-3 text-blue-100">
               {NAVIGATION_ITEMS.map((item) => (
                 <li key={item.id}>
                   <button 
@@ -85,7 +85,7 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-semibold mb-4 flex items-center">
               <i className="fas fa-phone-alt text-primary mr-2" />
@@ -111,7 +111,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        
+
         <div className="border-t border-blue-800 pt-6 text-center text-blue-300 text-sm">
           <p>&copy; {new Date().getFullYear()} R.R Manutenções e Instalações Elétricas • Todos os direitos reservados</p>
         </div>
