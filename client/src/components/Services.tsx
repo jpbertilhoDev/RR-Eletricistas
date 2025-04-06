@@ -31,80 +31,52 @@ const Services = () => {
   };
 
   return (
-    <section id="servicos" ref={sectionRef} className="py-24 bg-white relative">
-      {/* Padrão de fundo sutil */}
-      <div className="absolute inset-0 bg-dotted-white opacity-50 pointer-events-none"></div>
-      
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div 
-          className="text-center mb-16 max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-        >
-          <div className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-medium mb-4">
-            NOSSOS SERVIÇOS
+    <section id="servicos" ref={sectionRef} className="py-20 bg-white">
+      <div className="container mx-auto px-4 max-w-5xl">
+        <div className="mb-12 md:mb-16">
+          <div className="text-center">
+            <span className="text-blue-600 font-medium text-sm tracking-wider">SERVIÇOS</span>
+            <h2 className="text-3xl font-bold mt-2 mb-3">Soluções Elétricas Completas</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Atendemos residências e empresas com serviços elétricos profissionais, 
+              seguindo todas as normas técnicas de segurança.
+            </p>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6">
-            Soluções Elétricas Profissionais
-          </h2>
-          <p className="text-gray-600 text-lg">
-            Oferecemos uma ampla variedade de serviços elétricos com excelência técnica 
-            para atender todas as necessidades residenciais e comerciais.
-          </p>
-        </motion.div>
+        </div>
         
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {SERVICES.map((service, index) => (
             <motion.div 
               key={service.id}
-              className="relative bg-white rounded-xl p-8 shadow-lg border border-gray-100 group hover:border-primary/20 transition-all duration-300"
-              variants={itemVariants}
-              custom={index}
+              className="bg-gray-50 border border-gray-100 rounded-lg overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
             >
-              {/* Gradiente de fundo no hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"></div>
-              
-              {/* Ícone com animação */}
-              <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300 relative z-10">
-                <i className={`${service.icon} text-primary text-2xl group-hover:scale-110 transition-transform duration-300`}></i>
-              </div>
-              
-              {/* Conteúdo */}
-              <div className="relative z-10">
-                <h3 className="text-xl font-bold mb-3 text-gray-900">{service.title}</h3>
-                <p className="text-gray-600 mb-5 leading-relaxed">
+              <div className="p-5">
+                <div className="flex items-center mb-4">
+                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                    <i className={`${service.icon} text-blue-600`}></i>
+                  </div>
+                  <h3 className="font-semibold text-lg">{service.title}</h3>
+                </div>
+                <p className="text-gray-600 text-sm">
                   {service.description}
                 </p>
-                
-                {/* Linha decorativa */}
-                <div className="w-12 h-1 bg-primary/30 rounded group-hover:w-16 transition-all duration-300"></div>
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
         
-        {/* Call to action com destaque */}
-        <motion.div 
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <div className="bg-gradient-to-r from-primary to-blue-700 rounded-2xl p-10 max-w-3xl mx-auto shadow-xl">
-            <h3 className="text-white text-2xl font-bold mb-4">
-              Precisa de um serviço elétrico?
+        {/* Call to action simplificado */}
+        <div className="mt-12 text-center bg-primary rounded-lg p-6 shadow-sm">
+          <div className="max-w-xl mx-auto">
+            <h3 className="text-white text-xl font-bold mb-3">
+              Solicite um orçamento sem compromisso
             </h3>
-            <p className="text-white/90 mb-6">
-              Entre em contato agora para um orçamento sem compromisso
+            <p className="text-white/90 text-sm mb-4">
+              Nossa equipe está pronta para atender sua necessidade com agilidade e segurança
             </p>
             <a
               href={`https://wa.me/${WHATSAPP_NUMBER}`}
@@ -114,14 +86,14 @@ const Services = () => {
               <Button 
                 variant="secondary"
                 size="lg"
-                className="bg-white text-primary hover:bg-gray-100 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 px-8"
+                className="bg-white text-primary hover:bg-gray-50"
               >
-                <i className="fab fa-whatsapp text-xl mr-2 text-green-600"></i>
-                Solicitar orçamento
+                <i className="fab fa-whatsapp mr-2 text-green-600"></i>
+                Falar com um técnico
               </Button>
             </a>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

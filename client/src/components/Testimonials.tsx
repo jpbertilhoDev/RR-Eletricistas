@@ -45,81 +45,67 @@ const Testimonials = () => {
   };
 
   return (
-    <section id="depoimentos" ref={sectionRef} className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <motion.div 
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="text-blue-600 font-semibold">DEPOIMENTOS</span>
-          <h2 className="text-3xl font-bold mt-2">O Que Dizem Nossos Clientes</h2>
-          <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
-            Veja o que nossos clientes têm a dizer sobre nossos serviços e atendimento.
-          </p>
-          
-          {/* Google Reviews Rating Badge - Estilo melhorado */}
-          <motion.div 
-            className="flex items-center justify-center mt-6"
-            initial={{ scale: 0.9, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <div className="bg-primary text-white rounded-xl px-6 py-5 mx-auto text-center max-w-lg shadow-lg">
-              <div className="flex items-center justify-center mb-2">
-                <i className="fab fa-google text-2xl mr-3"></i>
-                <div className="flex text-yellow-400 text-xl">
+    <section id="depoimentos" ref={sectionRef} className="py-20 bg-white">
+      <div className="container mx-auto px-4 max-w-5xl">
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-10 mb-12">
+          <div className="md:w-1/3">
+            <div className="mb-6">
+              <span className="text-blue-600 font-medium text-sm tracking-wider">AVALIAÇÕES</span>
+              <h2 className="text-2xl md:text-3xl font-bold mt-2">O que nossos clientes dizem</h2>
+            </div>
+            
+            <div className="bg-gray-50 p-4 rounded-lg border border-gray-100">
+              <div className="flex items-center gap-2 mb-3">
+                <i className="fab fa-google text-[#4285F4]"></i>
+                <div className="flex text-yellow-500">
                   <i className="fas fa-star"></i>
                   <i className="fas fa-star"></i>
                   <i className="fas fa-star"></i>
                   <i className="fas fa-star"></i>
                   <i className="fas fa-star"></i>
                 </div>
+                <span className="font-semibold">5.0</span>
               </div>
-              <h3 className="text-xl font-bold mb-1">Avaliação 5 Estrelas no Google</h3>
-              <p className="text-white/80">
-                Mais de 100 clientes satisfeitos nos avaliaram com nota máxima
+              <p className="text-gray-600 text-sm">
+                Mais de 100 avaliações no Google com nota máxima
               </p>
             </div>
-          </motion.div>
-        </motion.div>
-        
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {TESTIMONIALS.map((testimonial) => (
+          </div>
+          
+          <div className="md:w-2/3">
             <motion.div 
-              key={testimonial.id}
-              className="bg-white p-6 rounded-xl shadow-md transform hover:scale-103 transition-all duration-300"
-              variants={itemVariants}
+              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
             >
-              <div className="flex items-center mb-4">
-                <div className="text-blue-500 text-lg flex">
-                  {renderStars(testimonial.rating)}
-                </div>
-              </div>
-              <blockquote className="text-gray-700 italic border-l-4 border-primary pl-4 mb-4">
-                "{testimonial.content}"
-              </blockquote>
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-3">
-                  <i className="fas fa-user text-gray-500"></i>
-                </div>
-                <div>
-                  <p className="font-semibold">{testimonial.name}</p>
-                  <p className="text-gray-500 text-sm">{testimonial.role}</p>
-                </div>
-              </div>
+              {TESTIMONIALS.slice(0, 4).map((testimonial) => (
+                <motion.div 
+                  key={testimonial.id}
+                  className="bg-gray-50 p-5 rounded-lg border border-gray-100"
+                  variants={itemVariants}
+                >
+                  <div className="flex text-yellow-500 text-sm mb-3">
+                    {renderStars(testimonial.rating)}
+                  </div>
+                  <p className="text-gray-700 text-sm mb-4 line-clamp-3">
+                    "{testimonial.content}"
+                  </p>
+                  <div className="flex items-center">
+                    <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center mr-2">
+                      <i className="fas fa-user text-gray-500 text-xs"></i>
+                    </div>
+                    <div>
+                      <p className="font-medium text-sm">{testimonial.name}</p>
+                      <p className="text-gray-500 text-xs">{testimonial.role}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
             </motion.div>
-          ))}
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
