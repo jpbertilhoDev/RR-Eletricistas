@@ -4,12 +4,12 @@ import React, { useState, useEffect, useCallback } from 'react';
 const TypeWriter = () => {
   // Array de textos curtos e objetivos
   const texts = [
-    "Especialistas em instalações elétricas.",
-    "Manutenção residencial e comercial.",
-    "Mais de 10 anos de experiência.",
-    "Atendimento rápido e eficiente.",
-    "Equipe qualificada e comprometida.",
-    "Soluções personalizadas em elétrica."
+    "Especialistas em instalações elétricas",
+    "Manutenção residencial e comercial",
+    "Mais de 10 anos de experiência",
+    "Atendimento rápido e eficiente",
+    "Equipe qualificada e comprometida",
+    "Soluções personalizadas em elétrica"
   ];
 
   const [displayText, setDisplayText] = useState('');
