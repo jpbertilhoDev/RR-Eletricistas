@@ -8,7 +8,39 @@
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply font-sans antialiased bg-background text-foreground tracking-tight;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold tracking-tight text-gray-900;
+    letter-spacing: -0.015em;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+    line-height: 1.1;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl;
+    line-height: 1.2;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl;
+    line-height: 1.3;
+  }
+
+  p {
+    @apply leading-relaxed text-gray-700;
+  }
+
+  .section-title {
+    @apply font-heading font-bold text-3xl md:text-4xl text-gray-900 mb-6;
+  }
+  
+  .section-subtitle {
+    @apply font-sans text-lg text-gray-600 mb-10 max-w-3xl mx-auto;
   }
 }
 
