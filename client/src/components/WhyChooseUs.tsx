@@ -40,7 +40,7 @@ const WhyChooseUs = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-20 bg-gray-50">
+    <section id="porque-escolher" ref={sectionRef} className="py-20 bg-gray-50">
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="text-center mb-12">
           <span className="text-blue-600 font-medium text-sm tracking-wider">VANTAGENS</span>

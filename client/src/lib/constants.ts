@@ -132,6 +132,7 @@ export const NAVIGATION_ITEMS = [
   { id: "inicio", icon: "fas fa-home", label: "Início" },
   { id: "servicos", icon: "fas fa-tools", label: "Serviços" },
   { id: "projetos", icon: "fas fa-bolt", label: "Projetos" },
+  { id: "porque-escolher", icon: "fas fa-check-circle", label: "Vantagens" },
   { id: "depoimentos", icon: "fas fa-star", label: "Depoimentos" },
   { id: "contato", icon: "fas fa-phone-alt", label: "Contato" }
 ];

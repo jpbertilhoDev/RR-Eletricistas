@@ -49,13 +49,14 @@ const Header = () => {
           <h1 className="text-lg font-bold">RR Manutenções Elétricas</h1>
         </div>
         
-        <nav className="hidden md:flex space-x-6">
+        <nav className="hidden md:flex space-x-5 px-2">
           {NAVIGATION_ITEMS.map((item) => (
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className="font-medium hover:text-primary transition-colors"
+              className="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap"
             >
+              <i className={`${item.icon} mr-1 text-xs opacity-70`}></i>
               {item.label}
             </button>
           ))}
