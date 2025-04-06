@@ -27,7 +27,7 @@ const Footer = () => {
               <span className="text-primary text-3xl">⚡</span>
               <h2 className="text-2xl font-bold">RR Manutenções Elétricas</h2>
             </div>
-            <p className="text-blue-300 mb-6 leading-relaxed"> {/* Changed to a darker blue */}
+            <p className="text-blue-300 mb-6 leading-relaxed">
               Soluções elétricas completas para residências e comércios com qualidade, segurança e profissionalismo.
             </p>
             <div className="flex space-x-5">
@@ -37,7 +37,7 @@ const Footer = () => {
                   href={social.url} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-blue-300 hover:text-primary transition-colors text-xl" {/* Changed to a darker blue */}
+                  className="text-blue-300 hover:text-primary transition-colors text-xl"
                 >
                   <i className={social.icon}></i>
                 </a>
@@ -50,7 +50,8 @@ const Footer = () => {
               <i className="fas fa-bolt text-primary mr-2" />
               Serviços
             </h3>
-            <ul className="space-y-3 text-blue-300"> {/* Changed to a darker blue */}
+            <ul className="space-y-3 text-blue-300">
+              {/* Changed to a darker blue */}
               {["Instalações Elétricas", "Manutenção Preventiva", "Reparos Emergenciais", 
                 "Projetos Elétricos", "Quadros Elétricos", "Iluminação"].map((service, index) => (
                 <li key={index}>
@@ -71,7 +72,8 @@ const Footer = () => {
               <i className="fas fa-link text-primary mr-2" />
               Links Rápidos
             </h3>
-            <ul className="space-y-3 text-blue-300"> {/* Changed to a darker blue */}
+            <ul className="space-y-3 text-blue-300">
+              {/* Changed to a darker blue */}
               {NAVIGATION_ITEMS.map((item) => (
                 <li key={item.id}>
                   <button 
@@ -91,7 +93,8 @@ const Footer = () => {
               <i className="fas fa-phone-alt text-primary mr-2" />
               Contato
             </h3>
-            <ul className="space-y-4 text-blue-300"> {/* Changed to a darker blue */}
+            <ul className="space-y-4 text-blue-300">
+              {/* Changed to a darker blue */}
               <li className="flex items-start space-x-3">
                 <i className="fas fa-phone-alt mt-1 text-primary/70" />
                 <span>{CONTACT_INFO.phone}</span>
@@ -112,7 +115,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-blue-800 pt-6 text-center text-blue-300 text-sm"> {/* Changed to a darker blue */}
+        <div className="border-t border-blue-800 pt-6 text-center text-blue-300 text-sm">
+          {/* Changed to a darker blue */}
           <p>&copy; {new Date().getFullYear()} R.R Manutenções e Instalações Elétricas • Todos os direitos reservados</p>
         </div>
       </div>
