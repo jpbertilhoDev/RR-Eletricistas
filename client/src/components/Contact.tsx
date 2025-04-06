@@ -63,7 +63,7 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-yellow-600 font-semibold">ENTRE EM CONTATO</span>
+          <span className="text-blue-600 font-semibold">ENTRE EM CONTATO</span>
           <h2 className="text-3xl font-bold mt-2">Solicite um Orçamento</h2>
           <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
             Entre em contato conosco para solicitar um orçamento gratuito ou tirar suas dúvidas.
@@ -83,8 +83,8 @@ const Contact = () => {
               
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <i className="fas fa-phone text-yellow-600"></i>
+                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i className="fas fa-phone text-blue-600"></i>
                   </div>
                   <div>
                     <h4 className="font-semibold">Telefone</h4>
@@ -93,8 +93,8 @@ const Contact = () => {
                 </div>
                 
                 <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <i className="fas fa-envelope text-yellow-600"></i>
+                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i className="fas fa-envelope text-blue-600"></i>
                   </div>
                   <div>
                     <h4 className="font-semibold">Email</h4>
@@ -103,8 +103,8 @@ const Contact = () => {
                 </div>
                 
                 <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <i className="fas fa-map-marker-alt text-yellow-600"></i>
+                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i className="fas fa-map-marker-alt text-blue-600"></i>
                   </div>
                   <div>
                     <h4 className="font-semibold">Endereço</h4>
@@ -114,8 +114,8 @@ const Contact = () => {
                 </div>
                 
                 <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <i className="fas fa-clock text-yellow-600"></i>
+                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i className="fas fa-clock text-blue-600"></i>
                   </div>
                   <div>
                     <h4 className="font-semibold">Horário de Atendimento</h4>
@@ -135,7 +135,7 @@ const Contact = () => {
                       href={social.url} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="w-10 h-10 bg-primary hover:bg-yellow-600 text-white rounded-full flex items-center justify-center transition-colors"
+                      className="w-10 h-10 bg-primary hover:bg-blue-700 text-white rounded-full flex items-center justify-center transition-colors"
                     >
                       <i className={social.icon}></i>
                     </a>
@@ -225,7 +225,7 @@ const Contact = () => {
                 
                 <Button 
                   type="submit" 
-                  className="w-full bg-primary hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all"
+                  className="w-full bg-primary hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all"
                 >
                   Enviar Mensagem
                 </Button>

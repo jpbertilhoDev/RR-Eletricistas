@@ -54,7 +54,7 @@ const Testimonials = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-yellow-600 font-semibold">DEPOIMENTOS</span>
+          <span className="text-blue-600 font-semibold">DEPOIMENTOS</span>
           <h2 className="text-3xl font-bold mt-2">O Que Dizem Nossos Clientes</h2>
           <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
             Veja o que nossos clientes têm a dizer sobre nossos serviços e atendimento.
@@ -75,7 +75,7 @@ const Testimonials = () => {
               variants={itemVariants}
             >
               <div className="flex items-center mb-4">
-                <div className="text-yellow-500 text-lg flex">
+                <div className="text-blue-500 text-lg flex">
                   {renderStars(testimonial.rating)}
                 </div>
               </div>

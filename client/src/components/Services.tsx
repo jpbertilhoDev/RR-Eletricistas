@@ -39,7 +39,7 @@ const Services = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-yellow-600 font-semibold">NOSSOS SERVIÇOS</span>
+          <span className="text-blue-600 font-semibold">NOSSOS SERVIÇOS</span>
           <h2 className="text-3xl font-bold mt-2">Soluções Elétricas Completas</h2>
           <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
             Oferecemos uma ampla variedade de serviços elétricos para atender todas as necessidades residenciais e comerciais.
@@ -59,8 +59,8 @@ const Services = () => {
               className="bg-gray-50 rounded-xl p-6 shadow-md transform hover:scale-103 transition-all duration-300"
               variants={itemVariants}
             >
-              <div className="w-14 h-14 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
-                <i className={`${service.icon} text-yellow-600 text-2xl`}></i>
+              <div className="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                <i className={`${service.icon} text-blue-600 text-2xl`}></i>
               </div>
               <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
               <p className="text-gray-600">

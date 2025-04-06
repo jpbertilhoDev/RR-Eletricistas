@@ -12,7 +12,7 @@ const Hero = () => {
     <section 
       id="inicio" 
       ref={heroRef}
-      className="pt-24 pb-12 md:pt-32 md:pb-20 bg-gradient-to-r from-primary to-yellow-500"
+      className="pt-24 pb-12 md:pt-32 md:pb-20 bg-gradient-to-r from-primary to-blue-700"
     >
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center">

@@ -38,7 +38,7 @@ const Projects = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-yellow-600 font-semibold">NOSSOS PROJETOS</span>
+          <span className="text-blue-600 font-semibold">NOSSOS PROJETOS</span>
           <h2 className="text-3xl font-bold mt-2">Trabalhos Realizados</h2>
           <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
             Conheça alguns dos nossos trabalhos realizados com excelência e profissionalismo.

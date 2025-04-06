@@ -50,7 +50,7 @@ const WhyChooseUs = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-yellow-600 font-semibold">POR QUE NOS ESCOLHER</span>
+            <span className="text-blue-600 font-semibold">POR QUE NOS ESCOLHER</span>
             <h2 className="text-3xl font-bold mt-2 mb-6">Compromisso com a Qualidade e Segurança</h2>
             
             <motion.div 
@@ -66,8 +66,8 @@ const WhyChooseUs = () => {
                   className="flex items-start space-x-4"
                   variants={itemVariants}
                 >
-                  <div className="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <i className="fas fa-check text-yellow-600"></i>
+                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i className="fas fa-check text-blue-600"></i>
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg">{item.title}</h3>
