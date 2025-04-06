@@ -46,9 +46,9 @@ const Home = () => {
   return (
     <Layout>
       <Hero />
+      <AboutUs />
       <Services />
       <Projects />
-      <AboutUs />
       <WhyChooseUs />
       <Testimonials />
       <Contact />

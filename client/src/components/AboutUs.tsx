@@ -29,7 +29,7 @@ const AboutUs = () => {
   };
 
   return (
-    <section id="quem-somos" ref={sectionRef} className="py-20 bg-white">
+    <section id="quem-somos" ref={sectionRef} className="py-20 bg-blue-50">
       <div className="container mx-auto px-4 max-w-5xl">
         <motion.div 
           className="text-center mb-12"
@@ -70,10 +70,11 @@ const AboutUs = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-transparent"></div>
                 <div className="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-blue-100/50 blur-xl"></div>
                 <div className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-blue-100/60 blur-xl"></div>
-                {/* Placeholder for company image */}
-                <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                  <i className="fas fa-building text-6xl"></i>
-                </div>
+                <img 
+                  src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80" 
+                  alt="Equipe RR Manutenções Elétricas" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="absolute -bottom-4 -right-4 w-28 h-28 bg-blue-50 rounded-lg flex items-center justify-center">
                 <div className="text-center">
@@ -135,8 +136,12 @@ const AboutUs = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Team Member 1 */}
             <div className="bg-white p-5 rounded-lg shadow-sm text-center">
-              <div className="w-20 h-20 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <i className="fas fa-user text-gray-400 text-2xl"></i>
+              <div className="w-20 h-20 rounded-full mx-auto mb-4 overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80" 
+                  alt="Ricardo Silva" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h4 className="font-medium text-dark-blue">Ricardo Silva</h4>
               <p className="text-primary text-sm mb-2">Fundador e Engenheiro Eletricista</p>
@@ -147,8 +152,12 @@ const AboutUs = () => {
             
             {/* Team Member 2 */}
             <div className="bg-white p-5 rounded-lg shadow-sm text-center">
-              <div className="w-20 h-20 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <i className="fas fa-user text-gray-400 text-2xl"></i>
+              <div className="w-20 h-20 rounded-full mx-auto mb-4 overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80" 
+                  alt="Rafael Oliveira" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h4 className="font-medium text-dark-blue">Rafael Oliveira</h4>
               <p className="text-primary text-sm mb-2">Técnico Especializado</p>
@@ -159,8 +168,12 @@ const AboutUs = () => {
             
             {/* Team Member 3 */}
             <div className="bg-white p-5 rounded-lg shadow-sm text-center">
-              <div className="w-20 h-20 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <i className="fas fa-user text-gray-400 text-2xl"></i>
+              <div className="w-20 h-20 rounded-full mx-auto mb-4 overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80" 
+                  alt="Amanda Ferreira" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h4 className="font-medium text-dark-blue">Amanda Ferreira</h4>
               <p className="text-primary text-sm mb-2">Gestora de Projetos</p>
@@ -180,17 +193,33 @@ const AboutUs = () => {
         >
           <h3 className="text-dark-blue text-xl font-semibold mb-4">Certificações e Parcerias</h3>
           <div className="flex flex-wrap justify-center gap-8 mt-6">
-            <div className="w-28 h-20 bg-white border border-gray-100 rounded-lg flex items-center justify-center p-2 shadow-sm">
-              <i className="fas fa-certificate text-primary text-2xl"></i>
+            <div className="w-28 h-20 bg-white border border-gray-100 rounded-lg flex items-center justify-center p-2 shadow-sm overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1557200134-90327ee9fafa?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=80&q=80" 
+                alt="Certificação 1" 
+                className="max-w-full max-h-full object-contain"
+              />
             </div>
-            <div className="w-28 h-20 bg-white border border-gray-100 rounded-lg flex items-center justify-center p-2 shadow-sm">
-              <i className="fas fa-award text-primary text-2xl"></i>
+            <div className="w-28 h-20 bg-white border border-gray-100 rounded-lg flex items-center justify-center p-2 shadow-sm overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1607893378714-007fd47c8719?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=80&q=80" 
+                alt="Certificação 2" 
+                className="max-w-full max-h-full object-contain"
+              />
             </div>
-            <div className="w-28 h-20 bg-white border border-gray-100 rounded-lg flex items-center justify-center p-2 shadow-sm">
-              <i className="fas fa-medal text-primary text-2xl"></i>
+            <div className="w-28 h-20 bg-white border border-gray-100 rounded-lg flex items-center justify-center p-2 shadow-sm overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1617791160536-598cf32026fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=80&q=80" 
+                alt="Certificação 3" 
+                className="max-w-full max-h-full object-contain"
+              />
             </div>
-            <div className="w-28 h-20 bg-white border border-gray-100 rounded-lg flex items-center justify-center p-2 shadow-sm">
-              <i className="fas fa-star text-primary text-2xl"></i>
+            <div className="w-28 h-20 bg-white border border-gray-100 rounded-lg flex items-center justify-center p-2 shadow-sm overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1560439514-4e9645039924?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=80&q=80" 
+                alt="Certificação 4" 
+                className="max-w-full max-h-full object-contain"
+              />
             </div>
           </div>
         </motion.div>
