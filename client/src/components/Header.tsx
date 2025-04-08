@@ -45,8 +45,11 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center space-x-2">
-          <span className="text-primary text-2xl">⚡</span>
-          <h1 className="text-lg font-bold">RR Manutenções Elétricas</h1>
+          <img 
+            src="/src/assets/images/logo-rr.png" 
+            alt="RR Manutenções Elétricas" 
+            className="h-12 w-auto object-contain"
+          />
         </div>
         
         <nav className="hidden md:flex space-x-5 px-2">
