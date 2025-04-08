@@ -39,9 +39,9 @@ const Home = () => {
       <Hero />
       {!isMobile && <AboutUs />}
       <Services />
+      <Projects />
       {!isMobile && (
         <>
-          <Projects />
           <WhyChooseUs />
           <Testimonials />
         </>

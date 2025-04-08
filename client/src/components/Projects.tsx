@@ -48,15 +48,16 @@ const Projects = () => {
   };
 
   return (
-    <section id="projetos" ref={sectionRef} className="py-16 bg-gray-50 relative overflow-hidden">
-      {/* Elemento decorativo */}
-      <motion.div 
-        className="absolute -top-40 -left-40 w-80 h-80 rounded-full bg-blue-100/30 blur-3xl"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.5 }}
-      />
+    <section id="projetos" ref={sectionRef} className="py-8 md:py-16 bg-gray-50 relative overflow-hidden">
+      {!isMobile && (
+        <motion.div 
+          className="absolute -top-40 -left-40 w-80 h-80 rounded-full bg-blue-100/30 blur-3xl"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5 }}
+        />
+      )}
       
       <motion.div 
         className="absolute -bottom-40 -right-40 w-80 h-80 rounded-full bg-blue-100/30 blur-3xl"
@@ -83,7 +84,7 @@ const Projects = () => {
         </motion.div>
         
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 md:gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
