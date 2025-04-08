@@ -17,13 +17,12 @@ const HeroBackgroundCarousel = () => {
         setIsTransitioning(true);
         setNextIndex((currentIndex + 1) % images.length);
 
-        // Delay actual index change to allow smooth transition
         setTimeout(() => {
           setCurrentIndex(nextIndex);
           setIsTransitioning(false);
-        }, 2000);
+        }, 1000);
       }
-    }, 6000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [currentIndex, nextIndex, isTransitioning]);
@@ -32,12 +31,15 @@ const HeroBackgroundCarousel = () => {
     <div className="absolute inset-0 overflow-hidden">
       {/* Base layer - always visible */}
       <div 
-        className="absolute inset-0 bg-cover bg-center transition-opacity duration-2000"
-        style={{ backgroundImage: `url(${images[currentIndex]})` }}
+        className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
+        style={{ 
+          backgroundImage: `url(${images[currentIndex]})`,
+          filter: 'brightness(1.1) contrast(1.1)'
+        }}
       />
 
-      {/* Overlay for Blue tint */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-primary/15 to-primary/25 md:bg-primary/25" />
+      {/* Light overlay gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-primary/15" />
 
       {/* Transition layer */}
       {isTransitioning && (
@@ -45,14 +47,17 @@ const HeroBackgroundCarousel = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 2, ease: "easeInOut" }}
+          transition={{ duration: 1, ease: "easeInOut" }}
           className="absolute inset-0"
         >
           <div 
-            className="absolute inset-0 bg-cover bg-center" 
-            style={{ backgroundImage: `url(${images[nextIndex]})` }}
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ 
+              backgroundImage: `url(${images[nextIndex]})`,
+              filter: 'brightness(1.1) contrast(1.1)'
+            }}
           />
-          <div className="absolute inset-0 bg-primary/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-primary/15" />
         </motion.div>
       )}
     </div>
