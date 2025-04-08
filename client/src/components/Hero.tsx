@@ -114,40 +114,17 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Indicadores com animação */}
-          <motion.div 
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 w-full max-w-4xl"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          >
-            {[
-              { value: "10+", label: "Anos de experiência", icon: "fas fa-clock" },
-              { value: "500+", label: "Clientes satisfeitos", icon: "fas fa-users" },
-              { value: "100%", label: "Garantia de serviço", icon: "fas fa-shield-alt" },
-              { value: "24/7", label: "Suporte técnico", icon: "fas fa-headset" }
-            ].map((item, index) => (
-              <motion.div 
-                key={index} 
-                className="text-center bg-white/10 backdrop-blur-sm py-6 px-4 rounded-xl shadow-lg border border-white/10"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 + (index * 0.1), duration: 0.5 }}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
-                <i className={`${item.icon} text-white text-2xl mb-3`}></i>
-                <motion.div 
-                  className="text-white text-3xl font-bold mb-2"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.6 + (index * 0.1), duration: 0.3 }}
-                >
-                  {item.value}
-                </motion.div>
-                <div className="text-white/80 text-sm font-light">{item.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
+          {/* Clean and centered content */}
+          <div className="w-full max-w-4xl mx-auto text-center py-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-white/90 text-lg md:text-xl"
+            >
+              Compromisso com qualidade e excelência em serviços elétricos
+            </motion.div>
+          </div>
         </motion.div>
       </div>
 

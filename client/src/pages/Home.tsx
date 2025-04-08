@@ -36,17 +36,19 @@ const Home = () => {
 
   return (
     <Layout>
-      <Hero />
-      <Services />
-      {!isMobile && (
-        <>
-          <AboutUs />
-          <Projects />
-          <WhyChooseUs />
-          <Testimonials />
-        </>
-      )}
-      <Contact />
+      <div className="flex flex-col items-center">
+        <Hero />
+        <Services />
+        {!isMobile && (
+          <>
+            <AboutUs />
+            <Projects />
+            <WhyChooseUs />
+            <Testimonials />
+          </>
+        )}
+        <Contact />
+      </div>
     </Layout>
   );
 };
