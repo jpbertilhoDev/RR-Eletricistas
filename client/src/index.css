@@ -323,8 +323,6 @@
   .mobile-text {
     @apply text-sm text-gray-600 leading-relaxed text-center max-w-xs mx-auto;
   }
-    letter-spacing: -0.01em;
-  }
 
   p {
     font-size: 0.95rem !important;
