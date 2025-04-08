@@ -309,18 +309,39 @@
 }
 @media (max-width: 768px) {
   .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    max-width: 100%;
   }
   
   h1 {
-    font-size: 1.875rem !important;
-    line-height: 2.25rem !important;
+    font-size: 1.75rem !important;
+    line-height: 2.15rem !important;
+    letter-spacing: -0.02em;
   }
   
   h2 {
-    font-size: 1.5rem !important;
-    line-height: 2rem !important;
+    font-size: 1.35rem !important;
+    line-height: 1.85rem !important;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    font-size: 0.95rem !important;
+    line-height: 1.5rem !important;
+  }
+
+  .section-spacing {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .card-mobile {
+    @apply bg-white rounded-xl shadow-sm p-4;
+  }
+
+  .grid-mobile {
+    @apply grid grid-cols-1 gap-4;
   }
   
   .section-padding {
