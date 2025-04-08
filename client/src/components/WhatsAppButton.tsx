@@ -5,26 +5,26 @@ import { WHATSAPP_NUMBER } from "@/lib/constants";
 const WhatsAppButton = () => {
   const [showTooltip, setShowTooltip] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
-  
+
   // Mostrar tooltip automaticamente depois de um tempo
   useEffect(() => {
     const timer = setTimeout(() => {
       if (!hasAnimated) {
         setShowTooltip(true);
         setHasAnimated(true);
-        
+
         // Esconder tooltip após 4 segundos
         const hideTimer = setTimeout(() => {
           setShowTooltip(false);
         }, 4000);
-        
+
         return () => clearTimeout(hideTimer);
       }
     }, 3000);
-    
+
     return () => clearTimeout(timer);
   }, [hasAnimated]);
-  
+
   // Tooltip animation
   const tooltipAnimation = {
     hidden: { opacity: 0, y: 20, scale: 0.8 },
@@ -64,12 +64,12 @@ const WhatsAppButton = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      
+
       <motion.a
         href={`https://wa.me/${WHATSAPP_NUMBER}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-white/90 backdrop-blur-sm hover:bg-white text-green-500 rounded-full p-3 shadow-sm hover:shadow-md transition-all flex items-center justify-center border border-green-100"
+        className="bg-green-500 text-white rounded-full p-3 shadow-sm hover:shadow-md transition-all flex items-center justify-center"
         initial={{ y: 0 }}
         animate={{ y: [0, -4, 0] }}
         transition={{
