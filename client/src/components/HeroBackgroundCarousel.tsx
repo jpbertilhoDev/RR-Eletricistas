@@ -37,7 +37,7 @@ const HeroBackgroundCarousel = () => {
       />
 
       {/* Overlay for Blue tint */}
-      <div className="absolute inset-0 bg-primary/40" />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/30 via-primary/20 to-primary/40 md:bg-primary/40" />
 
       {/* Transition layer */}
       {isTransitioning && (
