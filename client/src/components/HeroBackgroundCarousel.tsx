@@ -34,12 +34,12 @@ const HeroBackgroundCarousel = () => {
         className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
         style={{ 
           backgroundImage: `url(${images[currentIndex]})`,
-          filter: 'brightness(1.1) contrast(1.1)'
+          filter: 'brightness(1.3) contrast(1.2)'
         }}
       />
 
       {/* Light overlay gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-primary/15" />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-primary/10" />
 
       {/* Transition layer */}
       {isTransitioning && (
@@ -54,10 +54,10 @@ const HeroBackgroundCarousel = () => {
             className="absolute inset-0 bg-cover bg-center"
             style={{ 
               backgroundImage: `url(${images[nextIndex]})`,
-              filter: 'brightness(1.1) contrast(1.1)'
+              filter: 'brightness(1.3) contrast(1.2)'
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-primary/15" />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-primary/10" />
         </motion.div>
       )}
     </div>
