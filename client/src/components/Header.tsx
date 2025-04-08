@@ -48,7 +48,7 @@ const Header = () => {
           <img 
             src="/src/assets/images/logo-rr.png" 
             alt="RR Manutenções Elétricas" 
-            className="h-20 -my-2 w-auto object-contain"
+            className="h-20 mt-2 w-auto object-contain"
           />
         </div>
         
