@@ -307,3 +307,45 @@
   }
 }
 }
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  h1 {
+    font-size: 1.875rem !important;
+    line-height: 2.25rem !important;
+  }
+  
+  h2 {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+  }
+  
+  .section-padding {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  .mobile-space-y > * + * {
+    margin-top: 1rem;
+  }
+  
+  .mobile-card {
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+}
+
+/* Ajustes para animações mais suaves no mobile */
+@media (max-width: 768px) {
+  * {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .touch-action {
+    touch-action: manipulation;
+  }
+}

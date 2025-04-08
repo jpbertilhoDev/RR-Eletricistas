@@ -22,8 +22,8 @@ const MobileNavigation = () => {
   };
 
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg">
-      <div className="grid grid-cols-6 px-1">
+    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-t border-gray-100">
+      <div className="grid grid-cols-6 px-2 py-1">
         {NAVIGATION_ITEMS.map((item) => {
           const isActive = activeSection === item.id;
           
