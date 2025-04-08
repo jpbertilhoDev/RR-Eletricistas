@@ -1,6 +1,12 @@
-import { NAVIGATION_ITEMS } from "@/lib/constants";
+
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { cn } from "@/lib/utils";
+
+const MOBILE_NAV_ITEMS = [
+  { id: "inicio", label: "Início", icon: "fas fa-home" },
+  { id: "servicos", label: "Serviços", icon: "fas fa-tools" },
+  { id: "contato", label: "Contato", icon: "fas fa-phone" },
+];
 
 const MobileNavigation = () => {
   const activeSection = useActiveSection();
@@ -12,8 +18,6 @@ const MobileNavigation = () => {
         top: element.offsetTop - 80,
         behavior: "smooth"
       });
-
-      // Evita cliques múltiplos durante a animação
       document.body.style.pointerEvents = "none";
       setTimeout(() => {
         document.body.style.pointerEvents = "auto";
@@ -24,9 +28,8 @@ const MobileNavigation = () => {
   return (
     <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 border-t border-gray-100">
       <div className="grid grid-cols-3 px-2 py-2">
-        {NAVIGATION_ITEMS.map((item) => {
+        {MOBILE_NAV_ITEMS.map((item) => {
           const isActive = activeSection === item.id;
-          
           return (
             <button
               key={item.id}
@@ -36,13 +39,13 @@ const MobileNavigation = () => {
                 isActive ? "text-primary" : "text-blue-900"
               )}
             >
-              {/* Indicador de ativo */}
               {isActive && (
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-primary rounded-b-lg"></div>
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-primary rounded-b-lg"/>
               )}
-              
               <i className={`${item.icon} text-base mb-1`}></i>
-              <span className="text-[10px] leading-tight font-medium truncate w-full text-center">{item.label}</span>
+              <span className="text-[10px] leading-tight font-medium truncate w-full text-center">
+                {item.label}
+              </span>
             </button>
           );
         })}

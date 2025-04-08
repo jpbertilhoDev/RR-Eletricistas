@@ -1,17 +1,16 @@
+
 import Layout from "@/components/Layout";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
-import Projects from "@/components/Projects";
 import AboutUs from "@/components/AboutUs";
-import WhyChooseUs from "@/components/WhyChooseUs";
-import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import { useEffect } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Home = () => {
-  // Set up intersection observers for animation on scroll
+  const isMobile = useIsMobile();
+
   useEffect(() => {
-    // Add custom CSS for animations
     const style = document.createElement('style');
     style.textContent = `
       @keyframes fadeIn {
@@ -27,30 +26,23 @@ const Home = () => {
       .animate-in {
         animation: slideUp 0.6s ease forwards;
       }
-      
-      .transition-scale {
-        transition: transform 0.3s ease;
-      }
-      
-      .hover\:scale-103:hover {
-        transform: scale(1.03);
-      }
     `;
     document.head.appendChild(style);
-
-    return () => {
-      document.head.removeChild(style);
-    };
+    return () => document.head.removeChild(style);
   }, []);
 
   return (
     <Layout>
       <Hero />
-      <AboutUs />
+      {!isMobile && <AboutUs />}
       <Services />
-      <Projects />
-      <WhyChooseUs />
-      <Testimonials />
+      {!isMobile && (
+        <>
+          <Projects />
+          <WhyChooseUs />
+          <Testimonials />
+        </>
+      )}
       <Contact />
     </Layout>
   );
