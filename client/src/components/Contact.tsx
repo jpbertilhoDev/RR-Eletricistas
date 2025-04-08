@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CONTACT_INFO, SOCIAL_MEDIA, WHATSAPP_NUMBER } from "@/lib/constants";
 import { useAnimateOnScroll } from "@/hooks/useAnimateOnScroll";
 import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
-import { useMutation } from "@tanstack/react-query";
+import { sendContactEmail, ContactFormData } from "@/lib/emailjs";
 
 const Contact = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -43,52 +42,7 @@ const Contact = () => {
     setActiveField(null);
   };
   
-  const contactMutation = useMutation({
-    mutationFn: async (data: typeof formData) => {
-      return await apiRequest('/api/contact', {
-        method: 'POST',
-        body: JSON.stringify({
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          service_type: data.service,
-          message: data.message,
-          read: 0
-        }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-    },
-    onSuccess: () => {
-      toast({
-        title: "Mensagem enviada!",
-        description: "Entraremos em contato em breve.",
-        variant: "default"
-      });
-      
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        service: "",
-        message: ""
-      });
-    },
-    onError: (error) => {
-      console.error("Erro ao enviar mensagem:", error);
-      toast({
-        title: "Erro ao enviar mensagem",
-        description: "Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.",
-        variant: "destructive"
-      });
-    },
-    onSettled: () => {
-      setIsSubmitting(false);
-    }
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!formData.name || !formData.email || !formData.phone || !formData.service || !formData.message) {
@@ -101,7 +55,41 @@ const Contact = () => {
     }
     
     setIsSubmitting(true);
-    contactMutation.mutate(formData);
+    
+    try {
+      const result = await sendContactEmail(formData);
+      
+      if (result.success) {
+        toast({
+          title: "Mensagem enviada!",
+          description: result.message,
+          variant: "default"
+        });
+        
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          service: "",
+          message: ""
+        });
+      } else {
+        toast({
+          title: "Erro ao enviar mensagem",
+          description: result.message,
+          variant: "destructive"
+        });
+      }
+    } catch (error) {
+      console.error("Erro ao enviar mensagem:", error);
+      toast({
+        title: "Erro ao enviar mensagem",
+        description: "Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const formFieldVariants = {
@@ -276,9 +264,9 @@ const Contact = () => {
                   <Button 
                     type="submit" 
                     className="w-full bg-primary hover:bg-blue-700 text-white py-3 rounded-lg"
-                    disabled={isSubmitting || contactMutation.isPending}
+                    disabled={isSubmitting}
                   >
-                    {isSubmitting || contactMutation.isPending ? (
+                    {isSubmitting ? (
                       <span className="flex items-center justify-center">
                         <motion.div 
                           className="w-5 h-5 border-2 border-white border-t-transparent rounded-full mr-2"

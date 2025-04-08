@@ -44,6 +44,9 @@ const Hero = () => {
       {/* Background Carousel */}
       <HeroBackgroundCarousel />
       
+      {/* Overlay gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/95 via-primary/90 to-primary/95 z-0" />
+      
       <div className="container mx-auto px-4 relative z-10 py-20 md:py-0">
         <motion.div 
           className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto"
@@ -52,7 +55,7 @@ const Hero = () => {
           animate="visible"
         >
           <motion.h1 
-            className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight min-h-[6rem] md:min-h-[6.5rem] lg:min-h-[7rem] flex items-center justify-center"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight min-h-[6rem] md:min-h-[6.5rem] lg:min-h-[7rem] flex items-center justify-center"
             variants={fadeInUp}
           >
             <div className="w-full">
@@ -61,14 +64,14 @@ const Hero = () => {
           </motion.h1>
 
           <motion.p 
-            className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl"
+            className="text-xl md:text-2xl text-white/90 mb-12 max-w-2xl font-light"
             variants={fadeInUp}
           >
             Especialistas em instalações e manutenções elétricas residenciais e comerciais com mais de 10 anos de experiência.
           </motion.p>
 
           <motion.div 
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+            className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16"
             variants={fadeInUp}
           >
             <motion.a
@@ -82,9 +85,9 @@ const Hero = () => {
               <Button 
                 variant="default" 
                 size="lg"
-                className="bg-green-600 hover:bg-green-700 text-white w-full sm:w-auto px-8 py-6 shadow-lg text-base"
+                className="bg-white text-primary hover:bg-blue-50 font-semibold w-full sm:w-auto px-8 py-6 shadow-lg text-lg transition-all duration-300"
               >
-                <i className="fab fa-whatsapp mr-2"></i>
+                <i className="fab fa-whatsapp mr-3"></i>
                 Solicitar orçamento
               </Button>
             </motion.a>
@@ -97,7 +100,7 @@ const Hero = () => {
               <Button 
                 variant="secondary" 
                 size="lg"
-                className="bg-white text-primary border-white hover:bg-blue-50 w-full sm:w-auto px-8 py-6 shadow-lg text-base"
+                className="bg-white/10 backdrop-blur-sm text-white border-2 border-white/20 hover:bg-white/20 w-full sm:w-auto px-8 py-6 shadow-lg text-lg transition-all duration-300"
                 onClick={() => {
                   const servicesSection = document.getElementById("servicos");
                   if (servicesSection) {
@@ -105,63 +108,43 @@ const Hero = () => {
                   }
                 }}
               >
-                <i className="fas fa-bolt mr-2"></i>
+                <i className="fas fa-bolt mr-3"></i>
                 Ver serviços
               </Button>
             </motion.div>
           </motion.div>
 
-          <motion.div 
-            className="flex items-center justify-center mt-4"
-            variants={fadeInUp}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.5 }}
-          >
-            <div className="flex text-yellow-400 mr-2">
-              {[...Array(5)].map((_, i) => (
-                <motion.i 
-                  key={i}
-                  className="fas fa-star"
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.8 + (i * 0.1), duration: 0.3 }}
-                />
-              ))}
-            </div>
-            <span className="text-white text-sm">5.0 no Google (102+ avaliações)</span>
-          </motion.div>
-
           {/* Indicadores com animação */}
           <motion.div 
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 w-full max-w-4xl"
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 w-full max-w-4xl"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
             {[
-              { value: "10+", label: "Anos de experiência" },
-              { value: "500+", label: "Clientes satisfeitos" },
-              { value: "100%", label: "Garantia de serviço" },
-              { value: "24/7", label: "Suporte técnico" }
+              { value: "10+", label: "Anos de experiência", icon: "fas fa-clock" },
+              { value: "500+", label: "Clientes satisfeitos", icon: "fas fa-users" },
+              { value: "100%", label: "Garantia de serviço", icon: "fas fa-shield-alt" },
+              { value: "24/7", label: "Suporte técnico", icon: "fas fa-headset" }
             ].map((item, index) => (
               <motion.div 
                 key={index} 
-                className="text-center bg-blue-800/60 py-3 px-2 rounded-lg shadow-md backdrop-blur-sm"
+                className="text-center bg-white/10 backdrop-blur-sm py-6 px-4 rounded-xl shadow-lg border border-white/10"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 + (index * 0.1), duration: 0.5 }}
                 whileHover={{ y: -5, transition: { duration: 0.2 } }}
               >
+                <i className={`${item.icon} text-white text-2xl mb-3`}></i>
                 <motion.div 
-                  className="text-white text-2xl font-bold mb-1"
+                  className="text-white text-3xl font-bold mb-2"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.6 + (index * 0.1), duration: 0.3 }}
                 >
                   {item.value}
                 </motion.div>
-                <div className="text-white/80 text-sm">{item.label}</div>
+                <div className="text-white/80 text-sm font-light">{item.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -170,7 +153,7 @@ const Hero = () => {
 
       {/* Separador com animação */}
       <motion.div 
-        className="absolute bottom-0 left-0 right-0 h-4 bg-white"
+        className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-white/20 via-white/40 to-white/20"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
