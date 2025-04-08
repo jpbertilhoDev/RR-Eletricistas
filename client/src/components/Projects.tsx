@@ -2,11 +2,13 @@ import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PROJECTS } from "@/lib/constants";
 import { useAnimateOnScroll } from "@/hooks/useAnimateOnScroll";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Projects = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   useAnimateOnScroll(sectionRef);
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+  const isMobile = useIsMobile();
 
   // Variants de animação
   const containerVariants = {
