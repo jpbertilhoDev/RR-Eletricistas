@@ -241,14 +241,55 @@
 
 @media (max-width: 768px) {
   .container {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     max-width: 100%;
   }
 
-  section {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+  .mobile-minimal-content section {
+    padding: 1.5rem 0;
+    margin-bottom: 1rem;
+  }
+
+  .mobile-minimal-content h1 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+
+  .mobile-minimal-content h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .mobile-minimal-content p {
+    font-size: 0.875rem;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+  }
+
+  .mobile-minimal-content .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .mobile-minimal-content .card {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .mobile-hide-on-mobile {
+    display: none;
+  }
+
+  .mobile-minimal-content .section-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .mobile-minimal-content .section-content.active {
+    max-height: 1000px;
   }
 
   .mobile-content {
