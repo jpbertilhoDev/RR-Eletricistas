@@ -241,9 +241,38 @@
 
 @media (max-width: 768px) {
   .container {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     max-width: 100%;
+  }
+
+  section {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .mobile-minimal {
+    @apply space-y-4;
+  }
+
+  .card, .mobile-card {
+    @apply bg-white shadow-none border border-gray-100 rounded-xl p-4;
+  }
+
+  .section-title {
+    @apply text-xl font-semibold mb-4;
+  }
+
+  .grid {
+    @apply gap-4;
+  }
+
+  .mobile-hide {
+    @apply hidden md:block;
+  }
+
+  .mobile-stack > * + * {
+    @apply mt-3;
   }
 
   h1 {
