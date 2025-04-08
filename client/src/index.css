@@ -241,14 +241,38 @@
 
 @media (max-width: 768px) {
   .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
     max-width: 100%;
   }
 
   section {
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .mobile-content {
+    @apply space-y-4 text-center;
+  }
+
+  .section-title {
+    @apply text-xl font-semibold mb-3 tracking-tight;
+  }
+
+  .section-description {
+    @apply text-sm text-gray-600 leading-relaxed max-w-sm mx-auto;
+  }
+
+  .mobile-card {
+    @apply bg-white p-4 rounded-xl shadow-sm border border-gray-100;
+  }
+
+  .mobile-grid {
+    @apply grid grid-cols-1 gap-3;
+  }
+
+  .mobile-flex-center {
+    @apply flex flex-col items-center justify-center;
   }
 
   .mobile-minimal {
@@ -276,14 +300,29 @@
   }
 
   h1 {
-    font-size: 1.75rem !important;
-    line-height: 2.15rem !important;
+    font-size: 1.5rem !important;
+    line-height: 1.75rem !important;
     letter-spacing: -0.02em;
   }
 
   h2 {
-    font-size: 1.35rem !important;
-    line-height: 1.85rem !important;
+    font-size: 1.25rem !important;
+    line-height: 1.5rem !important;
+  }
+
+  p {
+    font-size: 0.875rem !important;
+    line-height: 1.5rem !important;
+    color: #4B5563;
+  }
+
+  .mobile-heading {
+    @apply text-center font-semibold tracking-tight;
+  }
+
+  .mobile-text {
+    @apply text-sm text-gray-600 leading-relaxed text-center max-w-xs mx-auto;
+  }
     letter-spacing: -0.01em;
   }
 

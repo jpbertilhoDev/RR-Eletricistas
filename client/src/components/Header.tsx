@@ -5,15 +5,15 @@ import { NAVIGATION_ITEMS, WHATSAPP_NUMBER } from "@/lib/constants";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  
+
   // Handle scroll event to change header appearance
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-    
+
     window.addEventListener("scroll", handleScroll);
-    
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -27,7 +27,7 @@ const Header = () => {
         top: element.offsetTop - 80,
         behavior: "smooth"
       });
-      
+
       // Evita cliques múltiplos durante a animação
       document.body.style.pointerEvents = "none";
       setTimeout(() => {
@@ -35,7 +35,7 @@ const Header = () => {
       }, 800);
     }
   };
-  
+
   return (
     <header 
       className={cn(
@@ -43,7 +43,7 @@ const Header = () => {
         isScrolled ? "bg-white/95 backdrop-blur-xl shadow-sm py-2" : "bg-transparent py-3"
       )}
     >
-      <div className="container mx-auto px-4 flex justify-between items-center h-16">
+      <div className="container mx-auto px-3 h-12 md:h-20 flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <img 
             src="/src/assets/images/logo-rr.png" 
@@ -51,7 +51,7 @@ const Header = () => {
             className="h-16 md:h-20 mt-2 w-auto object-contain"
           />
         </div>
-        
+
         <nav className="hidden md:flex space-x-5 px-2">
           {NAVIGATION_ITEMS.map((item) => (
             <button
@@ -63,7 +63,7 @@ const Header = () => {
             </button>
           ))}
         </nav>
-        
+
         <a 
           href={`https://wa.me/${WHATSAPP_NUMBER}`}
           target="_blank" 
