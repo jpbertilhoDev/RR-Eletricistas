@@ -2,86 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .transition-opacity {
-    transition-property: opacity;
-  }
-
-  .duration-2000 {
-    transition-duration: 2000ms;
-  }
-}
-
 @layer base {
   * {
     @apply border-border;
-
-/* Electric particles */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 0.8;
-  }
-}
-
-@keyframes spark {
-  0%, 100% {
-    opacity: 0;
-    transform: scale(0.2);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes flicker {
-  0%, 100% {
-    opacity: 0.1;
-  }
-  25% {
-    opacity: 0.8;
-  }
-  50% {
-    opacity: 0.3;
-  }
-  75% {
-    opacity: 0.6;
-  }
-}
-
-.energy-bolt {
-  transform-origin: center top;
-  filter: blur(1px);
-  z-index: 1;
-}
-
-.energy-orb {
-  filter: blur(1px);
-  z-index: 2;
-}
-
-.electrical-current {
-  filter: blur(0.5px);
-  z-index: 1;
-}
-
-.energy-core {
-  z-index: 3;
-}
-
-
   }
 
   body {
@@ -90,7 +13,14 @@
 }
 
 @layer utilities {
-  /* Classes de texto com cores personalizadas */
+  .transition-opacity {
+    transition-property: opacity;
+  }
+
+  .duration-2000 {
+    transition-duration: 2000ms;
+  }
+
   .text-dark-blue {
     color: hsl(215, 50%, 15%);
   }
@@ -112,15 +42,8 @@
     background-size: 20px 20px;
   }
 
-  /* Animações */
   .animate-float {
     animation: float 6s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
   }
 
   .animate-pulse-slow {
@@ -131,82 +54,36 @@
     animation: bounce 5s ease-in-out infinite;
   }
 
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
-  }
-
   .animate-glow {
     animation: glow 3s ease-in-out infinite alternate;
-  }
-
-  @keyframes glow {
-    from { box-shadow: 0 0 5px -5px rgba(66, 153, 225, 0.6); }
-    to { box-shadow: 0 0 15px 5px rgba(66, 153, 225, 0.4); }
   }
 
   .animate-slide-up {
     animation: slideUp 0.8s ease-out forwards;
   }
 
-  @keyframes slideUp {
-    from { transform: translateY(30px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-
   .animate-fade-in {
     animation: fadeIn 0.8s ease-out forwards;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
   }
 
   .animate-scale {
     animation: scale 0.5s ease-out forwards;
   }
 
-  @keyframes scale {
-    from { transform: scale(0.9); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-  }
-
   .animate-rotate {
     animation: rotate 30s linear infinite;
-  }
-
-  @keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
   }
 
   .animate-typing {
     overflow: hidden;
     white-space: nowrap;
-    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-  }
-
-  @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-  }
-
-  @keyframes blink {
-    from, to { opacity: 1; }
-    50% { opacity: 0; }
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
   }
 
   .animate-blink {
     animation: blink 0.75s step-end infinite;
   }
 
-  @keyframes blink-caret {
-    from, to { border-color: transparent; }
-    50% { border-color: rgb(66, 153, 225); }
-  }
-
-  /* Estilo para o TypeWriter */
   .typewriter-container {
     display: inline-flex;
     align-items: center;
@@ -228,20 +105,14 @@
     animation: blink 0.75s step-end infinite;
   }
 
-  @keyframes blink {
-    from, to { opacity: 1; }
-    50% { opacity: 0; }
-  }
-
-  /* Estilo para botões com efeito empresarial */
   .btn-business {
     @apply px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
   }
 
-  /* Efeitos em hover */
   .hover-lift {
     @apply transition-all duration-300;
   }
+
   .hover-lift:hover {
     transform: translateY(-6px);
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
@@ -250,6 +121,7 @@
   .hover-scale {
     @apply transition-all duration-300;
   }
+
   .hover-scale:hover {
     transform: scale(1.05);
   }
@@ -257,11 +129,52 @@
   .hover-rotate {
     @apply transition-all duration-500;
   }
+
   .hover-rotate:hover {
     transform: rotate(5deg);
   }
 
-  /* Elementos decorativos */
+  .energy-bolt {
+    transform-origin: center top;
+    filter: blur(1px);
+    z-index: 1;
+  }
+
+  .energy-orb {
+    filter: blur(1px);
+    z-index: 2;
+  }
+
+  .electrical-current {
+    filter: blur(0.5px);
+    z-index: 1;
+  }
+
+  .energy-core {
+    z-index: 3;
+  }
+  .hero-carousel-image {
+    transition: transform 0.7s ease-in-out;
+  }
+
+  .hero-image-overlay {
+    background: linear-gradient(to bottom, rgba(0, 32, 96, 0.7), rgba(0, 32, 96, 0.8));
+  }
+  #quem-somos .team-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  #quem-somos .team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  }
+  .electric-particle {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(229, 231, 255, 0.3);
+    filter: blur(3px);
+    pointer-events: none;
+  }
   .circle-decoration {
     position: absolute;
     border-radius: 50%;
@@ -269,65 +182,63 @@
     opacity: 0.6;
     z-index: 0;
   }
-
-  .electric-particle {
-  position: absolute;
-  border-radius: 50%;
-  background-color: rgba(229, 231, 255, 0.3);
-  filter: blur(3px);
-  pointer-events: none;
 }
 
-/* Hero background carousel styles */
-.hero-carousel-image {
-  transition: transform 0.7s ease-in-out;
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
-.hero-image-overlay {
-  background: linear-gradient(to bottom, rgba(0, 32, 96, 0.7), rgba(0, 32, 96, 0.8));
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
 }
 
-/* About Us page styles */
-#quem-somos .team-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
 }
 
-#quem-somos .team-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+@keyframes glow {
+  from { box-shadow: 0 0 5px -5px rgba(66, 153, 225, 0.6); }
+  to { box-shadow: 0 0 15px 5px rgba(66, 153, 225, 0.4); }
 }
 
-@media (max-width: 768px) {
-  #quem-somos .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  #quem-somos h2 {
-    font-size: 1.75rem;
-    line-height: 2.25rem;
-  }
-
-  #quem-somos p {
-    font-size: 0.875rem;
-    line-height: 1.375rem;
-  }
-
-  #quem-somos .grid {
-    margin-left: -0.5rem;
-    margin-right: -0.5rem;
-  }
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
-@media (max-width: 768px) {
-  #quem-somos .grid {
-    gap: 1.5rem;
-  }
-
-  #quem-somos .relative {
-    margin-bottom: 2rem;
-  }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
+
+@keyframes scale {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: rgb(66, 153, 225); }
+}
+
 @media (max-width: 768px) {
   .container {
     padding-left: 1.25rem;
@@ -378,10 +289,7 @@
     border-radius: 1rem;
     padding: 1rem;
   }
-}
 
-/* Ajustes para animações mais suaves no mobile */
-@media (max-width: 768px) {
   * {
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
@@ -389,5 +297,31 @@
 
   .touch-action {
     touch-action: manipulation;
+  }
+  #quem-somos .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  #quem-somos h2 {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+  }
+
+  #quem-somos p {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+
+  #quem-somos .grid {
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+  }
+  #quem-somos .grid {
+    gap: 1.5rem;
+  }
+
+  #quem-somos .relative {
+    margin-bottom: 2rem;
   }
 }
