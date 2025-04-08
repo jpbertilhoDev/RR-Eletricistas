@@ -43,12 +43,12 @@ const Header = () => {
         isScrolled ? "bg-white shadow-md py-2" : "bg-transparent py-4"
       )}
     >
-      <div className="container mx-auto px-4 flex justify-between items-center">
+      <div className="container mx-auto px-4 flex justify-between items-center h-16">
         <div className="flex items-center space-x-2">
           <img 
             src="/src/assets/images/logo-rr.png" 
             alt="RR Manutenções Elétricas" 
-            className="h-16 w-auto object-contain"
+            className="h-20 -my-2 w-auto object-contain"
           />
         </div>
         
