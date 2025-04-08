@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 const MOBILE_NAV_ITEMS = [
   { id: "inicio", label: "Início", icon: "fas fa-home" },
   { id: "servicos", label: "Serviços", icon: "fas fa-tools" },
+  { id: "projetos", label: "Projetos", icon: "fas fa-project-diagram" },
   { id: "contato", label: "Contato", icon: "fas fa-phone" },
 ];
 

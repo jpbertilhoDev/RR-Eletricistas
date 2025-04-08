@@ -305,7 +305,19 @@
   }
 
   .mobile-card {
-    @apply bg-white p-4 rounded-xl shadow-sm border border-gray-100;
+    @apply bg-white p-3 rounded-lg shadow-sm border-0;
+  }
+
+  .mobile-section {
+    @apply py-4 space-y-3;
+  }
+
+  .mobile-grid {
+    @apply grid grid-cols-1 gap-3;
+  }
+
+  .mobile-text-sm {
+    @apply text-sm leading-relaxed text-gray-600;
   }
 
   .mobile-grid {

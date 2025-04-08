@@ -50,16 +50,14 @@ const Projects = () => {
   };
 
   return (
-    <section id="projetos" ref={sectionRef} className="py-8 md:py-16 bg-gray-50 relative overflow-hidden">
-      {!isMobile && (
-        <motion.div 
-          className="absolute -top-40 -left-40 w-80 h-80 rounded-full bg-blue-100/30 blur-3xl"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.5 }}
-        />
-      )}
+    <section id="projetos" ref={sectionRef} className="py-6 md:py-16 bg-gray-50 relative overflow-hidden">
+      <motion.div 
+        className="absolute -top-40 -left-40 w-80 h-80 rounded-full bg-blue-100/10 blur-3xl"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+      />
       
       <motion.div 
         className="absolute -bottom-40 -right-40 w-80 h-80 rounded-full bg-blue-100/30 blur-3xl"
