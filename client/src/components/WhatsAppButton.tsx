@@ -69,22 +69,16 @@ const WhatsAppButton = () => {
         href={`https://wa.me/${WHATSAPP_NUMBER}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all flex items-center justify-center"
-        initial={{ boxShadow: "0 0 0 0 rgba(72, 187, 120, 0.7)" }}
-        animate={{ 
-          boxShadow: ["0 0 0 0 rgba(72, 187, 120, 0.7)", "0 0 0 15px rgba(72, 187, 120, 0)"],
-          scale: [1, 1.1, 1]
-        }}
+        className="bg-white/90 backdrop-blur-sm hover:bg-white text-green-500 rounded-full p-3 shadow-sm hover:shadow-md transition-all flex items-center justify-center border border-green-100"
+        initial={{ y: 0 }}
+        animate={{ y: [0, -4, 0] }}
         transition={{
-          duration: 2,
+          duration: 3,
           repeat: Infinity,
-          repeatType: "loop"
+          ease: "easeInOut"
         }}
-        whileHover={{ 
-          scale: 1.15,
-          transition: { duration: 0.2 }
-        }}
-        whileTap={{ scale: 0.9 }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
         onHoverStart={() => setShowTooltip(true)}
         onHoverEnd={() => setTimeout(() => setShowTooltip(false), 1000)}
       >

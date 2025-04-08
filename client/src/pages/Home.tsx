@@ -37,11 +37,11 @@ const Home = () => {
   return (
     <Layout>
       <Hero />
-      {!isMobile && <AboutUs />}
       <Services />
-      <Projects />
       {!isMobile && (
         <>
+          <AboutUs />
+          <Projects />
           <WhyChooseUs />
           <Testimonials />
         </>
