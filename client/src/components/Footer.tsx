@@ -19,15 +19,15 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-darker-blue text-white pt-16 pb-8">
+    <footer className="bg-[#0a1930] text-gray-100 pt-16 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <span className="text-primary text-3xl">⚡</span>
-              <h2 className="text-2xl font-bold">RR Manutenções Elétricas</h2>
+              <h2 className="text-2xl font-bold text-white">RR Manutenções Elétricas</h2>
             </div>
-            <p className="text-blue-300 mb-6 leading-relaxed">
+            <p className="text-gray-300 mb-6 leading-relaxed">
               Soluções elétricas completas para residências e comércios com qualidade, segurança e profissionalismo.
             </p>
             <div className="flex space-x-5">
@@ -78,7 +78,7 @@ const Footer = () => {
                 <li key={item.id}>
                   <button 
                     onClick={() => scrollToSection(item.id)} 
-                    className="hover:text-primary transition-colors flex items-center"
+                    className="text-gray-300 hover:text-primary transition-colors flex items-center"
                   >
                     <span className="mr-2 text-xs opacity-70">›</span>
                     {item.label}
@@ -115,7 +115,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-blue-800 pt-6 text-center text-blue-300 text-sm">
+        <div className="border-t border-gray-700 pt-6 text-center text-gray-300 text-sm">
           {/* Changed to a darker blue */}
           <p>&copy; {new Date().getFullYear()} R.R Manutenções e Instalações Elétricas • Todos os direitos reservados</p>
         </div>
