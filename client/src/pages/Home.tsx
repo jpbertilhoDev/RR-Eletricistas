@@ -4,6 +4,9 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import AboutUs from "@/components/AboutUs";
 import Contact from "@/components/Contact";
+import Projects from "@/components/Projects";
+import WhyChooseUs from "@/components/WhyChooseUs";
+import Testimonials from "@/components/Testimonials";
 import { useEffect } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
