@@ -294,7 +294,30 @@
 
 #quem-somos .team-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05)
+}
+
+@media (max-width: 768px) {
+  #quem-somos .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  #quem-somos h2 {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+  }
+  
+  #quem-somos p {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+  
+  #quem-somos .grid {
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+  }
+};
 }
 
 @media (max-width: 768px) {

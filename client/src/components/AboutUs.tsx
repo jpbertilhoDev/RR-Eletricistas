@@ -29,10 +29,10 @@ const AboutUs = () => {
   };
 
   return (
-    <section id="quem-somos" ref={sectionRef} className="py-20 bg-blue-50">
+    <section id="quem-somos" ref={sectionRef} className="py-12 md:py-20 bg-gradient-to-b from-blue-50 to-white">
       <div className="container mx-auto px-4 max-w-5xl">
         <motion.div 
-          className="text-center mb-12"
+          className="text-center mb-8 md:mb-12"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -58,15 +58,15 @@ const AboutUs = () => {
           </motion.p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mb-8 md:mb-16">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
             <div className="relative">
-              <div className="w-full h-72 md:h-96 bg-gray-200 rounded-lg overflow-hidden">
+              <div className="w-full h-60 md:h-96 bg-gray-200 rounded-xl overflow-hidden shadow-sm">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-transparent"></div>
                 <div className="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-blue-100/50 blur-xl"></div>
                 <div className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-blue-100/60 blur-xl"></div>
@@ -100,11 +100,11 @@ const AboutUs = () => {
               Nossa missão é garantir soluções eficientes e seguras para todos os projetos elétricos, contribuindo para o bem-estar e segurança dos nossos clientes através de um trabalho técnico impecável.
             </p>
             
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <i className="fas fa-bolt text-primary text-xl mb-2"></i>
-                <h4 className="font-medium text-dark-blue mb-1">Qualidade</h4>
-                <p className="text-deep-blue text-sm">Excelência em cada serviço prestado.</p>
+            <div className="grid grid-cols-2 gap-3 md:gap-4">
+              <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-blue-100/50 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                <i className="fas fa-bolt text-primary text-lg md:text-xl mb-2"></i>
+                <h4 className="font-semibold text-dark-blue mb-1">Qualidade</h4>
+                <p className="text-deep-blue text-xs md:text-sm">Excelência em cada serviço prestado.</p>
               </div>
               <div className="bg-blue-50 p-4 rounded-lg">
                 <i className="fas fa-shield-alt text-primary text-xl mb-2"></i>
@@ -133,10 +133,10 @@ const AboutUs = () => {
           className="bg-blue-50 p-8 rounded-lg"
         >
           <h3 className="text-dark-blue text-xl font-semibold mb-4 text-center">Nossa Equipe</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
             {/* Team Member 1 */}
-            <div className="bg-white p-5 rounded-lg shadow-sm text-center">
-              <div className="w-20 h-20 rounded-full mx-auto mb-4 overflow-hidden">
+            <div className="bg-white/90 backdrop-blur-sm p-5 rounded-xl border border-blue-50 shadow-sm text-center transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full mx-auto mb-3 md:mb-4 overflow-hidden ring-2 ring-blue-100">
                 <img 
                   src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80" 
                   alt="Ricardo Silva" 
