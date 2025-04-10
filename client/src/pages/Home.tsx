@@ -5,6 +5,7 @@ import AboutUs from "@/components/AboutUs";
 import Contact from "@/components/Contact";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Testimonials from "@/components/Testimonials";
+import VideoPresentation from "@/components/VideoPresentation";
 import { useEffect } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -37,6 +38,7 @@ const Home = () => {
       <div className="flex flex-col items-center">
         <Hero />
         <Services />
+        {!isMobile && <VideoPresentation />}
         <Testimonials />
         <AboutUs />
         {!isMobile && <WhyChooseUs />}
