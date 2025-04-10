@@ -83,13 +83,13 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section id="diferenciais" ref={sectionRef} className="py-12 md:py-24 bg-gradient-to-b from-white to-blue-50 relative overflow-hidden">
+    <section id="diferenciais" ref={sectionRef} className="py-8 md:py-24 bg-gradient-to-b from-white to-blue-50 relative overflow-hidden">
       {/* Elementos decorativos sutis */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full opacity-20 -translate-y-1/2 translate-x-1/3 blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-50 rounded-full opacity-20 translate-y-1/2 -translate-x-1/3 blur-3xl"></div>
 
       <div className="container mx-auto px-4 max-w-6xl relative z-10">
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-8 md:mb-16">
           <motion.span 
             className="text-blue-600 font-medium text-sm tracking-wider uppercase bg-blue-50 px-4 py-1 rounded-full inline-block"
             initial={{ opacity: 0, y: -10 }}
@@ -100,7 +100,7 @@ export default function WhyChooseUs() {
           </motion.span>
 
           <motion.h2 
-            className="text-dark-blue text-2xl md:text-3xl font-bold mt-3 mb-2 md:mb-4"
+            className="text-dark-blue text-xl md:text-3xl font-bold mt-2 mb-2 md:mb-4 px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -109,7 +109,7 @@ export default function WhyChooseUs() {
           </motion.h2>
 
           <motion.p 
-            className="text-deep-blue max-w-2xl mx-auto text-sm md:text-base"
+            className="text-deep-blue max-w-2xl mx-auto text-xs md:text-base px-6"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -164,30 +164,32 @@ export default function WhyChooseUs() {
           ))}
         </div>
 
-        {/* Versão mobile: Carousel elegante */}
+        {/* Versão mobile otimizada: Carousel compacto com layout melhorado */}
         <div className="md:hidden">
-          <div className="overflow-hidden" ref={emblaRef}>
+          <div className="overflow-hidden px-4" ref={emblaRef}>
             <div className="flex">
               {diferenciais.map((item) => (
-                <div className="flex-[0_0_85%] min-w-0 pl-4 first:pl-0" key={item.id}>
+                <div className="flex-[0_0_90%] min-w-0 mr-4" key={item.id}>
                   <motion.div 
-                    className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm relative overflow-hidden h-full"
+                    className="bg-white border border-gray-100 rounded-xl p-4 shadow-sm relative overflow-hidden h-full"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4 }}
                   >
-                    {/* Elemento gráfico de fundo */}
+                    {/* Elemento decorativo sutil */}
                     <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-blue-50 rounded-full opacity-30"></div>
                     
-                    {/* Layout horizontal minimalista para mobile */}
-                    <div className="flex items-start space-x-4 relative z-10">
-                      <div className="w-10 h-10 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <i className={`fas fa-${item.icon} text-primary text-sm`}></i>
+                    {/* Layout vertical mais compacto para mobile */}
+                    <div className="relative z-10">
+                      <div className="flex items-center mb-2">
+                        <div className="w-8 h-8 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mr-3">
+                          <i className={`fas fa-${item.icon} text-primary text-xs`}></i>
+                        </div>
+                        <h3 className="font-semibold text-dark-blue text-sm">{item.title}</h3>
                       </div>
                       
-                      <div>
-                        <h3 className="font-semibold text-dark-blue text-base">{item.title}</h3>
-                        <p className="text-deep-blue/70 text-xs mt-1 mb-2">{item.description}</p>
+                      <div className="pl-11">
+                        <p className="text-deep-blue/70 text-xs mb-2 line-clamp-2">{item.description}</p>
                         <p className="text-blue-600 font-medium text-xs">{item.benefit}</p>
                       </div>
                     </div>
@@ -197,21 +199,21 @@ export default function WhyChooseUs() {
             </div>
           </div>
           
-          {/* Indicadores de slide minimalistas */}
-          <div className="flex justify-center mt-4 space-x-1">
+          {/* Indicadores de slide melhorados */}
+          <div className="flex justify-center mt-3 space-x-1.5">
             {diferenciais.map((_, index) => (
               <motion.div
                 key={index}
-                className="w-1.5 h-1.5 rounded-full bg-gray-300"
+                className="w-2 h-2 rounded-full bg-gray-300"
                 whileHover={{ scale: 1.5, backgroundColor: "#3b82f6" }}
               />
             ))}
           </div>
         </div>
 
-        {/* Call to Action */}
+        {/* Call to Action otimizado para mobile */}
         <motion.div 
-          className="mt-16 text-center bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-6 md:p-10 shadow-md relative overflow-hidden"
+          className="mt-10 md:mt-16 text-center bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-5 md:p-10 shadow-md relative overflow-hidden"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.7, delay: 0.5 }}
@@ -224,7 +226,7 @@ export default function WhyChooseUs() {
 
           <div className="max-w-3xl mx-auto relative z-10">
             <motion.h3 
-              className="text-white text-xl md:text-2xl font-bold mb-3 md:mb-4"
+              className="text-white text-lg md:text-2xl font-bold mb-2 md:mb-4 px-2"
               initial={{ opacity: 0, y: -10 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -233,7 +235,7 @@ export default function WhyChooseUs() {
             </motion.h3>
 
             <motion.p 
-              className="text-white/90 mb-6 text-sm md:text-base"
+              className="text-white/90 mb-4 md:mb-6 text-xs md:text-base px-2"
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
@@ -245,13 +247,13 @@ export default function WhyChooseUs() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-3"
+              className="flex flex-col sm:flex-row items-center justify-center gap-3 px-2"
             >
               <a
                 href={`https://wa.me/+5511972650865?text=Olá! Gostaria de saber mais sobre os serviços da RR Manutenções Elétricas.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white text-primary hover:bg-gray-50 font-medium transition-all w-full sm:w-auto text-center px-6 py-3 rounded-lg text-sm md:text-base shadow-sm hover:shadow-md"
+                className="bg-white text-primary hover:bg-gray-50 font-medium transition-all w-full sm:w-auto text-center px-5 py-2.5 rounded-lg text-sm md:text-base shadow-sm hover:shadow-md"
               >
                 <i className="fab fa-whatsapp mr-2 text-green-600"></i>
                 Falar agora
