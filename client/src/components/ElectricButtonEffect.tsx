@@ -2,14 +2,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-
-  .electric-effect-container {
-    position: relative;
-    width: 0;
-    height: 0;
-    overflow: visible;
-  }
-
 interface ElectricButtonEffectProps {
   children: React.ReactNode;
   onClick?: () => void;
@@ -37,7 +29,7 @@ const ElectricButtonEffect: React.FC<ElectricButtonEffectProps> = ({
       
       {/* Efeitos de raio ao redor do botão */}
       {lightningEffects.map((effect) => (
-        <div key={effect.id} className="electric-effect-container">
+        <React.Fragment key={effect.id}>
           <motion.div
             className="absolute w-1 bg-blue-400 origin-center opacity-0 z-0"
             style={{
@@ -81,7 +73,7 @@ const ElectricButtonEffect: React.FC<ElectricButtonEffectProps> = ({
               repeatDelay: 5 + Math.random() * 3
             }}
           />
-        </div>
+        </React.Fragment>
       ))}
       
       {/* Container principal que mantém o conteúdo do botão */}
