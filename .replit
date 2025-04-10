@@ -18,7 +18,7 @@ localPort = 5000
 externalPort = 80
 
 [workflows]
-runButton = "Reiniciar servidor"
+runButton = "Iniciar Client Dev"
 
 [[workflows.workflow]]
 name = "Project"
@@ -64,6 +64,15 @@ args = "npm run dev"
 
 [[workflows.workflow]]
 name = "Reiniciar servidor"
+author = 41183488
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd client && npm run dev"
+
+[[workflows.workflow]]
+name = "Iniciar Client Dev"
 author = 41183488
 mode = "sequential"
 
