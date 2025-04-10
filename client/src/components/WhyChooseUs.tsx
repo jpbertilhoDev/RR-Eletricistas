@@ -3,19 +3,13 @@ import React, { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { useEmblaCarousel } from "embla-carousel-react";
-import AutoPlay from "embla-carousel-autoplay";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
 const WhyChooseUs = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, amount: 0.2 });
   const [animationTriggered, setAnimationTriggered] = useState(false);
   const isMobile = useIsMobile();
-  
-  // Setup for mobile carousel
-  const [emblaRef] = useEmblaCarousel({ loop: true, align: "start" }, [
-    AutoPlay({ delay: 4000, stopOnInteraction: false })
-  ]);
 
   useEffect(() => {
     if (isInView && !animationTriggered) {
@@ -105,7 +99,7 @@ const WhyChooseUs = () => {
           animate={animationTriggered ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-dark-blue mb-4">Por Que Escolher a <span className="text-blue-600">R.R Manutenções</span>?</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-dark-blue mb-4">Por Que Escolher a <span className="text-blue-600">R.R</span>?</h2>
           <p className="text-deep-blue/70 max-w-3xl mx-auto text-sm md:text-base">
             Conheça os diferenciais que nos destacam no mercado.
           </p>
@@ -145,10 +139,10 @@ const WhyChooseUs = () => {
 
         {/* Mobile version: Carousel */}
         <div className="md:hidden">
-          <div className="overflow-hidden mx-auto relative max-w-[90%]" ref={emblaRef}>
-            <div className="flex">
+          <Carousel className="w-full">
+            <CarouselContent>
               {diferenciais.map((item) => (
-                <div className="flex-[0_0_100%] min-w-0 pl-4 pr-4" key={item.id}>
+                <CarouselItem key={item.id} className="pl-4 pr-4 basis-full">
                   <motion.div 
                     className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm relative overflow-hidden h-full"
                     initial={{ opacity: 0, scale: 0.95 }}
@@ -174,10 +168,10 @@ const WhyChooseUs = () => {
                       </div>
                     </div>
                   </motion.div>
-                </div>
+                </CarouselItem>
               ))}
-            </div>
-          </div>
+            </CarouselContent>
+          </Carousel>
         </div>
       </div>
     </section>
