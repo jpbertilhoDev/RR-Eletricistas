@@ -1,11 +1,14 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { SERVICES, WHATSAPP_NUMBER } from "@/lib/constants";
 import { useAnimateOnScroll } from "@/hooks/useAnimateOnScroll";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Services = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [activeCard, setActiveCard] = useState<number | null>(null);
+  const isMobile = useIsMobile();
   useAnimateOnScroll(sectionRef);
   
   // Animação baseada no scroll
@@ -27,8 +30,8 @@ const Services = () => {
     },
     hover: { 
       y: -8,
-      boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.1), 0 8px 10px -6px rgba(59, 130, 246, 0.1)",
-      borderColor: "rgba(59, 130, 246, 0.3)",
+      boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.2), 0 8px 10px -6px rgba(59, 130, 246, 0.2)",
+      borderColor: "rgba(59, 130, 246, 0.4)",
       transition: { type: "spring", stiffness: 400, damping: 17 }
     }
   };
@@ -64,6 +67,24 @@ const Services = () => {
     visible: { 
       opacity: 1, 
       transition: { duration: 0.4, delay: 0.3 }
+    }
+  };
+
+  // Variantes para o overlay da imagem
+  const imageOverlayVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { duration: 0.3 }
+    }
+  };
+
+  // Handler para interação com cards (funciona tanto para hover em desktop quanto para toque em mobile)
+  const handleCardInteraction = (id: number, isEntering: boolean) => {
+    if (isEntering) {
+      setActiveCard(id);
+    } else if (activeCard === id) {
+      setActiveCard(null);
     }
   };
 
@@ -124,14 +145,21 @@ const Services = () => {
           {SERVICES.map((service, index) => (
             <motion.div 
               key={service.id}
-              className="bg-white border border-gray-100 rounded-lg overflow-hidden shadow-sm"
+              className="bg-white border border-gray-100 rounded-lg overflow-hidden shadow-sm relative"
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"
               whileHover="hover"
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
+              onHoverStart={() => !isMobile && handleCardInteraction(service.id, true)}
+              onHoverEnd={() => !isMobile && handleCardInteraction(service.id, false)}
+              onClick={() => isMobile && handleCardInteraction(service.id, activeCard !== service.id)}
+              onTouchEnd={(e) => {
+                e.preventDefault(); // Previne comportamentos indesejados em mobile
+              }}
             >
+              {/* Conteúdo do card */}
               <div className="p-6">
                 <div className="flex items-center mb-4">
                   <motion.div 
@@ -146,7 +174,57 @@ const Services = () => {
                 <p className="text-deep-blue">
                   {service.description}
                 </p>
+                {isMobile && (
+                  <div className="mt-3 text-blue-500 text-sm">
+                    <i className="fas fa-hand-pointer mr-1"></i> Toque para ver foto
+                  </div>
+                )}
               </div>
+              
+              {/* Overlay com imagem que aparece no hover/toque */}
+              <AnimatePresence>
+                {activeCard === service.id && (
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/70 to-blue-900/70 flex flex-col justify-center items-center p-4"
+                    variants={imageOverlayVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="hidden"
+                  >
+                    <motion.div 
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.3 }}
+                      className="w-full h-full flex flex-col items-center justify-center"
+                    >
+                      {/* Imagem do serviço */}
+                      <div className="relative overflow-hidden rounded-lg w-[85%] h-52 mb-3 shadow-lg">
+                        <img 
+                          src={service.imageSrc} 
+                          alt={service.title} 
+                          className="w-full h-full object-cover" 
+                        />
+                      </div>
+                      
+                      {/* Nome do serviço */}
+                      <h4 className="text-white font-bold text-lg mb-1">{service.title}</h4>
+                      <div className="w-12 h-0.5 bg-blue-400 mb-2"></div>
+                      
+                      {/* Instrução para fechar (apenas em mobile) */}
+                      {isMobile && (
+                        <motion.p 
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 0.3 }}
+                          className="text-white/80 text-sm mt-2"
+                        >
+                          Toque para fechar
+                        </motion.p>
+                      )}
+                    </motion.div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           ))}
         </div>

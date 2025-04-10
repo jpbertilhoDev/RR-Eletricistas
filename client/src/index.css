@@ -234,6 +234,25 @@
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
+
+/* Estilos para a interação com cards de serviços */
+.service-card-image-container {
+  transform-origin: center;
+  backface-visibility: hidden;
+}
+
+@media (hover: none) {
+  .service-card-touch-hint {
+    display: block;
+  }
+}
+
+@media (hover: hover) {
+  .service-card-touch-hint {
+    display: none;
+  }
+}
+
 }
 
 @keyframes glow {
