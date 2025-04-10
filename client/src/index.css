@@ -619,6 +619,28 @@
   }
 
   #quem-somos .relative {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* WhyChooseUs section styles */
+  #diferenciais .container {
+    max-width: 1200px;
+  }
+  
+  #diferenciais .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  
+  #diferenciais .rounded-xl {
+    border-radius: 0.75rem;
+  }
+  
+  #diferenciais h2 {
+    color: #1e3a8a;
+  }
+  
+  #diferenciais .text-blue-600 {
+    color: #2563eb;
+  }m: 2rem;
   }
 }
