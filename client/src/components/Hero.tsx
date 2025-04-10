@@ -127,8 +127,8 @@ const Hero = () => {
           </div>
         </motion.div>
         
-        {/* Vídeo de Apresentação */}
-        <div className="bg-gradient-to-b from-blue-50 to-white py-16 md:py-24 relative z-10">
+        {/* Vídeo de Apresentação - visível apenas no desktop */}
+        <div className="bg-gradient-to-b from-blue-50 to-white py-16 md:py-24 relative z-10 hidden md:block">
           <div className="container mx-auto px-4 max-w-6xl">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -171,13 +171,13 @@ const Hero = () => {
               </div>
             </motion.div>
             
-            {/* Call-to-action após o vídeo - apenas para desktop */}
+            {/* Call-to-action após o vídeo */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.4 }}
-              className="text-center mt-10 hidden md:block"
+              className="text-center mt-10"
             >
               <div className="inline-flex items-center bg-white px-6 py-3 rounded-full shadow-sm">
                 <i className="fas fa-info-circle text-blue-500 mr-2"></i>
