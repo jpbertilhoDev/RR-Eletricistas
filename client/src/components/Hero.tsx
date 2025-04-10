@@ -39,7 +39,7 @@ const Hero = () => {
     <section 
       id="inicio" 
       ref={heroRef}
-      className="min-h-[80vh] md:min-h-screen flex items-center justify-center overflow-hidden relative"
+      className="min-h-[80vh] md:min-h-screen w-full flex items-center justify-center overflow-hidden relative"
     >
       {/* Background Carousel */}
       <HeroBackgroundCarousel />
@@ -47,15 +47,15 @@ const Hero = () => {
       {/* Overlay gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/95 via-primary/90 to-primary/95 z-0" />
       
-      <div className="container mx-auto px-4 relative z-10 py-20 md:py-0">
+      <div className="w-full container mx-auto px-4 relative z-10 py-20 md:py-0 md:flex md:flex-col md:items-center md:justify-center">
         <motion.div 
-          className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto"
+          className="flex flex-col items-center justify-center text-center md:max-w-5xl lg:max-w-6xl w-full mx-auto"
           variants={staggerChildren}
           initial="hidden"
           animate="visible"
         >
           <motion.h1 
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight min-h-[6rem] md:min-h-[6.5rem] lg:min-h-[7rem] flex items-center justify-center"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 md:mb-8 leading-tight"
             variants={fadeInUp}
           >
             <div className="w-full">
@@ -64,14 +64,14 @@ const Hero = () => {
           </motion.h1>
 
           <motion.p 
-            className="text-xl md:text-2xl text-white/90 mb-12 max-w-2xl font-light"
+            className="text-xl md:text-2xl text-white/90 mb-10 md:mb-12 w-full md:max-w-3xl mx-auto font-light"
             variants={fadeInUp}
           >
             Especialistas em instalações e manutenções elétricas residenciais e comerciais com mais de 10 anos de experiência.
           </motion.p>
 
           <motion.div 
-            className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 w-full max-w-xl mx-auto mb-12 md:mb-16"
             variants={fadeInUp}
           >
             <motion.a
@@ -114,8 +114,8 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Clean and centered content */}
-          <div className="w-full max-w-4xl mx-auto text-center py-8">
+          {/* Mensagem de compromisso */}
+          <div className="w-full md:max-w-4xl mx-auto text-center py-4 md:py-8 mt-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
