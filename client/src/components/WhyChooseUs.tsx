@@ -3,9 +3,9 @@ import { motion, useInView } from "framer-motion";
 import { WHYCHOOSEUS } from "@/lib/constants";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Autoplay } from "swiper/modules";
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Navigation } from "swiper";
 
 
 export default function WhyChooseUs() {
@@ -119,7 +119,7 @@ export default function WhyChooseUs() {
 
         {isMobile ? (
           <Swiper
-            modules={[Navigation]}
+            modules={[Navigation, Autoplay]}
             spaceBetween={10}
             slidesPerView={1}
             navigation={true}
