@@ -9,6 +9,7 @@ import {
   CarouselPrevious 
 } from "@/components/ui/carousel";
 import { useIsMobile } from "@/hooks/use-mobile";
+import cn from 'classnames';
 
 export default function Testimonials() {
   const sectionRef = useRef(null);
@@ -108,18 +109,18 @@ export default function Testimonials() {
           </Carousel>
 
           {/* Indicadores para dispositivos móveis */}
-          <div className="flex justify-center mt-6 gap-1.5 md:hidden">
+          <div className="flex justify-center mt-6 gap-2 md:hidden">
             {TESTIMONIALS.map((_, index) => (
               <div 
                 key={index} 
-                className={`w-2 h-2 rounded-full ${index === 0 ? 'bg-blue-600' : 'bg-gray-300'}`}
+                className={`w-2.5 h-2.5 rounded-full ${index === 0 ? 'bg-blue-600' : 'bg-gray-300'} transition-all duration-300`}
               />
             ))}
           </div>
         </motion.div>
 
         <motion.div 
-          className="text-center mt-16 bg-white p-8 rounded-xl shadow-sm max-w-3xl mx-auto border border-blue-100"
+          className="text-center mt-10 md:mt-12 bg-white p-8 rounded-xl shadow-sm max-w-3xl mx-auto border border-blue-100"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5, delay: 0.5 }}
@@ -141,22 +142,35 @@ export default function Testimonials() {
           </div>
         </motion.div>
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-10 md:mt-12">
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
+            className="bg-white py-3 px-4 rounded-lg inline-block shadow-sm"
           >
-            <p className="text-blue-600 font-medium">Avaliação média de 5.0 <i className="fas fa-star text-yellow-400 ml-1"></i></p>
-            <div className="flex items-center justify-center gap-4 mt-3">
+            <p className="text-blue-600 font-medium flex items-center justify-center">
+              <span>Avaliação média de 5.0</span> 
+              <i className="fas fa-star text-yellow-400 ml-1.5"></i>
+            </p>
+            <div className={cn(
+              "flex items-center justify-center mt-2",
+              isMobile ? "gap-3 flex-wrap" : "gap-4"
+            )}>
               <div className="flex items-center">
-                <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google" className="h-6 mr-2" />
-                <span className="text-gray-700 font-medium">Google Reviews</span>
+                <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google" className="h-5 mr-1.5" />
+                <span className={cn(
+                  "text-gray-700 font-medium",
+                  isMobile ? "text-sm" : ""
+                )}>Google Reviews</span>
               </div>
               <div className="w-1 h-1 bg-gray-300 rounded-full"></div>
               <div className="flex items-center">
-                <i className="fab fa-facebook text-blue-600 mr-2"></i>
-                <span className="text-gray-700 font-medium">Facebook</span>
+                <i className="fab fa-facebook text-blue-600 mr-1.5 text-lg"></i>
+                <span className={cn(
+                  "text-gray-700 font-medium",
+                  isMobile ? "text-sm" : ""
+                )}>Facebook</span>
               </div>
             </div>
           </motion.div>

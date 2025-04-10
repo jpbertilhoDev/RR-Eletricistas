@@ -197,21 +197,6 @@
 }
 
 @keyframes bounce {
-
-/* WhyChooseUs call-to-action button hover styles */
-.bg-blue-100.text-blue-700:hover,
-.bg-purple-100.text-purple-700:hover,
-.bg-red-100.text-red-700:hover,
-.bg-amber-100.text-amber-700:hover {
-  @apply bg-green-100 text-green-700 transform scale-105 shadow-md;
-  transition: all 0.3s ease;
-}
-
-.bg-green-100.text-green-700:hover {
-  @apply bg-green-200 text-green-800 transform scale-105 shadow-md;
-  transition: all 0.3s ease;
-}
-
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
 }
@@ -254,6 +239,20 @@
 @keyframes blink-caret {
   from, to { border-color: transparent; }
   50% { border-color: rgb(66, 153, 225); }
+}
+
+/* WhyChooseUs call-to-action button hover styles */
+.bg-blue-100.text-blue-700:hover,
+.bg-purple-100.text-purple-700:hover,
+.bg-red-100.text-red-700:hover,
+.bg-amber-100.text-amber-700:hover {
+  @apply bg-green-100 text-green-700 transform scale-105 shadow-md;
+  transition: all 0.3s ease;
+}
+
+.bg-green-100.text-green-700:hover {
+  @apply bg-green-200 text-green-800 transform scale-105 shadow-md;
+  transition: all 0.3s ease;
 }
 
 @media (max-width: 768px) {
@@ -398,7 +397,7 @@
     font-size: 0.95rem !important;
     line-height: 1.5rem !important;
   }
-  
+
   /* Prevenir texto cortado em mobile */
   .line-clamp-2 {
     display: -webkit-box;
@@ -406,24 +405,24 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  
+
   @media (max-width: 640px) {
     .container {
       padding-left: 0.5rem;
       padding-right: 0.5rem;
     }
-    
+
     /* Ajustes específicos para componente WhyChooseUs no mobile */
     #diferenciais .flex-[0_0_100%] {
       max-width: 100%;
       margin: 0 auto;
       box-sizing: border-box;
     }
-    
+
     #diferenciais .rounded-md {
       border-radius: 0.25rem;
     }
-    
+
     #diferenciais p {
       font-size: 0.45rem !important;
       line-height: 1 !important;
@@ -436,7 +435,7 @@
       max-width: 100%;
       word-break: break-word;
     }
-    
+
     #diferenciais h3 {
       font-size: 0.55rem !important;
       line-height: 1 !important;
@@ -448,7 +447,7 @@
       text-overflow: ellipsis;
       max-width: 85%;
     }
-    
+
     /* Garantir que o carousel não corte nas bordas */
     #diferenciais .overflow-hidden {
       margin: 0 auto;
@@ -456,7 +455,7 @@
       max-width: 85%;
       box-sizing: border-box;
     }
-    
+
     /* Melhorar centralização do conteúdo */
     #diferenciais .flex {
       display: flex;
@@ -465,13 +464,13 @@
       width: 100%;
       margin: 0 auto;
     }
-    
+
     /* Ajuste para células do carousel e dimensionamento consistente */
     #diferenciais .flex > div {
       box-sizing: border-box;
       width: 100%;
     }
-    
+
     /* Ajustes para cards internos */
     #diferenciais .bg-white {
       box-sizing: border-box;
@@ -480,7 +479,7 @@
       max-height: 3.5rem;
       overflow: hidden;
     }
-    
+
     /* Padding reduzido para mobile */
     #diferenciais {
       padding-left: 0;
@@ -488,7 +487,7 @@
       padding-top: 0.75rem;
       padding-bottom: 0.75rem;
     }
-    
+
     /* Permitir escala correta no mobile */
     #diferenciais .container {
       width: 100%;
@@ -497,40 +496,40 @@
       padding-right: 0;
       box-sizing: border-box;
     }
-    
+
     /* Garantir que o container seja de largura total */
     #diferenciais .px-4 {
       padding-left: 0.125rem;
       padding-right: 0.125rem;
     }
-    
+
     /* Ajustes específicos para ícones e espaçamento interno */
     #diferenciais .p-2, 
     #diferenciais .p-1\.5 {
       padding: 0.3rem;
     }
-    
+
     #diferenciais .w-4 {
       width: 0.75rem;
       min-width: 0.75rem;
     }
-    
+
     #diferenciais .h-4 {
       height: 0.75rem;
       min-height: 0.75rem;
     }
-    
+
     /* Ajustes para badges e elementos de destaque */
     #diferenciais .rounded-full {
       padding: 0.1rem 0.25rem;
       display: inline-block;
     }
-    
+
     #diferenciais .line-clamp-2 {
       max-height: 2em;
       overflow: hidden;
     }
-    
+
     /* Texto do título principal */
     #diferenciais h2 {
       font-size: 1.125rem !important;
@@ -538,7 +537,7 @@
       margin-bottom: 0.375rem;
       padding: 0 0.5rem;
     }
-    
+
     #diferenciais .text-center p {
       font-size: 0.625rem !important;
       line-height: 1.2 !important;
@@ -546,30 +545,30 @@
       margin: 0 auto;
       max-width: 95%;
     }
-    
+
     /* Corrigir espaçamento e margens */
     #diferenciais .mb-10 {
       margin-bottom: 1rem;
     }
-    
+
     /* Melhorar espaçamento interno dos cards */
     #diferenciais .pl-5,
     #diferenciais .pl-6\.5,
     #diferenciais .pl-6 {
       padding-left: 1.25rem;
     }
-    
+
     /* Garantir que o badge de benefício não seja cortado */
     #diferenciais .bg-blue-50 {
       margin-top: 0.125rem;
       white-space: nowrap;
     }
-    
+
     /* Ajuste para textos pequenos */
     #diferenciais .text-[9px] {
       font-size: 0.5rem !important;
     }
-    
+
     #diferenciais .text-[8px] {
       font-size: 0.45rem !important;
     }
@@ -636,24 +635,24 @@
   #quem-somos .relative {
     margin-bottom: 1.5rem;
   }
-  
+
   /* WhyChooseUs section styles */
   #diferenciais .container {
     max-width: 1200px;
   }
-  
+
   #diferenciais .grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  
+
   #diferenciais .rounded-xl {
     border-radius: 0.75rem;
   }
-  
+
   #diferenciais h2 {
     color: #1e3a8a;
   }
-  
+
   #diferenciais .text-blue-600 {
     color: #2563eb;
   }
@@ -663,20 +662,55 @@
     transition: all 0.3s ease;
     cursor: pointer;
   }
-  
+
   #diferenciais .rounded-full:hover {
     transform: translateY(-2px);
   }
-  
+
   /* Ajuste para mobile */
   @media (max-width: 768px) {
     #diferenciais .container {
       max-width: 100%;
       padding: 0 1rem;
     }
-    
+
     #diferenciais .rounded-full {
       font-weight: 600;
     }
+  }
+
+  /* Melhorias para depoimentos em mobile */
+  #depoimentos .container {
+    padding: 0 16px;
+  }
+
+  #depoimentos h2 {
+    font-size: 20px;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+
+  #depoimentos p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* Melhoria nos cards de depoimentos */
+  #depoimentos .bg-white {
+    transition: all 0.3s ease;
+  }
+
+  #depoimentos .bg-white:active {
+    transform: scale(0.98);
+  }
+
+  /* Melhoria no botão CTA */
+  #depoimentos a[href^="https://wa.me"] {
+    min-height: 48px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  #depoimentos a[href^="https://wa.me"]:active {
+    transform: translateY(1px);
   }
 }
