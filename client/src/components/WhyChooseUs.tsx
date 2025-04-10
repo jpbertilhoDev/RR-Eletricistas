@@ -238,12 +238,12 @@ export default function WhyChooseUs() {
 
         {/* Versão mobile otimizada: Carousel automático com visual premium */}
         <div className="md:hidden">
-          <div className="overflow-hidden mx-4 relative rounded-lg" ref={emblaRef}>
+          <div className="overflow-hidden mx-2 relative rounded-lg" ref={emblaRef}>
             <div className="flex">
               {diferenciais.map((item) => (
-                <div className="flex-[0_0_85%] min-w-0 pl-3 pr-5" key={item.id}>
+                <div className="flex-[0_0_80%] min-w-0 pl-2 pr-2" key={item.id}>
                   <motion.div 
-                    className="bg-white border border-gray-100 rounded-xl p-5 shadow-md relative overflow-hidden h-full transform transition-all duration-300"
+                    className="bg-white border border-gray-100 rounded-xl p-4 shadow-md relative overflow-hidden h-full transform transition-all duration-300"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4 }}
@@ -252,18 +252,18 @@ export default function WhyChooseUs() {
                     {/* Elemento decorativo moderno */}
                     <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-gradient-to-tr from-blue-100 to-transparent rounded-full opacity-40"></div>
                     
-                    {/* Layout vertical mais premium para mobile */}
+                    {/* Layout vertical mais premium para mobile - Ajustado para caber melhor */}
                     <div className="relative z-10">
-                      <div className="flex items-center mb-3">
-                        <div className={`w-10 h-10 bg-gradient-to-br ${item.color} rounded-lg flex items-center justify-center flex-shrink-0 mr-4 shadow-sm`}>
-                          <i className={`fas fa-${item.icon} ${item.iconColor} text-sm`}></i>
+                      <div className="flex items-center mb-2">
+                        <div className={`w-8 h-8 bg-gradient-to-br ${item.color} rounded-lg flex items-center justify-center flex-shrink-0 mr-3 shadow-sm`}>
+                          <i className={`fas fa-${item.icon} ${item.iconColor} text-xs`}></i>
                         </div>
-                        <h3 className="font-bold text-dark-blue">{item.title}</h3>
+                        <h3 className="font-bold text-dark-blue text-sm">{item.title}</h3>
                       </div>
                       
-                      <div className="pl-14 mt-1">
-                        <p className="text-deep-blue/80 text-sm mb-3">{item.description}</p>
-                        <div className="bg-blue-50 inline-block px-3 py-1.5 rounded-full">
+                      <div className="pl-11 mt-1">
+                        <p className="text-deep-blue/80 text-xs mb-2 line-clamp-2">{item.description}</p>
+                        <div className="bg-blue-50 inline-block px-2 py-1 rounded-full">
                           <p className="text-blue-700 font-medium text-xs">{item.benefit}</p>
                         </div>
                       </div>
@@ -292,7 +292,7 @@ export default function WhyChooseUs() {
 
         {/* Call to Action otimizado para mobile */}
         <motion.div 
-          className="mt-10 md:mt-16 text-center bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-5 md:p-10 shadow-md relative overflow-hidden"
+          className="mt-8 md:mt-16 text-center bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-4 md:p-10 shadow-md relative overflow-hidden mx-2 md:mx-0"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.7, delay: 0.5 }}

@@ -383,6 +383,21 @@
     font-size: 0.95rem !important;
     line-height: 1.5rem !important;
   }
+  
+  /* Prevenir texto cortado em mobile */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  @media (max-width: 640px) {
+    .container {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+  }
 
   .section-spacing {
     margin-top: 3rem;
