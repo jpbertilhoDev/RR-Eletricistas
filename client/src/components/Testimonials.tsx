@@ -9,7 +9,7 @@ import {
   CarouselPrevious 
 } from "@/components/ui/carousel";
 import { useIsMobile } from "@/hooks/use-mobile";
-import cn from 'classnames';
+import { cn } from "@/lib/utils";
 
 export default function Testimonials() {
   const sectionRef = useRef(null);
