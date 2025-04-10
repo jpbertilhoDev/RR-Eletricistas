@@ -85,11 +85,11 @@ const WhyChooseUs = () => {
 
   return (
     <section 
-      className="py-16 bg-gradient-to-b from-white to-gray-50" 
+      className="py-8 md:py-16 bg-gradient-to-b from-white to-gray-50" 
       id="diferenciais" 
       ref={containerRef}
     >
-      <div className="container mx-auto px-2 lg:px-8 max-w-7xl">
+      <div className="container mx-auto px-1 lg:px-8 max-w-7xl">
         <motion.div 
           className="text-center mb-6"
           initial={{ opacity: 0, y: 20 }}
@@ -97,8 +97,8 @@ const WhyChooseUs = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-xl md:text-3xl font-bold text-dark-blue mb-2">Por Que Escolher a <span className="text-blue-600">R.R Manutenções</span>?</h2>
-          <p className="text-deep-blue/70 max-w-3xl mx-auto text-xs md:text-base px-3">
-            Conheça os diferenciais que nos destacam no mercado e fazem da R.R Manutenções a escolha ideal para você.
+          <p className="text-deep-blue/70 max-w-3xl mx-auto text-[10px] md:text-base px-2">
+            Conheça os diferenciais que nos destacam no mercado.
           </p>
         </motion.div>
         
@@ -136,12 +136,12 @@ const WhyChooseUs = () => {
 
         {/* Versão mobile otimizada: Carousel automático com visual premium */}
         <div className="md:hidden">
-          <div className="overflow-hidden mx-auto relative max-w-[90%] px-0" ref={emblaRef}>
+          <div className="overflow-hidden mx-auto relative max-w-[85%] px-0" ref={emblaRef}>
             <div className="flex">
               {diferenciais.map((item) => (
-                <div className="flex-[0_0_100%] min-w-0 max-w-[100%] px-1" key={item.id}>
+                <div className="flex-[0_0_100%] min-w-0 max-w-[100%] px-0.5" key={item.id}>
                   <motion.div 
-                    className="bg-white border border-gray-100 rounded-md p-1.5 shadow-sm relative overflow-hidden h-full transform transition-all duration-300"
+                    className="bg-white border border-gray-100 rounded-md p-1 shadow-sm relative overflow-hidden h-full transform transition-all duration-300"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4 }}
@@ -149,23 +149,23 @@ const WhyChooseUs = () => {
                     
                     {/* Layout mais compacto para mobile */}
                     <div className="relative z-10">
-                      <div className="flex items-start gap-1 mb-0.5">
-                        <div className={`w-4 h-4 mt-0.5 bg-gradient-to-br ${item.color} rounded-md flex items-center justify-center flex-shrink-0 shadow-sm`}>
-                          <i className={`fas fa-${item.icon} ${item.iconColor} text-[8px]`}></i>
+                      <div className="flex items-start gap-0.5 mb-0.5">
+                        <div className={`w-3 h-3 mt-0.5 bg-gradient-to-br ${item.color} rounded-md flex items-center justify-center flex-shrink-0 shadow-sm`}>
+                          <i className={`fas fa-${item.icon} ${item.iconColor} text-[6px]`}></i>
                         </div>
-                        <h3 className="font-bold text-dark-blue text-[11px] leading-tight">{item.title}</h3>
+                        <h3 className="font-bold text-dark-blue text-[10px] leading-tight ml-0.5">{item.title}</h3>
                       </div>
                       
-                      <div className="mt-0.5 pl-5">
-                        <p className="text-deep-blue/80 text-[9px] mb-1 line-clamp-2 leading-tight">{item.description}</p>
-                        <div className="bg-blue-50 inline-block px-1.5 py-0.5 rounded-full">
-                          <p className="text-blue-700 font-medium text-[8px]">{item.benefit}</p>
+                      <div className="mt-0.5 pl-3.5">
+                        <p className="text-deep-blue/80 text-[8px] mb-0.5 line-clamp-2 leading-tight">{item.description}</p>
+                        <div className="bg-blue-50 inline-block px-1 py-0.5 rounded-full">
+                          <p className="text-blue-700 font-medium text-[7px]">{item.benefit}</p>
                         </div>
                       </div>
                     </div>
                     
                     {/* Elemento decorativo sutil */}
-                    <div className="absolute -bottom-4 -right-4 w-6 h-6 rounded-full opacity-10 bg-gradient-to-br from-blue-400 to-blue-600 blur-lg"></div>
+                    <div className="absolute -bottom-3 -right-3 w-4 h-4 rounded-full opacity-10 bg-gradient-to-br from-blue-400 to-blue-600 blur-md"></div>
                   </motion.div>
                 </div>
               ))}
@@ -173,8 +173,8 @@ const WhyChooseUs = () => {
           </div>
           
           {/* Indicadores de navegação para o carousel */}
-          <div className="flex justify-center mt-4">
-            <div className="w-16 h-1 bg-blue-200 rounded-full overflow-hidden">
+          <div className="flex justify-center mt-2">
+            <div className="w-10 h-0.5 bg-blue-200 rounded-full overflow-hidden">
               <div className="w-1/3 h-full bg-blue-600 rounded-full animate-slide"></div>
             </div>
           </div>
