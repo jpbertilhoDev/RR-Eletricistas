@@ -2,7 +2,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
 
 export default function WhyChooseUs() {
   const sectionRef = useRef(null);
@@ -13,7 +12,7 @@ export default function WhyChooseUs() {
     loop: true,
     align: 'center',
     dragFree: true
-  }, [Autoplay({ delay: 4000, stopOnInteraction: false })]);
+  });
 
   // Animações
   const containerVariants = {

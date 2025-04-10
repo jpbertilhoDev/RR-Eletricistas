@@ -66,7 +66,7 @@ app.use((req, res, next) => {
   }
 
   // Use environment port or fallback to development port
-  const port = process.env.PORT || 5000;
+  const port = parseInt(process.env.PORT || "5000", 10);
   server.listen(port, "0.0.0.0", () => {
     log(`serving on port ${port}`);
   });
