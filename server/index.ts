@@ -53,6 +53,7 @@ app.use((req, res, next) => {
   if (app.get("env") === "development") {
     await setupVite(app, server);
   } else {
+    console.log("Running in production mode, serving static files");
     serveStatic(app);
   }
 
