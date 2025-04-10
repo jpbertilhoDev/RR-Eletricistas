@@ -140,19 +140,9 @@ export const NAVIGATION_ITEMS = [
     icon: "fas fa-bolt",
   },
   {
-    id: "projetos",
-    label: "Projetos",
-    icon: "fas fa-briefcase",
-  },
-  {
     id: "quem-somos",
     label: "Quem Somos",
     icon: "fas fa-users",
-  },
-  {
-    id: "porque-escolher",
-    label: "Diferenciais",
-    icon: "fas fa-certificate",
   },
   {
     id: "depoimentos",
