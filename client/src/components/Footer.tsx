@@ -117,7 +117,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-700 pt-6 text-center text-gray-300 text-sm">
           {/* Changed to a darker blue */}
-          <p>&copy; {new Date().getFullYear()} R.R Manutenções e Instalações Elétricas • Todos os direitos reservados</p>
+          <p>&copy; {new Date().getFullYear()} RR Manutenções Elétricas • Todos os direitos reservados</p>
         </div>
       </div>
     </footer>

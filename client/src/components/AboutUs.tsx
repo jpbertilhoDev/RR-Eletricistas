@@ -204,7 +204,7 @@ export default function AboutUs() {
                       <i className="fas fa-bolt"></i>
                     </div>
                     <div className="ml-3">
-                      <p className="font-medium text-dark-blue">Ricardo Rodrigues</p>
+                      <p className="font-medium text-dark-blue">RR Manutenções Elétricas</p>
                       <p className="text-sm text-gray-600">Fundador e Diretor Técnico</p>
                     </div>
                   </div>
