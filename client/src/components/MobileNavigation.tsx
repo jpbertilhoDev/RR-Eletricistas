@@ -7,7 +7,6 @@ const MOBILE_NAV_ITEMS = [
   { id: "apresentacao", label: "Apresentação", icon: "fas fa-play" },
   { id: "depoimentos", label: "Clientes", icon: "fas fa-users" },
   { id: "quem-somos", label: "Sobre", icon: "fas fa-building" },
-  { id: "diferenciais", label: "Diferenciais", icon: "fas fa-award" },
   { id: "contato", label: "Contato", icon: "fas fa-envelope" },
 ];
 

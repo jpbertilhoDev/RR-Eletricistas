@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import AboutUs from "@/components/AboutUs";
 import Contact from "@/components/Contact";
-import WhyChooseUs from "@/components/WhyChooseUs";
 import Testimonials from "@/components/Testimonials";
 import VideoPresentation from "@/components/VideoPresentation";
 import { useEffect } from "react";
@@ -41,7 +40,6 @@ const Home = () => {
         <Services />
         <Testimonials />
         <AboutUs />
-        <WhyChooseUs />
         <Contact />
       </div>
     </Layout>
