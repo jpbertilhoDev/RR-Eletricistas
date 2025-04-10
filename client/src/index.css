@@ -641,6 +641,27 @@
   
   #diferenciais .text-blue-600 {
     color: #2563eb;
-  }m: 2rem;
+  }
+
+  /* Estilos para ações de chamada */
+  #diferenciais .rounded-full {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  #diferenciais .rounded-full:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Ajuste para mobile */
+  @media (max-width: 768px) {
+    #diferenciais .container {
+      max-width: 100%;
+      padding: 0 1rem;
+    }
+    
+    #diferenciais .rounded-full {
+      font-weight: 600;
+    }
   }
 }

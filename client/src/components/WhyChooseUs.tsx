@@ -32,7 +32,7 @@ const WhyChooseUs = () => {
       color: "from-blue-500 to-blue-600",
       iconColor: "text-white",
       cta: "Reduz custos em 60%",
-      ctaColor: "bg-blue-100 text-blue-700",
+      ctaColor: "bg-blue-100 text-blue-700 hover:bg-green-100 hover:text-green-700",
       bgColor: "bg-white"
     },
     {
@@ -43,7 +43,7 @@ const WhyChooseUs = () => {
       color: "from-green-500 to-green-600",
       iconColor: "text-white",
       cta: "Suporte imediato",
-      ctaColor: "bg-green-100 text-green-700",
+      ctaColor: "bg-green-100 text-green-700 hover:bg-green-200 hover:text-green-800",
       bgColor: "bg-white"
     },
     {
@@ -54,7 +54,7 @@ const WhyChooseUs = () => {
       color: "from-purple-500 to-purple-600",
       iconColor: "text-white",
       cta: "Segurança garantida",
-      ctaColor: "bg-purple-100 text-purple-700",
+      ctaColor: "bg-purple-100 text-purple-700 hover:bg-green-100 hover:text-green-700",
       bgColor: "bg-white"
     },
     {
@@ -65,7 +65,7 @@ const WhyChooseUs = () => {
       color: "from-red-500 to-red-600",
       iconColor: "text-white",
       cta: "Alta precisão",
-      ctaColor: "bg-red-100 text-red-700",
+      ctaColor: "bg-red-100 text-red-700 hover:bg-green-100 hover:text-green-700",
       bgColor: "bg-white"
     },
     {
@@ -76,7 +76,7 @@ const WhyChooseUs = () => {
       color: "from-amber-500 to-amber-600",
       iconColor: "text-white",
       cta: "Até 12 meses",
-      ctaColor: "bg-amber-100 text-amber-700",
+      ctaColor: "bg-amber-100 text-amber-700 hover:bg-green-100 hover:text-green-700",
       bgColor: "bg-white"
     },
     {
@@ -87,7 +87,7 @@ const WhyChooseUs = () => {
       color: "from-blue-500 to-blue-600",
       iconColor: "text-white",
       cta: "Eficiência energética",
-      ctaColor: "bg-blue-100 text-blue-700",
+      ctaColor: "bg-blue-100 text-blue-700 hover:bg-green-100 hover:text-green-700",
       bgColor: "bg-blue-50/30"
     }
   ];
@@ -123,8 +123,8 @@ const WhyChooseUs = () => {
             >
               <div className="flex flex-col h-full">
                 <div className="flex items-center mb-4">
-                  <div className={`w-10 h-10 rounded-md bg-gradient-to-br ${item.color} flex items-center justify-center shadow-sm mr-3`}>
-                    <i className={`fas fa-${item.icon} ${item.iconColor} text-sm`}></i>
+                  <div className={`w-12 h-12 rounded-md bg-gradient-to-br ${item.color} flex items-center justify-center shadow-sm mr-3`}>
+                    <i className={`fas fa-${item.icon} ${item.iconColor} text-lg`}></i>
                   </div>
                   <h3 className="font-bold text-dark-blue text-lg">{item.title}</h3>
                 </div>
@@ -134,7 +134,7 @@ const WhyChooseUs = () => {
                 </p>
                 
                 <div className="mt-auto">
-                  <span className={`inline-block py-1 px-3 rounded-full text-xs font-medium ${item.ctaColor}`}>
+                  <span className={`inline-block py-2 px-4 rounded-full text-sm font-medium ${item.ctaColor} transition-colors duration-300 shadow-sm hover:shadow-md cursor-pointer`}>
                     {item.cta}
                   </span>
                 </div>
@@ -145,7 +145,7 @@ const WhyChooseUs = () => {
 
         {/* Mobile version: Carousel */}
         <div className="md:hidden">
-          <div className="overflow-hidden mx-auto relative max-w-[85%]" ref={emblaRef}>
+          <div className="overflow-hidden mx-auto relative max-w-[90%]" ref={emblaRef}>
             <div className="flex">
               {diferenciais.map((item) => (
                 <div className="flex-[0_0_100%] min-w-0 pl-4 pr-4" key={item.id}>
@@ -163,12 +163,12 @@ const WhyChooseUs = () => {
                         <h3 className="font-bold text-dark-blue text-lg">{item.title}</h3>
                       </div>
                       
-                      <p className="text-deep-blue/80 mb-4">
+                      <p className="text-deep-blue/80 mb-4 text-sm">
                         {item.description}
                       </p>
                       
                       <div className="mt-4">
-                        <span className={`inline-block py-1 px-3 rounded-full text-xs font-medium ${item.ctaColor}`}>
+                        <span className={`inline-block py-1.5 px-4 rounded-full text-xs font-medium ${item.ctaColor} transition-colors duration-300 shadow-sm cursor-pointer`}>
                           {item.cta}
                         </span>
                       </div>
