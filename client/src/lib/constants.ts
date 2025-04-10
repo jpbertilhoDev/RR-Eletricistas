@@ -145,7 +145,7 @@ export const NAVIGATION_ITEMS = [
     icon: "fas fa-play",
   },
   {
-    id: "clientes",
+    id: "depoimentos",
     label: "Clientes",
     icon: "fas fa-users",
   },
