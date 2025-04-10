@@ -155,11 +155,6 @@ export const NAVIGATION_ITEMS = [
     icon: "fas fa-building",
   },
   {
-    id: "diferenciais",
-    label: "Diferenciais",
-    icon: "fas fa-award",
-  },
-  {
     id: "contato",
     label: "Contato",
     icon: "fas fa-envelope",
