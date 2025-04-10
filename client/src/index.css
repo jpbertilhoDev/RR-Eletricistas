@@ -561,19 +561,19 @@
     #diferenciais {
       position: relative;
     }
-    
+
     #diferenciais .rounded-full {
       padding: 0.25rem 0.75rem;
       font-size: 0.65rem;
     }
-    
+
     /* Texto do título principal */
     #diferenciais h2 {
       font-size: 1.25rem !important;
       line-height: 1.3 !important;
       margin-bottom: 0.5rem;
     }
-    
+
     #diferenciais .text-center p {
       font-size: 0.75rem !important;
       line-height: 1.3 !important;
@@ -722,3 +722,20 @@
     transform: translateY(1px);
   }
 }
+
+/* WhyChooseUs Section */
+#diferenciais {
+  scroll-margin-top: 100px;
+}
+
+#diferenciais .embla__slide {
+  height: 100%;
+}
+
+#diferenciais .carousel-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Projects Section */
