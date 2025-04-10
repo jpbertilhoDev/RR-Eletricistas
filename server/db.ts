@@ -12,6 +12,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 let pool;
 let db;
 
+const FALLBACK_DB_URL = 'postgresql://postgres:postgres@localhost:5432/postgres'; //Added fallback URL
+
 try {
   if (process.env.DATABASE_URL) {
     // Normal database initialization with valid URL
@@ -19,16 +21,10 @@ try {
     db = drizzle({ client: pool, schema });
     console.log("Database connection initialized successfully");
   } else if (isProduction) {
-    // In production without DATABASE_URL, use dummy implementation
-    console.warn("No DATABASE_URL provided in production. Using dummy implementation.");
-    pool = null;
-    db = {
-      query: async () => [],
-      select: () => ({ from: () => ({ where: () => ({ execute: async () => [] }) }) }),
-      insert: () => ({ values: () => ({ returning: () => ({ execute: async () => [] }) }) }),
-      update: () => ({ set: () => ({ where: () => ({ returning: () => ({ execute: async () => [] }) }) }) }),
-      delete: () => ({ where: () => ({ returning: () => ({ execute: async () => [] }) }) }),
-    };
+    // In production without DATABASE_URL, use fallback URL
+    console.warn("No DATABASE_URL provided in production. Using fallback URL.");
+    pool = new Pool({ connectionString: FALLBACK_DB_URL });
+    db = drizzle({ client: pool, schema });
   } else {
     // Development fallback
     const devDbUrl = "postgres://dummyuser:dummypassword@localhost:5432/dummydb";
