@@ -54,7 +54,15 @@ app.use((req, res, next) => {
     await setupVite(app, server);
   } else {
     console.log("Running in production mode, serving static files");
-    serveStatic(app);
+    // Ensure the correct path to the built client files
+    app.use(express.static("dist/public"));
+    
+    // Handle React routing by sending index.html for all non-API requests
+    app.get('*', (req, res) => {
+      if (!req.path.startsWith('/api')) {
+        res.sendFile('index.html', { root: 'dist/public' });
+      }
+    });
   }
 
   // Use environment port or fallback to development port

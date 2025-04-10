@@ -68,20 +68,12 @@ export async function setupVite(app: Express, server: Server) {
 }
 
 export function serveStatic(app: Express) {
-  const publicPath = path.resolve(import.meta.dirname, "..", "dist", "public");
-  app.use(express.static(publicPath));
+  app.use(express.static("dist/public"));
 
-  // Ensure the dist/public directory exists
-  if (!fs.existsSync(publicPath)) {
-    console.error("Warning: dist/public directory not found!");
-  }
-
-  app.get("*", (req, res) => {
-    const indexPath = path.resolve(publicPath, "index.html");
-    if (fs.existsSync(indexPath)) {
-      res.sendFile(indexPath);
-    } else {
-      res.status(500).send("Error: index.html not found in build directory");
+  // Handle SPA routes
+  app.get('*', (req, res) => {
+    if (!req.path.startsWith('/api')) {
+      res.sendFile('index.html', { root: 'dist/public' });
     }
   });
 }
