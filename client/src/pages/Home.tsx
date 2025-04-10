@@ -41,7 +41,7 @@ const Home = () => {
         <Services />
         <Testimonials />
         <AboutUs />
-        {!isMobile && <WhyChooseUs />}
+        <WhyChooseUs />
         <Contact />
       </div>
     </Layout>
