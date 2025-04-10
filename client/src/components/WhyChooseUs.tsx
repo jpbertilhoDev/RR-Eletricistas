@@ -1,8 +1,12 @@
-
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { WHYCHOOSEUS } from "@/lib/constants";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation } from "swiper";
+
 
 export default function WhyChooseUs() {
   const sectionRef = useRef(null);
@@ -113,47 +117,98 @@ export default function WhyChooseUs() {
           </motion.p>
         </div>
 
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
-          {diferenciais.map((item) => (
-            <motion.div 
-              key={item.id}
-              className="bg-white border border-gray-100 rounded-xl p-8 shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden group"
-              variants={itemVariants}
-              whileHover={{ y: -5, boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.05)" }}
-            >
-              {/* Elemento decorativo */}
-              <div className="absolute -right-10 -bottom-10 w-32 h-32 bg-blue-50 rounded-full opacity-0 group-hover:opacity-70 transition-opacity duration-500"></div>
+        {isMobile ? (
+          <Swiper
+            modules={[Navigation]}
+            spaceBetween={10}
+            slidesPerView={1}
+            navigation={true}
+            loop={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            className="mySwiper"
+          >
+            {diferenciais.map((item) => (
+              <SwiperSlide key={item.id}>
+                <motion.div 
+                  className="bg-white border border-gray-100 rounded-xl p-8 shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden group"
+                  variants={itemVariants}
+                  whileHover={{ y: -5, boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.05)" }}
+                >
+                  {/* Elemento decorativo */}
+                  <div className="absolute -right-10 -bottom-10 w-32 h-32 bg-blue-50 rounded-full opacity-0 group-hover:opacity-70 transition-opacity duration-500"></div>
 
-              <div className="flex flex-col items-start relative z-10">
-                <div className="w-14 h-14 bg-blue-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-100 transition-colors">
-                  <i className={`fas fa-${item.icon} text-primary text-xl`}></i>
-                </div>
+                  <div className="flex flex-col items-start relative z-10">
+                    <div className="w-14 h-14 bg-blue-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-100 transition-colors">
+                      <i className={`fas fa-${item.icon} text-primary text-xl`}></i>
+                    </div>
 
-                <h3 className="font-bold text-dark-blue text-xl mb-3">{item.title}</h3>
-                <p className="text-deep-blue mb-6">{item.description}</p>
+                    <h3 className="font-bold text-dark-blue text-xl mb-3">{item.title}</h3>
+                    <p className="text-deep-blue mb-6">{item.description}</p>
 
-                <div className="mt-auto pt-4 border-t border-gray-100 w-full">
-                  <div className="flex items-center justify-between">
-                    <span className="text-blue-600 font-medium text-sm">
-                      {item.benefit}
-                    </span>
-                    <motion.div 
-                      className="w-6 h-6 bg-blue-50 rounded-full flex items-center justify-center"
-                      whileHover={{ scale: 1.2 }}
-                    >
-                      <i className="fas fa-arrow-right text-primary text-xs"></i>
-                    </motion.div>
+                    <div className="mt-auto pt-4 border-t border-gray-100 w-full">
+                      <div className="flex items-center justify-between">
+                        <span className="text-blue-600 font-medium text-sm">
+                          {item.benefit}
+                        </span>
+                        <motion.div 
+                          className="w-6 h-6 bg-blue-50 rounded-full flex items-center justify-center"
+                          whileHover={{ scale: 1.2 }}
+                        >
+                          <i className="fas fa-arrow-right text-primary text-xs"></i>
+                        </motion.div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        ) : (
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+          >
+            {diferenciais.map((item) => (
+              <motion.div 
+                key={item.id}
+                className="bg-white border border-gray-100 rounded-xl p-8 shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden group"
+                variants={itemVariants}
+                whileHover={{ y: -5, boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.05)" }}
+              >
+                {/* Elemento decorativo */}
+                <div className="absolute -right-10 -bottom-10 w-32 h-32 bg-blue-50 rounded-full opacity-0 group-hover:opacity-70 transition-opacity duration-500"></div>
+
+                <div className="flex flex-col items-start relative z-10">
+                  <div className="w-14 h-14 bg-blue-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-100 transition-colors">
+                    <i className={`fas fa-${item.icon} text-primary text-xl`}></i>
+                  </div>
+
+                  <h3 className="font-bold text-dark-blue text-xl mb-3">{item.title}</h3>
+                  <p className="text-deep-blue mb-6">{item.description}</p>
+
+                  <div className="mt-auto pt-4 border-t border-gray-100 w-full">
+                    <div className="flex items-center justify-between">
+                      <span className="text-blue-600 font-medium text-sm">
+                        {item.benefit}
+                      </span>
+                      <motion.div 
+                        className="w-6 h-6 bg-blue-50 rounded-full flex items-center justify-center"
+                        whileHover={{ scale: 1.2 }}
+                      >
+                        <i className="fas fa-arrow-right text-primary text-xs"></i>
+                      </motion.div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
 
         {/* Pergunta ao cliente usando PNL */}
         <motion.div 
