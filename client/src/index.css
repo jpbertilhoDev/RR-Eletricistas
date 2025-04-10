@@ -127,6 +127,13 @@
 .why-choose-card {
   background-size: 150% 150%;
   background-position: 100% 100%;
+
+  /* Better spacing for mobile navigation */
+  .mobile-nav-item {
+    @apply flex flex-col items-center justify-center py-2;
+    width: 100%;
+  }
+
   transition: all 0.5s ease;
 }
 
