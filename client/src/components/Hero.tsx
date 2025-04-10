@@ -5,6 +5,7 @@ import { useAnimateOnScroll } from "@/hooks/useAnimateOnScroll";
 import { motion } from "framer-motion";
 import TypeWriter from "./TypeWriter";
 import HeroBackgroundCarousel from "./HeroBackgroundCarousel";
+import ElectricButtonEffect from "./ElectricButtonEffect";
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -92,26 +93,24 @@ const Hero = () => {
               </Button>
             </motion.a>
 
-            <motion.div
-              whileHover={buttonHoverEffect}
-              whileTap={{ scale: 0.98 }}
+            <ElectricButtonEffect
               className="w-full sm:w-auto"
+              onClick={() => {
+                const servicesSection = document.getElementById("servicos");
+                if (servicesSection) {
+                  servicesSection.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
             >
               <Button 
                 variant="secondary" 
                 size="lg"
-                className="bg-white/10 backdrop-blur-sm text-white border-2 border-white/20 hover:bg-white/20 w-full sm:w-auto px-8 py-6 shadow-lg text-lg transition-all duration-300"
-                onClick={() => {
-                  const servicesSection = document.getElementById("servicos");
-                  if (servicesSection) {
-                    servicesSection.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
+                className="bg-white/10 backdrop-blur-sm text-white border-2 border-white/20 hover:bg-white/20 w-full sm:w-auto px-8 py-6 shadow-lg text-lg transition-all duration-300 relative z-10"
               >
                 <i className="fas fa-bolt mr-3"></i>
                 Ver serviços
               </Button>
-            </motion.div>
+            </ElectricButtonEffect>
           </motion.div>
 
           {/* Mensagem de compromisso */}
