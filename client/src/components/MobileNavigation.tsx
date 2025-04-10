@@ -4,9 +4,9 @@ import { cn } from "@/lib/utils";
 
 const MOBILE_NAV_ITEMS = [
   { id: "inicio", label: "Início", icon: "fas fa-home" },
-  { id: "servicos", label: "Serviços", icon: "fas fa-tools" },
-  { id: "projetos", label: "Projetos", icon: "fas fa-briefcase" },
-  { id: "contato", label: "Contato", icon: "fas fa-phone" },
+  { id: "apresentacao", label: "Vídeo", icon: "fas fa-play" },
+  { id: "clientes", label: "Clientes", icon: "fas fa-users" },
+  { id: "quem-somos", label: "Sobre", icon: "fas fa-building" },
 ];
 
 const MobileNavigation = () => {
@@ -28,7 +28,7 @@ const MobileNavigation = () => {
 
   return (
     <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 border-t border-gray-100 backdrop-blur-sm">
-      <div className="grid grid-cols-4 px-2 py-2">
+      <div className="grid grid-cols-4 px-4 py-3">
         {MOBILE_NAV_ITEMS.map((item) => {
           const isActive = activeSection === item.id;
           return (
@@ -41,10 +41,10 @@ const MobileNavigation = () => {
               )}
             >
               {isActive && (
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-primary rounded-b-lg"/>
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-10 h-1 bg-primary rounded-b-lg"/>
               )}
-              <i className={`${item.icon} text-base mb-1`}></i>
-              <span className="text-[10px] leading-tight font-medium truncate w-full text-center">
+              <i className={`${item.icon} text-lg mb-1.5`}></i>
+              <span className="text-xs font-medium truncate w-full text-center">
                 {item.label}
               </span>
             </button>
