@@ -238,32 +238,32 @@ export default function WhyChooseUs() {
 
         {/* Versão mobile otimizada: Carousel automático com visual premium */}
         <div className="md:hidden">
-          <div className="overflow-hidden mx-2 relative rounded-lg" ref={emblaRef}>
+          <div className="overflow-hidden mx-1 relative rounded-lg" ref={emblaRef}>
             <div className="flex">
               {diferenciais.map((item) => (
-                <div className="flex-[0_0_80%] min-w-0 pl-2 pr-2" key={item.id}>
+                <div className="flex-[0_0_90%] min-w-0 pl-1 pr-1" key={item.id}>
                   <motion.div 
-                    className="bg-white border border-gray-100 rounded-xl p-4 shadow-md relative overflow-hidden h-full transform transition-all duration-300"
+                    className="bg-white border border-gray-100 rounded-lg p-2.5 shadow-sm relative overflow-hidden h-full transform transition-all duration-300"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4 }}
                     whileHover={{ boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.1), 0 8px 10px -6px rgba(59, 130, 246, 0.1)" }}
                   >
-                    {/* Elemento decorativo moderno */}
-                    <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-gradient-to-tr from-blue-100 to-transparent rounded-full opacity-40"></div>
+                    {/* Elemento decorativo reduzido */}
+                    <div className="absolute -bottom-10 -right-10 w-20 h-20 bg-gradient-to-tr from-blue-100 to-transparent rounded-full opacity-30"></div>
                     
-                    {/* Layout vertical mais premium para mobile - Ajustado para caber melhor */}
+                    {/* Layout mais compacto para mobile */}
                     <div className="relative z-10">
-                      <div className="flex items-center mb-2">
-                        <div className={`w-8 h-8 bg-gradient-to-br ${item.color} rounded-lg flex items-center justify-center flex-shrink-0 mr-3 shadow-sm`}>
+                      <div className="flex items-center mb-1.5">
+                        <div className={`w-6 h-6 bg-gradient-to-br ${item.color} rounded-md flex items-center justify-center flex-shrink-0 mr-2 shadow-sm`}>
                           <i className={`fas fa-${item.icon} ${item.iconColor} text-xs`}></i>
                         </div>
-                        <h3 className="font-bold text-dark-blue text-sm">{item.title}</h3>
+                        <h3 className="font-bold text-dark-blue text-xs">{item.title}</h3>
                       </div>
                       
-                      <div className="pl-11 mt-1">
-                        <p className="text-deep-blue/80 text-xs mb-2 line-clamp-2">{item.description}</p>
-                        <div className="bg-blue-50 inline-block px-2 py-1 rounded-full">
+                      <div className="pl-8 mt-1">
+                        <p className="text-deep-blue/80 text-xs mb-1.5 line-clamp-2 leading-tight">{item.description}</p>
+                        <div className="bg-blue-50 inline-block px-2 py-0.5 rounded-full">
                           <p className="text-blue-700 font-medium text-xs">{item.benefit}</p>
                         </div>
                       </div>
@@ -274,14 +274,14 @@ export default function WhyChooseUs() {
             </div>
           </div>
           
-          {/* Indicadores de slide animados */}
-          <div className="flex justify-center mt-5 space-x-1.5">
+          {/* Indicadores de slide animados - Menor para mobile */}
+          <div className="flex justify-center mt-3 space-x-1">
             {diferenciais.map((_, index) => (
               <motion.button
                 key={index}
                 onClick={() => emblaApi?.scrollTo(index)}
-                className="w-2.5 h-2.5 rounded-full bg-gray-300 transition-all duration-300 hover:bg-blue-500"
-                whileHover={{ scale: 1.4 }}
+                className="w-2 h-2 rounded-full bg-gray-300 transition-all duration-300 hover:bg-blue-500"
+                whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
                 initial={{ opacity: 0.7 }}
                 animate={{ opacity: 1 }}
@@ -292,7 +292,7 @@ export default function WhyChooseUs() {
 
         {/* Call to Action otimizado para mobile */}
         <motion.div 
-          className="mt-8 md:mt-16 text-center bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-4 md:p-10 shadow-md relative overflow-hidden mx-2 md:mx-0"
+          className="mt-6 md:mt-16 text-center bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg p-3 md:p-10 shadow-md relative overflow-hidden mx-1 md:mx-0"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.7, delay: 0.5 }}
@@ -305,7 +305,7 @@ export default function WhyChooseUs() {
 
           <div className="max-w-3xl mx-auto relative z-10">
             <motion.h3 
-              className="text-white text-lg md:text-2xl font-bold mb-2 md:mb-4 px-2"
+              className="text-white text-base md:text-2xl font-bold mb-1 md:mb-4 px-1"
               initial={{ opacity: 0, y: -10 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -314,27 +314,27 @@ export default function WhyChooseUs() {
             </motion.h3>
 
             <motion.p 
-              className="text-white/90 mb-4 md:mb-6 text-xs md:text-base px-2"
+              className="text-white/90 mb-3 md:mb-6 text-xs md:text-base px-1"
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              Transforme sua experiência com instalações elétricas seguras e profissionais.
+              Instalações elétricas seguras e profissionais.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-3 px-2"
+              className="flex flex-col sm:flex-row items-center justify-center gap-2 px-1"
             >
               <a
                 href={`https://wa.me/+5511972650865?text=Olá! Gostaria de saber mais sobre os serviços da RR Manutenções Elétricas.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white text-primary hover:bg-gray-50 font-medium transition-all w-full sm:w-auto text-center px-5 py-2.5 rounded-lg text-sm md:text-base shadow-sm hover:shadow-md"
+                className="bg-white text-primary hover:bg-gray-50 font-medium transition-all w-full sm:w-auto text-center px-4 py-2 rounded-lg text-xs md:text-base shadow-sm hover:shadow-md"
               >
-                <i className="fab fa-whatsapp mr-2 text-green-600"></i>
+                <i className="fab fa-whatsapp mr-1.5 text-green-600"></i>
                 Falar agora
               </a>
             </motion.div>

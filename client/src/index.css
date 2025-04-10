@@ -397,6 +397,25 @@
       padding-left: 0.5rem;
       padding-right: 0.5rem;
     }
+    
+    /* Ajustes específicos para componente WhyChooseUs no mobile */
+    #diferenciais .flex-[0_0_90%] {
+      max-width: 85vw;
+    }
+    
+    #diferenciais .rounded-lg {
+      border-radius: 0.5rem;
+    }
+    
+    #diferenciais p {
+      font-size: 0.7rem;
+      line-height: 1.2;
+    }
+    
+    #diferenciais h3 {
+      font-size: 0.8rem;
+      line-height: 1.1;
+    }
   }
 
   .section-spacing {
