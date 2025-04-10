@@ -43,32 +43,34 @@ const Header = () => {
         isScrolled ? "bg-white/95 backdrop-blur-xl shadow-sm py-2" : "bg-transparent py-3"
       )}
     >
-      <div className="container mx-auto px-3 h-12 md:h-20 flex items-center justify-between">
-        <div className="flex items-center space-x-2">
+      <div className="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
+        <div className="flex-shrink-0">
           <img 
             src="/src/assets/images/logo-rr.png" 
             alt="RR Manutenções Elétricas" 
-            className="h-16 md:h-20 mt-2 w-auto object-contain"
+            className="h-12 md:h-16 w-auto object-contain"
           />
         </div>
 
-        <nav className="hidden md:flex space-x-5 px-2">
-          {NAVIGATION_ITEMS.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              className="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap"
-            >
-              {item.label}
-            </button>
-          ))}
+        <nav className="hidden md:flex justify-center flex-1 px-4">
+          <div className="flex space-x-8">
+            {NAVIGATION_ITEMS.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="text-sm font-medium hover:text-primary transition-colors whitespace-nowrap"
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
         </nav>
 
         <a 
           href={`https://wa.me/${WHATSAPP_NUMBER}`}
           target="_blank" 
           rel="noopener noreferrer"
-          className="hidden md:flex"
+          className="hidden md:block flex-shrink-0"
         >
           <Button variant="whatsapp" size="default" className="flex items-center space-x-2">
             <i className="fab fa-whatsapp"></i>
