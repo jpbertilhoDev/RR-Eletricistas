@@ -28,12 +28,12 @@ export default function Testimonials() {
       <div className="container mx-auto px-4 max-w-6xl relative z-10">
         <div className="text-center mb-12 md:mb-16">
           <motion.span 
-            className="text-blue-600 font-medium text-sm tracking-wider uppercase bg-blue-50 px-4 py-1 rounded-full"
+            className="text-blue-600 font-medium text-sm tracking-wider uppercase bg-blue-50 px-4 py-1 rounded-full inline-block"
             initial={{ opacity: 0, y: -10 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
             transition={{ duration: 0.5 }}
           >
-            Clientes satisfeitos
+            CLIENTES SATISFEITOS
           </motion.span>
 
           <motion.h2 
@@ -87,7 +87,7 @@ export default function Testimonials() {
                         <p className="text-xs text-gray-600">{testimonial.role}</p>
                         <div className="flex mt-1">
                           {[...Array(5)].map((_, i) => (
-                            <i key={i} className={`fas fa-star text-xs ${i < Math.floor(testimonial.rating) ? 'text-yellow-400' : 'text-gray-300'}`}></i>
+                            <i key={i} className="fas fa-star text-xs text-yellow-400"></i>
                           ))}
                         </div>
                       </div>
@@ -147,10 +147,10 @@ export default function Testimonials() {
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <p className="text-blue-600 font-medium">Avaliação média de 4.9 <i className="fas fa-star text-yellow-400 ml-1"></i></p>
+            <p className="text-blue-600 font-medium">Avaliação média de 5.0 <i className="fas fa-star text-yellow-400 ml-1"></i></p>
             <div className="flex items-center justify-center gap-4 mt-3">
               <div className="flex items-center">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" className="h-5 mr-2" />
+                <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google" className="h-6 mr-2" />
                 <span className="text-gray-700 font-medium">Google Reviews</span>
               </div>
               <div className="w-1 h-1 bg-gray-300 rounded-full"></div>
