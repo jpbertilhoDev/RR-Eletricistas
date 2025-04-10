@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -94,17 +93,39 @@ const WhyChooseUs = () => {
     >
       <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
         <motion.div 
-          className="text-center mb-10"
+          className="text-center mb-14 md:mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={animationTriggered ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-dark-blue mb-4">Por Que Escolher a <span className="text-blue-600">R.R</span>?</h2>
-          <p className="text-deep-blue/70 max-w-3xl mx-auto text-sm md:text-base">
-            Conheça os diferenciais que nos destacam no mercado.
-          </p>
+          <motion.span 
+            className="text-blue-600 font-medium text-sm tracking-wider uppercase bg-blue-50 px-4 py-1.5 rounded-full inline-block shadow-sm"
+            initial={{ opacity: 0, y: -10 }}
+            animate={animationTriggered ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
+            transition={{ duration: 0.5 }}
+          >
+            NOSSOS DIFERENCIAIS
+          </motion.span>
+
+          <motion.h2 
+            className="text-dark-blue text-3xl md:text-4xl font-bold mt-4 mb-5"
+            initial={{ opacity: 0, y: 20 }}
+            animate={animationTriggered ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            Por Que Escolher a <span className="text-blue-600">R.R</span>?
+          </motion.h2>
+
+          <motion.p 
+            className="text-deep-blue max-w-2xl mx-auto text-lg"
+            initial={{ opacity: 0 }}
+            animate={animationTriggered ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            Qualidade, confiança e segurança são nossa garantia. Veja o que nos destaca no mercado:
+          </motion.p>
         </motion.div>
-        
+
         {/* Desktop version: Grid layout with 3 cards per row */}
         <div className="hidden md:grid grid-cols-3 gap-6">
           {diferenciais.map((item, index) => (
@@ -122,11 +143,11 @@ const WhyChooseUs = () => {
                   </div>
                   <h3 className="font-bold text-dark-blue text-lg">{item.title}</h3>
                 </div>
-                
+
                 <p className="text-deep-blue/80 mb-4">
                   {item.description}
                 </p>
-                
+
                 <div className="mt-auto">
                   <span className={`inline-block py-2 px-4 rounded-full text-sm font-medium ${item.ctaColor} transition-colors duration-300 shadow-sm hover:shadow-md cursor-pointer`}>
                     {item.cta}
@@ -156,11 +177,11 @@ const WhyChooseUs = () => {
                         </div>
                         <h3 className="font-bold text-dark-blue text-lg">{item.title}</h3>
                       </div>
-                      
+
                       <p className="text-deep-blue/80 mb-4 text-sm">
                         {item.description}
                       </p>
-                      
+
                       <div className="mt-4">
                         <span className={`inline-block py-1.5 px-4 rounded-full text-xs font-medium ${item.ctaColor} transition-colors duration-300 shadow-sm cursor-pointer`}>
                           {item.cta}
