@@ -37,8 +37,8 @@ const Home = () => {
     <Layout>
       <div className="flex flex-col items-center">
         <Hero />
+        <VideoPresentation />
         <Services />
-        {!isMobile && <VideoPresentation />}
         <Testimonials />
         <AboutUs />
         {!isMobile && <WhyChooseUs />}
