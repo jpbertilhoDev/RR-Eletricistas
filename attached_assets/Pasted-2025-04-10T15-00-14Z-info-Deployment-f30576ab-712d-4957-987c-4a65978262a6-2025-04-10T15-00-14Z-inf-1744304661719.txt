@@ -1,0 +1,56 @@
+2025-04-10T15:00:14Z info: Deployment: f30576ab-712d-4957-987c-4a65978262a6
+2025-04-10T15:00:14Z info: Build: 7daefe0a-e4f0-40c0-b7e3-1fbdb762765d
+2025-04-10T15:00:14Z info: Connecting to builder
+2025-04-10T15:00:19Z info: Builder connected
+2025-04-10T15:00:19Z info: Installing packages
+--> npm install
+
+
+added 1 package, removed 4 packages, changed 1 package, and audited 500 packages in 5s
+
+66 packages are looking for funding
+
+  run `npm fund` for details
+
+
+8 moderate severity vulnerabilities
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+npm notice
+npm notice New major version of npm available! 10.8.2 -> 11.3.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.3.0
+npm notice To update run: npm install -g npm@11.3.0
+npm notice
+
+2025-04-10T15:00:24Z info: Skipping Build as no Build command set
+2025-04-10T15:00:24Z info: Pushing pid1 binary layer...
+2025-04-10T15:00:25Z info: Pushing Repl layer...
+2025-04-10T15:00:25Z info: Pushing hosting layer...
+2025-04-10T15:00:25Z info: Nix layers for this Repl are uncached.
+2025-04-10T15:00:25Z info: Pushing nix-0 layer...
+2025-04-10T15:00:25Z info: Created hosting layer
+2025-04-10T15:00:25Z info: Created pid1 binary layer
+2025-04-10T15:00:31Z info: Created nix-0 layer
+2025-04-10T15:00:31Z info: uploading image for cached layer
+2025-04-10T15:00:31Z info: pushed cache image manifest
+2025-04-10T15:00:32Z info: pushed cache soci index manifest
+2025-04-10T15:00:32Z info: uploading cached layer
+2025-04-10T15:00:32Z info: successfully uploaded cached layer
+2025-04-10T15:01:55Z info: Created Repl layer
+2025-04-10T15:01:55Z info: Pushed image manifest
+2025-04-10T15:01:56Z info: Pushed soci index manifest
+2025-04-10T15:03:07Z info: Creating Autoscale service
+forwarding local port 5000 to external port 80
+> rest-express@1.0.0 dev
+starting up user application
+> tsx server/index.ts
+3:05:17 PM [express] serving on port 3000
+a port configuration was specified but the required port was never opened
+2025-04-10T15:06:54Z error: The deployment failed because the application failed to open a port in time. This can happen because the application takes to long to open a server, or doesn't open one at all on the expected port. Note that this doesn't mean that the application is crashing, only that it's not opening a port in time. The application must serve traffic on the first port specified as 'localPort' in the port configuration specified in the .replit file. Make sure that the application opens a port quickly and that there are no operations taking too long on startup. Check the logs for more information.
