@@ -1,3 +1,4 @@
+
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { WHYCHOOSEUS } from "@/lib/constants";
@@ -28,6 +29,45 @@ export default function WhyChooseUs() {
       }
     }
   };
+
+  // Diferenciais baseados na imagem
+  const diferenciais = [
+    {
+      id: 1,
+      icon: "certificate",
+      title: "Profissionais Certificados",
+      description: "Nossa equipe é composta por eletricistas com formação técnica e certificações atualizadas.",
+      benefit: "Segurança garantida"
+    },
+    {
+      id: 2,
+      icon: "bolt",
+      title: "Atendimento Rápido",
+      description: "Respondemos rapidamente às suas necessidades, com pronto atendimento para emergências.",
+      benefit: "Resolução em até 24h"
+    },
+    {
+      id: 3,
+      icon: "shield-alt",
+      title: "Garantia de Serviço",
+      description: "Todos os nossos serviços incluem garantia e suporte contínuo após a conclusão.",
+      benefit: "Garantia de 1 ano"
+    },
+    {
+      id: 4,
+      icon: "file-invoice-dollar",
+      title: "Orçamento Transparente",
+      description: "Oferecemos orçamentos detalhados e transparentes, sem surpresas ou custos ocultos.",
+      benefit: "Sem surpresas no final"
+    },
+    {
+      id: 5,
+      icon: "hard-hat",
+      title: "Segurança em Primeiro",
+      description: "Trabalhamos seguindo os mais rigorosos padrões de segurança em todas as instalações.",
+      benefit: "Proteção para sua família"
+    }
+  ];
 
   return (
     <section id="diferenciais" ref={sectionRef} className="py-16 md:py-24 bg-white relative overflow-hidden">
@@ -72,7 +112,7 @@ export default function WhyChooseUs() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          {WHYCHOOSEUS.map((item, index) => (
+          {diferenciais.map((item) => (
             <motion.div 
               key={item.id}
               className="bg-white border border-gray-100 rounded-xl p-8 shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden group"
@@ -84,7 +124,7 @@ export default function WhyChooseUs() {
 
               <div className="flex flex-col items-start relative z-10">
                 <div className="w-14 h-14 bg-blue-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-100 transition-colors">
-                  <i className={`fas fa-${getIconForItem(item.id)} text-primary text-xl`}></i>
+                  <i className={`fas fa-${item.icon} text-primary text-xl`}></i>
                 </div>
 
                 <h3 className="font-bold text-dark-blue text-xl mb-3">{item.title}</h3>
@@ -93,7 +133,7 @@ export default function WhyChooseUs() {
                 <div className="mt-auto pt-4 border-t border-gray-100 w-full">
                   <div className="flex items-center justify-between">
                     <span className="text-blue-600 font-medium text-sm">
-                      {getBenefitForItem(item.id)}
+                      {item.benefit}
                     </span>
                     <motion.div 
                       className="w-6 h-6 bg-blue-50 rounded-full flex items-center justify-center"
@@ -178,27 +218,4 @@ export default function WhyChooseUs() {
       </div>
     </section>
   );
-}
-
-// Funções auxiliares para personalizar os ícones e benefícios
-function getIconForItem(id) {
-  const icons = {
-    1: "certificate",
-    2: "bolt",
-    3: "shield-alt",
-    4: "file-invoice-dollar",
-    5: "hard-hat"
-  };
-  return icons[id] || "star";
-}
-
-function getBenefitForItem(id) {
-  const benefits = {
-    1: "Segurança garantida",
-    2: "Resolução em até 24h",
-    3: "Garantia de 1 ano",
-    4: "Sem surpresas no final",
-    5: "Proteção para sua família"
-  };
-  return benefits[id] || "Qualidade comprovada";
 }
