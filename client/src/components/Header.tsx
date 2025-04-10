@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { NAVIGATION_ITEMS, WHATSAPP_NUMBER } from "@/lib/constants";
+import logoImage from "@/assets/images/logo-rr.png"; // Import the logo image
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -46,7 +47,7 @@ const Header = () => {
       <div className="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
         <div className="flex-shrink-0 flex items-center justify-center">
           <img 
-            src="/assets/images/logo-rr.png" 
+            src={logoImage} 
             alt="RR Manutenções Elétricas" 
             className="h-12 md:h-16 w-auto object-contain"
           />
