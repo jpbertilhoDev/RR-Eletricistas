@@ -10,7 +10,12 @@ const WhyChooseUs = () => {
   const animationTriggered = useAnimateOnScroll(containerRef, 0.1);
 
   // Configuração do carousel com autoplay para mobile
-  const [emblaRef] = useEmblaCarousel({ loop: true, align: 'start' }, [
+  const [emblaRef] = useEmblaCarousel({ 
+    loop: true, 
+    align: 'center',
+    containScroll: 'trimSnaps',
+    dragFree: true
+  }, [
     Autoplay({ delay: 3000, stopOnInteraction: false })
   ]);
 
@@ -131,12 +136,12 @@ const WhyChooseUs = () => {
 
         {/* Versão mobile otimizada: Carousel automático com visual premium */}
         <div className="md:hidden">
-          <div className="overflow-hidden mx-auto relative rounded-lg max-w-[92%]" ref={emblaRef}>
+          <div className="overflow-hidden mx-auto relative rounded-lg max-w-[90%]" ref={emblaRef}>
             <div className="flex">
               {diferenciais.map((item) => (
-                <div className="flex-[0_0_85%] min-w-0 pl-1 pr-1" key={item.id}>
+                <div className="flex-[0_0_95%] sm:flex-[0_0_90%] mx-auto px-2" key={item.id}>
                   <motion.div 
-                    className="bg-white border border-gray-100 rounded-lg p-3 shadow-sm relative overflow-hidden h-full transform transition-all duration-300"
+                    className="bg-white border border-gray-100 rounded-lg p-3 shadow-sm relative overflow-hidden h-full transform transition-all duration-300 w-full"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4 }}
@@ -144,14 +149,14 @@ const WhyChooseUs = () => {
                     
                     {/* Layout mais compacto para mobile */}
                     <div className="relative z-10">
-                      <div className="flex items-center mb-2">
+                      <div className="flex items-start mb-2">
                         <div className={`w-7 h-7 bg-gradient-to-br ${item.color} rounded-md flex items-center justify-center flex-shrink-0 mr-2 shadow-sm`}>
                           <i className={`fas fa-${item.icon} ${item.iconColor} text-xs`}></i>
                         </div>
                         <h3 className="font-bold text-dark-blue text-sm">{item.title}</h3>
                       </div>
                       
-                      <div className="pl-9 mt-1.5">
+                      <div className="pl-9 mt-1">
                         <p className="text-deep-blue/80 text-xs mb-2 line-clamp-2 leading-relaxed">{item.description}</p>
                         <div className="bg-blue-50 inline-block px-2 py-0.5 rounded-full">
                           <p className="text-blue-700 font-medium text-xs">{item.benefit}</p>
