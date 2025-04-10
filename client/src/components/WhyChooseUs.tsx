@@ -1,18 +1,44 @@
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import useEmblaCarousel from 'embla-carousel-react';
+import AutoPlay from 'embla-carousel-autoplay';
 
 export default function WhyChooseUs() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   
-  // Configuração do carousel para mobile
-  const [emblaRef] = useEmblaCarousel({ 
+  // Configuração do carousel com autoplay
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
     loop: true,
     align: 'center',
-    dragFree: true
-  });
+    dragFree: true,
+    slidesToScroll: 1
+  }, [AutoPlay({ delay: 3000, stopOnInteraction: false })]);
+  
+  // Configuração do carousel para desktop
+  const [desktopEmblaRef, desktopEmblaApi] = useEmblaCarousel({ 
+    loop: true,
+    align: 'center',
+    dragFree: true,
+    slidesToScroll: 1
+  }, [AutoPlay({ delay: 3500, stopOnInteraction: false })]);
+  
+  const [activeSlide, setActiveSlide] = useState(0);
+  
+  useEffect(() => {
+    if (desktopEmblaApi) {
+      desktopEmblaApi.on('select', () => {
+        setActiveSlide(desktopEmblaApi.selectedScrollSnap());
+      });
+    }
+    
+    return () => {
+      if (desktopEmblaApi) {
+        desktopEmblaApi.off('select');
+      }
+    };
+  }, [desktopEmblaApi]);
 
   // Animações
   const containerVariants = {
@@ -35,49 +61,61 @@ export default function WhyChooseUs() {
     }
   };
 
-  // Diferenciais com design minimalista
+  // Diferenciais com design premium e moderno
   const diferenciais = [
     {
       id: 1,
       icon: "certificate",
       title: "Profissionais Certificados",
-      description: "Equipe técnica com certificações atualizadas.",
-      benefit: "Segurança garantida"
+      description: "Equipe técnica com certificações atualizadas em normas elétricas.",
+      benefit: "Segurança garantida",
+      color: "from-blue-50 to-blue-100",
+      iconColor: "text-blue-600"
     },
     {
       id: 2,
       icon: "bolt",
       title: "Atendimento Rápido",
-      description: "Respondemos às suas emergências com prioridade.",
-      benefit: "Resolução em até 24h"
+      description: "Respondemos às suas emergências elétricas com máxima prioridade.",
+      benefit: "Resolução em até 24h",
+      color: "from-yellow-50 to-yellow-100",
+      iconColor: "text-yellow-600"
     },
     {
       id: 3,
       icon: "shield-alt",
       title: "Garantia de Serviço",
-      description: "Todos os serviços incluem garantia e suporte contínuo.",
-      benefit: "Garantia de 1 ano"
+      description: "Todos os serviços incluem garantia e suporte técnico contínuo.",
+      benefit: "Garantia de 1 ano",
+      color: "from-green-50 to-green-100",
+      iconColor: "text-green-600"
     },
     {
       id: 4,
       icon: "file-invoice-dollar",
       title: "Orçamento Transparente",
-      description: "Sem surpresas ou custos ocultos no final.",
-      benefit: "Previsibilidade total"
+      description: "Sem surpresas ou custos ocultos no orçamento final do seu projeto.",
+      benefit: "Previsibilidade total",
+      color: "from-purple-50 to-purple-100",
+      iconColor: "text-purple-600"
     },
     {
       id: 5,
       icon: "hard-hat",
       title: "Segurança em Primeiro",
-      description: "Seguimos rigorosos padrões de segurança.",
-      benefit: "Proteção para sua família"
+      description: "Seguimos rigorosos padrões de segurança para instalações elétricas.",
+      benefit: "Proteção para sua família",
+      color: "from-red-50 to-red-100",
+      iconColor: "text-red-600"
     },
     {
       id: 6,
       icon: "tools",
       title: "Equipamentos Modernos",
-      description: "Ferramentas de última geração para diagnósticos precisos.",
-      benefit: "Tecnologia avançada"
+      description: "Ferramentas de última geração para diagnósticos elétricos precisos.",
+      benefit: "Tecnologia avançada",
+      color: "from-cyan-50 to-cyan-100",
+      iconColor: "text-cyan-600"
     }
   ];
 
@@ -90,7 +128,7 @@ export default function WhyChooseUs() {
       <div className="container mx-auto px-4 max-w-6xl relative z-10">
         <div className="text-center mb-8 md:mb-16">
           <motion.span 
-            className="text-blue-600 font-medium text-sm tracking-wider uppercase bg-blue-50 px-4 py-1 rounded-full inline-block"
+            className="text-blue-600 font-medium text-sm tracking-wider uppercase bg-blue-50 px-4 py-1 rounded-full inline-block shadow-sm"
             initial={{ opacity: 0, y: -10 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
             transition={{ duration: 0.5 }}
@@ -99,97 +137,68 @@ export default function WhyChooseUs() {
           </motion.span>
 
           <motion.h2 
-            className="text-dark-blue text-xl md:text-3xl font-bold mt-2 mb-2 md:mb-4 px-4"
+            className="text-dark-blue text-xl md:text-4xl font-bold mt-3 mb-3 md:mb-5 px-4 relative inline-block"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Nossos diferenciais
+            <span className="relative z-10">Nossos diferenciais</span>
+            {/* Efeito de destaque sob o título */}
+            <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 h-3 w-24 md:w-32 bg-blue-100 rounded-full opacity-70 z-0"></span>
           </motion.h2>
 
           <motion.p 
-            className="text-deep-blue max-w-2xl mx-auto text-xs md:text-base px-6"
+            className="text-deep-blue max-w-2xl mx-auto text-sm md:text-base px-6"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Conte com especialistas que se importam com sua segurança elétrica.
+            Conte com especialistas que se importam com sua segurança elétrica e oferecem soluções confiáveis.
           </motion.p>
         </div>
 
-        {/* Display para desktop e tablet - Layout em Grid */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {diferenciais.map((item) => (
-            <motion.div 
-              key={item.id}
-              className="group"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              variants={itemVariants}
-            >
-              <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 h-full border border-gray-100 hover:border-blue-100 relative">
-                {/* Decoração sutil no fundo do card */}
-                <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-blue-50 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-                
-                {/* Conteúdo do card */}
-                <div className="p-6 flex flex-col h-full relative z-10">
-                  {/* Ícone com animação sutil */}
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <i className={`fas fa-${item.icon} text-primary text-lg`}></i>
-                  </div>
-                  
-                  {/* Título e descrição */}
-                  <h3 className="font-bold text-dark-blue text-lg mb-2 group-hover:text-blue-600 transition-colors duration-300">{item.title}</h3>
-                  <p className="text-deep-blue/70 text-sm mb-4">{item.description}</p>
-                  
-                  {/* Rodapé do card com benefício destacado */}
-                  <div className="mt-auto pt-3 border-t border-gray-100 w-full">
-                    <div className="flex items-center justify-between">
-                      <span className="text-blue-600 font-medium text-sm">
-                        {item.benefit}
-                      </span>
-                      <motion.div 
-                        className="w-6 h-6 bg-blue-50 rounded-full flex items-center justify-center"
-                        whileHover={{ scale: 1.2, backgroundColor: "#e6f0ff" }}
-                      >
-                        <i className="fas fa-arrow-right text-primary text-xs"></i>
-                      </motion.div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Versão mobile otimizada: Carousel compacto com layout melhorado */}
-        <div className="md:hidden">
-          <div className="overflow-hidden px-4" ref={emblaRef}>
+        {/* Display para desktop e tablet - Carousel moderno */}
+        <div className="hidden md:block relative">
+          <div className="overflow-hidden" ref={desktopEmblaRef}>
             <div className="flex">
               {diferenciais.map((item) => (
-                <div className="flex-[0_0_90%] min-w-0 mr-4" key={item.id}>
+                <div key={item.id} className="flex-[0_0_33%] min-w-0 px-4">
                   <motion.div 
-                    className="bg-white border border-gray-100 rounded-xl p-4 shadow-sm relative overflow-hidden h-full"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4 }}
+                    className="group h-full"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-50px" }}
+                    variants={itemVariants}
                   >
-                    {/* Elemento decorativo sutil */}
-                    <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-blue-50 rounded-full opacity-30"></div>
-                    
-                    {/* Layout vertical mais compacto para mobile */}
-                    <div className="relative z-10">
-                      <div className="flex items-center mb-2">
-                        <div className="w-8 h-8 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mr-3">
-                          <i className={`fas fa-${item.icon} text-primary text-xs`}></i>
-                        </div>
-                        <h3 className="font-semibold text-dark-blue text-sm">{item.title}</h3>
-                      </div>
+                    <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 h-full border border-gray-100 hover:border-blue-200 relative transform hover:-translate-y-1">
+                      {/* Decoração sutil no fundo do card */}
+                      <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-blue-50 rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-500"></div>
                       
-                      <div className="pl-11">
-                        <p className="text-deep-blue/70 text-xs mb-2 line-clamp-2">{item.description}</p>
-                        <p className="text-blue-600 font-medium text-xs">{item.benefit}</p>
+                      {/* Conteúdo do card */}
+                      <div className="p-6 flex flex-col h-full relative z-10">
+                        {/* Ícone com animação sutil e cor personalizada */}
+                        <div className={`w-14 h-14 rounded-lg bg-gradient-to-br ${item.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                          <i className={`fas fa-${item.icon} ${item.iconColor} text-lg`}></i>
+                        </div>
+                        
+                        {/* Título e descrição */}
+                        <h3 className="font-bold text-dark-blue text-lg mb-3 group-hover:text-blue-600 transition-colors duration-300">{item.title}</h3>
+                        <p className="text-deep-blue/80 mb-4">{item.description}</p>
+                        
+                        {/* Rodapé do card com benefício destacado */}
+                        <div className="mt-auto pt-3 border-t border-gray-100 w-full">
+                          <div className="flex items-center justify-between">
+                            <span className="text-blue-600 font-medium">
+                              {item.benefit}
+                            </span>
+                            <motion.div 
+                              className="w-8 h-8 bg-blue-50 rounded-full flex items-center justify-center"
+                              whileHover={{ scale: 1.2, backgroundColor: "#e6f0ff" }}
+                            >
+                              <i className="fas fa-arrow-right text-primary"></i>
+                            </motion.div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </motion.div>
@@ -198,13 +207,84 @@ export default function WhyChooseUs() {
             </div>
           </div>
           
-          {/* Indicadores de slide melhorados */}
-          <div className="flex justify-center mt-3 space-x-1.5">
+          {/* Indicadores de slide melhorados para desktop */}
+          <div className="flex justify-center mt-8 space-x-2">
             {diferenciais.map((_, index) => (
-              <motion.div
+              <motion.button
                 key={index}
-                className="w-2 h-2 rounded-full bg-gray-300"
-                whileHover={{ scale: 1.5, backgroundColor: "#3b82f6" }}
+                onClick={() => desktopEmblaApi?.scrollTo(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${activeSlide === index ? 'bg-blue-600 scale-125' : 'bg-gray-300'}`}
+                whileHover={{ scale: 1.3 }}
+              />
+            ))}
+          </div>
+          
+          {/* Controles de navegação */}
+          <button 
+            onClick={() => desktopEmblaApi?.scrollPrev()} 
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-10 bg-white w-10 h-10 rounded-full shadow-md flex items-center justify-center border border-gray-100 hover:bg-blue-50 transition-colors z-10"
+            aria-label="Previous slide"
+          >
+            <i className="fas fa-chevron-left text-blue-600"></i>
+          </button>
+          <button 
+            onClick={() => desktopEmblaApi?.scrollNext()} 
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-10 bg-white w-10 h-10 rounded-full shadow-md flex items-center justify-center border border-gray-100 hover:bg-blue-50 transition-colors z-10"
+            aria-label="Next slide"
+          >
+            <i className="fas fa-chevron-right text-blue-600"></i>
+          </button>
+        </div>
+
+        {/* Versão mobile otimizada: Carousel automático com visual premium */}
+        <div className="md:hidden">
+          <div className="overflow-hidden mx-4 relative rounded-lg" ref={emblaRef}>
+            <div className="flex">
+              {diferenciais.map((item) => (
+                <div className="flex-[0_0_85%] min-w-0 pl-3 pr-5" key={item.id}>
+                  <motion.div 
+                    className="bg-white border border-gray-100 rounded-xl p-5 shadow-md relative overflow-hidden h-full transform transition-all duration-300"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4 }}
+                    whileHover={{ boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.1), 0 8px 10px -6px rgba(59, 130, 246, 0.1)" }}
+                  >
+                    {/* Elemento decorativo moderno */}
+                    <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-gradient-to-tr from-blue-100 to-transparent rounded-full opacity-40"></div>
+                    
+                    {/* Layout vertical mais premium para mobile */}
+                    <div className="relative z-10">
+                      <div className="flex items-center mb-3">
+                        <div className={`w-10 h-10 bg-gradient-to-br ${item.color} rounded-lg flex items-center justify-center flex-shrink-0 mr-4 shadow-sm`}>
+                          <i className={`fas fa-${item.icon} ${item.iconColor} text-sm`}></i>
+                        </div>
+                        <h3 className="font-bold text-dark-blue">{item.title}</h3>
+                      </div>
+                      
+                      <div className="pl-14 mt-1">
+                        <p className="text-deep-blue/80 text-sm mb-3">{item.description}</p>
+                        <div className="bg-blue-50 inline-block px-3 py-1.5 rounded-full">
+                          <p className="text-blue-700 font-medium text-xs">{item.benefit}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Indicadores de slide animados */}
+          <div className="flex justify-center mt-5 space-x-1.5">
+            {diferenciais.map((_, index) => (
+              <motion.button
+                key={index}
+                onClick={() => emblaApi?.scrollTo(index)}
+                className="w-2.5 h-2.5 rounded-full bg-gray-300 transition-all duration-300 hover:bg-blue-500"
+                whileHover={{ scale: 1.4 }}
+                whileTap={{ scale: 0.9 }}
+                initial={{ opacity: 0.7 }}
+                animate={{ opacity: 1 }}
               />
             ))}
           </div>
