@@ -45,7 +45,7 @@ const VideoPresentation = () => {
           
           <div className="relative aspect-video bg-gray-900 rounded-xl overflow-hidden shadow-2xl">
             <iframe 
-              src="https://www.youtube.com/embed/BRLHJhQZlGo?si=tUPNQ-OvbsXvnX22" 
+              src="https://www.youtube.com/embed/UUq4Sp871pM?si=lS14D5AE6pcXqGQY" 
               title="Vídeo de Apresentação RR Manutenções Elétricas" 
               className="absolute top-0 left-0 w-full h-full" 
               frameBorder="0" 
