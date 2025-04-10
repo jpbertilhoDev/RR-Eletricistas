@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -26,7 +25,7 @@ const ElectricButtonEffect: React.FC<ElectricButtonEffectProps> = ({
     <div className={`relative group ${className}`}>
       {/* Container do botão com efeito de brilho */}
       <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-blue-700 rounded-md blur opacity-30 group-hover:opacity-80 transition duration-1000 group-hover:duration-200"></div>
-      
+
       {/* Efeitos de raio ao redor do botão */}
       {lightningEffects.map((effect) => (
         <React.Fragment key={effect.id}>
@@ -51,7 +50,7 @@ const ElectricButtonEffect: React.FC<ElectricButtonEffectProps> = ({
               repeatDelay: 5 + Math.random() * 3
             }}
           />
-          
+
           <motion.div
             className="absolute w-1 bg-blue-300 origin-center opacity-0 z-0"
             style={{
@@ -75,7 +74,7 @@ const ElectricButtonEffect: React.FC<ElectricButtonEffectProps> = ({
           />
         </React.Fragment>
       ))}
-      
+
       {/* Container principal que mantém o conteúdo do botão */}
       <motion.div 
         className="relative z-10"
@@ -84,7 +83,7 @@ const ElectricButtonEffect: React.FC<ElectricButtonEffectProps> = ({
       >
         {children}
       </motion.div>
-      
+
       {/* Partículas elétricas que aparecem ao passar o mouse */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-md z-0">
         {Array.from({ length: 6 }).map((_, i) => (
