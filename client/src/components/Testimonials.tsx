@@ -1,40 +1,31 @@
-
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { TESTIMONIALS } from "@/lib/constants";
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselNext, 
+  CarouselPrevious 
+} from "@/components/ui/carousel";
 import { useIsMobile } from "@/hooks/use-mobile";
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: {
-      duration: 0.6
-    }
-  }
-};
 
 export default function Testimonials() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const isMobile = useIsMobile();
 
-  // Versão mobile só mostra 2 depoimentos
-  const displayTestimonials = isMobile ? TESTIMONIALS.slice(0, 2) : TESTIMONIALS;
-
   return (
-    <section id="depoimentos" ref={sectionRef} className="py-16 md:py-24 bg-gradient-to-b from-white to-blue-50">
-      <div className="container mx-auto px-4 max-w-6xl">
+    <section 
+      id="depoimentos" 
+      ref={sectionRef} 
+      className="py-16 md:py-24 bg-gradient-to-b from-white to-blue-50 relative overflow-hidden"
+    >
+      {/* Elementos decorativos de fundo */}
+      <div className="absolute top-0 left-0 w-64 h-64 bg-blue-50 rounded-full opacity-20 -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-50 rounded-full opacity-30 translate-x-1/3 translate-y-1/3" />
+
+      <div className="container mx-auto px-4 max-w-6xl relative z-10">
         <div className="text-center mb-12 md:mb-16">
           <motion.span 
             className="text-blue-600 font-medium text-sm tracking-wider uppercase bg-blue-50 px-4 py-1 rounded-full"
@@ -44,7 +35,7 @@ export default function Testimonials() {
           >
             Clientes satisfeitos
           </motion.span>
-          
+
           <motion.h2 
             className="text-dark-blue text-3xl font-bold mt-3 mb-4"
             initial={{ opacity: 0, y: 20 }}
@@ -53,7 +44,7 @@ export default function Testimonials() {
           >
             O que nossos clientes dizem
           </motion.h2>
-          
+
           <motion.p 
             className="text-deep-blue max-w-2xl mx-auto"
             initial={{ opacity: 0 }}
@@ -65,105 +56,67 @@ export default function Testimonials() {
           </motion.p>
         </div>
 
-        {isMobile ? (
-          // Versão Mobile - Cards em coluna única
-          <div className="space-y-6">
-            {displayTestimonials.map((testimonial) => (
-              <motion.div 
-                key={testimonial.id}
-                className="bg-white p-6 rounded-xl shadow-sm border border-gray-100"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, delay: 0.1 * testimonial.id }}
-              >
-                <div className="flex items-center mb-4">
-                  <div className="flex-shrink-0 mr-3">
-                    <img 
-                      src={`https://randomuser.me/api/portraits/${testimonial.id % 2 === 0 ? 'women' : 'men'}/${20 + testimonial.id * 10}.jpg`}
-                      alt={testimonial.name} 
-                      className="w-12 h-12 rounded-full object-cover border-2 border-blue-100"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-dark-blue">{testimonial.name}</h4>
-                    <p className="text-xs text-gray-600">{testimonial.role}</p>
-                    <div className="flex mt-1">
-                      {[...Array(5)].map((_, i) => (
-                        <i key={i} className={`fas fa-star text-xs ${i < Math.floor(testimonial.rating) ? 'text-yellow-400' : 'text-gray-300'}`}></i>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <p className="text-deep-blue text-sm">{testimonial.content}</p>
-              </motion.div>
-            ))}
-            
-            <motion.div 
-              className="text-center mt-6"
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              <a
-                href="#contato"
-                className="inline-flex items-center text-primary font-medium"
-              >
-                Seja o próximo cliente satisfeito
-                <i className="fas fa-arrow-right ml-2 text-sm"></i>
-              </a>
-            </motion.div>
-          </div>
-        ) : (
-          // Versão Desktop - Grid com animações mais elaboradas
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="max-w-5xl mx-auto relative"
+        >
+          <Carousel
+            opts={{
+              align: "center",
+              loop: true
+            }}
+            className="w-full"
           >
-            {displayTestimonials.map((testimonial) => (
-              <motion.div 
-                key={testimonial.id}
-                className="bg-white p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300 relative overflow-hidden group"
-                variants={itemVariants}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
-                {/* Elemento decorativo */}
-                <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-blue-50 rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
-                
-                <div className="flex items-center mb-6 relative z-10">
-                  <div className="flex-shrink-0 mr-4">
-                    <img 
-                      src={`https://randomuser.me/api/portraits/${testimonial.id % 2 === 0 ? 'women' : 'men'}/${20 + testimonial.id * 10}.jpg`}
-                      alt={testimonial.name} 
-                      className="w-16 h-16 rounded-full object-cover border-2 border-blue-100 group-hover:border-blue-200 transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-dark-blue text-lg">{testimonial.name}</h4>
-                    <p className="text-gray-600">{testimonial.role}</p>
-                    <div className="flex mt-1">
-                      {[...Array(5)].map((_, i) => (
-                        <i key={i} className={`fas fa-star ${i < Math.floor(testimonial.rating) ? 'text-yellow-400' : 'text-gray-300'} text-sm mr-1`}></i>
-                      ))}
-                      {testimonial.rating % 1 !== 0 && (
-                        <i className="fas fa-star-half-alt text-yellow-400 text-sm mr-1"></i>
-                      )}
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {TESTIMONIALS.map((testimonial) => (
+                <CarouselItem key={testimonial.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                  <div className="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-gray-100 h-full flex flex-col transition-all duration-300 hover:shadow-md hover:border-blue-100">
+                    <div className="flex items-center mb-4">
+                      <div className="flex-shrink-0 mr-3">
+                        <img 
+                          src={`https://randomuser.me/api/portraits/${testimonial.id % 2 === 0 ? 'women' : 'men'}/${20 + testimonial.id * 10}.jpg`}
+                          alt={testimonial.name} 
+                          className="w-12 h-12 rounded-full object-cover border-2 border-blue-100"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-dark-blue">{testimonial.name}</h4>
+                        <p className="text-xs text-gray-600">{testimonial.role}</p>
+                        <div className="flex mt-1">
+                          {[...Array(5)].map((_, i) => (
+                            <i key={i} className={`fas fa-star text-xs ${i < Math.floor(testimonial.rating) ? 'text-yellow-400' : 'text-gray-300'}`}></i>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                    <p className="text-deep-blue text-sm flex-grow">{testimonial.content}</p>
+                    <div className="mt-6 pt-4 border-t border-gray-100 text-right">
+                      <span className="text-xs text-gray-500 italic">Projeto realizado em {2023 - testimonial.id}</span>
                     </div>
                   </div>
-                </div>
-                <blockquote className="relative z-10">
-                  <i className="fas fa-quote-left text-blue-100 text-4xl absolute -top-2 -left-2 opacity-50"></i>
-                  <p className="text-deep-blue relative z-10 pl-4">{testimonial.content}</p>
-                </blockquote>
-                
-                <div className="mt-6 pt-4 border-t border-gray-100 text-right">
-                  <span className="text-sm text-gray-500 italic">Projeto realizado em {2023 - testimonial.id}</span>
-                </div>
-              </motion.div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+
+            <div className="hidden md:block">
+              <CarouselPrevious className="h-9 w-9 -left-12 border-gray-200 text-gray-700 hover:bg-blue-50 hover:text:blue-600 hover:border-blue-200" />
+              <CarouselNext className="h-9 w-9 -right-12 border-gray-200 text-gray-700 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200" />
+            </div>
+          </Carousel>
+
+          {/* Indicadores para dispositivos móveis */}
+          <div className="flex justify-center mt-6 gap-1.5 md:hidden">
+            {TESTIMONIALS.map((_, index) => (
+              <div 
+                key={index} 
+                className={`w-2 h-2 rounded-full ${index === 0 ? 'bg-blue-600' : 'bg-gray-300'}`}
+              />
             ))}
-          </motion.div>
-        )}
+          </div>
+        </motion.div>
 
         <motion.div 
           className="text-center mt-16 bg-white p-8 rounded-xl shadow-sm max-w-3xl mx-auto border border-blue-100"
