@@ -56,9 +56,9 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
-  // Serve the app on port 3000
-  const port = 3000;
-  server.listen(port, () => {
+  // Use environment port or fallback to development port
+  const port = process.env.NODE_ENV === "production" ? 5000 : 3000;
+  server.listen(port, "0.0.0.0", () => {
     log(`serving on port ${port}`);
   });
 })();
