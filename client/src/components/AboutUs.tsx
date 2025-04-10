@@ -21,222 +21,198 @@ const AboutUs = () => {
     {
       name: "Ricardo Silva",
       role: "Fundador",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80"
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80",
+      bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec enim in diam."
     },
     {
       name: "Rafael Oliveira",
       role: "Técnico Especializado",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80"
+      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80",
+      bio: "Nulla facilisi. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris."
     },
     {
       name: "Amanda Ferreira",
       role: "Gestora de Projetos",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80"
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200&q=80",
+      bio: "Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper."
     }
   ];
 
   return (
-    <section id="quem-somos" ref={sectionRef} className="py-8 md:py-24 bg-gradient-to-b from-blue-50/50 to-white relative">
-      {/* Elementos decorativos (apenas desktop) */}
-      {!isMobile && (
-        <>
-          <div className="absolute top-20 right-10 w-24 h-24 rounded-full bg-blue-100/30 blur-xl hidden md:block"></div>
-          <div className="absolute bottom-20 left-10 w-32 h-32 rounded-full bg-blue-200/20 blur-xl hidden md:block"></div>
-        </>
-      )}
-      
-      <div className="container mx-auto px-4 max-w-6xl">
+    <section id="quem-somos" ref={sectionRef} className="py-20 relative overflow-hidden bg-white">
+      {/* Background decorations */}
+      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-blue-50 rounded-full opacity-30 blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-blue-50 rounded-full opacity-30 blur-3xl"></div>
+
+      <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <motion.div 
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          transition={{ duration: 0.7 }}
         >
-          <span className="text-blue-600 font-medium text-sm tracking-wider uppercase bg-blue-50 px-4 py-1 rounded-full">Nossa História</span>
-          <h2 className="text-2xl md:text-4xl font-bold text-dark-blue mt-3">Quem Somos</h2>
+          <span className="text-blue-600 font-medium text-sm tracking-wider uppercase bg-blue-50 px-4 py-1 rounded-full">NOSSA HISTÓRIA</span>
+          <h2 className="text-dark-blue text-4xl font-bold mt-3 mb-4">Quem Somos</h2>
+          <p className="text-deep-blue max-w-3xl mx-auto text-lg">
+            Conheça a equipe que transforma ambientes com soluções elétricas seguras e inovadoras
+          </p>
         </motion.div>
 
-        {/* Layout desktop - apresentação principal */}
-        {!isMobile ? (
-          <div className="flex flex-col md:flex-row gap-8 items-center mb-16">
-            <motion.div 
-              className="md:w-1/2"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <div className="relative h-80 rounded-2xl overflow-hidden shadow-lg">
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent"></div>
+        <div className="grid md:grid-cols-12 gap-12 items-center">
+          <motion.div 
+            className="md:col-span-6 lg:col-span-7"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <div className="relative">
+              <div className="absolute -top-4 -left-4 w-full h-full bg-blue-100 rounded-xl"></div>
+              <div className="absolute -bottom-4 -right-4 w-full h-full bg-primary/10 rounded-xl"></div>
+              <div className="bg-white p-3 md:p-6 rounded-xl shadow-lg relative z-10">
                 <img 
-                  src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80" 
-                  alt="RR Manutenções Elétricas"
-                  className="w-full h-full object-cover"
+                  src="https://images.pexels.com/photos/442151/pexels-photo-442151.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                  alt="Equipe trabalhando em um projeto elétrico" 
+                  className="w-full h-auto rounded-lg"
                 />
               </div>
-            </motion.div>
-            
-            <motion.div 
-              className="md:w-1/2"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <div className="bg-white rounded-2xl shadow-md border border-blue-100/50 p-8">
-                <h3 className="text-2xl font-semibold text-dark-blue mb-4">Nossa Trajetória</h3>
-                <p className="text-deep-blue text-base leading-relaxed mb-6">
-                  Com mais de 10 anos de experiência, a RR Manutenções Elétricas se destaca pela excelência em serviços elétricos residenciais e comerciais. Nossa equipe altamente qualificada é composta por profissionais experientes e dedicados.
-                </p>
-                <p className="text-deep-blue text-base leading-relaxed">
-                  Acreditamos que a segurança elétrica e a satisfação do cliente andam juntas, por isso, cada projeto é tratado com o máximo de atenção aos detalhes e às normas técnicas.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        ) : (
+            </div>
+          </motion.div>
+
           <motion.div 
-            className="bg-white rounded-2xl shadow-sm border border-blue-100/50 p-6 mb-6"
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
+            className="md:col-span-6 lg:col-span-5"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
           >
-            <div className="relative h-48 rounded-xl overflow-hidden mb-6">
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent"></div>
-              <img 
-                src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80" 
-                alt="RR Manutenções Elétricas"
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            <p className="text-deep-blue text-sm leading-relaxed mb-4">
-              Com mais de 10 anos de experiência, a RR Manutenções Elétricas se destaca pela excelência em serviços elétricos residenciais e comerciais.
-            </p>
-          </motion.div>
-        )}
-
-        {/* Valores e Missão - Layout diferente para desktop */}
-        {!isMobile ? (
-          <div className="grid grid-cols-3 gap-6 mb-16">
-            <motion.div
-              className="bg-white p-8 rounded-xl shadow-md border border-blue-100/50 h-full flex flex-col items-center text-center"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-            >
-              <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-5">
-                <i className="fas fa-star text-blue-600 text-xl"></i>
+            <div className="space-y-6">
+              <div className="bg-blue-50 px-6 py-4 rounded-lg border-l-4 border-blue-600">
+                <p className="text-deep-blue text-lg italic">
+                  "Nossa paixão é transformar ambientes através de soluções elétricas que combinam segurança, eficiência e inovação."
+                </p>
               </div>
-              <h3 className="text-xl font-semibold text-dark-blue mb-3">Nossa Missão</h3>
+
+              <p className="text-deep-blue text-lg">
+                <strong className="text-blue-600">Com mais de 10 anos de experiência</strong>, a RR Manutenções Elétricas se destaca pela excelência em serviços elétricos residenciais e comerciais.
+              </p>
+
               <p className="text-deep-blue">
-                Garantir soluções elétricas seguras e eficientes, priorizando a satisfação e tranquilidade dos nossos clientes em cada atendimento.
+                Fundada com o compromisso de oferecer soluções elétricas seguras e eficientes, nossa empresa cresceu construindo uma <strong>reputação baseada na qualidade, honestidade e atendimento personalizado</strong>.
               </p>
-            </motion.div>
 
-            <motion.div
-              className="bg-white p-8 rounded-xl shadow-md border border-blue-100/50 h-full flex flex-col items-center text-center"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-5">
-                <i className="fas fa-eye text-blue-600 text-xl"></i>
-              </div>
-              <h3 className="text-xl font-semibold text-dark-blue mb-3">Nossa Visão</h3>
               <p className="text-deep-blue">
-                Ser referência regional em soluções elétricas, reconhecida pela excelência técnica e atendimento personalizado.
+                Nossa equipe é formada por profissionais altamente qualificados e em constante atualização, garantindo a aplicação das melhores práticas e tecnologias do mercado em cada projeto que realizamos.
               </p>
-            </motion.div>
 
-            <motion.div
-              className="bg-white p-8 rounded-xl shadow-md border border-blue-100/50 h-full flex flex-col items-center text-center"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-            >
-              <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-5">
-                <i className="fas fa-shield-alt text-blue-600 text-xl"></i>
-              </div>
-              <h3 className="text-xl font-semibold text-dark-blue mb-3">Nossos Valores</h3>
-              <p className="text-deep-blue">
-                Comprometimento, qualidade, segurança e transparência em cada projeto realizado, valorizando a confiança de nossos clientes.
-              </p>
-            </motion.div>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <motion.div
-              className="bg-white p-5 rounded-xl shadow-sm border border-blue-100/50"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-star text-blue-600 text-lg"></i>
-              </div>
-              <h3 className="text-lg font-semibold text-dark-blue mb-2">Nossa Missão</h3>
-              <p className="text-deep-blue text-sm">
-                Garantir soluções elétricas seguras e eficientes, priorizando a satisfação e tranquilidade dos nossos clientes.
-              </p>
-            </motion.div>
-
-            <motion.div
-              className="bg-white p-5 rounded-xl shadow-sm border border-blue-100/50"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-4">
-                <i className="fas fa-shield-alt text-blue-600 text-lg"></i>
-              </div>
-              <h3 className="text-lg font-semibold text-dark-blue mb-2">Nossos Valores</h3>
-              <p className="text-deep-blue text-sm">
-                Comprometimento, qualidade e transparência em cada projeto realizado.
-              </p>
-            </motion.div>
-          </div>
-        )}
-
-        {/* Seção da equipe - Versão desktop aprimorada */}
-        {!isMobile && (
-          <motion.div
-            className="bg-white p-10 rounded-2xl shadow-md border border-blue-100/50"
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <h3 className="text-2xl font-semibold text-dark-blue mb-8 text-center">Nossa Equipe</h3>
-            <div className="grid grid-cols-3 gap-10">
-              {teamMembers.map((member, index) => (
-                <motion.div 
-                  key={index} 
-                  className="text-center group"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.2 }}
-                >
-                  <div className="w-32 h-32 mx-auto rounded-full overflow-hidden mb-5 ring-2 ring-blue-100 shadow-md group-hover:ring-blue-400 transition-all duration-300">
-                    <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300" />
+              <div className="grid grid-cols-2 gap-4 pt-4">
+                <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-100">
+                  <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-3">
+                    <i className="fas fa-star text-blue-600 text-lg"></i>
                   </div>
-                  <h4 className="font-semibold text-lg text-dark-blue mb-1">{member.name}</h4>
-                  <p className="text-blue-600">{member.role}</p>
-                </motion.div>
-              ))}
+                  <h3 className="text-lg font-semibold text-dark-blue mb-2">Nossa Missão</h3>
+                  <p className="text-deep-blue text-sm">
+                    Proporcionar soluções elétricas que unam segurança e inovação.
+                  </p>
+                </div>
+
+                <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-100">
+                  <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-3">
+                    <i className="fas fa-eye text-blue-600 text-lg"></i>
+                  </div>
+                  <h3 className="text-lg font-semibold text-dark-blue mb-2">Nossa Visão</h3>
+                  <p className="text-deep-blue text-sm">
+                    Ser referência em excelência técnica e atendimento ao cliente.
+                  </p>
+                </div>
+              </div>
             </div>
           </motion.div>
-        )}
+        </div>
+
+
+        <motion.div 
+          className="mt-24"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <h3 className="text-2xl md:text-3xl font-bold text-dark-blue text-center mb-8">
+            <span className="relative inline-block">
+              Conheça Nossa Equipe
+              <span className="absolute -bottom-2 left-0 right-0 h-1 bg-blue-600 rounded-full"></span>
+            </span>
+          </h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            {teamMembers.map((member, index) => (
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                className="bg-white rounded-xl shadow-lg overflow-hidden group hover:translate-y-[-10px] transition-all duration-300"
+              >
+                <div className="relative overflow-hidden">
+                  <div className="aspect-square overflow-hidden bg-blue-100">
+                    <img 
+                      src={member.image} 
+                      alt={member.name} 
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-900/80 to-transparent h-1/3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                </div>
+
+                <div className="p-8 relative">
+                  <div className="absolute -top-8 right-8 w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-lg transform-gpu group-hover:rotate-12 transition-transform duration-300">
+                    <i className={`fas ${index === 0 ? 'fa-bolt' : index === 1 ? 'fa-wrench' : 'fa-clipboard-list'} text-2xl`}></i>
+                  </div>
+
+                  <h4 className="text-xl font-bold text-dark-blue mb-1">{member.name}</h4>
+                  <p className="text-blue-600 font-medium mb-4">{member.role}</p>
+                  <p className="text-deep-blue text-sm">{member.bio}</p>
+
+                  <div className="flex gap-3 mt-5 pt-5 border-t border-gray-100">
+                    <a href="#" className="w-8 h-8 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-full flex items-center justify-center transition-colors">
+                      <i className="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" className="w-8 h-8 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-full flex items-center justify-center transition-colors">
+                      <i className="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" className="w-8 h-8 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-full flex items-center justify-center transition-colors">
+                      <i className="fas fa-envelope"></i>
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div 
+            className="mt-20 text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+          >
+            <h4 className="text-xl md:text-2xl font-bold text-dark-blue mb-5">Pronto para transformar sua instalação elétrica?</h4>
+            <p className="text-deep-blue max-w-2xl mx-auto mb-8">
+              Nossa equipe está preparada para desenvolver soluções personalizadas que atendam perfeitamente às suas necessidades.
+            </p>
+            <a 
+              href="#contato" 
+              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium px-8 py-4 rounded-lg transition-colors shadow-md hover:shadow-lg"
+            >
+              Solicite um orçamento
+              <i className="fas fa-arrow-right"></i>
+            </a>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
