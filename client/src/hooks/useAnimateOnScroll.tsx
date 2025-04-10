@@ -1,9 +1,12 @@
-import { useEffect, RefObject } from "react";
+
+import { useEffect, RefObject, useState } from "react";
 
 export function useAnimateOnScroll<T extends HTMLElement>(
   ref: RefObject<T>,
-  options = { threshold: 0.1, rootMargin: "0px" }
+  threshold = 0.1
 ) {
+  const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
     if (!ref.current) return;
 
@@ -11,11 +14,15 @@ export function useAnimateOnScroll<T extends HTMLElement>(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            setIsVisible(true);
             entry.target.classList.add("animate-in");
           }
         });
       },
-      options
+      {
+        threshold: threshold,
+        rootMargin: "0px"
+      }
     );
 
     observer.observe(ref.current);
@@ -25,5 +32,7 @@ export function useAnimateOnScroll<T extends HTMLElement>(
         observer.unobserve(ref.current);
       }
     };
-  }, [ref, options]);
+  }, [ref, threshold]);
+
+  return isVisible;
 }
