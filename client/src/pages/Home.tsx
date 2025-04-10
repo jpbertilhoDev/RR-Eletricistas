@@ -37,9 +37,9 @@ const Home = () => {
       <div className="flex flex-col items-center">
         <Hero />
         <Services />
-        <AboutUs />
-        <WhyChooseUs />
         <Testimonials />
+        <AboutUs />
+        {!isMobile && <WhyChooseUs />}
         <Contact />
       </div>
     </Layout>

@@ -126,6 +126,68 @@ const Hero = () => {
             </motion.div>
           </div>
         </motion.div>
+        
+        {/* Vídeo de Apresentação */}
+        <div className="bg-white py-16 md:py-24 relative z-10">
+          <div className="container mx-auto px-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="max-w-3xl mx-auto text-center mb-10"
+            >
+              <span className="text-blue-600 font-medium text-sm tracking-wider uppercase bg-blue-50 px-4 py-1 rounded-full">Conheça nossa empresa</span>
+              <h2 className="text-dark-blue text-3xl font-bold mt-4 mb-5">Veja como trabalhamos para sua segurança</h2>
+              <p className="text-deep-blue max-w-2xl mx-auto">
+                Assista nosso vídeo institucional e descubra como nossa equipe 
+                de profissionais certificados trabalha para garantir instalações 
+                elétricas seguras e eficientes.
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="aspect-video max-w-4xl mx-auto shadow-xl rounded-xl overflow-hidden border-4 border-white md:mb-10"
+            >
+              <div className="relative pb-[56.25%] h-0 w-full">
+                <iframe 
+                  src="https://www.youtube.com/embed/BRLHJhQZlGo?si=tUPNQ-OvbsXvnX22" 
+                  title="Vídeo de Apresentação RR Manutenções Elétricas" 
+                  className="absolute top-0 left-0 w-full h-full" 
+                  frameBorder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowFullScreen>
+                </iframe>
+              </div>
+            </motion.div>
+            
+            {/* Call-to-action após o vídeo - apenas para desktop */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+              className="text-center mt-10 hidden md:block"
+            >
+              <p className="text-deep-blue mb-6">
+                Precisa de serviços elétricos profissionais para sua casa ou empresa?
+              </p>
+              <a
+                href={`https://wa.me/+5511972650865`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+              >
+                <i className="fab fa-whatsapp mr-2 text-lg"></i>
+                Solicite um orçamento
+              </a>
+            </motion.div>
+          </div>
+        </div>
       </div>
 
       {/* Separador com animação */}
