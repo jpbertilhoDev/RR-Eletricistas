@@ -131,7 +131,7 @@ const WhyChooseUs = () => {
           {diferenciais.map((item, index) => (
             <motion.div 
               key={item.id}
-              className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 relative overflow-hidden transition-all duration-300 hover:shadow-md"
+              className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 relative overflow-hidden transition-all duration-300 hover:shadow-md hover:border-blue-100"
               initial={{ opacity: 0, y: 20 }}
               animate={animationTriggered ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -149,7 +149,8 @@ const WhyChooseUs = () => {
                 </p>
 
                 <div className="mt-auto">
-                  <span className={`inline-block py-2 px-4 rounded-full text-sm font-medium ${item.ctaColor} transition-colors duration-300 shadow-sm hover:shadow-md cursor-pointer`}>
+                  <span className={`inline-flex items-center py-1.5 px-3 rounded-md text-xs font-medium bg-gray-50 text-blue-700 border border-gray-100 transition-all duration-300 hover:bg-blue-50 hover:border-blue-100 cursor-pointer`}>
+                    <i className={`fas fa-check-circle text-blue-500 mr-1.5 text-xs`}></i>
                     {item.cta}
                   </span>
                 </div>
@@ -165,7 +166,7 @@ const WhyChooseUs = () => {
               {diferenciais.map((item) => (
                 <CarouselItem key={item.id} className="pl-4 pr-4 basis-full">
                   <motion.div 
-                    className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm relative overflow-hidden h-full"
+                    className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm relative overflow-hidden h-full hover:border-blue-100"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4 }}
@@ -182,8 +183,9 @@ const WhyChooseUs = () => {
                         {item.description}
                       </p>
 
-                      <div className="mt-4">
-                        <span className={`inline-block py-1.5 px-4 rounded-full text-xs font-medium ${item.ctaColor} transition-colors duration-300 shadow-sm cursor-pointer`}>
+                      <div className="mt-3">
+                        <span className={`inline-flex items-center py-1 px-2.5 rounded-md text-xs font-medium bg-gray-50 text-blue-700 border border-gray-100 transition-all duration-300 hover:bg-blue-50 hover:border-blue-100 cursor-pointer`}>
+                          <i className={`fas fa-check-circle text-blue-500 mr-1.5 text-xs`}></i>
                           {item.cta}
                         </span>
                       </div>
