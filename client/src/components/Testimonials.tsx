@@ -61,7 +61,7 @@ export default function Testimonials() {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
-    <section id="depoimentos" ref={sectionRef} className="py-24 bg-white hidden md:block">
+    <section id="depoimentos" ref={sectionRef} className="py-24 bg-white md:block">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="text-center mb-16">
           <span className="text-blue-600 font-medium text-sm tracking-wider uppercase bg-blue-50 px-4 py-1 rounded-full">O que nossos clientes dizem</span>

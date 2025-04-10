@@ -38,10 +38,8 @@ const Home = () => {
         <Hero />
         <Services />
         <AboutUs />
-        { !isMobile && ( <>
-          <WhyChooseUs />
-          <Testimonials />
-        </>)}
+        <WhyChooseUs />
+        <Testimonials />
         <Contact />
       </div>
     </Layout>
