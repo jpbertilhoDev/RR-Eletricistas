@@ -399,8 +399,8 @@
     }
     
     /* Ajustes específicos para componente WhyChooseUs no mobile */
-    #diferenciais .flex-[0_0_90%] {
-      max-width: 85vw;
+    #diferenciais .flex-[0_0_85%] {
+      max-width: 80vw;
     }
     
     #diferenciais .rounded-lg {
@@ -408,13 +408,30 @@
     }
     
     #diferenciais p {
-      font-size: 0.7rem;
-      line-height: 1.2;
+      font-size: 0.75rem;
+      line-height: 1.3;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
     
     #diferenciais h3 {
-      font-size: 0.8rem;
-      line-height: 1.1;
+      font-size: 0.9rem;
+      line-height: 1.2;
+    }
+    
+    /* Garantir que o carousel não corte nas bordas */
+    #diferenciais .overflow-hidden {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 95%;
+    }
+    
+    /* Melhorar a visualização dos slides */
+    #diferenciais .embla__slide {
+      padding: 0 0.5rem;
     }
   }
 
