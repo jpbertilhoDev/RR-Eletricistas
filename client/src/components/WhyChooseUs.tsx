@@ -1,13 +1,12 @@
+
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { WHYCHOOSEUS } from "@/lib/constants";
 import { useIsMobile } from "@/hooks/use-mobile";
-// Importação correta do Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
-// Importações de estilos
+import { Pagination, Autoplay } from "swiper/modules";
+
+// Importações de estilos do Swiper
 import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 export default function WhyChooseUs() {
@@ -68,6 +67,38 @@ export default function WhyChooseUs() {
     }
   ];
 
+  // Card Component (extraído para melhor reutilização)
+  const Card = ({ item, isMobile }) => (
+    <motion.div 
+      className={`bg-white rounded-lg overflow-hidden h-full shadow-sm hover:shadow-md transition-shadow duration-300 ${isMobile ? "" : "mx-2"}`}
+      whileHover={{ y: -5, transition: { duration: 0.3 } }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="relative h-52 overflow-hidden">
+        <img 
+          src={item.image} 
+          alt={item.title} 
+          className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+        />
+      </div>
+      <div className="p-6">
+        <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
+        <p className="text-gray-600 mb-4">{item.description}</p>
+        <a 
+          href={item.link} 
+          className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors"
+        >
+          Saiba mais
+          <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </motion.div>
+  );
+
   return (
     <section id="diferenciais" ref={sectionRef} className="py-16 bg-white relative overflow-hidden">
       {/* Background minimalista */}
@@ -105,11 +136,11 @@ export default function WhyChooseUs() {
         </div>
 
         {isMobile ? (
-          <div className="mt-8">
+          <div className="mt-8 mb-12">
             <Swiper
-              modules={[Navigation, Pagination, Autoplay]}
+              modules={[Pagination, Autoplay]}
               spaceBetween={16}
-              slidesPerView={1.1}
+              slidesPerView={1.2}
               centeredSlides={false}
               pagination={{ clickable: true }}
               loop={true}
@@ -117,35 +148,11 @@ export default function WhyChooseUs() {
                 delay: 3000,
                 disableOnInteraction: false,
               }}
-              className="w-full overflow-visible"
+              className="pb-12"
             >
               {diferenciais.map((card) => (
-                <SwiperSlide key={card.id} className="pb-10">
-                  <motion.div 
-                    className="bg-white rounded-lg overflow-hidden h-full shadow-sm hover:shadow-md transition-shadow duration-300"
-                    whileHover={{ y: -5, transition: { duration: 0.3 } }}
-                  >
-                    <div className="relative h-52 overflow-hidden">
-                      <img 
-                        src={card.image} 
-                        alt={card.title} 
-                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                      />
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">{card.title}</h3>
-                      <p className="text-gray-600 mb-4">{card.description}</p>
-                      <a 
-                        href={card.link} 
-                        className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors"
-                      >
-                        Saiba mais
-                        <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                      </a>
-                    </div>
-                  </motion.div>
+                <SwiperSlide key={card.id}>
+                  <Card item={card} isMobile={true} />
                 </SwiperSlide>
               ))}
             </Swiper>
