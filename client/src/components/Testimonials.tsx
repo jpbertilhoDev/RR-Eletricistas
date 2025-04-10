@@ -26,7 +26,7 @@ export default function Testimonials() {
       <div className="absolute top-0 left-0 w-64 h-64 bg-blue-50 rounded-full opacity-20 -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-50 rounded-full opacity-30 translate-x-1/3 translate-y-1/3" />
 
-      <div className="container mx-auto px-4 max-w-6xl relative z-10">
+      <div className="container mx-auto px-2 sm:px-4 max-w-6xl relative z-10 overflow-hidden">
         <div className="text-center mb-12 md:mb-16">
           <motion.span 
             className="text-blue-600 font-medium text-sm tracking-wider uppercase bg-blue-50 px-4 py-1 rounded-full inline-block"
@@ -66,25 +66,26 @@ export default function Testimonials() {
           <Carousel
             opts={{
               align: "center",
-              loop: true
+              loop: true,
+              containScroll: "trimSnaps"
             }}
-            className="w-full"
+            className="w-full max-w-[100vw]"
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {TESTIMONIALS.map((testimonial) => (
                 <CarouselItem key={testimonial.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                  <div className="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-gray-100 h-full flex flex-col transition-all duration-300 hover:shadow-md hover:border-blue-100">
-                    <div className="flex items-center mb-4">
-                      <div className="flex-shrink-0 mr-3">
+                  <div className="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-gray-100 h-full flex flex-col transition-all duration-300 hover:shadow-md hover:border-blue-100 max-w-full">
+                    <div className="flex items-center mb-3">
+                      <div className="flex-shrink-0 mr-2">
                         <img 
                           src={`https://randomuser.me/api/portraits/${testimonial.id % 2 === 0 ? 'women' : 'men'}/${20 + testimonial.id * 10}.jpg`}
                           alt={testimonial.name} 
-                          className="w-12 h-12 rounded-full object-cover border-2 border-blue-100"
+                          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-blue-100"
                           loading="lazy"
                         />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-dark-blue">{testimonial.name}</h4>
+                        <h4 className="font-semibold text-dark-blue text-sm sm:text-base">{testimonial.name}</h4>
                         <p className="text-xs text-gray-600">{testimonial.role}</p>
                         <div className="flex mt-1">
                           {[...Array(5)].map((_, i) => (
@@ -93,8 +94,8 @@ export default function Testimonials() {
                         </div>
                       </div>
                     </div>
-                    <p className="text-deep-blue text-sm flex-grow">{testimonial.content}</p>
-                    <div className="mt-6 pt-4 border-t border-gray-100 text-right">
+                    <p className="text-deep-blue text-xs sm:text-sm flex-grow">{testimonial.content}</p>
+                    <div className="mt-4 pt-3 sm:mt-6 sm:pt-4 border-t border-gray-100 text-right">
                       <span className="text-xs text-gray-500 italic">Projeto realizado em {2023 - testimonial.id}</span>
                     </div>
                   </div>
