@@ -1,164 +1,130 @@
-
 import { useRef } from "react";
-import { motion } from "framer-motion";
-import { TESTIMONIALS } from "@/lib/constants";
-import { useAnimateOnScroll } from "@/hooks/useAnimateOnScroll";
+import { motion, useInView } from "framer-motion";
 
-const Testimonials = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  useAnimateOnScroll(sectionRef);
+const TESTIMONIALS = [
+  {
+    id: 1,
+    name: "Carlos Mendes",
+    role: "Proprietário de Casa",
+    text: "Excelente serviço! A equipe da RR Manutenções resolveu um problema elétrico complexo na minha residência com rapidez e profissionalismo. Superou minhas expectativas.",
+    rating: 5,
+    image: "https://randomuser.me/api/portraits/men/32.jpg"
+  },
+  {
+    id: 2,
+    name: "Mariana Costa",
+    role: "Gerente de Loja",
+    text: "Contratamos a RR para fazer toda a instalação elétrica do nosso novo espaço comercial. O trabalho foi impecável, dentro do prazo e com um excelente custo-benefício.",
+    rating: 5,
+    image: "https://randomuser.me/api/portraits/women/44.jpg"
+  },
+  {
+    id: 3,
+    name: "Paulo Ribeiro",
+    role: "Engenheiro Civil",
+    text: "Como profissional da área, posso atestar a qualidade técnica do serviço prestado. Todos os padrões de segurança foram seguidos e o acabamento foi perfeito.",
+    rating: 5,
+    image: "https://randomuser.me/api/portraits/men/62.jpg"
+  },
+  {
+    id: 4,
+    name: "Fernanda Oliveira",
+    role: "Empresária",
+    text: "Minha empresa passou por uma reforma completa na parte elétrica. A equipe da RR foi atenciosa, eficiente e manteve tudo limpo e organizado durante o serviço.",
+    rating: 5,
+    image: "https://randomuser.me/api/portraits/women/68.jpg"
+  }
+];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1
     }
-  };
+  }
+};
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5
-      }
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      duration: 0.6
     }
-  };
+  }
+};
 
-  const renderStars = (rating: number) => {
-    const stars = [];
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 !== 0;
-
-    for (let i = 0; i < fullStars; i++) {
-      stars.push(<i key={`star-${i}`} className="fas fa-star text-yellow-500"></i>);
-    }
-
-    if (hasHalfStar) {
-      stars.push(<i key="half-star" className="fas fa-star-half-alt text-yellow-500"></i>);
-    }
-
-    return stars;
-  };
+export default function Testimonials() {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
-    <section id="depoimentos" ref={sectionRef} className="py-24 bg-gradient-to-b from-white to-gray-50 hidden md:block">
+    <section id="depoimentos" ref={sectionRef} className="py-24 bg-white hidden md:block">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="text-center mb-16">
-          <span className="text-blue-600 font-medium text-sm tracking-wider uppercase bg-blue-50 px-4 py-1 rounded-full">Avaliações</span>
-          <h2 className="text-dark-blue text-3xl font-bold mt-3 mb-4">O que nossos clientes dizem</h2>
+          <span className="text-blue-600 font-medium text-sm tracking-wider uppercase bg-blue-50 px-4 py-1 rounded-full">O que nossos clientes dizem</span>
+          <h2 className="text-dark-blue text-3xl font-bold mt-3 mb-4">Depoimentos de quem confia no nosso trabalho</h2>
           <p className="text-deep-blue max-w-2xl mx-auto">
-            A satisfação de nossos clientes é nossa prioridade. Confira o que eles estão dizendo sobre nossos serviços elétricos.
+            A satisfação dos nossos clientes é o que nos move a cada dia.
+            Confira alguns depoimentos de pessoas que confiaram em nossos serviços.
           </p>
         </div>
-        
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-10 mb-16">
-          <motion.div 
-            className="md:w-1/3"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 mb-6">
-              <div className="flex items-center gap-3 mb-4">
-                <i className="fab fa-google text-[#4285F4] text-xl"></i>
-                <div className="flex text-yellow-500">
-                  {[1, 2, 3, 4, 5].map((n) => (
-                    <i key={n} className="fas fa-star"></i>
-                  ))}
+
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          {TESTIMONIALS.map((testimonial) => (
+            <motion.div 
+              key={testimonial.id}
+              className="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300"
+              variants={itemVariants}
+            >
+              <div className="flex items-center mb-6">
+                <div className="flex-shrink-0 mr-4">
+                  <img 
+                    src={testimonial.image} 
+                    alt={testimonial.name} 
+                    className="w-16 h-16 rounded-full object-cover border-2 border-blue-100"
+                  />
                 </div>
-                <span className="font-semibold">5.0</span>
+                <div>
+                  <h4 className="font-semibold text-dark-blue">{testimonial.name}</h4>
+                  <p className="text-sm text-gray-600">{testimonial.role}</p>
+                  <div className="flex mt-1">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <i key={i} className="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <p className="text-deep-blue">
-                Mais de 100 avaliações no Google com nota máxima
-              </p>
-            </div>
-            
-            <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-              <h3 className="text-xl font-bold mb-4 text-dark-blue">Por que nossas avaliações importam</h3>
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <i className="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                  <span className="text-deep-blue">Transparência com nossos clientes</span>
-                </li>
-                <li className="flex items-start">
-                  <i className="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                  <span className="text-deep-blue">Comprometimento com a qualidade</span>
-                </li>
-                <li className="flex items-start">
-                  <i className="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                  <span className="text-deep-blue">Feedback constante para melhorias</span>
-                </li>
-                <li className="flex items-start">
-                  <i className="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                  <span className="text-deep-blue">Serviços aprovados pela comunidade</span>
-                </li>
-              </ul>
-            </div>
-          </motion.div>
-          
-          <div className="md:w-2/3">
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 gap-6"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              {TESTIMONIALS.map((testimonial) => (
-                <motion.div 
-                  key={testimonial.id}
-                  className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow duration-300"
-                  variants={itemVariants}
-                >
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mr-3">
-                      <i className="fas fa-user text-blue-600"></i>
-                    </div>
-                    <div>
-                      <p className="font-bold text-dark-blue">{testimonial.name}</p>
-                      <p className="text-sm text-deep-blue">{testimonial.role}</p>
-                    </div>
-                  </div>
-                  <div className="flex text-yellow-500 text-sm mb-3">
-                    {renderStars(testimonial.rating)}
-                  </div>
-                  <p className="text-deep-blue mb-3 italic">
-                    "{testimonial.content}"
-                  </p>
-                  <div className="flex justify-between items-center mt-4">
-                    <span className="text-xs text-gray-500">Cliente verificado</span>
-                    <div className="flex items-center">
-                      <i className="fas fa-thumbs-up text-blue-500 mr-1"></i>
-                      <span className="text-sm">Recomenda</span>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+              <blockquote className="relative">
+                <i className="fas fa-quote-left text-blue-100 text-4xl absolute -top-2 -left-2 opacity-50"></i>
+                <p className="text-deep-blue relative z-10 pl-4">{testimonial.text}</p>
+              </blockquote>
             </motion.div>
-            
-            <motion.div 
-              className="mt-8 flex justify-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5, duration: 0.7 }}
-            >
-              <a href="#contato" className="flex items-center group text-blue-600 font-medium transition-all duration-300 hover:text-blue-800">
-                Compartilhe sua experiência conosco
-                <i className="fas fa-arrow-right ml-2 group-hover:ml-3 transition-all duration-300"></i>
-              </a>
-            </motion.div>
+          ))}
+        </motion.div>
+
+        <div className="text-center mt-12">
+          <p className="text-blue-600 font-medium">Avaliação média de 5.0 <i className="fas fa-star text-yellow-400 ml-1"></i></p>
+          <div className="flex items-center justify-center gap-4 mt-3">
+            <div className="flex items-center">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" className="h-5 mr-2" />
+              <span className="text-gray-700 font-medium">Google Reviews</span>
+            </div>
+            <div className="w-1 h-1 bg-gray-300 rounded-full"></div>
+            <div className="flex items-center">
+              <i className="fab fa-facebook text-blue-600 mr-2"></i>
+              <span className="text-gray-700 font-medium">Facebook</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default Testimonials;
+}
