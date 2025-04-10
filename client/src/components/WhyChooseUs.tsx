@@ -136,12 +136,12 @@ const WhyChooseUs = () => {
 
         {/* Versão mobile otimizada: Carousel automático com visual premium */}
         <div className="md:hidden">
-          <div className="overflow-hidden mx-auto relative max-w-[92%] px-0.5" ref={emblaRef}>
+          <div className="overflow-hidden mx-auto relative max-w-[85%] px-0" ref={emblaRef}>
             <div className="flex">
               {diferenciais.map((item) => (
-                <div className="flex-[0_0_100%] min-w-0 max-w-[100%] px-2" key={item.id}>
+                <div className="flex-[0_0_100%] min-w-0 max-w-[100%] px-1.5" key={item.id}>
                   <motion.div 
-                    className="bg-white border border-gray-100 rounded-md p-2.5 shadow-sm relative overflow-hidden h-full transform transition-all duration-300"
+                    className="bg-white border border-gray-100 rounded-md p-2 shadow-sm relative overflow-hidden h-full transform transition-all duration-300"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4 }}
@@ -149,23 +149,23 @@ const WhyChooseUs = () => {
                     
                     {/* Layout mais compacto para mobile */}
                     <div className="relative z-10">
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <div className={`w-6 h-6 bg-gradient-to-br ${item.color} rounded-md flex items-center justify-center flex-shrink-0 shadow-sm`}>
-                          <i className={`fas fa-${item.icon} ${item.iconColor} text-xs`}></i>
+                      <div className="flex items-start gap-1.5 mb-1">
+                        <div className={`w-5 h-5 mt-0.5 bg-gradient-to-br ${item.color} rounded-md flex items-center justify-center flex-shrink-0 shadow-sm`}>
+                          <i className={`fas fa-${item.icon} ${item.iconColor} text-[10px]`}></i>
                         </div>
-                        <h3 className="font-bold text-dark-blue text-sm">{item.title}</h3>
+                        <h3 className="font-bold text-dark-blue text-xs leading-tight">{item.title}</h3>
                       </div>
                       
-                      <div className="mt-1">
-                        <p className="text-deep-blue/80 text-xs mb-2 line-clamp-2 leading-relaxed">{item.description}</p>
-                        <div className="bg-blue-50 inline-block px-2 py-0.5 rounded-full">
-                          <p className="text-blue-700 font-medium text-xs">{item.benefit}</p>
+                      <div className="mt-1 pl-6.5">
+                        <p className="text-deep-blue/80 text-[10px] mb-1.5 line-clamp-2 leading-snug">{item.description}</p>
+                        <div className="bg-blue-50 inline-block px-1.5 py-0.5 rounded-full">
+                          <p className="text-blue-700 font-medium text-[10px]">{item.benefit}</p>
                         </div>
                       </div>
                     </div>
                     
                     {/* Elemento decorativo sutil */}
-                    <div className="absolute -bottom-4 -right-4 w-10 h-10 rounded-full opacity-10 bg-gradient-to-br from-blue-400 to-blue-600 blur-lg"></div>
+                    <div className="absolute -bottom-4 -right-4 w-8 h-8 rounded-full opacity-10 bg-gradient-to-br from-blue-400 to-blue-600 blur-lg"></div>
                   </motion.div>
                 </div>
               ))}
