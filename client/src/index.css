@@ -851,6 +851,36 @@
   #depoimentos a[href^="https://wa.me"]:active {
     transform: translateY(1px);
   }
+  
+  /* Estilos para mensagens de erro/carregamento */
+  #depoimentos .loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+  }
+  
+  #depoimentos .error-message {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  /* Estilos para placeholder de imagem do perfil */
+  #depoimentos .profile-placeholder {
+    background: linear-gradient(45deg, #0D8A88, #0D8A88);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+  }
 }
 
 /* WhyChooseUs Section */

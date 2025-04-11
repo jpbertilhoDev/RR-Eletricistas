@@ -216,35 +216,147 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Obter avaliações públicas - alternativa gratuita
   app.get('/api/public-reviews', async (req, res) => {
     try {
-      // Buscar depoimentos do banco de dados - já existe essa funcionalidade
-      const dbTestimonials = await storage.getTestimonials();
+      // Avaliações reais da empresa - definição movida para fora da função generateGoogleMapsReviews
+      const googleReviews = [
+        {
+          id: 1001,
+          name: "Thaina Claro",
+          role: "Cliente",
+          content: "Foi muito atencioso e educado todo trabalho entregue dentro do combinado ótimo eletricista",
+          rating: 5,
+          source: "Google Maps",
+          time: "2 meses atrás",
+          profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjX3pUV3fwcnHXQxtkrN32vqrxMkmTxv55s2IYL11fbxqTg=s120-c-rp-mo-br100"
+        },
+        {
+          id: 1002,
+          name: "Celso Henrique",
+          role: "Cliente",
+          content: "Esse é o melhor eletricista que eu conheço, muito atencioso, muito educado, resolveu meu problema, e posso recomendar pra qualquer um que precise de um eletricista.",
+          rating: 5,
+          source: "Google Maps",
+          time: "1 ano atrás",
+          profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjXrblHU-FxvYTbNWrAJXCc-HkL8xP1m0TEMbixz9MUxalQ=s120-c-rp-mo-br100"
+        },
+        {
+          id: 1003,
+          name: "Suelma Bernardo",
+          role: "Cliente",
+          content: "Profissional competente, responsável, tem muito conhecimento, ótimo atendimento, fez o serviço de qualidade, e um preço muito justo, prontificou em vir resolver nosso problema, ainda compartilhou conhecimentos para evitar danos futuros, recomendo a todos.",
+          rating: 5,
+          source: "Google Maps",
+          time: "1 ano atrás",
+          profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjU3mhCdtHihFOZUTmxIWS5TQWvYoWGXObnljBGqDXOiKEQ=s120-c-rp-mo-br100"
+        },
+        {
+          id: 1004,
+          name: "Ronaldo Ferreira",
+          role: "Cliente",
+          content: "Atendimento muito bom e o técnico muito profissional nos atendeu tão bem e com muita dedicação. Recomendo a todos.",
+          rating: 5,
+          source: "Google Maps", 
+          time: "1 ano atrás",
+          profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjXRCzxLKu9IpJXLt9PzV5vK0FJzCRGu2YrQ2_o2TFO30YA=s120-c-rp-mo-ba4-br100"
+        },
+        {
+          id: 1005,
+          name: "Wagner Rodrigues",
+          role: "Cliente",
+          content: "Muito competente! O proprietário entende do assunto e tem bastante experiência.",
+          rating: 5,
+          source: "Google Maps",
+          time: "1 ano atrás",
+          profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjXNakmjAOMqCTtDgPhBXaTv7rz_gZ1VJCkUfpzwkAZO0NU=s120-c-rp-mo-br100"
+        },
+        {
+          id: 1006,
+          name: "Jeremias Lima",
+          role: "Cliente",
+          content: "Muito bom, solucionou meu problema na primeira visita. Excelente atendimento e extremamente educado, além de fazer cumprir o preço combinado. Recomendo!",
+          rating: 5, 
+          source: "Google Maps",
+          time: "1 ano atrás",
+          profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjWL1cchpE6Oq8ky7L0ygmCZwPKQbLVRwICndTsrWYYCFg=s120-c-rp-mo-br100"
+        },
+        {
+          id: 1007,
+          name: "Wanderson Luiz",
+          role: "Cliente",
+          content: "Excelente serviço. Conhecimento técnico fora do comum. Sugere soluções com conhecimento técnico. Resolve qualquer tipo de problema. Coisa de profissional mesmo.",
+          rating: 5,
+          source: "Google Maps",
+          time: "10 meses atrás",
+          profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjWi8SuYfP7X3jcNP5QFcaxJnPQlK5y-z-SQTZIBazE-pg=s120-c-rp-mo-br100"
+        },
+        {
+          id: 1008,
+          name: "Rodrigo Rodrigues",
+          role: "Cliente",
+          content: "Prestou um excelente atendimento para a solução do problema em minha residência, com cordialidade e profissionalismo.",
+          rating: 5,
+          source: "Google Maps",
+          time: "8 meses atrás",
+          profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjUWC4PoiJdLBXS3Uv6rM2xpZfCR99-jvKxQx0VJaXuAqA=s120-c-rp-mo-ba4-br100"
+        }
+      ];
 
-      // Formatar os depoimentos do banco para incluir a fonte como "site"
-      const siteTestimonials = dbTestimonials.map(testimonial => ({
-        ...testimonial,
-        source: "site",
-        profilePhoto: null,
-        time: `${Math.floor(Math.random() * 3) + 1} ${['dias', 'semanas', 'meses'][Math.floor(Math.random() * 3)]} atrás`
-      }));
-
-      // Gerar avaliações simuladas do Google Maps
-      const googleReviews = generateGoogleMapsReviews();
-
-      // Combinar avaliações do site com avaliações simuladas do Google
-      const allReviews = [...siteTestimonials, ...googleReviews];
-
-      // Organizar por data (mais recentes primeiro)
-      allReviews.sort(() => Math.random() - 0.5);
-
+      try {
+        // Tentar buscar depoimentos do banco de dados
+        const dbTestimonials = await storage.getTestimonials();
+        
+        // Formatar os depoimentos do banco para incluir a fonte como "site"
+        const siteTestimonials = dbTestimonials.map(testimonial => ({
+          ...testimonial,
+          source: "site",
+          profilePhoto: null,
+          time: `${Math.floor(Math.random() * 3) + 1} ${['dias', 'semanas', 'meses'][Math.floor(Math.random() * 3)]} atrás`
+        }));
+        
+        // Combinar avaliações do site com avaliações do Google
+        const allReviews = [...siteTestimonials, ...googleReviews];
+        
+        // Organizar por data (mais recentes primeiro)
+        allReviews.sort(() => Math.random() - 0.5);
+        
+        return res.status(200).json({
+          success: true,
+          data: allReviews
+        });
+      } catch (dbError) {
+        console.error('Error fetching database testimonials:', dbError);
+        // Se houver erro no banco de dados, retornar apenas as avaliações do Google
+        return res.status(200).json({
+          success: true,
+          data: googleReviews
+        });
+      }
+    } catch (error) {
+      console.error('Error in public reviews endpoint:', error);
+      // Ainda retornar as avaliações do Google em caso de falha completa
       return res.status(200).json({
         success: true,
-        data: allReviews
-      });
-    } catch (error) {
-      console.error('Error fetching public reviews:', error);
-      return res.status(500).json({
-        success: false,
-        message: 'Erro ao buscar avaliações públicas'
+        data: [
+          {
+            id: 1001,
+            name: "Thaina Claro",
+            role: "Cliente",
+            content: "Foi muito atencioso e educado todo trabalho entregue dentro do combinado ótimo eletricista",
+            rating: 5,
+            source: "Google Maps",
+            time: "2 meses atrás",
+            profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjX3pUV3fwcnHXQxtkrN32vqrxMkmTxv55s2IYL11fbxqTg=s120-c-rp-mo-br100"
+          },
+          {
+            id: 1002,
+            name: "Celso Henrique",
+            role: "Cliente",
+            content: "Esse é o melhor eletricista que eu conheço, muito atencioso, muito educado, resolveu meu problema, e posso recomendar pra qualquer um que precise de um eletricista.",
+            rating: 5,
+            source: "Google Maps",
+            time: "1 ano atrás",
+            profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjXrblHU-FxvYTbNWrAJXCc-HkL8xP1m0TEMbixz9MUxalQ=s120-c-rp-mo-br100"
+          }
+        ]
       });
     }
   });

@@ -50,21 +50,57 @@ export default function Testimonials() {
   
   // Processar depoimentos quando os dados chegarem
   useEffect(() => {
-    if (publicReviews?.success && Array.isArray(publicReviews?.data)) {
-      // Filtrar avaliações com conteúdo substancial
-      const reviewsWithContent = publicReviews.data.filter(
-        (review: PublicReview) => review.content && review.content.length > 10
-      );
-      
-      // Priorizar avaliações do Google Maps
-      const googleReviews = reviewsWithContent.filter(
-        (review: PublicReview) => review.source === "Google Maps"
-      );
-      
-      // Configurar os depoimentos filtrados
-      setFilteredTestimonials(googleReviews.length > 0 ? googleReviews : reviewsWithContent);
+    try {
+      if (publicReviews?.success && Array.isArray(publicReviews?.data)) {
+        // Filtrar avaliações com conteúdo substancial
+        const reviewsWithContent = publicReviews.data.filter(
+          (review: PublicReview) => review.content && review.content.length > 10
+        );
+        
+        // Priorizar avaliações do Google Maps
+        const googleReviews = reviewsWithContent.filter(
+          (review: PublicReview) => review.source === "Google Maps"
+        );
+        
+        // Configurar os depoimentos filtrados
+        setFilteredTestimonials(googleReviews.length > 0 ? googleReviews : reviewsWithContent);
+      } else if (publicReviews && !publicReviews.success) {
+        console.error("Erro na resposta da API:", publicReviews);
+        // Definir avaliações locais como fallback
+        setFilteredTestimonials(getDefaultTestimonials());
+      }
+    } catch (err) {
+      console.error("Erro ao processar depoimentos:", err);
+      // Definir avaliações locais como fallback em caso de erro
+      setFilteredTestimonials(getDefaultTestimonials());
     }
   }, [publicReviews]);
+  
+  // Função para obter depoimentos padrão em caso de falha
+  const getDefaultTestimonials = (): PublicReview[] => {
+    return [
+      {
+        id: 1001,
+        name: "Thaina Claro",
+        role: "Cliente",
+        content: "Foi muito atencioso e educado todo trabalho entregue dentro do combinado ótimo eletricista",
+        rating: 5,
+        source: "Google Maps",
+        time: "2 meses atrás",
+        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjX3pUV3fwcnHXQxtkrN32vqrxMkmTxv55s2IYL11fbxqTg=s120-c-rp-mo-br100"
+      },
+      {
+        id: 1002,
+        name: "Celso Henrique",
+        role: "Cliente",
+        content: "Esse é o melhor eletricista que eu conheço, muito atencioso, muito educado, resolveu meu problema, e posso recomendar pra qualquer um que precise de um eletricista.",
+        rating: 5,
+        source: "Google Maps",
+        time: "1 ano atrás",
+        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjXrblHU-FxvYTbNWrAJXCc-HkL8xP1m0TEMbixz9MUxalQ=s120-c-rp-mo-br100"
+      }
+    ];
+  };
 
   // Função para navegar para o depoimento anterior
   const goToPrevious = () => {
@@ -97,7 +133,7 @@ export default function Testimonials() {
   }
 
   // Renderizar mensagem de erro
-  if (error || !filteredTestimonials.length) {
+  if (error) {
     return (
       <section 
         id="depoimentos" 
@@ -107,11 +143,74 @@ export default function Testimonials() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Depoimentos</h2>
           <p className="text-gray-300">
-            {error ? "Erro ao carregar depoimentos." : "Nenhum depoimento disponível no momento."}
+            Erro ao carregar depoimentos.
           </p>
         </div>
       </section>
     );
+  }
+  
+  // Verificar se há depoimentos após o carregamento
+  if (!filteredTestimonials || filteredTestimonials.length === 0) {
+    // Usar os depoimentos padrão do Google se não houver depoimentos filtrados
+    const defaultTestimonials = generateGoogleMapsReviews();
+    setFilteredTestimonials(defaultTestimonials);
+    
+    // Função para gerar avaliações do Google Maps
+    function generateGoogleMapsReviews() {
+      return [
+        {
+          id: 1001,
+          name: "Thaina Claro",
+          role: "Cliente",
+          content: "Foi muito atencioso e educado todo trabalho entregue dentro do combinado ótimo eletricista",
+          rating: 5,
+          source: "Google Maps",
+          time: "2 meses atrás",
+          profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjX3pUV3fwcnHXQxtkrN32vqrxMkmTxv55s2IYL11fbxqTg=s120-c-rp-mo-br100"
+        },
+        {
+          id: 1002,
+          name: "Celso Henrique",
+          role: "Cliente",
+          content: "Esse é o melhor eletricista que eu conheço, muito atencioso, muito educado, resolveu meu problema, e posso recomendar pra qualquer um que precise de um eletricista.",
+          rating: 5,
+          source: "Google Maps",
+          time: "1 ano atrás",
+          profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjXrblHU-FxvYTbNWrAJXCc-HkL8xP1m0TEMbixz9MUxalQ=s120-c-rp-mo-br100"
+        },
+        {
+          id: 1003,
+          name: "Suelma Bernardo",
+          role: "Cliente",
+          content: "Profissional competente, responsável, tem muito conhecimento, ótimo atendimento, fez o serviço de qualidade, e um preço muito justo, prontificou em vir resolver nosso problema, ainda compartilhou conhecimentos para evitar danos futuros, recomendo a todos.",
+          rating: 5,
+          source: "Google Maps",
+          time: "1 ano atrás",
+          profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjU3mhCdtHihFOZUTmxIWS5TQWvYoWGXObnljBGqDXOiKEQ=s120-c-rp-mo-br100"
+        },
+        {
+          id: 1004,
+          name: "Ronaldo Ferreira",
+          role: "Cliente",
+          content: "Atendimento muito bom e o técnico muito profissional nos atendeu tão bem e com muita dedicação. Recomendo a todos.",
+          rating: 5,
+          source: "Google Maps", 
+          time: "1 ano atrás",
+          profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjXRCzxLKu9IpJXLt9PzV5vK0FJzCRGu2YrQ2_o2TFO30YA=s120-c-rp-mo-ba4-br100"
+        },
+        {
+          id: 1005,
+          name: "Wagner Rodrigues",
+          role: "Cliente",
+          content: "Muito competente! O proprietário entende do assunto e tem bastante experiência.",
+          rating: 5,
+          source: "Google Maps",
+          time: "1 ano atrás",
+          profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjXNakmjAOMqCTtDgPhBXaTv7rz_gZ1VJCkUfpzwkAZO0NU=s120-c-rp-mo-br100"
+        }
+      ];
+    }
   }
 
   // Depoimento atual
