@@ -19,6 +19,15 @@
 }
 
 @layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --testimonial-bg: 0 0% 0%;
+    --testimonial-accent: 180 70% 40%;
+  }
+
   * {
     @apply border-border;
   }
@@ -329,7 +338,6 @@
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
-}
 
 /* Estilos para a interação com cards de serviços */
 .service-card-image-container {
@@ -349,38 +357,11 @@
   }
 }
 
+}
+
 @keyframes glow {
   from { box-shadow: 0 0 5px -5px rgba(66, 153, 225, 0.6); }
-  to { box-shadow: 0 0 15px 5px rgba(66, 153, 225, 0.6); }
-}
-
-/* Estilos para os depoimentos */
-.testimonial-card {
-  transition: all 0.3s ease;
-}
-
-.testimonial-card:hover {
-  transform: translateY(-5px);
-}
-
-.testimonial-quote {
-  transform: rotate(180deg);
-  opacity: 0.1;
-  transition: all 0.3s ease;
-}
-
-.testimonial-card:hover .testimonial-quote {
-  opacity: 0.2;
-}
-
-/* Animação para atualizar avaliações */
-@keyframes refreshSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.refresh-spin {
-  animation: refreshSpin 1s linear infinite;
+  to { box-shadow: 0 0 15px 5px rgba(66, 153, 225, 0.4); }
 }
 
 @keyframes slideUp {
@@ -905,8 +886,4 @@
   .section-container {
     padding: 1.5rem 0.75rem;
   }
-}
-
-.testimonilas-card {
-  transition: transform 0.3s ease;
 }
