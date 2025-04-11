@@ -1,9 +1,27 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { SERVICES, WHATSAPP_NUMBER } from "@/lib/constants";
 import { useAnimateOnScroll } from "@/hooks/useAnimateOnScroll";
 import { useIsMobile } from "@/hooks/use-mobile";
+
+// Importar todas as imagens de serviços
+import img1 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.06.jpeg";
+import img2 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.40.jpeg";
+import img3 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.41.jpeg";
+import img4 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.19.jpeg";
+import img5 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.29.jpeg";
+import img6 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.30.jpeg";
+
+// Mapa para associar os caminhos das imagens aos arquivos importados
+const imageMap: Record<string, string> = {
+  "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.06.jpeg": img1,
+  "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.40.jpeg": img2,
+  "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.41.jpeg": img3,
+  "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.19.jpeg": img4,
+  "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.29.jpeg": img5,
+  "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.30.jpeg": img6,
+};
 
 const Services = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -200,7 +218,7 @@ const Services = () => {
                       {/* Imagem do serviço */}
                       <div className="relative overflow-hidden rounded-lg w-[85%] h-52 mb-3 shadow-lg">
                         <img 
-                          src={service.imageSrc} 
+                          src={imageMap[service.imageSrc] || service.imageSrc} 
                           alt={service.title} 
                           className="w-full h-full object-cover" 
                         />
