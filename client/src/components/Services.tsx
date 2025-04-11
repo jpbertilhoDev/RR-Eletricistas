@@ -1,3 +1,4 @@
+
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -5,7 +6,7 @@ import { SERVICES, WHATSAPP_NUMBER } from "@/lib/constants";
 import { useAnimateOnScroll } from "@/hooks/useAnimateOnScroll";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-// Importar todas as imagens de serviços
+// Import all service images
 import img1 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.06.jpeg";
 import img2 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.40.jpeg";
 import img3 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.41.jpeg";
@@ -13,7 +14,7 @@ import img4 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.19
 import img5 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.29.jpeg";
 import img6 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.30.jpeg";
 
-// Mapa para associar os caminhos das imagens aos arquivos importados
+// Map to associate image paths with imported files
 const imageMap: Record<string, string> = {
   "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.06.jpeg": img1,
   "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.40.jpeg": img2,
@@ -30,7 +31,7 @@ const Services = () => {
   const isMobile = useIsMobile();
   useAnimateOnScroll(sectionRef);
   
-  // Animação baseada no scroll
+  // Scroll-based animation
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
@@ -39,7 +40,7 @@ const Services = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
   const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [20, 0, 0, 20]);
 
-  // Variantes para os cards
+  // Card variants
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { 
@@ -55,7 +56,7 @@ const Services = () => {
     }
   };
   
-  // Variante para ícones
+  // Icon variants
   const iconVariants = {
     hidden: { scale: 0.8, opacity: 0 },
     visible: { scale: 1, opacity: 1 },
@@ -66,7 +67,7 @@ const Services = () => {
     }
   };
 
-  // Variante para o título
+  // Title variant
   const titleVariants = {
     hidden: { opacity: 0, y: -20 },
     visible: { 
@@ -80,7 +81,7 @@ const Services = () => {
     }
   };
   
-  // Variante para o texto
+  // Text variant
   const textVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -89,7 +90,7 @@ const Services = () => {
     }
   };
 
-  // Variantes para o overlay da imagem
+  // Image overlay variants
   const imageOverlayVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -98,7 +99,7 @@ const Services = () => {
     }
   };
 
-  // Handler para interação com cards (funciona tanto para hover em desktop quanto para toque em mobile)
+  // Handler for card interaction (works for both hover on desktop and touch on mobile)
   const handleCardInteraction = (id: number, isEntering: boolean) => {
     if (isEntering) {
       setActiveCard(id);
@@ -108,21 +109,21 @@ const Services = () => {
   };
 
   return (
-    <section id="servicos" ref={sectionRef} className="py-20 bg-white relative overflow-hidden">
-      {/* Elementos decorativos sutis */}
+    <section id="servicos" ref={sectionRef} className="py-16 md:py-20 bg-white relative overflow-hidden">
+      {/* Subtle decorative elements */}
       <motion.div 
-        className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-blue-50 opacity-50 blur-3xl"
+        className="absolute -top-40 -right-40 w-64 md:w-96 h-64 md:h-96 rounded-full bg-blue-50 opacity-50 blur-3xl"
         style={{ opacity, y }}
       />
       
       <motion.div 
-        className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-blue-50 opacity-50 blur-3xl"
+        className="absolute -bottom-40 -left-40 w-64 md:w-96 h-64 md:h-96 rounded-full bg-blue-50 opacity-50 blur-3xl"
         style={{ opacity }}
       />
       
-      <div className="container mx-auto px-4 max-w-5xl relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10">
         <motion.div 
-          className="mb-12 md:mb-16"
+          className="mb-8 md:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -130,7 +131,7 @@ const Services = () => {
         >
           <div className="text-center">
             <motion.span 
-              className="text-blue-600 font-medium text-sm tracking-wider inline-block"
+              className="text-blue-600 font-medium text-xs md:text-sm tracking-wider inline-block bg-blue-50 px-3 py-1 rounded-full"
               initial={{ opacity: 0, y: -10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -139,7 +140,7 @@ const Services = () => {
               SERVIÇOS
             </motion.span>
             <motion.h2 
-              className="text-dark-blue text-3xl font-bold mt-2 mb-3"
+              className="text-dark-blue text-2xl md:text-3xl font-bold mt-2 mb-3"
               variants={titleVariants}
               initial="hidden"
               whileInView="visible"
@@ -148,7 +149,7 @@ const Services = () => {
               Soluções Elétricas Completas
             </motion.h2>
             <motion.p 
-              className="text-deep-blue max-w-2xl mx-auto"
+              className="text-deep-blue text-sm md:text-base max-w-2xl mx-auto"
               variants={textVariants}
               initial="hidden"
               whileInView="visible"
@@ -160,11 +161,11 @@ const Services = () => {
           </div>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {SERVICES.map((service, index) => (
             <motion.div 
               key={service.id}
-              className="bg-white border border-gray-100 rounded-lg overflow-hidden shadow-sm relative"
+              className="bg-white border border-gray-100 rounded-lg overflow-hidden shadow-sm relative h-full"
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"
@@ -175,32 +176,32 @@ const Services = () => {
               onHoverEnd={() => !isMobile && handleCardInteraction(service.id, false)}
               onClick={() => isMobile && handleCardInteraction(service.id, activeCard !== service.id)}
               onTouchEnd={(e) => {
-                e.preventDefault(); // Previne comportamentos indesejados em mobile
+                e.preventDefault(); // Prevent unwanted behavior on mobile
               }}
             >
-              {/* Conteúdo do card */}
-              <div className="p-6">
+              {/* Card content */}
+              <div className="p-4 md:p-6 h-full flex flex-col">
                 <div className="flex items-center mb-4">
                   <motion.div 
-                    className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-3"
+                    className="w-10 h-10 md:w-12 md:h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-3"
                     variants={iconVariants}
                     whileHover="hover"
                   >
                     <i className={`${service.icon} text-blue-600 text-lg`}></i>
                   </motion.div>
-                  <h3 className="font-semibold text-lg text-dark-blue">{service.title}</h3>
+                  <h3 className="font-semibold text-base md:text-lg text-dark-blue">{service.title}</h3>
                 </div>
-                <p className="text-deep-blue">
+                <p className="text-deep-blue text-sm md:text-base">
                   {service.description}
                 </p>
                 {isMobile && (
-                  <div className="mt-3 text-blue-500 text-sm">
+                  <div className="mt-3 text-blue-500 text-xs md:text-sm">
                     <i className="fas fa-hand-pointer mr-1"></i> Toque para ver foto
                   </div>
                 )}
               </div>
               
-              {/* Overlay com imagem que aparece no hover/toque */}
+              {/* Overlay with image that appears on hover/touch */}
               <AnimatePresence>
                 {activeCard === service.id && (
                   <motion.div 
@@ -216,14 +217,14 @@ const Services = () => {
                       transition={{ duration: 0.3 }}
                       className="w-full h-full flex flex-col items-center justify-center"
                     >
-                      {/* Imagem do serviço */}
-                      <div className="relative overflow-hidden rounded-lg w-[85%] h-52 mb-3 shadow-lg">
+                      {/* Service image */}
+                      <div className="relative overflow-hidden rounded-lg w-[85%] h-40 sm:h-52 mb-3 shadow-lg">
                         <img 
                           src={imageMap[service.imageSrc] || service.imageSrc.replace(/^\./, "")}
                           alt={service.title} 
                           className="w-full h-full object-cover" 
                           onError={(e) => {
-                            // Fallback se a imagem não carregar
+                            // Fallback if image doesn't load
                             const target = e.target as HTMLImageElement;
                             target.onerror = null;
                             target.src = service.imageSrc.replace(/^\./, "");
@@ -231,17 +232,17 @@ const Services = () => {
                         />
                       </div>
                       
-                      {/* Nome do serviço */}
-                      <h4 className="text-white font-bold text-lg mb-1">{service.title}</h4>
+                      {/* Service name */}
+                      <h4 className="text-white font-bold text-base md:text-lg mb-1">{service.title}</h4>
                       <div className="w-12 h-0.5 bg-blue-400 mb-2"></div>
                       
-                      {/* Instrução para fechar (apenas em mobile) */}
+                      {/* Instruction to close (mobile only) */}
                       {isMobile && (
                         <motion.p 
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ delay: 0.3 }}
-                          className="text-white/80 text-sm mt-2"
+                          className="text-white/80 text-xs md:text-sm mt-2"
                         >
                           Toque para fechar
                         </motion.p>
@@ -254,15 +255,15 @@ const Services = () => {
           ))}
         </div>
         
-        {/* Call to action com animação */}
+        {/* Call to action with animation */}
         <motion.div 
-          className="mt-16 text-center bg-primary rounded-lg p-8 shadow-lg relative overflow-hidden"
+          className="mt-10 md:mt-16 text-center bg-primary rounded-lg p-6 md:p-8 shadow-lg relative overflow-hidden"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          {/* Decoração de fundo */}
+          {/* Background decoration */}
           <motion.div 
             className="absolute inset-0 bg-blue-600/30"
             initial={{ opacity: 0 }}
@@ -271,12 +272,12 @@ const Services = () => {
             transition={{ duration: 1 }}
           >
             <motion.div 
-              className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-blue-500/20"
+              className="absolute -top-10 -right-10 w-32 md:w-40 h-32 md:h-40 rounded-full bg-blue-500/20"
               animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.3, 0.2] }}
               transition={{ duration: 8, repeat: Infinity, repeatType: "reverse" }}
             />
             <motion.div 
-              className="absolute -bottom-10 -left-10 w-40 h-40 rounded-full bg-blue-500/20"
+              className="absolute -bottom-10 -left-10 w-32 md:w-40 h-32 md:h-40 rounded-full bg-blue-500/20"
               animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.2, 0.1] }}
               transition={{ duration: 8, repeat: Infinity, repeatType: "reverse", delay: 1 }}
             />
@@ -284,7 +285,7 @@ const Services = () => {
           
           <div className="max-w-xl mx-auto relative z-10">
             <motion.h3 
-              className="text-white text-2xl font-bold mb-3"
+              className="text-white text-xl md:text-2xl font-bold mb-2 md:mb-3"
               initial={{ opacity: 0, y: -10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -293,7 +294,7 @@ const Services = () => {
               Solicite um orçamento sem compromisso
             </motion.h3>
             <motion.p 
-              className="text-white/90 mb-6"
+              className="text-white/90 text-sm md:text-base mb-4 md:mb-6"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -308,16 +309,18 @@ const Services = () => {
               transition={{ duration: 0.5, delay: 0.4 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
+              className="flex justify-center"
             >
               <a
                 href={`https://wa.me/${WHATSAPP_NUMBER}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="w-full sm:w-auto"
               >
                 <Button 
                   variant="secondary"
-                  size="lg"
-                  className="bg-white text-primary shadow-md whatsapp-btn"
+                  size={isMobile ? "default" : "lg"}
+                  className="bg-white text-primary shadow-md whatsapp-btn w-full sm:w-auto"
                 >
                   <motion.i 
                     className="fab fa-whatsapp mr-2 text-green-600"
