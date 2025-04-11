@@ -34,12 +34,12 @@ export const sendContactEmail = async (formData: ContactFormData): Promise<{ suc
       message: formData.message,
       to_name: 'RR Manutenções Elétricas', // Nome do destinatário
       reply_to: formData.email,
-      // Campos adicionais com nomes padrão do EmailJS
-      nome: formData.name,
-      email: formData.email,
-      telefone: formData.phone,
-      servico: formData.service,
-      mensagem: formData.message
+      // Campos exatos do template do EmailJS
+      Nome: formData.name,
+      Email: formData.email,
+      Telefone: formData.phone || 'Não informado',
+      Serviço: formData.service || 'Não especificado',
+      Mensagem: formData.message
     };
 
     const response = await emailjs.send(
