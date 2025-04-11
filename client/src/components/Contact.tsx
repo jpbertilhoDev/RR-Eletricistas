@@ -6,7 +6,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const Contact = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  useAnimateOnScroll(sectionRef);
+  const isInView = useAnimateOnScroll(sectionRef);
   const isMobile = useIsMobile();
 
   // Mensagem pré-definida para o WhatsApp
