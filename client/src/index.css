@@ -779,5 +779,21 @@
 }
 
 /* Projects Section */
-#quem-somos .grid
+#quem-somos .grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Melhorias de organização para seções */
+.section-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+@media (max-width: 768px) {
+  .section-container {
+    padding: 1.5rem 0.75rem;
+  }
 }
