@@ -7,8 +7,15 @@
   @apply transition-colors duration-300;
 }
 
-.whatsapp-btn:hover {
+.whatsapp-btn:hover, .whatsapp-btn:active {
   @apply bg-green-500 border-green-500 text-white !important;
+}
+
+/* Efeito em dispositivos touch */
+@media (hover: none) {
+  a[href*="wa.me"]:active {
+    @apply bg-green-500 !important;
+  }
 }
 
 @layer base {
