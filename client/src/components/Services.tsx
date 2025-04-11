@@ -6,20 +6,38 @@ import { useAnimateOnScroll } from "@/hooks/useAnimateOnScroll";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 // Import all service images
+// Importando todas as imagens de serviços
+import img1 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.40 (1).jpeg";
 import img2 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.40.jpeg";
-import img3 from "@/assets/images/servicos/reparos-emergenciais.jpeg"; // Imagem de Reparos Emergenciais
-import img4 from "@/assets/images/servicos/projeto-eletrico.jpeg"; // Imagem de Projetos Elétricos
-import img5 from "@/assets/images/servicos/quadros-eletricos.jpeg"; // Imagem de Quadros Elétricos
-import img6 from "@/assets/images/servicos/iluminacao.jpeg"; // Imagem de Iluminação
+import img3 from "@/assets/images/servicos/reparos-emergenciais.jpeg"; 
+import img4 from "@/assets/images/servicos/projeto-eletrico.jpeg"; 
+import img5 from "@/assets/images/servicos/quadros-eletricos.jpeg"; 
+import img6 from "@/assets/images/servicos/iluminacao.jpeg"; 
+import img7 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.41.jpeg";
+import img8 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.21.jpeg";
+import logoRR from "@/assets/images/logo-rr.png";
 
-// Map to associate image paths with imported files
+// Map para associar caminhos com as imagens importadas
 const imageMap: Record<string, string> = {
   "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.40.jpeg": img2,
-  "/src/assets/images/servicos/reparos-emergenciais.jpeg": img3, // Reparos Emergenciais
-  "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.19.jpeg": img3,
-  "/src/assets/images/servicos/projeto-eletrico.jpeg": img4, // Projetos Elétricos
-  "./src/assets/images/servicos/quadros-eletricos.jpeg": img5, // Quadros Elétricos
-  "./src/assets/images/servicos/iluminacao.jpeg": img6, // Iluminação
+  "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.40 (1).jpeg": img1,
+  "/src/assets/images/servicos/reparos-emergenciais.jpeg": img3,
+  "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.19.jpeg": img8,
+  "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.21.jpeg": img8,
+  "/src/assets/images/servicos/projeto-eletrico.jpeg": img4,
+  "/src/assets/images/servicos/quadros-eletricos.jpeg": img5,
+  "/src/assets/images/servicos/iluminacao.jpeg": img6,
+  "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.41.jpeg": img7,
+  "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.40.jpeg": img2,
+  "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.40 (1).jpeg": img1,
+  "./src/assets/images/servicos/reparos-emergenciais.jpeg": img3,
+  "./src/assets/images/servicos/projeto-eletrico.jpeg": img4,
+  "./src/assets/images/servicos/quadros-eletricos.jpeg": img5,
+  "./src/assets/images/servicos/iluminacao.jpeg": img6,
+  "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.41.jpeg": img7,
+  "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.21.jpeg": img8,
+  "/src/assets/images/logo-rr.png": logoRR,
+  "./src/assets/images/logo-rr.png": logoRR,
 };
 
 const Services = () => {
@@ -217,14 +235,24 @@ const Services = () => {
                       {/* Service image */}
                       <div className="relative overflow-hidden rounded-lg w-[85%] h-40 sm:h-52 mb-3 shadow-lg">
                         <img 
-                          src={imageMap[service.imageSrc] || service.imageSrc.replace(/^\./, "")}
+                          src={imageMap[service.imageSrc] || imageMap[service.imageSrc.replace(/^\./, "/")] || service.imageSrc}
                           alt={service.title} 
                           className="w-full h-full object-cover" 
                           onError={(e) => {
-                            // Fallback if image doesn't load
+                            // Fallback em camadas para garantir que a imagem carregue
                             const target = e.target as HTMLImageElement;
                             target.onerror = null;
-                            target.src = service.imageSrc.replace(/^\./, "");
+                            
+                            // Tenta primeiro com caminho absoluto
+                            const absolutePath = service.imageSrc.replace(/^\./, "");
+                            if (imageMap[absolutePath]) {
+                              target.src = imageMap[absolutePath];
+                            } else if (service.imageSrc.includes("WhatsApp")) {
+                              // Fallback para imagem genérica de serviço
+                              target.src = img3; // usando a imagem de reparos como fallback
+                            } else {
+                              target.src = service.imageSrc;
+                            }
                           }}
                         />
                       </div>
