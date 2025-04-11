@@ -1,3 +1,4 @@
+
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { TESTIMONIALS } from "@/lib/constants";
@@ -12,18 +13,30 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
 
+// Tipo para avaliações públicas
+type PublicReview = {
+  id: number;
+  name: string;
+  role: string;
+  content: string;
+  rating: number;
+  time?: string;
+  source: string;
+  profilePhoto?: string;
+};
+
 export default function Testimonials() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const isMobile = useIsMobile();
   
-  // Buscar avaliações do Google
-  const { data: googleReviews, isLoading, error } = useQuery({
-    queryKey: ['googleReviews'],
+  // Buscar avaliações públicas da API
+  const { data: publicReviews, isLoading, error, refetch } = useQuery({
+    queryKey: ['publicReviews'],
     queryFn: async () => {
-      const response = await fetch('/api/google-reviews');
+      const response = await fetch('/api/public-reviews');
       if (!response.ok) {
-        throw new Error('Erro ao buscar avaliações do Google');
+        throw new Error('Erro ao buscar avaliações públicas');
       }
       return response.json();
     },
@@ -31,32 +44,20 @@ export default function Testimonials() {
     enabled: false
   });
   
-  // Combinar avaliações do Google com as avaliações estáticas
-  const [allTestimonials, setAllTestimonials] = useState(TESTIMONIALS);
+  // Combinar avaliações públicas com as avaliações estáticas
+  const [allTestimonials, setAllTestimonials] = useState<PublicReview[]>(TESTIMONIALS);
   
   useEffect(() => {
-    if (googleReviews?.success && googleReviews?.data?.reviews) {
-      // Mapear as avaliações do Google para o formato esperado
-      const googleTestimonials = googleReviews.data.reviews.map((review, index) => ({
-        id: 100 + index, // IDs únicos para evitar conflitos
-        name: review.author_name,
-        role: "Cliente Google",
-        content: review.text,
-        rating: review.rating,
-        time: review.relative_time_description,
-        source: "google",
-        profilePhoto: review.profile_photo_url
-      }));
-      
-      // Adicionar apenas avaliações com um mínimo de texto (opcional)
-      const filteredGoogleTestimonials = googleTestimonials.filter(
-        review => review.content.length > 20
+    if (publicReviews?.success && Array.isArray(publicReviews?.data)) {
+      // Adicionar apenas avaliações com um mínimo de texto
+      const filteredPublicReviews = publicReviews.data.filter(
+        (review: PublicReview) => review.content && review.content.length > 20
       );
       
       // Combinar com as avaliações estáticas
-      setAllTestimonials([...filteredGoogleTestimonials, ...TESTIMONIALS]);
+      setAllTestimonials([...filteredPublicReviews, ...TESTIMONIALS]);
     }
-  }, [googleReviews]);
+  }, [publicReviews]);
 
   return (
     <section 
@@ -119,7 +120,7 @@ export default function Testimonials() {
                   <div className="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-gray-100 h-full flex flex-col transition-all duration-300 hover:shadow-md hover:border-blue-100 max-w-full">
                     <div className="flex items-center mb-3">
                       <div className="flex-shrink-0 mr-2">
-                        {testimonial.source === "google" && testimonial.profilePhoto ? (
+                        {testimonial.source === "public" && testimonial.profilePhoto ? (
                           <img 
                             src={testimonial.profilePhoto}
                             alt={testimonial.name} 
@@ -139,22 +140,20 @@ export default function Testimonials() {
                         <h4 className="font-semibold text-dark-blue text-sm sm:text-base">{testimonial.name}</h4>
                         <p className="text-xs text-gray-600">{testimonial.role}</p>
                         <div className="flex mt-1">
-                          {[...Array(testimonial.rating || 5)].map((_, i) => (
+                          {Array.from({ length: Math.floor(testimonial.rating || 5) }).map((_, i) => (
                             <i key={i} className="fas fa-star text-xs text-yellow-400"></i>
                           ))}
+                          {testimonial.rating % 1 > 0 && (
+                            <i className="fas fa-star-half-alt text-xs text-yellow-400"></i>
+                          )}
                         </div>
                       </div>
                     </div>
                     <p className="text-deep-blue text-xs sm:text-sm flex-grow">{testimonial.content}</p>
                     <div className="mt-4 pt-3 sm:mt-6 sm:pt-4 border-t border-gray-100 text-right">
-                      {testimonial.source === "google" ? (
+                      {testimonial.source === "public" ? (
                         <div className="flex items-center justify-end gap-2">
-                          <img 
-                            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" 
-                            alt="Google" 
-                            className="h-4 w-4"
-                          />
-                          <span className="text-xs text-gray-500 italic">{testimonial.time}</span>
+                          <span className="text-xs text-gray-500 italic">{testimonial.time || "Recentemente"}</span>
                         </div>
                       ) : (
                         <span className="text-xs text-gray-500 italic">Projeto realizado em {2023 - testimonial.id}</span>
@@ -173,7 +172,7 @@ export default function Testimonials() {
 
           {/* Indicadores para dispositivos móveis */}
           <div className="flex justify-center mt-6 gap-2 md:hidden">
-            {TESTIMONIALS.map((_, index) => (
+            {[...Array(Math.min(allTestimonials.length, 5))].map((_, index) => (
               <div 
                 key={index} 
                 className={`w-2.5 h-2.5 rounded-full ${index === 0 ? 'bg-blue-600' : 'bg-gray-300'} transition-all duration-300`}
@@ -182,8 +181,8 @@ export default function Testimonials() {
           </div>
         </motion.div>
 
-        {/* Botão para carregar avaliações do Google se ainda não carregadas */}
-        {!googleReviews && !isLoading && !error && (
+        {/* Botão para carregar avaliações públicas se ainda não carregadas */}
+        {!publicReviews && !isLoading && !error && (
           <motion.div
             className="flex justify-center mt-8"
             initial={{ opacity: 0 }}
@@ -191,18 +190,11 @@ export default function Testimonials() {
             transition={{ duration: 0.5, delay: 0.4 }}
           >
             <button
-              onClick={() => {
-                // Refetch da query será chamado quando o botão for clicado
-                // setQueriesEnabled(true);
-              }}
+              onClick={() => refetch()}
               className="flex items-center gap-2 px-5 py-2 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-50 transition-colors"
             >
-              <img 
-                src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" 
-                alt="Google" 
-                className="h-5 w-5"
-              />
-              <span>Ver avaliações do Google</span>
+              <i className="fas fa-comment-dots text-blue-500"></i>
+              <span>Ver mais avaliações</span>
             </button>
           </motion.div>
         )}

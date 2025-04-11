@@ -141,6 +141,112 @@ const Contact = () => {
             </div>
           </motion.div>
 
+          {/* Formulário para depoimentos */}
+          <motion.div 
+            className="text-center mt-12 pt-8 border-t border-gray-100"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
+            <h3 className="text-xl font-bold text-dark-blue mb-3">Compartilhe sua experiência</h3>
+            <p className="text-deep-blue mb-6 max-w-2xl mx-auto">
+              Seu depoimento é muito importante para nós. Compartilhe sua experiência com nossos serviços.
+            </p>
+            
+            <form 
+              className="max-w-lg mx-auto bg-white p-6 rounded-xl shadow-sm border border-gray-100"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.currentTarget);
+                const reviewData = {
+                  name: formData.get('name') as string,
+                  email: formData.get('email') as string,
+                  rating: formData.get('rating') as string,
+                  content: formData.get('content') as string
+                };
+                
+                // Enviar para a API
+                fetch('/api/public-reviews', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(reviewData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                  if (data.success) {
+                    alert('Obrigado pelo seu depoimento!');
+                    e.currentTarget.reset();
+                  } else {
+                    alert('Erro ao enviar depoimento. Por favor, tente novamente.');
+                  }
+                })
+                .catch(error => {
+                  console.error('Error:', error);
+                  alert('Erro ao enviar depoimento. Por favor, tente novamente.');
+                });
+              }}
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1 text-left">Nome</label>
+                  <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1 text-left">Email (opcional)</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+              </div>
+              
+              <div className="mb-4">
+                <label htmlFor="rating" className="block text-sm font-medium text-gray-700 mb-1 text-left">Avaliação</label>
+                <select 
+                  id="rating" 
+                  name="rating" 
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                >
+                  <option value="5">5 estrelas - Excelente</option>
+                  <option value="4">4 estrelas - Muito bom</option>
+                  <option value="3">3 estrelas - Bom</option>
+                  <option value="2">2 estrelas - Regular</option>
+                  <option value="1">1 estrela - Ruim</option>
+                </select>
+              </div>
+              
+              <div className="mb-4">
+                <label htmlFor="content" className="block text-sm font-medium text-gray-700 mb-1 text-left">Seu depoimento</label>
+                <textarea 
+                  id="content" 
+                  name="content" 
+                  rows={4} 
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Conte-nos sobre sua experiência com nossos serviços..."
+                  required
+                ></textarea>
+              </div>
+              
+              <button 
+                type="submit"
+                className="w-full py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-medium"
+              >
+                Enviar depoimento
+              </button>
+            </form>
+          </motion.div>
+
           {/* Única informação abaixo do card principal */}
           <div className="text-center mt-8 text-gray-500 text-sm">
             <p>Endereço: {CONTACT_INFO.address}, {CONTACT_INFO.addressDetails}</p>
