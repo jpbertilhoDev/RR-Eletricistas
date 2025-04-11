@@ -41,7 +41,7 @@ export const SERVICES = [
     title: "Iluminação",
     description: "Projetos e instalação de sistemas de iluminação residencial e comercial, incluindo LED e soluções econômicas.",
     icon: "fas fa-lightbulb",
-    imageSrc: "./src/assets/images/servicos/iluminacao.jpeg"sApp Image 2025-04-10 at 13.37.30.jpeg"
+    imageSrc: "./src/assets/images/servicos/iluminacao.jpeg"
   }
 ];
 

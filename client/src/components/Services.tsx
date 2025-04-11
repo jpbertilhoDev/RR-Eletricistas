@@ -1,4 +1,3 @@
-
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -12,7 +11,7 @@ import img2 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.40
 import img3 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.41.jpeg";
 import img4 from "@/assets/images/servicos/projeto-eletrico.jpeg"; // Imagem de Projetos Elétricos
 import img5 from "@/assets/images/servicos/quadros-eletricos.jpeg"; // Imagem de Quadros Elétricos
-import img6 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.29.jpeg";
+import img6 from "@/assets/images/servicos/iluminacao.jpeg";
 
 // Map to associate image paths with imported files
 const imageMap: Record<string, string> = {
@@ -22,7 +21,7 @@ const imageMap: Record<string, string> = {
   "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.19.jpeg": img3,
   "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.20.jpeg": img4, // Projetos Elétricos
   "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.29.jpeg": img5, // Quadros Elétricos
-  "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.30.jpeg": img6,
+  "./src/assets/images/servicos/iluminacao.jpeg": img6,
 };
 
 const Services = () => {
@@ -30,13 +29,13 @@ const Services = () => {
   const [activeCard, setActiveCard] = useState<number | null>(null);
   const isMobile = useIsMobile();
   useAnimateOnScroll(sectionRef);
-  
+
   // Scroll-based animation
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
   });
-  
+
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
   const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [20, 0, 0, 20]);
 
@@ -55,7 +54,7 @@ const Services = () => {
       transition: { type: "spring", stiffness: 400, damping: 17 }
     }
   };
-  
+
   // Icon variants
   const iconVariants = {
     hidden: { scale: 0.8, opacity: 0 },
@@ -80,7 +79,7 @@ const Services = () => {
       }
     }
   };
-  
+
   // Text variant
   const textVariants = {
     hidden: { opacity: 0 },
@@ -115,12 +114,12 @@ const Services = () => {
         className="absolute -top-40 -right-40 w-64 md:w-96 h-64 md:h-96 rounded-full bg-blue-50 opacity-50 blur-3xl"
         style={{ opacity, y }}
       />
-      
+
       <motion.div 
         className="absolute -bottom-40 -left-40 w-64 md:w-96 h-64 md:h-96 rounded-full bg-blue-50 opacity-50 blur-3xl"
         style={{ opacity }}
       />
-      
+
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10">
         <motion.div 
           className="mb-8 md:mb-16"
@@ -160,7 +159,7 @@ const Services = () => {
             </motion.p>
           </div>
         </motion.div>
-        
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {SERVICES.map((service, index) => (
             <motion.div 
@@ -200,7 +199,7 @@ const Services = () => {
                   </div>
                 )}
               </div>
-              
+
               {/* Overlay with image that appears on hover/touch */}
               <AnimatePresence>
                 {activeCard === service.id && (
@@ -231,11 +230,11 @@ const Services = () => {
                           }}
                         />
                       </div>
-                      
+
                       {/* Service name */}
                       <h4 className="text-white font-bold text-base md:text-lg mb-1">{service.title}</h4>
                       <div className="w-12 h-0.5 bg-blue-400 mb-2"></div>
-                      
+
                       {/* Instruction to close (mobile only) */}
                       {isMobile && (
                         <motion.p 
@@ -254,7 +253,7 @@ const Services = () => {
             </motion.div>
           ))}
         </div>
-        
+
         {/* Call to action with animation */}
         <motion.div 
           className="mt-10 md:mt-16 text-center bg-primary rounded-lg p-6 md:p-8 shadow-lg relative overflow-hidden"
@@ -282,7 +281,7 @@ const Services = () => {
               transition={{ duration: 8, repeat: Infinity, repeatType: "reverse", delay: 1 }}
             />
           </motion.div>
-          
+
           <div className="max-w-xl mx-auto relative z-10">
             <motion.h3 
               className="text-white text-xl md:text-2xl font-bold mb-2 md:mb-3"
