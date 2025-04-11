@@ -197,6 +197,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // === Depoimentos ===
   
+  // Importações para scraping
+  import axios from 'axios';
+  import * as cheerio from 'cheerio';
+  
   // Criar depoimento
   app.post('/api/admin/testimonials', async (req, res) => {
     try {
@@ -210,12 +214,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       handleError(error, res);
     }
+  });
 
   // === Avaliações Públicas ===
-  
-  // Importações para scraping
-  import axios from 'axios';
-  import * as cheerio from 'cheerio';
   
   // Cache de avaliações para não fazer scraping a cada requisição
   let googleReviewsCache: any[] = [];
