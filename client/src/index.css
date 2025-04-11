@@ -198,14 +198,16 @@
     }
     
     header img {
-      max-height: 40px;
+      max-height: 36px;
       position: relative;
-      top: -2px;
+      top: 0;
     }
     
     header .container {
-      height: 70px !important;
-      min-height: 70px;
+      height: 60px !important;
+      min-height: 60px;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
     }
   }
 
