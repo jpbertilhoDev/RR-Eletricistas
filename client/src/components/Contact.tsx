@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CONTACT_INFO, SOCIAL_MEDIA, WHATSAPP_NUMBER } from "@/lib/constants";
 import { useAnimateOnScroll } from "@/hooks/useAnimateOnScroll";
 import { useToast } from "@/hooks/use-toast";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { sendContactEmail, ContactFormData } from "@/lib/emailjs";
 
 const Contact = () => {
@@ -11,6 +12,7 @@ const Contact = () => {
   useAnimateOnScroll(sectionRef);
   const { toast } = useToast();
   const controls = useAnimation();
+  const isMobile = useIsMobile();
   const [activeField, setActiveField] = useState<string | null>(null);
   
   const [formData, setFormData] = useState({
