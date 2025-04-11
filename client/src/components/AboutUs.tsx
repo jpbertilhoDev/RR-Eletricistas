@@ -64,7 +64,6 @@ export default function AboutUs() {
                     className="w-auto h-28 mb-4 object-contain"
                   />
                   <p className="text-primary font-medium text-base">RR Manutenções Elétricas</p>
-                  <p className="text-deep-blue text-xs mt-1">Excelência em serviços elétricos desde 2015</p>
                 </div>
                 <blockquote className="text-deep-blue italic font-light text-lg mb-4 bg-white/90 p-4 rounded-lg shadow-sm">
                   "Nossa paixão é transformar ambientes através de soluções elétricas que combinam segurança, eficiência e inovação."
@@ -220,7 +219,6 @@ export default function AboutUs() {
                   />
                   <div className="text-center">
                     <p className="text-primary font-medium text-lg">RR Manutenções Elétricas</p>
-                    <p className="text-deep-blue text-sm mt-2">Excelência em serviços elétricos desde 2015</p>
                   </div>
                 </div>
                 </div>
