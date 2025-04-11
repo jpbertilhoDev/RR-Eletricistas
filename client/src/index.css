@@ -329,6 +329,7 @@
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
+}
 
 /* Estilos para a interação com cards de serviços */
 .service-card-image-container {
@@ -346,8 +347,6 @@
   .service-card-touch-hint {
     display: none;
   }
-}
-
 }
 
 @keyframes glow {
@@ -382,7 +381,6 @@
 
 .refresh-spin {
   animation: refreshSpin 1s linear infinite;
-}, 0.4); }
 }
 
 @keyframes slideUp {
