@@ -10,8 +10,8 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import img1 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.06.jpeg";
 import img2 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.40.jpeg";
 import img3 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.41.jpeg";
-import img4 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.19.jpeg";
-import img5 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.29.jpeg";
+import img4 from "@/assets/images/servicos/projetos-eletricos.jpeg"; // Imagem de Projetos Elétricos
+import img5 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.21.jpeg"; // Imagem de Quadros Elétricos
 import img6 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.30.jpeg";
 
 // Map to associate image paths with imported files
@@ -19,10 +19,10 @@ const imageMap: Record<string, string> = {
   "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.06.jpeg": img1,
   "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.40.jpeg": img2,
   "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.41.jpeg": img3,
-  "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.19.jpeg": img4,
-  "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.20.jpeg": img4,
-  "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.29.jpeg": img3,
-  "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.30.jpeg": img3,
+  "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.19.jpeg": img3,
+  "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.20.jpeg": img4, // Projetos Elétricos
+  "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.29.jpeg": img5, // Quadros Elétricos
+  "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.30.jpeg": img6,
 };
 
 const Services = () => {

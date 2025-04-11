@@ -20,21 +20,21 @@ export const SERVICES = [
     title: "Reparos Emergenciais",
     description: "Atendimento rápido para curtos-circuitos, quedas de energia e falhas elétricas, restaurando o funcionamento com rapidez.",
     icon: "fas fa-bolt",
-    imageSrc: "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.19.jpeg"
+    imageSrc: "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.41.jpeg"
   },
   {
     id: 4,
     title: "Projetos Elétricos",
     description: "Desenvolvimento de projetos elétricos completos para residências, comércios e pequenas indústrias, seguindo normas técnicas.",
     icon: "fas fa-drafting-compass",
-    imageSrc: "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.20.jpeg"
+    imageSrc: "./src/assets/images/servicos/projetos-eletricos.jpeg"
   },
   {
     id: 5,
     title: "Quadros Elétricos",
     description: "Instalação, manutenção e substituição de quadros de distribuição, disjuntores e sistemas de proteção elétrica.",
     icon: "fas fa-network-wired",
-    imageSrc: "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.29.jpeg"
+    imageSrc: "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.21.jpeg"
   },
   {
     id: 6,
