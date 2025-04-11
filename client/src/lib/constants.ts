@@ -1,4 +1,3 @@
-
 export const WHATSAPP_NUMBER = "5511976113122";
 
 export const SERVICES = [
@@ -49,40 +48,40 @@ export const SERVICES = [
 export const PROJECTS = [
   {
     id: 1,
-    title: "Instalação Residencial",
-    description: "Projeto completo de instalação elétrica em casa nova, incluindo quadro de distribuição e iluminação.",
-    imageSrc: "https://images.pexels.com/photos/3890198/pexels-photo-3890198.jpeg?auto=compress&cs=tinysrgb&w=600&h=400"
+    title: "Instalação Elétrica Residencial",
+    description: "Renovação completa do sistema elétrico de uma residência, incluindo nova fiação, quadro de distribuição e pontos de energia.",
+    imageSrc: "https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=600&h=400"
   },
   {
     id: 2,
-    title: "Instalação Comercial",
-    description: "Projeto e execução de instalação elétrica para loja, com ênfase em iluminação e segurança.",
-    imageSrc: "https://images.pexels.com/photos/3825523/pexels-photo-3825523.jpeg?auto=compress&cs=tinysrgb&w=600&h=400"
+    title: "Instalação de Quadro de Distribuição",
+    description: "Projeto e instalação de quadro de distribuição para condomínio comercial com automação para controle de cargas.",
+    imageSrc: "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg?auto=compress&cs=tinysrgb&w=600&h=400"
   },
   {
     id: 3,
-    title: "Quadro de Distribuição",
-    description: "Montagem de quadro de distribuição com organização e segurança para residência de alto padrão.",
-    imageSrc: "https://images.pexels.com/photos/4481326/pexels-photo-4481326.jpeg?auto=compress&cs=tinysrgb&w=600&h=400"
+    title: "Manutenção Preventiva Industrial",
+    description: "Serviço de manutenção preventiva em instalação industrial para evitar paradas não programadas e aumentar eficiência.",
+    imageSrc: "https://images.pexels.com/photos/1468419/pexels-photo-1468419.jpeg?auto=compress&cs=tinysrgb&w=600&h=400"
   },
   {
     id: 4,
-    title: "Manutenção Preventiva",
-    description: "Serviço de manutenção e inspeção para evitar falhas e garantir o funcionamento seguro em escritório.",
-    imageSrc: "https://images.pexels.com/photos/8961251/pexels-photo-8961251.jpeg?auto=compress&cs=tinysrgb&w=600&h=400"
+    title: "Projeto de Iluminação Comercial",
+    description: "Desenvolvimento de projeto luminotécnico para loja de varejo, com foco em eficiência energética e valorização do ambiente.",
+    imageSrc: "https://images.pexels.com/photos/133640/pexels-photo-133640.jpeg?auto=compress&cs=tinysrgb&w=600&h=400"
   },
   {
     id: 5,
-    title: "Reparo Emergencial",
-    description: "Solução rápida para curto-circuito que causou queda de energia em estabelecimento comercial.",
-    imageSrc: "https://images.pexels.com/photos/8960325/pexels-photo-8960325.jpeg?auto=compress&cs=tinysrgb&w=600&h=400"
+    title: "Automação Residencial",
+    description: "Implementação de sistema de automação residencial para controle de iluminação, climatização e segurança.",
+    imageSrc: "https://images.pexels.com/photos/4491270/pexels-photo-4491270.jpeg?auto=compress&cs=tinysrgb&w=600&h=400"
   },
   {
     id: 6,
-    title: "Projeto de Iluminação",
-    description: "Instalação de sistema de iluminação eficiente com luminárias LED em residência.",
-    imageSrc: "https://images.pexels.com/photos/5965826/pexels-photo-5965826.jpeg?auto=compress&cs=tinysrgb&w=600&h=400"
-  }
+    title: "Instalação de Sistema Fotovoltaico",
+    description: "Projeto e instalação de sistema de energia solar fotovoltaica para residência, com economia de até 95% na conta de luz.",
+    imageSrc: "https://images.pexels.com/photos/9875441/pexels-photo-9875441.jpeg?auto=compress&cs=tinysrgb&w=600&h=400"
+  },
 ];
 
 export const TESTIMONIALS = [
