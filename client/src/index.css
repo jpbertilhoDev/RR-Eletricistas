@@ -96,7 +96,7 @@
   .typewriter-container {
     display: inline-flex;
     align-items: center;
-    min-height: 2rem;
+    min-height: 3rem;
     position: relative;
     width: 100%;
   }
@@ -106,12 +106,21 @@
     white-space: normal;
     overflow-wrap: break-word;
     word-wrap: break-word;
+    font-size: 1.875rem;
+  }
+
+  @media (max-width: 640px) {
+    .typewriter-text {
+      font-size: 2rem;
+      line-height: 1.2;
+    }
   }
 
   .typewriter-container .cursor {
     display: inline-block;
-    margin-left: 1px;
+    margin-left: 2px;
     animation: blink 0.75s step-end infinite;
+    font-size: 2rem;
   }
 
   .btn-business {

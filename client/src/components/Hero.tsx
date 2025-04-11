@@ -40,7 +40,7 @@ const Hero = () => {
     <section 
       id="inicio" 
       ref={heroRef}
-      className="min-h-[80vh] md:min-h-screen w-full flex items-center justify-center overflow-hidden relative pt-20 md:pt-28"
+      className="min-h-[85vh] md:min-h-screen w-full flex items-center justify-center overflow-hidden relative pt-16 md:pt-28"
     >
       {/* Background Carousel */}
       <HeroBackgroundCarousel />
@@ -56,7 +56,7 @@ const Hero = () => {
           animate="visible"
         >
           <motion.h1 
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 md:mb-8 leading-tight"
+            className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 md:mb-8 leading-tight"
             variants={fadeInUp}
           >
             <div className="w-full">
@@ -65,10 +65,10 @@ const Hero = () => {
           </motion.h1>
 
           <motion.p 
-            className="text-xl md:text-2xl text-white/90 mb-10 md:mb-12 w-full md:max-w-3xl mx-auto font-light"
+            className="text-lg md:text-2xl text-white/90 mb-8 md:mb-12 w-full md:max-w-3xl mx-auto font-light px-4"
             variants={fadeInUp}
           >
-            Especialistas em instalações e manutenções elétricas residenciais e comerciais com mais de 10 anos de experiência.
+            Instalações e manutenções elétricas residenciais e comerciais com qualidade e segurança.
           </motion.p>
 
           <motion.div 
