@@ -10,7 +10,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import img1 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.06.jpeg";
 import img2 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.40.jpeg";
 import img3 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.41.jpeg";
-import img4 from "@/assets/images/servicos/projetos-eletricos.jpeg"; // Imagem de Projetos Elétricos
+import img4 from "@/assets/images/servicos/projeto-eletrico.jpeg"; // Imagem de Projetos Elétricos
 import img5 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.21.jpeg"; // Imagem de Quadros Elétricos
 import img6 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.30.jpeg";
 
