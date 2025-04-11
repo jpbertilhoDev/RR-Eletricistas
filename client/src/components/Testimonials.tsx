@@ -142,40 +142,6 @@ export default function Testimonials() {
             </a>
           </div>
         </motion.div>
-
-        <div className="text-center mt-10 md:mt-12">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="bg-white py-3 px-4 rounded-lg inline-block shadow-sm"
-          >
-            <p className="text-blue-600 font-medium flex items-center justify-center">
-              <span>Avaliação média de 5.0</span> 
-              <i className="fas fa-star text-yellow-400 ml-1.5"></i>
-            </p>
-            <div className={cn(
-              "flex items-center justify-center mt-2",
-              isMobile ? "gap-3 flex-wrap" : "gap-4"
-            )}>
-              <div className="flex items-center">
-                <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google" className="h-5 mr-1.5" />
-                <span className={cn(
-                  "text-gray-700 font-medium",
-                  isMobile ? "text-sm" : ""
-                )}>Google Reviews</span>
-              </div>
-              <div className="w-1 h-1 bg-gray-300 rounded-full"></div>
-              <div className="flex items-center">
-                <i className="fab fa-facebook text-blue-600 mr-1.5 text-lg"></i>
-                <span className={cn(
-                  "text-gray-700 font-medium",
-                  isMobile ? "text-sm" : ""
-                )}>Facebook</span>
-              </div>
-            </div>
-          </motion.div>
-        </div>
       </div>
     </section>
   );
