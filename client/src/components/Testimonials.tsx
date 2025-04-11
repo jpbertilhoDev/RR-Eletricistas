@@ -1,4 +1,3 @@
-
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { TESTIMONIALS } from "@/lib/constants";
@@ -29,7 +28,7 @@ export default function Testimonials() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const isMobile = useIsMobile();
-  
+
   // Buscar avaliações públicas da API
   const { data: publicReviews, isLoading, error, refetch } = useQuery({
     queryKey: ['publicReviews'],
@@ -43,17 +42,17 @@ export default function Testimonials() {
     // Desabilitar a execução automática da query
     enabled: false
   });
-  
+
   // Combinar avaliações públicas com as avaliações estáticas
   const [allTestimonials, setAllTestimonials] = useState<PublicReview[]>(TESTIMONIALS);
-  
+
   useEffect(() => {
     if (publicReviews?.success && Array.isArray(publicReviews?.data)) {
       // Adicionar apenas avaliações com um mínimo de texto
       const filteredPublicReviews = publicReviews.data.filter(
         (review: PublicReview) => review.content && review.content.length > 20
       );
-      
+
       // Combinar com as avaliações estáticas
       setAllTestimonials([...filteredPublicReviews, ...TESTIMONIALS]);
     }
@@ -198,14 +197,14 @@ export default function Testimonials() {
             </button>
           </motion.div>
         )}
-        
+
         {/* Indicador de carregamento */}
         {isLoading && (
           <div className="flex justify-center mt-8">
             <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></div>
           </div>
         )}
-        
+
         <motion.div 
           className="text-center mt-10 md:mt-12 bg-white p-8 rounded-xl shadow-sm max-w-3xl mx-auto border border-blue-100"
           initial={{ opacity: 0, y: 20 }}
