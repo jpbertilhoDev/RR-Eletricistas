@@ -50,7 +50,7 @@ const Header = () => {
           <img 
             src={logoSvg} 
             alt="RR Manutenções Elétricas" 
-            className="h-8 md:h-16 w-auto object-contain -mt-1 md:mt-0"
+            className="h-12 md:h-16 w-auto object-contain -mt-1 md:mt-0"
           />
         </div>
 

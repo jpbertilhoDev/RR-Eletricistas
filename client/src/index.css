@@ -194,14 +194,14 @@
 
   @media (max-width: 640px) {
     header img {
-      max-height: 30px;
+      max-height: 40px;
       position: relative;
       top: -2px;
     }
     
     header .container {
-      height: 60px !important;
-      min-height: 60px;
+      height: 70px !important;
+      min-height: 70px;
     }
   }
 
