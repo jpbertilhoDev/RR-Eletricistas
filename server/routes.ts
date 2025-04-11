@@ -210,6 +210,52 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       handleError(error, res);
     }
+
+  // === Google Reviews ===
+  
+  // Obter avaliações do Google
+  app.get('/api/google-reviews', async (req, res) => {
+    try {
+      const { GOOGLE_PLACES_API_KEY } = process.env;
+      const PLACE_ID = process.env.GOOGLE_PLACE_ID; // ID do seu negócio no Google
+      
+      if (!GOOGLE_PLACES_API_KEY || !PLACE_ID) {
+        return res.status(500).json({
+          success: false,
+          message: 'Chaves de API do Google Places não configuradas'
+        });
+      }
+      
+      // URL para buscar detalhes do lugar, incluindo avaliações
+      const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${PLACE_ID}&fields=name,rating,reviews&key=${GOOGLE_PLACES_API_KEY}`;
+      
+      const response = await fetch(url);
+      const data = await response.json();
+      
+      if (data.status !== 'OK') {
+        return res.status(500).json({
+          success: false,
+          message: 'Erro ao buscar avaliações do Google',
+          error: data.status
+        });
+      }
+      
+      return res.status(200).json({
+        success: true,
+        data: {
+          rating: data.result.rating,
+          reviews: data.result.reviews
+        }
+      });
+    } catch (error) {
+      console.error('Error fetching Google reviews:', error);
+      return res.status(500).json({
+        success: false,
+        message: 'Erro ao buscar avaliações do Google'
+      });
+    }
+  });
+
   });
 
   // Atualizar depoimento

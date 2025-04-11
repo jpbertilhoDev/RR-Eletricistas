@@ -38,17 +38,14 @@ export const getQueryFn: <T>(options: {
     return await res.json();
   };
 
+import { QueryClient } from '@tanstack/react-query'
+
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      queryFn: getQueryFn({ on401: "throw" }),
-      refetchInterval: false,
-      refetchOnWindowFocus: false,
-      staleTime: Infinity,
-      retry: false,
-    },
-    mutations: {
-      retry: false,
+      staleTime: 1000 * 60 * 5, // 5 minutos
+      gcTime: 1000 * 60 * 60, // 1 hora
+      retry: 1,
     },
   },
-});
+})
