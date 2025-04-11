@@ -10,7 +10,7 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   const isMobile = window.innerWidth <= 768;
-  
+
   return (
     <div className="min-h-screen flex flex-col bg-white font-sans text-gray-800">
       <Header />
