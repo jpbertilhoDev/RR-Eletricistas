@@ -54,9 +54,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post('/api/contact', async (req, res) => {
     try {
       const contactData = insertContactMessageSchema.parse(req.body);
-      
+
       const newMessage = await storage.createContactMessage(contactData);
-      
+
       return res.status(200).json({
         success: true,
         message: 'Mensagem recebida com sucesso',
@@ -64,7 +64,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     } catch (error) {
       console.error('Error in contact form:', error);
-      
+
       if (error instanceof ZodError) {
         return res.status(400).json({
           success: false,
@@ -72,7 +72,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           errors: error.errors
         });
       }
-      
+
       return res.status(500).json({
         success: false,
         message: 'Erro no servidor'
@@ -84,13 +84,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Nota: Em produção, essas rotas deveriam ser protegidas com autenticação
 
   // === Serviços ===
-  
+
   // Criar serviço
   app.post('/api/admin/services', async (req, res) => {
     try {
       const serviceData = insertServiceSchema.parse(req.body);
       const newService = await storage.createService(serviceData);
-      
+
       return res.status(201).json({
         success: true,
         data: newService
@@ -105,16 +105,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const serviceData = insertServiceSchema.partial().parse(req.body);
-      
+
       const updatedService = await storage.updateService(id, serviceData);
-      
+
       if (!updatedService) {
         return res.status(404).json({
           success: false,
           message: 'Serviço não encontrado'
         });
       }
-      
+
       return res.status(200).json({
         success: true,
         data: updatedService
@@ -129,7 +129,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const result = await storage.deleteService(id);
-      
+
       return res.status(200).json({
         success: true,
         message: 'Serviço excluído com sucesso'
@@ -140,13 +140,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // === Projetos ===
-  
+
   // Criar projeto
   app.post('/api/admin/projects', async (req, res) => {
     try {
       const projectData = insertProjectSchema.parse(req.body);
       const newProject = await storage.createProject(projectData);
-      
+
       return res.status(201).json({
         success: true,
         data: newProject
@@ -161,16 +161,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const projectData = insertProjectSchema.partial().parse(req.body);
-      
+
       const updatedProject = await storage.updateProject(id, projectData);
-      
+
       if (!updatedProject) {
         return res.status(404).json({
           success: false,
           message: 'Projeto não encontrado'
         });
       }
-      
+
       return res.status(200).json({
         success: true,
         data: updatedProject
@@ -185,7 +185,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const result = await storage.deleteProject(id);
-      
+
       return res.status(200).json({
         success: true,
         message: 'Projeto excluído com sucesso'
@@ -196,13 +196,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // === Depoimentos ===
-  
+
   // Criar depoimento
   app.post('/api/admin/testimonials', async (req, res) => {
     try {
       const testimonialData = insertTestimonialSchema.parse(req.body);
       const newTestimonial = await storage.createTestimonial(testimonialData);
-      
+
       return res.status(201).json({
         success: true,
         data: newTestimonial
@@ -212,13 +212,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
 
   // === Avaliações Públicas ===
-  
+
   // Obter avaliações públicas - alternativa gratuita
   app.get('/api/public-reviews', async (req, res) => {
     try {
       // Buscar depoimentos do banco de dados - já existe essa funcionalidade
       const dbTestimonials = await storage.getTestimonials();
-      
+
       // Formatar os depoimentos do banco para incluir a fonte como "site"
       const siteTestimonials = dbTestimonials.map(testimonial => ({
         ...testimonial,
@@ -226,16 +226,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
         profilePhoto: null,
         time: `${Math.floor(Math.random() * 3) + 1} ${['dias', 'semanas', 'meses'][Math.floor(Math.random() * 3)]} atrás`
       }));
-      
+
       // Gerar avaliações simuladas do Google Maps
       const googleReviews = generateGoogleMapsReviews();
-      
+
       // Combinar avaliações do site com avaliações simuladas do Google
       const allReviews = [...siteTestimonials, ...googleReviews];
-      
+
       // Organizar por data (mais recentes primeiro)
       allReviews.sort(() => Math.random() - 0.5);
-      
+
       return res.status(200).json({
         success: true,
         data: allReviews
@@ -248,7 +248,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     }
   });
-  
+
   // Função que fornece avaliações reais da RR Manutenções Elétricas do Google Maps
   function generateGoogleMapsReviews() {
     // Avaliações reais da empresa conforme o link: https://g.co/kgs/ocBzoYD
@@ -334,23 +334,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
         profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjUWC4PoiJdLBXS3Uv6rM2xpZfCR99-jvKxQx0VJaXuAqA=s120-c-rp-mo-ba4-br100"
       }
     ];
-    
-    // Retorna aleatoriamente algumas avaliações para mostrar variedade
-    return googleReviews.sort(() => Math.random() - 0.5).slice(0, 4);
+
+    // Retornar todas as avaliações para exibição em tempo real
+    return googleReviews;
   }
-  
+
   // Criar nova avaliação pública (para o formulário do site)
   app.post('/api/public-reviews', async (req, res) => {
     try {
       const { name, email, rating, content } = req.body;
-      
+
       if (!name || !rating || !content) {
         return res.status(400).json({
           success: false,
           message: 'Dados incompletos para a avaliação'
         });
       }
-      
+
       // Criar um novo depoimento usando a função existente do storage
       const newTestimonial = await storage.createTestimonial({
         name,
@@ -358,7 +358,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         content,
         rating: parseFloat(rating)
       });
-      
+
       return res.status(201).json({
         success: true,
         message: 'Avaliação recebida com sucesso!',
@@ -380,16 +380,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const testimonialData = insertTestimonialSchema.partial().parse(req.body);
-      
+
       const updatedTestimonial = await storage.updateTestimonial(id, testimonialData);
-      
+
       if (!updatedTestimonial) {
         return res.status(404).json({
           success: false,
           message: 'Depoimento não encontrado'
         });
       }
-      
+
       return res.status(200).json({
         success: true,
         data: updatedTestimonial
@@ -404,7 +404,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const result = await storage.deleteTestimonial(id);
-      
+
       return res.status(200).json({
         success: true,
         message: 'Depoimento excluído com sucesso'
@@ -415,7 +415,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // === Mensagens de contato ===
-  
+
   // Obter todas as mensagens
   app.get('/api/admin/messages', async (req, res) => {
     try {
@@ -431,14 +431,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const message = await storage.getContactMessage(id);
-      
+
       if (!message) {
         return res.status(404).json({
           success: false,
           message: 'Mensagem não encontrada'
         });
       }
-      
+
       return res.status(200).json(message);
     } catch (error) {
       handleError(error, res);
@@ -450,14 +450,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const updatedMessage = await storage.markContactMessageAsRead(id);
-      
+
       if (!updatedMessage) {
         return res.status(404).json({
           success: false,
           message: 'Mensagem não encontrada'
         });
       }
-      
+
       return res.status(200).json({
         success: true,
         data: updatedMessage
@@ -472,7 +472,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const result = await storage.deleteContactMessage(id);
-      
+
       return res.status(200).json({
         success: true,
         message: 'Mensagem excluída com sucesso'
@@ -490,7 +490,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 // Função auxiliar para tratamento de erros
 function handleError(error: unknown, res: Response) {
   console.error('API error:', error);
-  
+
   if (error instanceof ZodError) {
     return res.status(400).json({
       success: false,
@@ -498,7 +498,7 @@ function handleError(error: unknown, res: Response) {
       errors: error.errors
     });
   }
-  
+
   return res.status(500).json({
     success: false,
     message: 'Erro no servidor'

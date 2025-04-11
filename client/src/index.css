@@ -19,6 +19,15 @@
 }
 
 @layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --testimonial-bg: 0 0% 0%;
+    --testimonial-accent: 180 70% 40%;
+  }
+
   * {
     @apply border-border;
   }
@@ -143,13 +152,13 @@
     animation: blink 0.75s step-end infinite;
     font-size: 2.5rem;
   }
-  
+
   @media (min-width: 768px) {
     .typewriter-container .cursor {
       font-size: 3.5rem;
     }
   }
-  
+
   @media (min-width: 1024px) {
     .typewriter-container .cursor {
       font-size: 4rem;
@@ -221,11 +230,11 @@
   #quem-somos .logo-container {
     transition: transform 0.3s ease;
   }
-  
+
   #quem-somos .logo-container:hover {
     transform: scale(1.05);
   }
-  
+
   @media (max-width: 768px) {
     #quem-somos .sticky {
       position: relative;
@@ -264,13 +273,13 @@
     header {
       background-color: white !important;
     }
-    
+
     header img {
       max-height: 36px;
       position: relative;
       top: 0;
     }
-    
+
     header .container {
       height: 60px !important;
       min-height: 60px;
