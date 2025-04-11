@@ -40,7 +40,7 @@ const Hero = () => {
     <section 
       id="inicio" 
       ref={heroRef}
-      className="min-h-[80vh] md:min-h-screen w-full flex items-center justify-center overflow-hidden relative pt-16 md:pt-0"
+      className="min-h-[80vh] md:min-h-screen w-full flex items-center justify-center overflow-hidden relative pt-24 md:pt-28"
     >
       {/* Background Carousel */}
       <HeroBackgroundCarousel />

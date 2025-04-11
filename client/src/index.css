@@ -193,6 +193,10 @@
   }
 
   @media (max-width: 640px) {
+    header {
+      background-color: white !important;
+    }
+    
     header img {
       max-height: 40px;
       position: relative;
