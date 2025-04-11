@@ -45,8 +45,8 @@ const Hero = () => {
       {/* Background Carousel */}
       <HeroBackgroundCarousel />
       
-      {/* Overlay gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/95 via-primary/90 to-primary/95 z-0" />
+      {/* Overlay gradient - opacidade reduzida */}
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/65 to-primary/70 z-0" />
       
       <div className="w-full container mx-auto px-4 relative z-10 py-20 md:py-0 md:flex md:flex-col md:items-center md:justify-center">
         <motion.div 

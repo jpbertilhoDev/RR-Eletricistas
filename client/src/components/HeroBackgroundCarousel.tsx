@@ -34,7 +34,7 @@ const HeroBackgroundCarousel = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat w-full h-full transition-all duration-1000"
         style={{ 
           backgroundImage: `url(${images[currentIndex]})`,
-          filter: 'brightness(1.3) contrast(1.2)'
+          filter: 'brightness(1.5) contrast(1.3)'
         }}
       />
 
@@ -54,7 +54,7 @@ const HeroBackgroundCarousel = () => {
             className="absolute inset-0 bg-cover bg-center"
             style={{ 
               backgroundImage: `url(${images[nextIndex]})`,
-              filter: 'brightness(1.3) contrast(1.2)'
+              filter: 'brightness(1.5) contrast(1.3)'
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-primary/10" />
