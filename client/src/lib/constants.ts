@@ -38,6 +38,9 @@ export const SERVICES = [
     id: 6,
     title: "Iluminação",
     description: "Projetos e instalação de sistemas de iluminação residencial e comercial, incluindo LED e soluções econômicas.",
+
+export const WHATSAPP_NUMBER = "5511976113122";
+
     icon: "fas fa-lightbulb",
     imageSrc: "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.30.jpeg",
     icon: "fas fa-lightbulb"
@@ -169,9 +172,9 @@ export const NAVIGATION_ITEMS = [
 ];
 
 export const CONTACT_INFO = {
-  phone: "(11) 99999-9999",
-  email: "contato@rrmanutencoes.com.br",
-  address: "São Paulo, SP - Brasil",
+  phone: "(11) 97611-3122",
+  email: "rrmanutencoeseletricas1@gmail.com",
+  address: "Rua barra de guabiraba, 436",
   addressDetails: "Atendemos toda a região metropolitana",
   hours: [
     "Segunda a Sexta: 08h às 18h",
