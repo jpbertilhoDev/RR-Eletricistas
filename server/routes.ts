@@ -56,9 +56,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post('/api/contact', async (req, res) => {
     try {
       const contactData = insertContactMessageSchema.parse(req.body);
-      
+
       const newMessage = await storage.createContactMessage(contactData);
-      
+
       return res.status(200).json({
         success: true,
         message: 'Mensagem recebida com sucesso',
@@ -66,7 +66,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     } catch (error) {
       console.error('Error in contact form:', error);
-      
+
       if (error instanceof ZodError) {
         return res.status(400).json({
           success: false,
@@ -74,7 +74,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           errors: error.errors
         });
       }
-      
+
       return res.status(500).json({
         success: false,
         message: 'Erro no servidor'
@@ -86,13 +86,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Nota: Em produção, essas rotas deveriam ser protegidas com autenticação
 
   // === Serviços ===
-  
+
   // Criar serviço
   app.post('/api/admin/services', async (req, res) => {
     try {
       const serviceData = insertServiceSchema.parse(req.body);
       const newService = await storage.createService(serviceData);
-      
+
       return res.status(201).json({
         success: true,
         data: newService
@@ -107,16 +107,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const serviceData = insertServiceSchema.partial().parse(req.body);
-      
+
       const updatedService = await storage.updateService(id, serviceData);
-      
+
       if (!updatedService) {
         return res.status(404).json({
           success: false,
           message: 'Serviço não encontrado'
         });
       }
-      
+
       return res.status(200).json({
         success: true,
         data: updatedService
@@ -131,7 +131,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const result = await storage.deleteService(id);
-      
+
       return res.status(200).json({
         success: true,
         message: 'Serviço excluído com sucesso'
@@ -142,13 +142,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // === Projetos ===
-  
+
   // Criar projeto
   app.post('/api/admin/projects', async (req, res) => {
     try {
       const projectData = insertProjectSchema.parse(req.body);
       const newProject = await storage.createProject(projectData);
-      
+
       return res.status(201).json({
         success: true,
         data: newProject
@@ -163,16 +163,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const projectData = insertProjectSchema.partial().parse(req.body);
-      
+
       const updatedProject = await storage.updateProject(id, projectData);
-      
+
       if (!updatedProject) {
         return res.status(404).json({
           success: false,
           message: 'Projeto não encontrado'
         });
       }
-      
+
       return res.status(200).json({
         success: true,
         data: updatedProject
@@ -187,7 +187,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const result = await storage.deleteProject(id);
-      
+
       return res.status(200).json({
         success: true,
         message: 'Projeto excluído com sucesso'
@@ -198,13 +198,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // === Depoimentos ===
-  
+
   // Criar depoimento
   app.post('/api/admin/testimonials', async (req, res) => {
     try {
       const testimonialData = insertTestimonialSchema.parse(req.body);
       const newTestimonial = await storage.createTestimonial(testimonialData);
-      
+
       return res.status(201).json({
         success: true,
         data: newTestimonial
@@ -215,18 +215,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // === Avaliações Públicas ===
-  
+
   // Cache de avaliações para não fazer scraping a cada requisição
   let googleReviewsCache: any[] = [];
   let lastFetchTime = 0;
   const CACHE_DURATION = 1000 * 60 * 60; // 1 hora
-  
+
   // Obter avaliações públicas - alternativa com scraping real
   app.get('/api/public-reviews', async (req, res) => {
     try {
       // Buscar depoimentos do banco de dados - já existe essa funcionalidade
       const dbTestimonials = await storage.getTestimonials();
-      
+
       // Formatar os depoimentos do banco para incluir a fonte como "site"
       const siteTestimonials = dbTestimonials.map(testimonial => ({
         ...testimonial,
@@ -234,7 +234,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         profilePhoto: null,
         time: `${Math.floor(Math.random() * 3) + 1} ${['dias', 'semanas', 'meses'][Math.floor(Math.random() * 3)]} atrás`
       }));
-      
+
       // Verificar se é necessário buscar novas avaliações do Google
       const currentTime = Date.now();
       if (googleReviewsCache.length === 0 || (currentTime - lastFetchTime) > CACHE_DURATION) {
@@ -242,7 +242,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           // Tentar buscar avaliações reais do Google
           console.log('Buscando avaliações reais do Google Maps...');
           const googleReviews = await fetchGoogleMapsReviews();
-          
+
           if (googleReviews && googleReviews.length > 0) {
             googleReviewsCache = googleReviews;
             lastFetchTime = currentTime;
@@ -263,13 +263,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
           }
         }
       }
-      
+
       // Combinar avaliações do site com avaliações do Google
       const allReviews = [...googleReviewsCache, ...siteTestimonials];
-      
+
       // Organizar por data (mais recentes primeiro)
       // As avaliações do Google já vêm ordenadas, então mantemos essa ordem
-      
+
       return res.status(200).json({
         success: true,
         data: allReviews
@@ -282,7 +282,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     }
   });
-  
+
   // Função para buscar avaliações reais do Google Maps via scraping
   async function fetchGoogleMapsReviews() {
     try {
@@ -291,7 +291,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         "https://www.google.com/maps/place/Reginaldo+Eletricista+-+RR+Manuten%C3%A7%C3%B5es+El%C3%A9tricas/@-23.5868212,-46.693108,17z/data=!4m8!3m7!1s0x94ce575ae84b4b17:0x32ef42e1dcfd58f3!8m2!3d-23.5868212!4d-46.693108!9m1!1b1!16s%2Fg%2F119xjn0j8",
         "https://www.google.com/maps/place/RR+Manutenções+Elétricas/@-23.5868248,-46.6931067,17z/data=!4m8!3m7!1s0x94ce575ae84b4b17:0x32ef42e1dcfd58f3!8m2!3d-23.5868212!4d-46.693108!9m1!1b1!16s%2Fg%2F119xjn0j8"
       ];
-      
+
       // Configuração que inclui user-agent para evitar bloqueio
       const config = {
         headers: {
@@ -299,7 +299,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           'Accept-Language': 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7'
         }
       };
-      
+
       // Tentar cada URL até conseguir
       let responseHTML = '';
       for (const url of urls) {
@@ -311,37 +311,37 @@ export async function registerRoutes(app: Express): Promise<Server> {
           console.log(`Falha na URL ${url}, tentando próxima...`);
         }
       }
-      
+
       if (!responseHTML) {
         throw new Error('Não foi possível obter dados de nenhuma URL');
       }
-      
+
       // Processar o HTML para extrair as avaliações
       const $ = cheerio.load(responseHTML);
-      
+
       // Esses seletores precisam ser ajustados pois o Google pode mudar o layout
       const reviewElements = $('[data-review-id]');
       const reviews = [];
-      
+
       reviewElements.each((index, element) => {
         try {
           // Nome do avaliador
           const nameElement = $(element).find('.d4r55');
           const name = nameElement.text().trim();
-          
+
           // Tempo da avaliação
           const timeElement = $(element).find('.rsqaWe');
           const time = timeElement.text().trim();
-          
+
           // Imagem do perfil
           const imgElement = $(element).find('img.NBa7we');
           let profilePhoto = imgElement.attr('src');
-          
+
           if (!profilePhoto || profilePhoto.includes('googleusercontent.com/img/a/')) {
             // Se não encontrar uma foto real, usar gerador de avatar
             profilePhoto = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random&color=fff`;
           }
-          
+
           // Rating (número de estrelas)
           const ratingElement = $(element).find('.kvMYJc');
           let rating = 5; // Padrão se não conseguir encontrar
@@ -352,11 +352,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
               rating = parseInt(ratingMatch[1]);
             }
           }
-          
+
           // Conteúdo da avaliação
           const contentElement = $(element).find('.wiI7pd');
           const content = contentElement.text().trim();
-          
+
           if (name && content) {
             reviews.push({
               id: 1000 + index,
@@ -373,20 +373,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
           console.error(`Erro ao extrair informações da avaliação ${index}:`, err);
         }
       });
-      
+
       // Se não encontrar nenhuma avaliação pelo método principal, tentar outro método
       if (reviews.length === 0) {
         // Usar algumas das avaliações mais recentes visíveis na imagem fornecida
         return extractReviewsFromBackup();
       }
-      
+
       return reviews;
     } catch (error) {
       console.error('Erro ao fazer scraping das avaliações do Google Maps:', error);
       return extractReviewsFromBackup();
     }
   }
-  
+
   // Função de backup que extrai avaliações da imagem fornecida
   function extractReviewsFromBackup() {
     return [
@@ -442,7 +442,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
     ];
   }
-  
+
   // Avaliações de backup caso o scraping falhe completamente
   function generateBackupGoogleReviews() {
     // Avaliações reais da empresa conforme o link: https://g.co/kgs/ocBzoYD
@@ -528,26 +528,26 @@ export async function registerRoutes(app: Express): Promise<Server> {
         profilePhoto: "https://ui-avatars.com/api/?name=RR&background=random"
       }
     ];
-    
+
     // Adicionar avaliações mais recentes da imagem
     return [
       ...extractReviewsFromBackup(),
       ...googleReviews
     ];
   }
-  
+
   // Criar nova avaliação pública (para o formulário do site)
   app.post('/api/public-reviews', async (req, res) => {
     try {
       const { name, email, rating, content } = req.body;
-      
+
       if (!name || !rating || !content) {
         return res.status(400).json({
           success: false,
           message: 'Dados incompletos para a avaliação'
         });
       }
-      
+
       // Criar um novo depoimento usando a função existente do storage
       const newTestimonial = await storage.createTestimonial({
         name,
@@ -555,7 +555,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         content,
         rating: parseFloat(rating)
       });
-      
+
       return res.status(201).json({
         success: true,
         message: 'Avaliação recebida com sucesso!',
@@ -570,23 +570,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  });
-
   // Atualizar depoimento
   app.put('/api/admin/testimonials/:id', async (req, res) => {
     try {
       const id = parseInt(req.params.id);
       const testimonialData = insertTestimonialSchema.partial().parse(req.body);
-      
+
       const updatedTestimonial = await storage.updateTestimonial(id, testimonialData);
-      
+
       if (!updatedTestimonial) {
         return res.status(404).json({
           success: false,
           message: 'Depoimento não encontrado'
         });
       }
-      
+
       return res.status(200).json({
         success: true,
         data: updatedTestimonial
@@ -601,7 +599,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const result = await storage.deleteTestimonial(id);
-      
+
       return res.status(200).json({
         success: true,
         message: 'Depoimento excluído com sucesso'
@@ -612,7 +610,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // === Mensagens de contato ===
-  
+
   // Obter todas as mensagens
   app.get('/api/admin/messages', async (req, res) => {
     try {
@@ -628,14 +626,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const message = await storage.getContactMessage(id);
-      
+
       if (!message) {
         return res.status(404).json({
           success: false,
           message: 'Mensagem não encontrada'
         });
       }
-      
+
       return res.status(200).json(message);
     } catch (error) {
       handleError(error, res);
@@ -647,14 +645,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const updatedMessage = await storage.markContactMessageAsRead(id);
-      
+
       if (!updatedMessage) {
         return res.status(404).json({
           success: false,
           message: 'Mensagem não encontrada'
         });
       }
-      
+
       return res.status(200).json({
         success: true,
         data: updatedMessage
@@ -669,7 +667,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const result = await storage.deleteContactMessage(id);
-      
+
       return res.status(200).json({
         success: true,
         message: 'Mensagem excluída com sucesso'
@@ -687,7 +685,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 // Função auxiliar para tratamento de erros
 function handleError(error: unknown, res: Response) {
   console.error('API error:', error);
-  
+
   if (error instanceof ZodError) {
     return res.status(400).json({
       success: false,
@@ -695,7 +693,7 @@ function handleError(error: unknown, res: Response) {
       errors: error.errors
     });
   }
-  
+
   return res.status(500).json({
     success: false,
     message: 'Erro no servidor'
