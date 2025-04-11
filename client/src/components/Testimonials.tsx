@@ -191,35 +191,23 @@ export default function Testimonials() {
                     
                     <div className="flex items-center mb-4 relative z-10">
                       <div className="flex-shrink-0 mr-3">
-                        {testimonial.profilePhoto ? (
-                          <div className="relative">
-                            <img 
-                              src={testimonial.profilePhoto}
-                              alt={testimonial.name} 
-                              className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border-2 border-blue-100 shadow-sm"
-                              loading="lazy"
-                            />
-                            {testimonial.source === "Google Maps" && (
-                              <div className="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5 shadow-sm border border-gray-100">
-                                <i className="fab fa-google text-sm text-blue-500"></i>
-                              </div>
-                            )}
-                          </div>
-                        ) : (
-                          <div className="relative">
-                            <img 
-                              src={`https://ui-avatars.com/api/?name=${testimonial.name.split(' ').map(n => n[0]).join('')}&background=random&color=fff`}
-                              alt={testimonial.name} 
-                              className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border-2 border-blue-100 shadow-sm"
-                              loading="lazy"
-                            />
-                            {testimonial.source === "Google Maps" && (
-                              <div className="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5 shadow-sm border border-gray-100">
-                                <i className="fab fa-google text-sm text-blue-500"></i>
-                              </div>
-                            )}
-                          </div>
-                        )}
+                        <div className="relative">
+                          <img 
+                            src={testimonial.profilePhoto || `https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name.split(' ').map(n => n[0]).join(''))}&background=random&color=fff&size=128`}
+                            alt={testimonial.name} 
+                            className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border-2 border-blue-100 shadow-sm"
+                            loading="lazy"
+                            onError={(e) => {
+                              // Fallback para avatar gerado se a imagem não carregar
+                              e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name.split(' ').map(n => n[0]).join(''))}&background=random&color=fff&size=128`;
+                            }}
+                          />
+                          {testimonial.source === "Google Maps" && (
+                            <div className="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5 shadow-sm border border-gray-100">
+                              <i className="fab fa-google text-sm text-blue-500"></i>
+                            </div>
+                          )}
+                        </div>
                       </div>
                       <div>
                         <h4 className="font-semibold text-dark-blue text-base">{testimonial.name}</h4>
