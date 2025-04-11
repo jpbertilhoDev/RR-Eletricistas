@@ -261,7 +261,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps",
         time: "2 meses atrás",
-        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjX3pUV3fwcnHXQxtkrN32vqrxMkmTxv55s2IYL11fbxqTg=s120-c-rp-mo-br100"
+        profilePhoto: "https://ui-avatars.com/api/?name=TC&background=random"
       },
       {
         id: 1002,
@@ -271,17 +271,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps",
         time: "1 ano atrás",
-        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjXrblHU-FxvYTbNWrAJXCc-HkL8xP1m0TEMbixz9MUxalQ=s120-c-rp-mo-br100"
+        profilePhoto: "https://ui-avatars.com/api/?name=CH&background=random"
       },
       {
         id: 1003,
-        name: "Suelma Bernardo",
+        name: "suelma bernardo",
         role: "Cliente",
-        content: "Profissional competente, responsável, tem muito conhecimento, ótimo atendimento, fez o serviço de qualidade, e um preço muito justo, prontificou em vir resolver nosso problema, ainda compartilhou conhecimentos para evitar danos futuros, recomendo a todos.",
+        content: "Profissional competente, responsável, tem muito conhecimento, ótimo atendimento,  fez o serviço de qualidade, e um preço muito justo, prontificou em vir resolver nosso problema, ainda compartilhou conhecimentos para evitar danos futuros, recomendo a todos.",
         rating: 5,
         source: "Google Maps",
         time: "1 ano atrás",
-        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjU3mhCdtHihFOZUTmxIWS5TQWvYoWGXObnljBGqDXOiKEQ=s120-c-rp-mo-br100"
+        profilePhoto: "https://ui-avatars.com/api/?name=SB&background=random"
       },
       {
         id: 1004,
@@ -291,7 +291,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps", 
         time: "1 ano atrás",
-        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjXRCzxLKu9IpJXLt9PzV5vK0FJzCRGu2YrQ2_o2TFO30YA=s120-c-rp-mo-ba4-br100"
+        profilePhoto: "https://ui-avatars.com/api/?name=RF&background=random"
       },
       {
         id: 1005,
@@ -301,7 +301,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps",
         time: "1 ano atrás",
-        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjXNakmjAOMqCTtDgPhBXaTv7rz_gZ1VJCkUfpzwkAZO0NU=s120-c-rp-mo-br100"
+        profilePhoto: "https://ui-avatars.com/api/?name=WR&background=random"
       },
       {
         id: 1006,
@@ -311,7 +311,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5, 
         source: "Google Maps",
         time: "1 ano atrás",
-        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjWL1cchpE6Oq8ky7L0ygmCZwPKQbLVRwICndTsrWYYCFg=s120-c-rp-mo-br100"
+        profilePhoto: "https://ui-avatars.com/api/?name=JL&background=random"
       },
       {
         id: 1007,
@@ -321,7 +321,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps",
         time: "10 meses atrás",
-        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjWi8SuYfP7X3jcNP5QFcaxJnPQlK5y-z-SQTZIBazE-pg=s120-c-rp-mo-br100"
+        profilePhoto: "https://ui-avatars.com/api/?name=WL&background=random"
       },
       {
         id: 1008,
@@ -331,7 +331,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps",
         time: "8 meses atrás",
-        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjUWC4PoiJdLBXS3Uv6rM2xpZfCR99-jvKxQx0VJaXuAqA=s120-c-rp-mo-ba4-br100"
+        profilePhoto: "https://ui-avatars.com/api/?name=RR&background=random"
       }
     ];
     

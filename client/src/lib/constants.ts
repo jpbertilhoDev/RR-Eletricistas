@@ -90,24 +90,21 @@ export const TESTIMONIALS = [
     name: "Marcos Silva",
     role: "Cliente Residencial",
     content: "Serviço excelente, rápido e limpo. Super recomendo a R.R para qualquer instalação elétrica!",
-    rating: 5,
-    profilePhoto: "https://i.pravatar.cc/150?u=marcos.silva@example.com"
+    rating: 5
   },
   {
     id: 2,
     name: "Camila Santos",
     role: "Comerciante",
     content: "A equipe da R.R resolveu o problema da minha loja no mesmo dia. Atendimento via WhatsApp facilitou demais.",
-    rating: 5,
-    profilePhoto: "https://i.pravatar.cc/150?u=camila.santos@example.com"
+    rating: 5
   },
   {
     id: 3,
     name: "Renata Oliveira",
     role: "Cliente Residencial",
     content: "Profissionais competentes e atenciosos. Fizeram a instalação elétrica da minha casa seguindo todas as normas de segurança.",
-    rating: 4.5,
-    profilePhoto: "https://i.pravatar.cc/150?u=renata.oliveira@example.com"
+    rating: 4.5
   }
 ];
 

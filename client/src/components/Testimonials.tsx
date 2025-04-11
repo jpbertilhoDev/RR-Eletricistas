@@ -56,19 +56,17 @@ export default function Testimonials() {
         (review: PublicReview) => review.content && review.content.length > 10
       );
 
-      // Filtrar para mostrar avaliações do Google primeiro
+      // Filtrar para mostrar avaliações do Google primeiro, quando disponíveis
       const googleReviews = filteredPublicReviews.filter(
         (review: PublicReview) => review.source === "Google Maps"
       );
       
-      // Garantir que todas as avaliações do Google apareçam primeiro
-      // Mostrar apenas as avaliações do Google e um número limitado das outras
-      const siteReviews = filteredPublicReviews
-        .filter((review: PublicReview) => review.source !== "Google Maps")
-        .slice(0, 2); // Limitar a apenas algumas avaliações do site
+      const siteReviews = filteredPublicReviews.filter(
+        (review: PublicReview) => review.source !== "Google Maps"
+      );
 
-      // Priorizamos avaliações do Google Maps e depois algumas do site
-      setAllTestimonials([...googleReviews, ...siteReviews]);
+      // Priorizamos avaliações do Google Maps e depois as do site
+      setAllTestimonials([...googleReviews, ...siteReviews, ...TESTIMONIALS]);
     }
   }, [publicReviews]);
 
@@ -137,20 +135,14 @@ export default function Testimonials() {
                           <img 
                             src={testimonial.profilePhoto}
                             alt={testimonial.name} 
-                            className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border-2 border-blue-100 shadow-md"
+                            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-blue-100"
                             loading="lazy"
-                            onError={(e) => {
-                              // Fallback para avatar genérico caso a imagem falhe
-                              const target = e.target as HTMLImageElement;
-                              target.src = `https://ui-avatars.com/api/?name=${testimonial.name.split(' ').map(n => n[0]).join('')}&background=random&color=fff`;
-                            }}
-                            referrerPolicy="no-referrer"
                           />
                         ) : (
                           <img 
                             src={`https://ui-avatars.com/api/?name=${testimonial.name.split(' ').map(n => n[0]).join('')}&background=random&color=fff`}
                             alt={testimonial.name} 
-                            className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border-2 border-blue-100 shadow-md"
+                            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-blue-100"
                             loading="lazy"
                           />
                         )}
