@@ -68,7 +68,7 @@ export const PROJECTS = [
     id: 4,
     title: "Projetos Elétricos",
     description: "Desenvolvimento de projetos elétricos completos para residências, comércios e pequenas indústrias, seguindo normas técnicas.",
-    imageSrc: "./src/assets/images/servicos/projetos-eletricos.jpeg"
+    imageSrc: "./src/assets/images/servicos/WhatsApp Image 2025-04-11 at 14.40.50.jpeg"
   },
   {
     id: 5,
