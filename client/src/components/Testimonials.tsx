@@ -132,7 +132,7 @@ export default function Testimonials() {
               <p className="text-deep-blue">Nossos especialistas estão prontos para atender você com qualidade e segurança</p>
             </div>
             <a
-              href={`https://wa.me/+5511972650865`}
+              href={`https://wa.me/+5511972650865?text=${encodeURIComponent("Olá, vi os depoimentos no site e gostaria de solicitar um orçamento.")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors whitespace-nowrap flex-shrink-0"

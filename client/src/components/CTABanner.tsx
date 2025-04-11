@@ -38,7 +38,7 @@ const CTABanner = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <a
-              href="https://wa.me/+5511972460497?text=Olá,%20gostaria%20de%20solicitar%20um%20orçamento."
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Olá, gostaria de solicitar um orçamento.")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-8 rounded-lg text-lg transition-all duration-300 shadow-md hover:shadow-lg"

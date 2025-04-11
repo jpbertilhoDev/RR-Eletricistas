@@ -108,7 +108,7 @@ const VideoPresentation = () => {
           <div className="inline-flex flex-col sm:flex-row items-center bg-white px-6 py-4 rounded-full shadow-md">
             <span className="text-deep-blue mb-3 sm:mb-0 sm:mr-4">Precisa de serviços elétricos profissionais?</span>
             <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}`}
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Olá, assisti ao vídeo e gostaria de solicitar um orçamento.")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center px-5 py-2 bg-primary text-white rounded-full transition-colors shadow-sm whatsapp-btn"

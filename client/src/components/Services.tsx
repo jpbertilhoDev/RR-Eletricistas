@@ -309,7 +309,7 @@ const Services = () => {
               className="flex justify-center"
             >
               <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Olá, gostaria de solicitar um orçamento para serviços elétricos.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto"

@@ -76,7 +76,7 @@ const Hero = () => {
             variants={fadeInUp}
           >
             <motion.a
-              href={`https://wa.me/${WHATSAPP_NUMBER}`}
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Olá, gostaria de solicitar um orçamento.")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto"

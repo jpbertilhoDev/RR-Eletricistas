@@ -1,4 +1,3 @@
-
 import React, { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { 
@@ -137,7 +136,7 @@ const WhyChooseUs = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            
+
             <div className="hidden md:block">
               <CarouselPrevious className="h-9 w-9 -left-12 border-gray-200 text-gray-700 hover:bg-blue-50 hover:text:blue-600 hover:border-blue-200" />
               <CarouselNext className="h-9 w-9 -right-12 border-gray-200 text-gray-700 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200" />
@@ -167,7 +166,7 @@ const WhyChooseUs = () => {
               <p className="text-deep-blue">Entre em contato para um orçamento sem compromisso</p>
             </div>
             <a
-              href={`https://wa.me/+5511972650865`}
+              href={`https://wa.me/+5511972650865?text=${encodeURIComponent("Olá, gostaria de saber mais sobre os diferenciais da empresa.")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors whitespace-nowrap flex-shrink-0"
