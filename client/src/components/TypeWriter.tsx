@@ -1,14 +1,15 @@
+
 import React, { useState, useEffect, useCallback } from 'react';
 
 const TypeWriter = () => {
-  // Array de textos curtos e objetivos, atualizados para o nicho de eletricistas
+  // Array de textos curtos e objetivos
   const texts = [
-    "Serviços elétricos profissionais",
-    "Instalações elétricas seguras", 
-    "Soluções em energia para seu negócio",
-    "Manutenção elétrica residencial e comercial",
-    "Emergências elétricas 24 horas",
-    "Orçamento sem compromisso"
+    "Especialistas em elétrica.",
+    "Manutenção residencial e comercial.",
+    "Mais de 10 anos de experiência.",
+    "Atendimento rápido e eficiente.",
+    "Equipe qualificada.",
+    "Soluções personalizadas."
   ];
 
   const [displayText, setDisplayText] = useState('');
