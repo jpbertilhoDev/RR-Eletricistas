@@ -261,7 +261,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps",
         time: "2 meses atrás",
-        profilePhoto: "https://ui-avatars.com/api/?name=TC&background=random"
+        profilePhoto: "https://i.pravatar.cc/150?u=thaina.claro@example.com"
       },
       {
         id: 1002,
@@ -271,17 +271,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps",
         time: "1 ano atrás",
-        profilePhoto: "https://ui-avatars.com/api/?name=CH&background=random"
+        profilePhoto: "https://i.pravatar.cc/150?u=celso.henrique@example.com"
       },
       {
         id: 1003,
-        name: "suelma bernardo",
+        name: "Suelma Bernardo",
         role: "Cliente",
-        content: "Profissional competente, responsável, tem muito conhecimento, ótimo atendimento,  fez o serviço de qualidade, e um preço muito justo, prontificou em vir resolver nosso problema, ainda compartilhou conhecimentos para evitar danos futuros, recomendo a todos.",
+        content: "Profissional competente, responsável, tem muito conhecimento, ótimo atendimento, fez o serviço de qualidade, e um preço muito justo, prontificou em vir resolver nosso problema, ainda compartilhou conhecimentos para evitar danos futuros, recomendo a todos.",
         rating: 5,
         source: "Google Maps",
         time: "1 ano atrás",
-        profilePhoto: "https://ui-avatars.com/api/?name=SB&background=random"
+        profilePhoto: "https://i.pravatar.cc/150?u=suelma.bernardo@example.com"
       },
       {
         id: 1004,
@@ -291,7 +291,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps", 
         time: "1 ano atrás",
-        profilePhoto: "https://ui-avatars.com/api/?name=RF&background=random"
+        profilePhoto: "https://i.pravatar.cc/150?u=ronaldo.ferreira@example.com"
       },
       {
         id: 1005,
@@ -301,7 +301,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps",
         time: "1 ano atrás",
-        profilePhoto: "https://ui-avatars.com/api/?name=WR&background=random"
+        profilePhoto: "https://i.pravatar.cc/150?u=wagner.rodrigues@example.com"
       },
       {
         id: 1006,
@@ -311,7 +311,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5, 
         source: "Google Maps",
         time: "1 ano atrás",
-        profilePhoto: "https://ui-avatars.com/api/?name=JL&background=random"
+        profilePhoto: "https://i.pravatar.cc/150?u=jeremias.lima@example.com"
       },
       {
         id: 1007,
@@ -321,7 +321,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps",
         time: "10 meses atrás",
-        profilePhoto: "https://ui-avatars.com/api/?name=WL&background=random"
+        profilePhoto: "https://i.pravatar.cc/150?u=wanderson.luiz@example.com"
       },
       {
         id: 1008,
@@ -331,7 +331,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps",
         time: "8 meses atrás",
-        profilePhoto: "https://ui-avatars.com/api/?name=RR&background=random"
+        profilePhoto: "https://i.pravatar.cc/150?u=rodrigo.rodrigues@example.com"
       }
     ];
     

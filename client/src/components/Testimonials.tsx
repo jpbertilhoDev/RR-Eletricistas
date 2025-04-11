@@ -135,14 +135,19 @@ export default function Testimonials() {
                           <img 
                             src={testimonial.profilePhoto}
                             alt={testimonial.name} 
-                            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-blue-100"
+                            className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border-2 border-blue-100 shadow-md"
                             loading="lazy"
+                            onError={(e) => {
+                              // Fallback para avatar genérico caso a imagem falhe
+                              const target = e.target as HTMLImageElement;
+                              target.src = `https://ui-avatars.com/api/?name=${testimonial.name.split(' ').map(n => n[0]).join('')}&background=random&color=fff`;
+                            }}
                           />
                         ) : (
                           <img 
                             src={`https://ui-avatars.com/api/?name=${testimonial.name.split(' ').map(n => n[0]).join('')}&background=random&color=fff`}
                             alt={testimonial.name} 
-                            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-blue-100"
+                            className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border-2 border-blue-100 shadow-md"
                             loading="lazy"
                           />
                         )}
