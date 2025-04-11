@@ -15,10 +15,11 @@ import img6 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.30
 
 // Mapa para associar os caminhos das imagens aos arquivos importados
 const imageMap: Record<string, string> = {
-  "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.06.jpeg": img1,
-  "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.40.jpeg": img2,
-  "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.41.jpeg": img3,
-  "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.19.jpeg": img4,
+  "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.06.jpeg": img1,
+  "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.40.jpeg": img2,
+  "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.41.jpeg": img3,
+  "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.19.jpeg": img4,
+  "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.20.jpeg": img5,
   "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.29.jpeg": img5,
   "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.30.jpeg": img6,
 };
@@ -218,9 +219,15 @@ const Services = () => {
                       {/* Imagem do serviço */}
                       <div className="relative overflow-hidden rounded-lg w-[85%] h-52 mb-3 shadow-lg">
                         <img 
-                          src={imageMap[service.imageSrc] || service.imageSrc} 
+                          src={imageMap[service.imageSrc] || service.imageSrc.replace(/^\./, "")}
                           alt={service.title} 
                           className="w-full h-full object-cover" 
+                          onError={(e) => {
+                            // Fallback se a imagem não carregar
+                            const target = e.target as HTMLImageElement;
+                            target.onerror = null;
+                            target.src = service.imageSrc.replace(/^\./, "");
+                          }}
                         />
                       </div>
                       

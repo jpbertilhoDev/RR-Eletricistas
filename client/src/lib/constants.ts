@@ -7,28 +7,28 @@ export const SERVICES = [
     title: "Instalações Elétricas",
     description: "Instalação de tomadas, interruptores, luminárias, ventiladores e outros dispositivos elétricos com segurança e qualidade.",
     icon: "fas fa-plug",
-    imageSrc: "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.40.jpeg"
+    imageSrc: "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.40.jpeg"
   },
   {
     id: 2,
     title: "Manutenção Preventiva",
     description: "Verificação e manutenção regular de sistemas elétricos para prevenir problemas e garantir eficiência energética.",
     icon: "fas fa-tools",
-    imageSrc: "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.41.jpeg"
+    imageSrc: "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.41.jpeg"
   },
   {
     id: 3,
     title: "Reparos Emergenciais",
     description: "Atendimento rápido para curtos-circuitos, quedas de energia e falhas elétricas, restaurando o funcionamento com rapidez.",
     icon: "fas fa-bolt",
-    imageSrc: "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.19.jpeg"
+    imageSrc: "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.19.jpeg"
   },
   {
     id: 4,
     title: "Projetos Elétricos",
     description: "Desenvolvimento de projetos elétricos completos para residências, comércios e pequenas indústrias, seguindo normas técnicas.",
     icon: "fas fa-drafting-compass",
-    imageSrc: "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.20.jpeg"
+    imageSrc: "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.20.jpeg"
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ export const SERVICES = [
     title: "Iluminação",
     description: "Projetos e instalação de sistemas de iluminação residencial e comercial, incluindo LED e soluções econômicas.",
     icon: "fas fa-lightbulb",
-    imageSrc: "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.30.jpeg"sApp Image 2025-04-10 at 13.37.30.jpeg"
+    imageSrc: "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.30.jpeg"
   }
 ];
 
