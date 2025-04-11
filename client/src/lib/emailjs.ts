@@ -9,7 +9,10 @@ export const emailjsConfig = {
 };
 
 // Inicializa o EmailJS com sua chave pública
-emailjs.init(emailjsConfig.publicKey);
+emailjs.init({
+  publicKey: emailjsConfig.publicKey,
+  limitRate: true
+});
 
 // Interface para os dados do formulário de contato
 export interface ContactFormData {
@@ -30,7 +33,13 @@ export const sendContactEmail = async (formData: ContactFormData): Promise<{ suc
       service: formData.service || 'Não especificado',
       message: formData.message,
       to_name: 'RR Manutenções Elétricas', // Nome do destinatário
-      reply_to: formData.email
+      reply_to: formData.email,
+      // Campos adicionais com nomes padrão do EmailJS
+      nome: formData.name,
+      email: formData.email,
+      telefone: formData.phone,
+      servico: formData.service,
+      mensagem: formData.message
     };
 
     const response = await emailjs.send(
