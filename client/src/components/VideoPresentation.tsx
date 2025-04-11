@@ -111,7 +111,7 @@ const VideoPresentation = () => {
               href={`https://wa.me/${WHATSAPP_NUMBER}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-5 py-2 bg-primary text-white rounded-full hover:bg-primary/90 transition-colors shadow-sm"
+              className="inline-flex items-center px-5 py-2 bg-primary text-white rounded-full transition-colors shadow-sm whatsapp-btn"
             >
               <i className="fab fa-whatsapp mr-2"></i>
               Solicitar orçamento

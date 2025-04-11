@@ -69,7 +69,7 @@ const WhatsAppButton = () => {
         href={`https://wa.me/${WHATSAPP_NUMBER}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-green-500 text-white rounded-full p-3 shadow-sm hover:shadow-md transition-all flex items-center justify-center"
+        className="bg-green-500 text-white rounded-full p-3 shadow-sm hover:shadow-md hover:bg-green-600 transition-all flex items-center justify-center"
         initial={{ y: 0 }}
         animate={{ y: [0, -4, 0] }}
         transition={{

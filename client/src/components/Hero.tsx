@@ -86,7 +86,7 @@ const Hero = () => {
               <Button 
                 variant="default" 
                 size="lg"
-                className="bg-white text-primary hover:bg-blue-50 font-semibold w-full sm:w-auto px-8 py-6 shadow-lg text-lg transition-all duration-300"
+                className="bg-white text-primary font-semibold w-full sm:w-auto px-8 py-6 shadow-lg text-lg transition-all duration-300 whatsapp-btn"
               >
                 <i className="fab fa-whatsapp mr-3"></i>
                 Solicitar orçamento

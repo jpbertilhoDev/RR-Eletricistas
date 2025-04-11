@@ -317,7 +317,7 @@ const Services = () => {
                 <Button 
                   variant="secondary"
                   size="lg"
-                  className="bg-white text-primary hover:bg-gray-50 shadow-md"
+                  className="bg-white text-primary shadow-md whatsapp-btn"
                 >
                   <motion.i 
                     className="fab fa-whatsapp mr-2 text-green-600"

@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Estilos personalizados para botões do WhatsApp */
+.whatsapp-btn {
+  @apply transition-colors duration-300;
+}
+
+.whatsapp-btn:hover {
+  @apply bg-green-500 border-green-500 text-white !important;
+}
+
 @layer base {
   * {
     @apply border-border;
