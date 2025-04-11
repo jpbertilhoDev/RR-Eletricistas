@@ -57,14 +57,15 @@ export default function AboutUs() {
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <div className="relative z-10">
-                <img
-                  src="/technician.jpg"
-                  alt="Técnico da RR Manutenções Elétricas"
-                  className="w-full h-64 object-cover rounded-lg mb-6 shadow-md"
-                  onError={(e) => {
-                    e.currentTarget.src = 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80';
-                  }}
-                />
+                <div className="flex flex-col items-center justify-center bg-blue-50/50 rounded-lg p-6 mb-6 shadow-md">
+                  <img
+                    src="/src/assets/images/logo-rr.svg"
+                    alt="Logo RR Manutenções Elétricas"
+                    className="w-auto h-28 mb-4 object-contain"
+                  />
+                  <p className="text-primary font-medium text-base">RR Manutenções Elétricas</p>
+                  <p className="text-deep-blue text-xs mt-1">Excelência em serviços elétricos desde 2015</p>
+                </div>
                 <blockquote className="text-deep-blue italic font-light text-lg mb-4 bg-white/90 p-4 rounded-lg shadow-sm">
                   "Nossa paixão é transformar ambientes através de soluções elétricas que combinam segurança, eficiência e inovação."
                 </blockquote>
@@ -211,15 +212,17 @@ export default function AboutUs() {
                 </div>
 
                 <div className="overflow-hidden rounded-xl shadow-sm border border-gray-100 bg-white relative">
+                  <div className="p-8 flex flex-col items-center justify-center bg-blue-50/50">
                   <img
-                    src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80"
-                    alt="Técnico da RR Manutenções Elétricas"
-                    className="w-full h-auto object-cover"
-                    loading="lazy"
+                    src="/src/assets/images/logo-rr.svg"
+                    alt="Logo RR Manutenções Elétricas"
+                    className="w-auto h-24 md:h-32 mb-6 object-contain"
                   />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary/80 to-transparent p-4 pt-8">
-                    <p className="text-white font-medium">Nossa equipe de profissionais qualificados</p>
+                  <div className="text-center">
+                    <p className="text-primary font-medium text-lg">RR Manutenções Elétricas</p>
+                    <p className="text-deep-blue text-sm mt-2">Excelência em serviços elétricos desde 2015</p>
                   </div>
+                </div>
                 </div>
               </div>
             </motion.div>
