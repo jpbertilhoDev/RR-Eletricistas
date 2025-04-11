@@ -7,7 +7,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 // Import all service images
 import img2 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.40.jpeg";
-import img3 from "@/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.41.jpeg";
+import img3 from "@/assets/images/servicos/reparos-emergenciais.jpeg"; // Imagem de Reparos Emergenciais
 import img4 from "@/assets/images/servicos/projeto-eletrico.jpeg"; // Imagem de Projetos Elétricos
 import img5 from "@/assets/images/servicos/quadros-eletricos.jpeg"; // Imagem de Quadros Elétricos
 import img6 from "@/assets/images/servicos/iluminacao.jpeg"; // Imagem de Iluminação
@@ -15,7 +15,7 @@ import img6 from "@/assets/images/servicos/iluminacao.jpeg"; // Imagem de Ilumin
 // Map to associate image paths with imported files
 const imageMap: Record<string, string> = {
   "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.40.jpeg": img2,
-  "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.41.jpeg": img3,
+  "/src/assets/images/servicos/reparos-emergenciais.jpeg": img3, // Reparos Emergenciais
   "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.19.jpeg": img3,
   "/src/assets/images/servicos/projeto-eletrico.jpeg": img4, // Projetos Elétricos
   "./src/assets/images/servicos/quadros-eletricos.jpeg": img5, // Quadros Elétricos

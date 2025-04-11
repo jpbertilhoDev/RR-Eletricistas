@@ -20,7 +20,7 @@ export const SERVICES = [
     title: "Reparos Emergenciais",
     description: "Atendimento rápido para curtos-circuitos, quedas de energia e falhas elétricas, restaurando o funcionamento com rapidez.",
     icon: "fas fa-bolt",
-    imageSrc: "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.41.jpeg"
+    imageSrc: "./src/assets/images/servicos/reparos-emergenciais.jpeg"
   },
   {
     id: 4,
