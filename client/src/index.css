@@ -122,41 +122,6 @@
     @apply transition-all duration-300;
   }
 
-
-/* Estilos adicionais para a seção "Por Que Escolher a R.R" */
-.why-choose-card {
-  background-size: 150% 150%;
-  background-position: 100% 100%;
-
-  /* Better spacing for mobile navigation */
-  .mobile-nav-item {
-    @apply flex flex-col items-center justify-center py-2;
-    width: 100%;
-  }
-
-  transition: all 0.5s ease;
-}
-
-.why-choose-card:hover {
-  background-position: 0% 0%;
-}
-
-/* Melhorias para os indicadores do carrossel */
-.carousel-indicator {
-  transition: all 0.3s ease;
-  transform-origin: center;
-}
-
-.carousel-indicator-active {
-  transform: scale(1.2);
-}
-
-/* Para melhorar a aparência dos ícones nos cards */
-.icon-gradient {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  box-shadow: 0 4px 10px rgba(0, 120, 255, 0.2);
-}
-
   .hover-scale:hover {
     transform: scale(1.05);
   }
@@ -219,6 +184,55 @@
     opacity: 0.6;
     z-index: 0;
   }
+
+  /* Estilos para o logo */
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 640px) {
+    header .logo-container img {
+      max-height: 40px;
+    }
+  }
+
+  /* Estilos adicionais para a seção "Por Que Escolher a R.R" */
+.why-choose-card {
+  background-size: 150% 150%;
+  background-position: 100% 100%;
+
+  /* Better spacing for mobile navigation */
+  .mobile-nav-item {
+    @apply flex flex-col items-center justify-center py-2;
+    width: 100%;
+  }
+
+  transition: all 0.5s ease;
+}
+
+.why-choose-card:hover {
+  background-position: 0% 0%;
+}
+
+/* Melhorias para os indicadores do carrossel */
+.carousel-indicator {
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.carousel-indicator-active {
+  transform: scale(1.2);
+}
+
+/* Para melhorar a aparência dos ícones nos cards */
+.icon-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  box-shadow: 0 4px 10px rgba(0, 120, 255, 0.2);
+}
+
+
 }
 
 @keyframes float {
@@ -765,3 +779,5 @@
 }
 
 /* Projects Section */
+#quem-somos .grid
+}
