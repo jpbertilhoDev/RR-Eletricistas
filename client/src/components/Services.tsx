@@ -20,9 +20,9 @@ const imageMap: Record<string, string> = {
   "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.40.jpeg": img2,
   "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.35.41.jpeg": img3,
   "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.19.jpeg": img4,
-  "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.20.jpeg": img5,
-  "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.29.jpeg": img5,
-  "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.30.jpeg": img6,
+  "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.20.jpeg": img4,
+  "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.29.jpeg": img3,
+  "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.30.jpeg": img5,
 };
 
 const Services = () => {
