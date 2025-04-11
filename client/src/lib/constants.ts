@@ -66,9 +66,9 @@ export const PROJECTS = [
   },
   {
     id: 4,
-    title: "Projeto de Iluminação Comercial",
-    description: "Desenvolvimento de projeto luminotécnico para loja de varejo, com foco em eficiência energética e valorização do ambiente.",
-    imageSrc: "https://images.pexels.com/photos/133640/pexels-photo-133640.jpeg?auto=compress&cs=tinysrgb&w=600&h=400"
+    title: "Projetos Elétricos",
+    description: "Desenvolvimento de projetos elétricos completos para residências, comércios e pequenas indústrias, seguindo normas técnicas.",
+    imageSrc: "./src/assets/images/servicos/projetos-eletricos.jpeg"
   },
   {
     id: 5,
