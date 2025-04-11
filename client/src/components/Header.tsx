@@ -46,11 +46,11 @@ const Header = () => {
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
-        <div className="flex-shrink-0 flex items-center justify-center">
+        <div className="flex-shrink-0 flex items-center justify-center relative">
           <img 
             src={logoSvg} 
             alt="RR Manutenções Elétricas" 
-            className="h-12 md:h-16 w-auto object-contain"
+            className="h-8 md:h-16 w-auto object-contain -mt-1 md:mt-0"
           />
         </div>
 
