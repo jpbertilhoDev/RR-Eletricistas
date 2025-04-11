@@ -33,14 +33,14 @@ const Projects = () => {
       }
     }
   };
-  
+
   const imageVariants = {
     hover: { 
       scale: 1.1,
       transition: { duration: 0.4 }
     }
   };
-  
+
   const overlayVariants = {
     hidden: { opacity: 0 },
     hover: { 
@@ -58,7 +58,7 @@ const Projects = () => {
         viewport={{ once: true }}
         transition={{ duration: 1 }}
       />
-      
+
       <motion.div 
         className="absolute -bottom-40 -right-40 w-80 h-80 rounded-full bg-blue-100/30 blur-3xl"
         initial={{ opacity: 0 }}
@@ -66,7 +66,7 @@ const Projects = () => {
         viewport={{ once: true }}
         transition={{ duration: 1.5, delay: 0.3 }}
       />
-      
+
       <div className="container mx-auto px-4 max-w-6xl relative z-10">
         <motion.div 
           className="text-center mb-12"
@@ -82,7 +82,7 @@ const Projects = () => {
             Nossa equipe executa projetos para residências, comércios e pequenas indústrias.
           </p>
         </motion.div>
-        
+
         <motion.div 
           className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 md:gap-6"
           variants={containerVariants}
@@ -107,7 +107,7 @@ const Projects = () => {
                   initial="initial"
                   animate={hoveredProject === project.id ? "hover" : "initial"}
                 />
-                
+
                 <AnimatePresence>
                   {hoveredProject === project.id && (
                     <motion.div 
@@ -137,11 +137,11 @@ const Projects = () => {
                   )}
                 </AnimatePresence>
               </div>
-              
+
               <div className="p-5">
                 <h3 className="font-semibold text-lg text-dark-blue">{project.title}</h3>
                 <p className="text-deep-blue mt-2">{project.description}</p>
-                
+
                 {/* Indicadores de serviço */}
                 <div className="flex mt-4">
                   <motion.div
@@ -163,7 +163,7 @@ const Projects = () => {
             </motion.div>
           ))}
         </motion.div>
-        
+
         {/* Texto adicional abaixo dos projetos */}
         <motion.div 
           className="text-center mt-12"
