@@ -261,7 +261,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps",
         time: "2 meses atrás",
-        profilePhoto: "https://i.pravatar.cc/150?u=thaina.claro@example.com"
+        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjX3pUV3fwcnHXQxtkrN32vqrxMkmTxv55s2IYL11fbxqTg=s120-c-rp-mo-br100"
       },
       {
         id: 1002,
@@ -271,7 +271,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps",
         time: "1 ano atrás",
-        profilePhoto: "https://i.pravatar.cc/150?u=celso.henrique@example.com"
+        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjXrblHU-FxvYTbNWrAJXCc-HkL8xP1m0TEMbixz9MUxalQ=s120-c-rp-mo-br100"
       },
       {
         id: 1003,
@@ -281,7 +281,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps",
         time: "1 ano atrás",
-        profilePhoto: "https://i.pravatar.cc/150?u=suelma.bernardo@example.com"
+        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjU3mhCdtHihFOZUTmxIWS5TQWvYoWGXObnljBGqDXOiKEQ=s120-c-rp-mo-br100"
       },
       {
         id: 1004,
@@ -291,7 +291,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps", 
         time: "1 ano atrás",
-        profilePhoto: "https://i.pravatar.cc/150?u=ronaldo.ferreira@example.com"
+        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjXRCzxLKu9IpJXLt9PzV5vK0FJzCRGu2YrQ2_o2TFO30YA=s120-c-rp-mo-ba4-br100"
       },
       {
         id: 1005,
@@ -301,7 +301,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps",
         time: "1 ano atrás",
-        profilePhoto: "https://i.pravatar.cc/150?u=wagner.rodrigues@example.com"
+        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjXNakmjAOMqCTtDgPhBXaTv7rz_gZ1VJCkUfpzwkAZO0NU=s120-c-rp-mo-br100"
       },
       {
         id: 1006,
@@ -311,7 +311,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5, 
         source: "Google Maps",
         time: "1 ano atrás",
-        profilePhoto: "https://i.pravatar.cc/150?u=jeremias.lima@example.com"
+        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjWL1cchpE6Oq8ky7L0ygmCZwPKQbLVRwICndTsrWYYCFg=s120-c-rp-mo-br100"
       },
       {
         id: 1007,
@@ -321,7 +321,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps",
         time: "10 meses atrás",
-        profilePhoto: "https://i.pravatar.cc/150?u=wanderson.luiz@example.com"
+        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjWi8SuYfP7X3jcNP5QFcaxJnPQlK5y-z-SQTZIBazE-pg=s120-c-rp-mo-br100"
       },
       {
         id: 1008,
@@ -331,7 +331,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps",
         time: "8 meses atrás",
-        profilePhoto: "https://i.pravatar.cc/150?u=rodrigo.rodrigues@example.com"
+        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjUWC4PoiJdLBXS3Uv6rM2xpZfCR99-jvKxQx0VJaXuAqA=s120-c-rp-mo-ba4-br100"
       }
     ];
     

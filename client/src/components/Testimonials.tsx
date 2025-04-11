@@ -56,17 +56,19 @@ export default function Testimonials() {
         (review: PublicReview) => review.content && review.content.length > 10
       );
 
-      // Filtrar para mostrar avaliações do Google primeiro, quando disponíveis
+      // Filtrar para mostrar avaliações do Google primeiro
       const googleReviews = filteredPublicReviews.filter(
         (review: PublicReview) => review.source === "Google Maps"
       );
       
-      const siteReviews = filteredPublicReviews.filter(
-        (review: PublicReview) => review.source !== "Google Maps"
-      );
+      // Garantir que todas as avaliações do Google apareçam primeiro
+      // Mostrar apenas as avaliações do Google e um número limitado das outras
+      const siteReviews = filteredPublicReviews
+        .filter((review: PublicReview) => review.source !== "Google Maps")
+        .slice(0, 2); // Limitar a apenas algumas avaliações do site
 
-      // Priorizamos avaliações do Google Maps e depois as do site
-      setAllTestimonials([...googleReviews, ...siteReviews, ...TESTIMONIALS]);
+      // Priorizamos avaliações do Google Maps e depois algumas do site
+      setAllTestimonials([...googleReviews, ...siteReviews]);
     }
   }, [publicReviews]);
 
@@ -142,6 +144,7 @@ export default function Testimonials() {
                               const target = e.target as HTMLImageElement;
                               target.src = `https://ui-avatars.com/api/?name=${testimonial.name.split(' ').map(n => n[0]).join('')}&background=random&color=fff`;
                             }}
+                            referrerPolicy="no-referrer"
                           />
                         ) : (
                           <img 
