@@ -1,3 +1,6 @@
+
+export const WHATSAPP_NUMBER = "5511976113122";
+
 export const SERVICES = [
   {
     id: 1,
@@ -38,12 +41,8 @@ export const SERVICES = [
     id: 6,
     title: "Iluminação",
     description: "Projetos e instalação de sistemas de iluminação residencial e comercial, incluindo LED e soluções econômicas.",
-
-export const WHATSAPP_NUMBER = "5511976113122";
-
     icon: "fas fa-lightbulb",
-    imageSrc: "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.30.jpeg",
-    icon: "fas fa-lightbulb"
+    imageSrc: "/src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.37.30.jpeg"
   }
 ];
 
@@ -186,7 +185,5 @@ export const CONTACT_INFO = {
 export const SOCIAL_MEDIA = [
   { icon: "fab fa-facebook-f", url: "#" },
   { icon: "fab fa-instagram", url: "#" },
-  { icon: "fab fa-whatsapp", url: "https://wa.me/5511999999999" }
+  { icon: "fab fa-whatsapp", url: `https://wa.me/${WHATSAPP_NUMBER}` }
 ];
-
-export const WHATSAPP_NUMBER = "5511999999999";
