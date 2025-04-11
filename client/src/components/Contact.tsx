@@ -390,7 +390,7 @@ const Contact = () => {
           </div>
         ) : (
           // Versão desktop redesenhada (mais esticada e semelhante à imagem)
-          <div className="max-w-6xl mx-auto px-4">
+          <div className="w-full mx-auto">
             <motion.div 
               className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
               initial={{ opacity: 0, y: 20 }}
