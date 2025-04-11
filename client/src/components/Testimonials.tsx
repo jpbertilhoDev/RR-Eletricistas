@@ -29,8 +29,8 @@ export default function Testimonials() {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const isMobile = useIsMobile();
 
-  // Buscar avaliações públicas da API
-  const { data: publicReviews, isLoading, error, refetch } = useQuery({
+  // Buscar avaliações públicas da API (incluindo as do Google Maps)
+  const { data: publicReviews, isLoading, error } = useQuery({
     queryKey: ['publicReviews'],
     queryFn: async () => {
       const response = await fetch('/api/public-reviews');
@@ -39,8 +39,11 @@ export default function Testimonials() {
       }
       return response.json();
     },
-    // Desabilitar a execução automática da query
-    enabled: false
+    // Carregar automaticamente
+    enabled: true,
+    // Configuração de cache e atualização
+    staleTime: 1000 * 60 * 5, // 5 minutos
+    refetchOnMount: true
   });
 
   // Combinar avaliações públicas com as avaliações estáticas
@@ -50,11 +53,20 @@ export default function Testimonials() {
     if (publicReviews?.success && Array.isArray(publicReviews?.data)) {
       // Adicionar apenas avaliações com um mínimo de texto
       const filteredPublicReviews = publicReviews.data.filter(
-        (review: PublicReview) => review.content && review.content.length > 20
+        (review: PublicReview) => review.content && review.content.length > 10
       );
 
-      // Combinar com as avaliações estáticas
-      setAllTestimonials([...filteredPublicReviews, ...TESTIMONIALS]);
+      // Filtrar para mostrar avaliações do Google primeiro, quando disponíveis
+      const googleReviews = filteredPublicReviews.filter(
+        (review: PublicReview) => review.source === "Google Maps"
+      );
+      
+      const siteReviews = filteredPublicReviews.filter(
+        (review: PublicReview) => review.source !== "Google Maps"
+      );
+
+      // Priorizamos avaliações do Google Maps e depois as do site
+      setAllTestimonials([...googleReviews, ...siteReviews, ...TESTIMONIALS]);
     }
   }, [publicReviews]);
 
@@ -119,7 +131,7 @@ export default function Testimonials() {
                   <div className="bg-white p-4 md:p-8 rounded-xl shadow-sm border border-gray-100 h-full flex flex-col transition-all duration-300 hover:shadow-md hover:border-blue-100 max-w-full">
                     <div className="flex items-center mb-3">
                       <div className="flex-shrink-0 mr-2">
-                        {testimonial.source === "public" && testimonial.profilePhoto ? (
+                        {testimonial.profilePhoto ? (
                           <img 
                             src={testimonial.profilePhoto}
                             alt={testimonial.name} 
@@ -128,7 +140,7 @@ export default function Testimonials() {
                           />
                         ) : (
                           <img 
-                            src={`https://randomuser.me/api/portraits/${testimonial.id % 2 === 0 ? 'women' : 'men'}/${20 + testimonial.id * 10}.jpg`}
+                            src={`https://ui-avatars.com/api/?name=${testimonial.name.split(' ').map(n => n[0]).join('')}&background=random&color=fff`}
                             alt={testimonial.name} 
                             className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-blue-100"
                             loading="lazy"
@@ -136,7 +148,14 @@ export default function Testimonials() {
                         )}
                       </div>
                       <div>
-                        <h4 className="font-semibold text-dark-blue text-sm sm:text-base">{testimonial.name}</h4>
+                        <div className="flex items-center">
+                          <h4 className="font-semibold text-dark-blue text-sm sm:text-base">{testimonial.name}</h4>
+                          {testimonial.source === "Google Maps" && (
+                            <span className="ml-2 px-1 py-0.5 text-[10px] bg-blue-50 text-blue-700 rounded-sm flex items-center">
+                              <i className="fab fa-google text-xs mr-1"></i> Verificado
+                            </span>
+                          )}
+                        </div>
                         <p className="text-xs text-gray-600">{testimonial.role}</p>
                         <div className="flex mt-1">
                           {Array.from({ length: Math.floor(testimonial.rating || 5) }).map((_, i) => (
@@ -150,10 +169,13 @@ export default function Testimonials() {
                     </div>
                     <p className="text-deep-blue text-xs sm:text-sm flex-grow">{testimonial.content}</p>
                     <div className="mt-4 pt-3 sm:mt-6 sm:pt-4 border-t border-gray-100 text-right">
-                      {testimonial.source === "public" ? (
+                      {testimonial.source === "Google Maps" ? (
                         <div className="flex items-center justify-end gap-2">
+                          <i className="fab fa-google text-blue-600 text-sm"></i>
                           <span className="text-xs text-gray-500 italic">{testimonial.time || "Recentemente"}</span>
                         </div>
+                      ) : testimonial.time ? (
+                        <span className="text-xs text-gray-500 italic">{testimonial.time}</span>
                       ) : (
                         <span className="text-xs text-gray-500 italic">Projeto realizado em {2023 - testimonial.id}</span>
                       )}
@@ -180,21 +202,18 @@ export default function Testimonials() {
           </div>
         </motion.div>
 
-        {/* Botão para carregar avaliações públicas se ainda não carregadas */}
-        {!publicReviews && !isLoading && !error && (
+        {/* Mostrar mensagem de avaliações verificadas do Google */}
+        {publicReviews && !isLoading && !error && (
           <motion.div
             className="flex justify-center mt-8"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <button
-              onClick={() => refetch()}
-              className="flex items-center gap-2 px-5 py-2 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-50 transition-colors"
-            >
-              <i className="fas fa-comment-dots text-blue-500"></i>
-              <span>Ver mais avaliações</span>
-            </button>
+            <div className="flex items-center gap-2 px-5 py-2 bg-white border border-gray-200 rounded-lg shadow-sm">
+              <i className="fab fa-google text-blue-500"></i>
+              <span className="text-sm text-gray-700">Avaliações verificadas do Google</span>
+            </div>
           </motion.div>
         )}
 

@@ -249,82 +249,93 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
   
-  // Função para gerar avaliações simuladas do Google Maps
+  // Função que fornece avaliações reais da RR Manutenções Elétricas do Google Maps
   function generateGoogleMapsReviews() {
+    // Avaliações reais da empresa conforme o link: https://g.co/kgs/ocBzoYD
     const googleReviews = [
       {
         id: 1001,
-        name: "Carlos Silva",
+        name: "Thaina Claro",
         role: "Cliente",
-        content: "Serviço excelente! Contratei para instalação elétrica na minha casa nova e o trabalho ficou impecável. Equipe pontual e profissional.",
+        content: "Foi muito atencioso e educado todo trabalho entregue dentro do combinado ótimo eletricista",
         rating: 5,
         source: "Google Maps",
-        time: "2 dias atrás",
-        profilePhoto: "https://ui-avatars.com/api/?name=CS&background=random"
+        time: "2 meses atrás",
+        profilePhoto: "https://ui-avatars.com/api/?name=TC&background=random"
       },
       {
         id: 1002,
-        name: "Amanda Oliveira",
+        name: "Celso Henrique",
         role: "Cliente",
-        content: "Resolveram um problema elétrico complicado que outros eletricistas não conseguiram identificar. Atendimento rápido e preço justo.",
+        content: "Esse é o melhor eletricista que eu conheço, muito atencioso, muito educado, resolveu meu problema, e posso recomendar pra qualquer um que precise de um eletricista.",
         rating: 5,
         source: "Google Maps",
-        time: "1 semana atrás",
-        profilePhoto: "https://ui-avatars.com/api/?name=AO&background=random"
+        time: "1 ano atrás",
+        profilePhoto: "https://ui-avatars.com/api/?name=CH&background=random"
       },
       {
         id: 1003,
-        name: "Roberto Andrade",
+        name: "suelma bernardo",
         role: "Cliente",
-        content: "Contratei para instalação de tomadas em meu escritório. Trabalho limpo, organizado e bem executado. Recomendo!",
-        rating: 4,
+        content: "Profissional competente, responsável, tem muito conhecimento, ótimo atendimento,  fez o serviço de qualidade, e um preço muito justo, prontificou em vir resolver nosso problema, ainda compartilhou conhecimentos para evitar danos futuros, recomendo a todos.",
+        rating: 5,
         source: "Google Maps",
-        time: "2 semanas atrás",
-        profilePhoto: "https://ui-avatars.com/api/?name=RA&background=random"
+        time: "1 ano atrás",
+        profilePhoto: "https://ui-avatars.com/api/?name=SB&background=random"
       },
       {
         id: 1004,
-        name: "Mariana Costa",
+        name: "Ronaldo Ferreira",
         role: "Cliente",
-        content: "Ótima empresa! Precisei de um reparo emergencial e eles atenderam no mesmo dia. Técnicos competentes e educados.",
+        content: "Atendimento muito bom e o técnico muito profissional nos atendeu tão bem e com muita dedicação. Recomendo a todos.",
         rating: 5,
         source: "Google Maps", 
-        time: "1 mês atrás",
-        profilePhoto: "https://ui-avatars.com/api/?name=MC&background=random"
+        time: "1 ano atrás",
+        profilePhoto: "https://ui-avatars.com/api/?name=RF&background=random"
       },
       {
         id: 1005,
-        name: "Paulo Mendes",
+        name: "Wagner Rodrigues",
         role: "Cliente",
-        content: "Instalaram a fiação elétrica da minha loja. Preço compatível com o mercado e serviço de qualidade.",
-        rating: 4,
+        content: "Muito competente! O proprietário entende do assunto e tem bastante experiência.",
+        rating: 5,
         source: "Google Maps",
-        time: "1 mês atrás",
-        profilePhoto: "https://ui-avatars.com/api/?name=PM&background=random"
+        time: "1 ano atrás",
+        profilePhoto: "https://ui-avatars.com/api/?name=WR&background=random"
       },
       {
         id: 1006,
-        name: "Fernanda Lima",
+        name: "Jeremias Lima",
         role: "Cliente",
-        content: "Excelente atendimento do início ao fim. Resolveram um problema recorrente com meu quadro de luz que outros não conseguiram.",
+        content: "Muito bom, solucionou meu problema na primeira visita. Excelente atendimento e extremamente educado, além de fazer cumprir o preço combinado. Recomendo!",
         rating: 5, 
         source: "Google Maps",
-        time: "2 meses atrás",
-        profilePhoto: "https://ui-avatars.com/api/?name=FL&background=random"
+        time: "1 ano atrás",
+        profilePhoto: "https://ui-avatars.com/api/?name=JL&background=random"
       },
       {
         id: 1007,
-        name: "Ricardo Sousa",
+        name: "Wanderson Luiz",
         role: "Cliente",
-        content: "Contratei para instalar pontos de iluminação na área externa da casa. Resultado ficou perfeito!",
+        content: "Excelente serviço. Conhecimento técnico fora do comum. Sugere soluções com conhecimento técnico. Resolve qualquer tipo de problema. Coisa de profissional mesmo.",
         rating: 5,
         source: "Google Maps",
-        time: "3 meses atrás",
-        profilePhoto: "https://ui-avatars.com/api/?name=RS&background=random"
+        time: "10 meses atrás",
+        profilePhoto: "https://ui-avatars.com/api/?name=WL&background=random"
+      },
+      {
+        id: 1008,
+        name: "Rodrigo Rodrigues",
+        role: "Cliente",
+        content: "Prestou um excelente atendimento para a solução do problema em minha residência, com cordialidade e profissionalismo.",
+        rating: 5,
+        source: "Google Maps",
+        time: "8 meses atrás",
+        profilePhoto: "https://ui-avatars.com/api/?name=RR&background=random"
       }
     ];
     
-    // Simular que buscou apenas alguns aleatoriamente
+    // Retorna aleatoriamente algumas avaliações para mostrar variedade
     return googleReviews.sort(() => Math.random() - 0.5).slice(0, 4);
   }
   
