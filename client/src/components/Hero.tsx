@@ -68,7 +68,8 @@ const Hero = () => {
             className="text-lg md:text-2xl text-white/90 mb-8 md:mb-12 w-full md:max-w-3xl mx-auto font-light px-4"
             variants={fadeInUp}
           >
-            Instalações e manutenções elétricas residenciais e comerciais com qualidade e segurança.
+            Soluções elétricas profissionais para sua casa ou empresa. 
+            Segurança, qualidade e compromisso em cada instalação.
           </motion.p>
 
           <motion.div 
@@ -121,7 +122,9 @@ const Hero = () => {
               transition={{ duration: 0.6 }}
               className="text-white/90 text-lg md:text-xl"
             >
-              Compromisso com qualidade e excelência em serviços elétricos
+              <i className="fas fa-bolt mr-2 text-yellow-300"></i>
+              Compromisso com segurança e excelência em cada projeto elétrico
+              <i className="fas fa-bolt ml-2 text-yellow-300"></i>
             </motion.div>
           </div>
         </motion.div>

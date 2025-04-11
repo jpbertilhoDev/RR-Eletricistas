@@ -1,10 +1,13 @@
+
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import img1 from '@/assets/images/img1.jpeg';
-import img2 from '@/assets/images/img2.jpeg';
-import img3 from '@/assets/images/img3.jpeg';
 
-const images = [img1, img2, img3];
+// Imagens específicas para eletricistas
+const images = [
+  '/src/assets/images/hero/electrician1.jpg',
+  '/src/assets/images/hero/electrician2.jpg',
+  '/src/assets/images/hero/electrician3.jpg',
+];
 
 const HeroBackgroundCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -34,12 +37,12 @@ const HeroBackgroundCarousel = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat w-full h-full transition-all duration-1000"
         style={{ 
           backgroundImage: `url(${images[currentIndex]})`,
-          filter: 'brightness(1.5) contrast(1.3)'
+          filter: 'brightness(0.7) contrast(1.2)'
         }}
       />
 
       {/* Light overlay gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-primary/10 w-full h-full" />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/30 via-primary/30 to-primary/40 w-full h-full" />
 
       {/* Transition layer */}
       {isTransitioning && (
@@ -54,10 +57,10 @@ const HeroBackgroundCarousel = () => {
             className="absolute inset-0 bg-cover bg-center"
             style={{ 
               backgroundImage: `url(${images[nextIndex]})`,
-              filter: 'brightness(1.5) contrast(1.3)'
+              filter: 'brightness(0.7) contrast(1.2)'
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-primary/10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/30 via-primary/30 to-primary/40" />
         </motion.div>
       )}
     </div>
