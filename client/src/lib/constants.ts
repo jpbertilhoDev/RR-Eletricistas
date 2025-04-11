@@ -34,7 +34,7 @@ export const SERVICES = [
     title: "Quadros Elétricos",
     description: "Instalação, manutenção e substituição de quadros de distribuição, disjuntores e sistemas de proteção elétrica.",
     icon: "fas fa-network-wired",
-    imageSrc: "./src/assets/images/servicos/WhatsApp Image 2025-04-10 at 13.36.21.jpeg"
+    imageSrc: "./src/assets/images/servicos/quadros-eletricos.jpeg"
   },
   {
     id: 6,
