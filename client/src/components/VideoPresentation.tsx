@@ -114,7 +114,7 @@ const VideoPresentation = () => {
               className="inline-flex items-center px-5 py-2 bg-primary text-white rounded-full transition-colors shadow-sm whatsapp-btn"
             >
               <i className="fab fa-whatsapp mr-2"></i>
-              Solicitar orçamento
+              Fale conosco
             </a>
           </div>
         </motion.div>

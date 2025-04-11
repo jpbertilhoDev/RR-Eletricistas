@@ -5,6 +5,7 @@ import AboutUs from "@/components/AboutUs";
 import Contact from "@/components/Contact";
 import Testimonials from "@/components/Testimonials";
 import VideoPresentation from "@/components/VideoPresentation";
+import CTABanner from "@/components/CTABanner"; // Added import for CTABanner
 import { useEffect } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -41,6 +42,7 @@ const Home = () => {
         <Testimonials />
         <AboutUs />
         <Contact />
+        <CTABanner /> {/* Added CTABanner component */}
       </div>
     </Layout>
   );
