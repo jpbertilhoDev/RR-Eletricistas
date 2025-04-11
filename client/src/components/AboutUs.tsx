@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
+import logoRR from "@/assets/images/logo-rr.png";
 
 export default function AboutUs() {
   const sectionRef = useRef(null);
@@ -59,7 +60,7 @@ export default function AboutUs() {
               <div className="relative z-10">
                 <div className="flex flex-col items-center justify-center bg-blue-50/50 rounded-lg p-6 mb-6 shadow-md">
                   <img
-                    src="/src/assets/images/logo-rr.png"
+                    src={logoRR}
                     alt="Logo RR Manutenções Elétricas"
                     className="w-auto h-28 mb-4 object-contain"
                     onError={(e) => {
@@ -207,7 +208,7 @@ export default function AboutUs() {
                   <div className="flex items-center">
                     <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center overflow-hidden border border-blue-100">
                       <img 
-                        src="/src/assets/images/logo-rr.png" 
+                        src={logoRR} 
                         alt="Logo RR" 
                         className="w-8 h-8 object-contain" 
                         onError={(e) => {
@@ -227,7 +228,7 @@ export default function AboutUs() {
                 <div className="overflow-hidden rounded-xl shadow-sm border border-gray-100 bg-white relative">
                   <div className="p-8 flex flex-col items-center justify-center bg-blue-50/50">
                   <img
-                    src="/src/assets/images/logo-rr.png"
+                    src={logoRR}
                     alt="Logo RR Manutenções Elétricas"
                     className="w-auto h-24 md:h-32 mb-6 object-contain"
                     onError={(e) => {
