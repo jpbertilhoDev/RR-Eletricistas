@@ -1,10 +1,11 @@
+
 import emailjs from '@emailjs/browser';
 
 // Configuração do EmailJS
 export const emailjsConfig = {
-  serviceId: 'service_vzx0egs', // Você precisará substituir pelo seu Service ID
-  templateId: 'template_13j3vpk', // Você precisará substituir pelo seu Template ID
-  publicKey: '5jyuzgaYd8OpVu3hd', // Você precisará substituir pela sua Public Key
+  serviceId: 'service_vzx0egs',
+  templateId: 'template_13j3vpk', 
+  publicKey: '5jyuzgaYd8OpVu3hd',
 };
 
 // Inicializa o EmailJS com sua chave pública
@@ -14,8 +15,8 @@ emailjs.init(emailjsConfig.publicKey);
 export interface ContactFormData {
   name: string;
   email: string;
-  phone?: string;
-  service?: string;
+  phone: string;
+  service: string;
   message: string;
 }
 
@@ -28,6 +29,8 @@ export const sendContactEmail = async (formData: ContactFormData): Promise<{ suc
       phone: formData.phone || 'Não informado',
       service: formData.service || 'Não especificado',
       message: formData.message,
+      to_name: 'RR Manutenções Elétricas', // Nome do destinatário
+      reply_to: formData.email
     };
 
     const response = await emailjs.send(
@@ -47,4 +50,4 @@ export const sendContactEmail = async (formData: ContactFormData): Promise<{ suc
       message: 'Ocorreu um erro ao enviar o email. Por favor, tente novamente mais tarde.',
     };
   }
-}; 
+};

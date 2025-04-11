@@ -301,13 +301,13 @@ const Contact = () => {
                         } focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 appearance-none`}
                       >
                         <option value="" disabled>Selecione o serviço desejado</option>
-                        <option value="installation">Instalação Elétrica</option>
-                        <option value="maintenance">Manutenção Preventiva</option>
-                        <option value="repair">Reparos Emergenciais</option>
-                        <option value="project">Projetos Elétricos</option>
-                        <option value="panel">Quadros Elétricos</option>
-                        <option value="lighting">Iluminação</option>
-                        <option value="other">Outro</option>
+                        <option value="Instalação Elétrica">Instalação Elétrica</option>
+                        <option value="Manutenção Preventiva">Manutenção Preventiva</option>
+                        <option value="Reparos Emergenciais">Reparos Emergenciais</option>
+                        <option value="Projetos Elétricos">Projetos Elétricos</option>
+                        <option value="Quadros Elétricos">Quadros Elétricos</option>
+                        <option value="Iluminação">Iluminação</option>
+                        <option value="Outro">Outro</option>
                       </select>
                       <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
                         <i className="fas fa-chevron-down text-gray-400"></i>
@@ -538,13 +538,13 @@ const Contact = () => {
                             } focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all duration-300 appearance-none`}
                           >
                             <option value="" disabled>Selecione o serviço desejado</option>
-                            <option value="installation">Instalação Elétrica</option>
-                            <option value="maintenance">Manutenção Preventiva</option>
-                            <option value="repair">Reparos Emergenciais</option>
-                            <option value="project">Projetos Elétricos</option>
-                            <option value="panel">Quadros Elétricos</option>
-                            <option value="lighting">Iluminação</option>
-                            <option value="other">Outro</option>
+                            <option value="Instalação Elétrica">Instalação Elétrica</option>
+                            <option value="Manutenção Preventiva">Manutenção Preventiva</option>
+                            <option value="Reparos Emergenciais">Reparos Emergenciais</option>
+                            <option value="Projetos Elétricos">Projetos Elétricos</option>
+                            <option value="Quadros Elétricos">Quadros Elétricos</option>
+                            <option value="Iluminação">Iluminação</option>
+                            <option value="Outro">Outro</option>
                           </select>
                           <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                             <i className="fas fa-chevron-down text-gray-400 text-xs"></i>
