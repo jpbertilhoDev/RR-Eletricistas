@@ -59,9 +59,14 @@ export default function AboutUs() {
               <div className="relative z-10">
                 <div className="flex flex-col items-center justify-center bg-blue-50/50 rounded-lg p-6 mb-6 shadow-md">
                   <img
-                    src="/src/assets/images/logo-rr.svg"
+                    src="/src/assets/images/logo-rr.png"
                     alt="Logo RR Manutenções Elétricas"
                     className="w-auto h-28 mb-4 object-contain"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.onerror = null;
+                      target.src = "https://ui-avatars.com/api/?name=RR&background=0097FB&color=ffffff&bold=true";
+                    }}
                   />
                   <p className="text-primary font-medium text-base">RR Manutenções Elétricas</p>
                 </div>
@@ -201,11 +206,14 @@ export default function AboutUs() {
                   </blockquote>
                   <div className="flex items-center">
                     <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center overflow-hidden border border-blue-100">
-                      <img src="/src/assets/images/logo-rr.png" alt="Logo RR" className="w-8 h-8 object-contain" 
+                      <img 
+                        src="/src/assets/images/logo-rr.png" 
+                        alt="Logo RR" 
+                        className="w-8 h-8 object-contain" 
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
                           target.onerror = null;
-                          target.parentElement!.innerHTML = '<i class="fas fa-bolt text-primary"></i>';
+                          target.src = "https://ui-avatars.com/api/?name=RR&background=0097FB&color=ffffff&bold=true";
                         }}
                       />
                     </div>
@@ -219,9 +227,14 @@ export default function AboutUs() {
                 <div className="overflow-hidden rounded-xl shadow-sm border border-gray-100 bg-white relative">
                   <div className="p-8 flex flex-col items-center justify-center bg-blue-50/50">
                   <img
-                    src="/src/assets/images/logo-rr.svg"
+                    src="/src/assets/images/logo-rr.png"
                     alt="Logo RR Manutenções Elétricas"
                     className="w-auto h-24 md:h-32 mb-6 object-contain"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.onerror = null;
+                      target.src = "https://ui-avatars.com/api/?name=RR&background=0097FB&color=ffffff&bold=true";
+                    }}
                   />
                   <div className="text-center">
                     <p className="text-primary font-medium text-lg">RR Manutenções Elétricas</p>
