@@ -19,15 +19,6 @@
 }
 
 @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --testimonial-bg: 0 0% 0%;
-    --testimonial-accent: 180 70% 40%;
-  }
-
   * {
     @apply border-border;
   }
@@ -152,13 +143,13 @@
     animation: blink 0.75s step-end infinite;
     font-size: 2.5rem;
   }
-
+  
   @media (min-width: 768px) {
     .typewriter-container .cursor {
       font-size: 3.5rem;
     }
   }
-
+  
   @media (min-width: 1024px) {
     .typewriter-container .cursor {
       font-size: 4rem;
@@ -230,11 +221,11 @@
   #quem-somos .logo-container {
     transition: transform 0.3s ease;
   }
-
+  
   #quem-somos .logo-container:hover {
     transform: scale(1.05);
   }
-
+  
   @media (max-width: 768px) {
     #quem-somos .sticky {
       position: relative;
@@ -273,13 +264,13 @@
     header {
       background-color: white !important;
     }
-
+    
     header img {
       max-height: 36px;
       position: relative;
       top: 0;
     }
-
+    
     header .container {
       height: 60px !important;
       min-height: 60px;
@@ -850,36 +841,6 @@
 
   #depoimentos a[href^="https://wa.me"]:active {
     transform: translateY(1px);
-  }
-  
-  /* Estilos para mensagens de erro/carregamento */
-  #depoimentos .loading-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 300px;
-  }
-  
-  #depoimentos .error-message {
-    background: rgba(0, 0, 0, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 0.5rem;
-    padding: 2rem;
-    max-width: 400px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  /* Estilos para placeholder de imagem do perfil */
-  #depoimentos .profile-placeholder {
-    background: linear-gradient(45deg, #0D8A88, #0D8A88);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    font-weight: bold;
   }
 }
 

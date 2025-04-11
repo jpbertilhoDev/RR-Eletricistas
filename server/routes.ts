@@ -54,9 +54,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post('/api/contact', async (req, res) => {
     try {
       const contactData = insertContactMessageSchema.parse(req.body);
-
+      
       const newMessage = await storage.createContactMessage(contactData);
-
+      
       return res.status(200).json({
         success: true,
         message: 'Mensagem recebida com sucesso',
@@ -64,7 +64,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     } catch (error) {
       console.error('Error in contact form:', error);
-
+      
       if (error instanceof ZodError) {
         return res.status(400).json({
           success: false,
@@ -72,7 +72,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           errors: error.errors
         });
       }
-
+      
       return res.status(500).json({
         success: false,
         message: 'Erro no servidor'
@@ -84,13 +84,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Nota: Em produção, essas rotas deveriam ser protegidas com autenticação
 
   // === Serviços ===
-
+  
   // Criar serviço
   app.post('/api/admin/services', async (req, res) => {
     try {
       const serviceData = insertServiceSchema.parse(req.body);
       const newService = await storage.createService(serviceData);
-
+      
       return res.status(201).json({
         success: true,
         data: newService
@@ -105,16 +105,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const serviceData = insertServiceSchema.partial().parse(req.body);
-
+      
       const updatedService = await storage.updateService(id, serviceData);
-
+      
       if (!updatedService) {
         return res.status(404).json({
           success: false,
           message: 'Serviço não encontrado'
         });
       }
-
+      
       return res.status(200).json({
         success: true,
         data: updatedService
@@ -129,7 +129,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const result = await storage.deleteService(id);
-
+      
       return res.status(200).json({
         success: true,
         message: 'Serviço excluído com sucesso'
@@ -140,13 +140,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // === Projetos ===
-
+  
   // Criar projeto
   app.post('/api/admin/projects', async (req, res) => {
     try {
       const projectData = insertProjectSchema.parse(req.body);
       const newProject = await storage.createProject(projectData);
-
+      
       return res.status(201).json({
         success: true,
         data: newProject
@@ -161,16 +161,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const projectData = insertProjectSchema.partial().parse(req.body);
-
+      
       const updatedProject = await storage.updateProject(id, projectData);
-
+      
       if (!updatedProject) {
         return res.status(404).json({
           success: false,
           message: 'Projeto não encontrado'
         });
       }
-
+      
       return res.status(200).json({
         success: true,
         data: updatedProject
@@ -185,7 +185,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const result = await storage.deleteProject(id);
-
+      
       return res.status(200).json({
         success: true,
         message: 'Projeto excluído com sucesso'
@@ -196,13 +196,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // === Depoimentos ===
-
+  
   // Criar depoimento
   app.post('/api/admin/testimonials', async (req, res) => {
     try {
       const testimonialData = insertTestimonialSchema.parse(req.body);
       const newTestimonial = await storage.createTestimonial(testimonialData);
-
+      
       return res.status(201).json({
         success: true,
         data: newTestimonial
@@ -212,155 +212,43 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
 
   // === Avaliações Públicas ===
-
+  
   // Obter avaliações públicas - alternativa gratuita
   app.get('/api/public-reviews', async (req, res) => {
     try {
-      // Avaliações reais da empresa - definição movida para fora da função generateGoogleMapsReviews
-      const googleReviews = [
-        {
-          id: 1001,
-          name: "Thaina Claro",
-          role: "Cliente",
-          content: "Foi muito atencioso e educado todo trabalho entregue dentro do combinado ótimo eletricista",
-          rating: 5,
-          source: "Google Maps",
-          time: "2 meses atrás",
-          profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjX3pUV3fwcnHXQxtkrN32vqrxMkmTxv55s2IYL11fbxqTg=s120-c-rp-mo-br100"
-        },
-        {
-          id: 1002,
-          name: "Celso Henrique",
-          role: "Cliente",
-          content: "Esse é o melhor eletricista que eu conheço, muito atencioso, muito educado, resolveu meu problema, e posso recomendar pra qualquer um que precise de um eletricista.",
-          rating: 5,
-          source: "Google Maps",
-          time: "1 ano atrás",
-          profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjXrblHU-FxvYTbNWrAJXCc-HkL8xP1m0TEMbixz9MUxalQ=s120-c-rp-mo-br100"
-        },
-        {
-          id: 1003,
-          name: "Suelma Bernardo",
-          role: "Cliente",
-          content: "Profissional competente, responsável, tem muito conhecimento, ótimo atendimento, fez o serviço de qualidade, e um preço muito justo, prontificou em vir resolver nosso problema, ainda compartilhou conhecimentos para evitar danos futuros, recomendo a todos.",
-          rating: 5,
-          source: "Google Maps",
-          time: "1 ano atrás",
-          profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjU3mhCdtHihFOZUTmxIWS5TQWvYoWGXObnljBGqDXOiKEQ=s120-c-rp-mo-br100"
-        },
-        {
-          id: 1004,
-          name: "Ronaldo Ferreira",
-          role: "Cliente",
-          content: "Atendimento muito bom e o técnico muito profissional nos atendeu tão bem e com muita dedicação. Recomendo a todos.",
-          rating: 5,
-          source: "Google Maps", 
-          time: "1 ano atrás",
-          profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjXRCzxLKu9IpJXLt9PzV5vK0FJzCRGu2YrQ2_o2TFO30YA=s120-c-rp-mo-ba4-br100"
-        },
-        {
-          id: 1005,
-          name: "Wagner Rodrigues",
-          role: "Cliente",
-          content: "Muito competente! O proprietário entende do assunto e tem bastante experiência.",
-          rating: 5,
-          source: "Google Maps",
-          time: "1 ano atrás",
-          profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjXNakmjAOMqCTtDgPhBXaTv7rz_gZ1VJCkUfpzwkAZO0NU=s120-c-rp-mo-br100"
-        },
-        {
-          id: 1006,
-          name: "Jeremias Lima",
-          role: "Cliente",
-          content: "Muito bom, solucionou meu problema na primeira visita. Excelente atendimento e extremamente educado, além de fazer cumprir o preço combinado. Recomendo!",
-          rating: 5, 
-          source: "Google Maps",
-          time: "1 ano atrás",
-          profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjWL1cchpE6Oq8ky7L0ygmCZwPKQbLVRwICndTsrWYYCFg=s120-c-rp-mo-br100"
-        },
-        {
-          id: 1007,
-          name: "Wanderson Luiz",
-          role: "Cliente",
-          content: "Excelente serviço. Conhecimento técnico fora do comum. Sugere soluções com conhecimento técnico. Resolve qualquer tipo de problema. Coisa de profissional mesmo.",
-          rating: 5,
-          source: "Google Maps",
-          time: "10 meses atrás",
-          profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjWi8SuYfP7X3jcNP5QFcaxJnPQlK5y-z-SQTZIBazE-pg=s120-c-rp-mo-br100"
-        },
-        {
-          id: 1008,
-          name: "Rodrigo Rodrigues",
-          role: "Cliente",
-          content: "Prestou um excelente atendimento para a solução do problema em minha residência, com cordialidade e profissionalismo.",
-          rating: 5,
-          source: "Google Maps",
-          time: "8 meses atrás",
-          profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjUWC4PoiJdLBXS3Uv6rM2xpZfCR99-jvKxQx0VJaXuAqA=s120-c-rp-mo-ba4-br100"
-        }
-      ];
-
-      try {
-        // Tentar buscar depoimentos do banco de dados
-        const dbTestimonials = await storage.getTestimonials();
-        
-        // Formatar os depoimentos do banco para incluir a fonte como "site"
-        const siteTestimonials = dbTestimonials.map(testimonial => ({
-          ...testimonial,
-          source: "site",
-          profilePhoto: null,
-          time: `${Math.floor(Math.random() * 3) + 1} ${['dias', 'semanas', 'meses'][Math.floor(Math.random() * 3)]} atrás`
-        }));
-        
-        // Combinar avaliações do site com avaliações do Google
-        const allReviews = [...siteTestimonials, ...googleReviews];
-        
-        // Organizar por data (mais recentes primeiro)
-        allReviews.sort(() => Math.random() - 0.5);
-        
-        return res.status(200).json({
-          success: true,
-          data: allReviews
-        });
-      } catch (dbError) {
-        console.error('Error fetching database testimonials:', dbError);
-        // Se houver erro no banco de dados, retornar apenas as avaliações do Google
-        return res.status(200).json({
-          success: true,
-          data: googleReviews
-        });
-      }
-    } catch (error) {
-      console.error('Error in public reviews endpoint:', error);
-      // Ainda retornar as avaliações do Google em caso de falha completa
+      // Buscar depoimentos do banco de dados - já existe essa funcionalidade
+      const dbTestimonials = await storage.getTestimonials();
+      
+      // Formatar os depoimentos do banco para incluir a fonte como "site"
+      const siteTestimonials = dbTestimonials.map(testimonial => ({
+        ...testimonial,
+        source: "site",
+        profilePhoto: null,
+        time: `${Math.floor(Math.random() * 3) + 1} ${['dias', 'semanas', 'meses'][Math.floor(Math.random() * 3)]} atrás`
+      }));
+      
+      // Gerar avaliações simuladas do Google Maps
+      const googleReviews = generateGoogleMapsReviews();
+      
+      // Combinar avaliações do site com avaliações simuladas do Google
+      const allReviews = [...siteTestimonials, ...googleReviews];
+      
+      // Organizar por data (mais recentes primeiro)
+      allReviews.sort(() => Math.random() - 0.5);
+      
       return res.status(200).json({
         success: true,
-        data: [
-          {
-            id: 1001,
-            name: "Thaina Claro",
-            role: "Cliente",
-            content: "Foi muito atencioso e educado todo trabalho entregue dentro do combinado ótimo eletricista",
-            rating: 5,
-            source: "Google Maps",
-            time: "2 meses atrás",
-            profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjX3pUV3fwcnHXQxtkrN32vqrxMkmTxv55s2IYL11fbxqTg=s120-c-rp-mo-br100"
-          },
-          {
-            id: 1002,
-            name: "Celso Henrique",
-            role: "Cliente",
-            content: "Esse é o melhor eletricista que eu conheço, muito atencioso, muito educado, resolveu meu problema, e posso recomendar pra qualquer um que precise de um eletricista.",
-            rating: 5,
-            source: "Google Maps",
-            time: "1 ano atrás",
-            profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjXrblHU-FxvYTbNWrAJXCc-HkL8xP1m0TEMbixz9MUxalQ=s120-c-rp-mo-br100"
-          }
-        ]
+        data: allReviews
+      });
+    } catch (error) {
+      console.error('Error fetching public reviews:', error);
+      return res.status(500).json({
+        success: false,
+        message: 'Erro ao buscar avaliações públicas'
       });
     }
   });
-
+  
   // Função que fornece avaliações reais da RR Manutenções Elétricas do Google Maps
   function generateGoogleMapsReviews() {
     // Avaliações reais da empresa conforme o link: https://g.co/kgs/ocBzoYD
@@ -373,7 +261,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps",
         time: "2 meses atrás",
-        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjX3pUV3fwcnHXQxtkrN32vqrxMkmTxv55s2IYL11fbxqTg=s120-c-rp-mo-br100"
+        profilePhoto: "https://ui-avatars.com/api/?name=TC&background=random"
       },
       {
         id: 1002,
@@ -383,17 +271,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps",
         time: "1 ano atrás",
-        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjXrblHU-FxvYTbNWrAJXCc-HkL8xP1m0TEMbixz9MUxalQ=s120-c-rp-mo-br100"
+        profilePhoto: "https://ui-avatars.com/api/?name=CH&background=random"
       },
       {
         id: 1003,
-        name: "Suelma Bernardo",
+        name: "suelma bernardo",
         role: "Cliente",
-        content: "Profissional competente, responsável, tem muito conhecimento, ótimo atendimento, fez o serviço de qualidade, e um preço muito justo, prontificou em vir resolver nosso problema, ainda compartilhou conhecimentos para evitar danos futuros, recomendo a todos.",
+        content: "Profissional competente, responsável, tem muito conhecimento, ótimo atendimento,  fez o serviço de qualidade, e um preço muito justo, prontificou em vir resolver nosso problema, ainda compartilhou conhecimentos para evitar danos futuros, recomendo a todos.",
         rating: 5,
         source: "Google Maps",
         time: "1 ano atrás",
-        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjU3mhCdtHihFOZUTmxIWS5TQWvYoWGXObnljBGqDXOiKEQ=s120-c-rp-mo-br100"
+        profilePhoto: "https://ui-avatars.com/api/?name=SB&background=random"
       },
       {
         id: 1004,
@@ -403,7 +291,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps", 
         time: "1 ano atrás",
-        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjXRCzxLKu9IpJXLt9PzV5vK0FJzCRGu2YrQ2_o2TFO30YA=s120-c-rp-mo-ba4-br100"
+        profilePhoto: "https://ui-avatars.com/api/?name=RF&background=random"
       },
       {
         id: 1005,
@@ -413,7 +301,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps",
         time: "1 ano atrás",
-        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjXNakmjAOMqCTtDgPhBXaTv7rz_gZ1VJCkUfpzwkAZO0NU=s120-c-rp-mo-br100"
+        profilePhoto: "https://ui-avatars.com/api/?name=WR&background=random"
       },
       {
         id: 1006,
@@ -423,7 +311,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5, 
         source: "Google Maps",
         time: "1 ano atrás",
-        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjWL1cchpE6Oq8ky7L0ygmCZwPKQbLVRwICndTsrWYYCFg=s120-c-rp-mo-br100"
+        profilePhoto: "https://ui-avatars.com/api/?name=JL&background=random"
       },
       {
         id: 1007,
@@ -433,7 +321,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps",
         time: "10 meses atrás",
-        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjWi8SuYfP7X3jcNP5QFcaxJnPQlK5y-z-SQTZIBazE-pg=s120-c-rp-mo-br100"
+        profilePhoto: "https://ui-avatars.com/api/?name=WL&background=random"
       },
       {
         id: 1008,
@@ -443,26 +331,26 @@ export async function registerRoutes(app: Express): Promise<Server> {
         rating: 5,
         source: "Google Maps",
         time: "8 meses atrás",
-        profilePhoto: "https://lh3.googleusercontent.com/a-/ALV-UjUWC4PoiJdLBXS3Uv6rM2xpZfCR99-jvKxQx0VJaXuAqA=s120-c-rp-mo-ba4-br100"
+        profilePhoto: "https://ui-avatars.com/api/?name=RR&background=random"
       }
     ];
-
-    // Retornar todas as avaliações para exibição em tempo real
-    return googleReviews;
+    
+    // Retorna aleatoriamente algumas avaliações para mostrar variedade
+    return googleReviews.sort(() => Math.random() - 0.5).slice(0, 4);
   }
-
+  
   // Criar nova avaliação pública (para o formulário do site)
   app.post('/api/public-reviews', async (req, res) => {
     try {
       const { name, email, rating, content } = req.body;
-
+      
       if (!name || !rating || !content) {
         return res.status(400).json({
           success: false,
           message: 'Dados incompletos para a avaliação'
         });
       }
-
+      
       // Criar um novo depoimento usando a função existente do storage
       const newTestimonial = await storage.createTestimonial({
         name,
@@ -470,7 +358,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         content,
         rating: parseFloat(rating)
       });
-
+      
       return res.status(201).json({
         success: true,
         message: 'Avaliação recebida com sucesso!',
@@ -492,16 +380,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const testimonialData = insertTestimonialSchema.partial().parse(req.body);
-
+      
       const updatedTestimonial = await storage.updateTestimonial(id, testimonialData);
-
+      
       if (!updatedTestimonial) {
         return res.status(404).json({
           success: false,
           message: 'Depoimento não encontrado'
         });
       }
-
+      
       return res.status(200).json({
         success: true,
         data: updatedTestimonial
@@ -516,7 +404,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const result = await storage.deleteTestimonial(id);
-
+      
       return res.status(200).json({
         success: true,
         message: 'Depoimento excluído com sucesso'
@@ -527,7 +415,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // === Mensagens de contato ===
-
+  
   // Obter todas as mensagens
   app.get('/api/admin/messages', async (req, res) => {
     try {
@@ -543,14 +431,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const message = await storage.getContactMessage(id);
-
+      
       if (!message) {
         return res.status(404).json({
           success: false,
           message: 'Mensagem não encontrada'
         });
       }
-
+      
       return res.status(200).json(message);
     } catch (error) {
       handleError(error, res);
@@ -562,14 +450,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const updatedMessage = await storage.markContactMessageAsRead(id);
-
+      
       if (!updatedMessage) {
         return res.status(404).json({
           success: false,
           message: 'Mensagem não encontrada'
         });
       }
-
+      
       return res.status(200).json({
         success: true,
         data: updatedMessage
@@ -584,7 +472,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const id = parseInt(req.params.id);
       const result = await storage.deleteContactMessage(id);
-
+      
       return res.status(200).json({
         success: true,
         message: 'Mensagem excluída com sucesso'
@@ -602,7 +490,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 // Função auxiliar para tratamento de erros
 function handleError(error: unknown, res: Response) {
   console.error('API error:', error);
-
+  
   if (error instanceof ZodError) {
     return res.status(400).json({
       success: false,
@@ -610,7 +498,7 @@ function handleError(error: unknown, res: Response) {
       errors: error.errors
     });
   }
-
+  
   return res.status(500).json({
     success: false,
     message: 'Erro no servidor'
