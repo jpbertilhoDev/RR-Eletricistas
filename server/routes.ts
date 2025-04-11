@@ -3,6 +3,8 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertContactMessageSchema, insertServiceSchema, insertProjectSchema, insertTestimonialSchema } from "@shared/schema";
 import { ZodError } from "zod";
+import axios from 'axios';
+import * as cheerio from 'cheerio';
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // =========== API pública ===========
@@ -196,10 +198,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // === Depoimentos ===
-  
-  // Importações para scraping
-  import axios from 'axios';
-  import * as cheerio from 'cheerio';
   
   // Criar depoimento
   app.post('/api/admin/testimonials', async (req, res) => {
