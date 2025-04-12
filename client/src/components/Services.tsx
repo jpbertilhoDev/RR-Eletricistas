@@ -212,6 +212,7 @@ const Services = () => {
                   e.stopPropagation();
                 }
               }}
+              data-service-id={service.id}
             >
               {/* Card content */}
               <div className="p-4 md:p-6 h-full flex flex-col">
@@ -254,7 +255,7 @@ const Services = () => {
                       {/* Service image */}
                       <div className="relative overflow-hidden rounded-lg w-[85%] h-40 sm:h-52 mb-3 shadow-lg">
                         <img 
-                          src={imageMap[service.imageSrc] || imageMap[service.imageSrc.replace(/^\./, "/")] || service.imageSrc}
+                          src={imageMap[service.imageSrc] || service.imageSrc}
                           alt={service.title} 
                           className="w-full h-full object-cover" 
                           onError={(e) => {
@@ -262,15 +263,19 @@ const Services = () => {
                             const target = e.target as HTMLImageElement;
                             target.onerror = null;
                             
-                            // Tenta primeiro com caminho absoluto
-                            const absolutePath = service.imageSrc.replace(/^\./, "");
-                            if (imageMap[absolutePath]) {
-                              target.src = imageMap[absolutePath];
-                            } else if (service.imageSrc.includes("WhatsApp")) {
-                              // Fallback para imagem genérica de serviço
-                              target.src = img3; // usando a imagem de reparos como fallback
-                            } else {
-                              target.src = service.imageSrc;
+                            console.log("Erro ao carregar imagem:", service.imageSrc);
+                            
+                            // Determinar imagem de fallback com base no ID do serviço
+                            switch(service.id) {
+                              case 1: target.src = img1; break;
+                              case 2: target.src = img2; break;
+                              case 3: target.src = img3; break;
+                              case 4: target.src = img4; break;
+                              case 5: target.src = img5; break;
+                              case 6: target.src = img6; break;
+                              case 7: target.src = img7; break;
+                              case 8: target.src = img8; break;
+                              default: target.src = img3; // Imagem padrão
                             }
                           }}
                         />
