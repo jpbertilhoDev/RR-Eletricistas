@@ -116,20 +116,10 @@ const Services = () => {
 
   // Handler for card interaction (works for both hover on desktop and touch on mobile)
   const handleCardInteraction = (id: number, isEntering: boolean) => {
-    if (isMobile) {
-      // Para dispositivos móveis, alternar o card ativo ao tocar
-      if (activeCard === id) {
-        setActiveCard(null);
-      } else {
-        setActiveCard(id);
-      }
-    } else {
-      // Para desktop, seguir o comportamento original de hover
-      if (isEntering) {
-        setActiveCard(id);
-      } else if (activeCard === id) {
-        setActiveCard(null);
-      }
+    if (isEntering) {
+      setActiveCard(id);
+    } else if (activeCard === id) {
+      setActiveCard(null);
     }
   };
 
@@ -200,17 +190,8 @@ const Services = () => {
               onHoverStart={() => !isMobile && handleCardInteraction(service.id, true)}
               onHoverEnd={() => !isMobile && handleCardInteraction(service.id, false)}
               onClick={() => isMobile && handleCardInteraction(service.id, activeCard !== service.id)}
-              onTouchStart={(e) => {
-                if (isMobile) {
-                  // Apenas para dispositivos móveis
-                  e.stopPropagation();
-                }
-              }}
               onTouchEnd={(e) => {
-                if (isMobile) {
-                  e.preventDefault(); // Prevent unwanted behavior on mobile
-                  e.stopPropagation();
-                }
+                e.preventDefault(); // Prevent unwanted behavior on mobile
               }}
             >
               {/* Card content */}
