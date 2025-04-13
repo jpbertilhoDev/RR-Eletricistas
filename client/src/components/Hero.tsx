@@ -44,10 +44,10 @@ const Hero = () => {
     >
       {/* Background Carousel */}
       <HeroBackgroundCarousel />
-      
+
       {/* Overlay gradient - opacidade reduzida */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/65 to-primary/70 z-0" />
-      
+
       <div className="w-full container mx-auto px-4 relative z-10 py-20 md:py-0 md:flex md:flex-col md:items-center md:justify-center">
         <motion.div 
           className="flex flex-col items-center justify-center text-center md:max-w-5xl lg:max-w-6xl w-full mx-auto"
@@ -55,17 +55,22 @@ const Hero = () => {
           initial="hidden"
           animate="visible"
         >
-          <motion.h1 
-            className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 md:mb-8 leading-tight"
+          <motion.div 
+            className="mb-6 md:mb-8 relative"
             variants={fadeInUp}
           >
-            <div className="w-full">
-              <TypeWriter />
-            </div>
-          </motion.h1>
+            {/* Overlay translúcido para melhorar legibilidade */}
+            <div className="absolute -inset-4 bg-black/20 backdrop-blur-sm rounded-lg -z-10"></div>
+
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 md:mb-8 leading-tight drop-shadow-[0_2px_3px_rgba(0,0,0,0.5)]">
+              <div className="w-full">
+                <TypeWriter />
+              </div>
+            </h1>
+          </motion.div>
 
           <motion.p 
-            className="text-lg md:text-2xl text-white/90 mb-8 md:mb-12 w-full md:max-w-3xl mx-auto font-light px-4"
+            className="text-lg md:text-2xl text-white/90 mb-8 md:mb-12 w-full md:max-w-3xl mx-auto font-light px-4 drop-shadow-[0_2px_3px_rgba(0,0,0,0.5)]"
             variants={fadeInUp}
           >
             Instalações e manutenções elétricas residenciais e comerciais com qualidade e segurança.
@@ -119,7 +124,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-white/90 text-lg md:text-xl"
+              className="text-white/90 text-lg md:text-xl drop-shadow-[0_2px_3px_rgba(0,0,0,0.5)]"
             >
               Compromisso com qualidade e excelência em serviços elétricos
             </motion.div>

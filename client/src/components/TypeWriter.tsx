@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback } from 'react';
 
 const TypeWriter = () => {
@@ -50,10 +49,10 @@ const TypeWriter = () => {
 
   return (
     <div className="typewriter-container">
-      <div className="typewriter-text">
+      <h2 className="text-xl md:text-2xl lg:text-3xl text-white font-medium mb-6 drop-shadow-[0_2px_3px_rgba(0,0,0,0.5)]">
         {displayText}
         <span className="cursor">|</span>
-      </div>
+      </h2>
     </div>
   );
 };
