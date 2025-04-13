@@ -25,7 +25,7 @@ const Layout = ({ children }: LayoutProps) => {
       </main>
       <Footer />
       <MobileNavigation />
-      <WhatsAppButton />
+      <WhatsAppButton className="fixed" message="Olá, preciso de ajuda com um problema elétrico!" /> {/* Added WhatsApp button */}
     </div>
   );
 };
