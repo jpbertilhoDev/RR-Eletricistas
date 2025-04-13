@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import img1 from '@/assets/images/img1.jpeg';
-import img2 from '@/assets/images/img2.jpeg';
-import img3 from '@/assets/images/img3.jpeg';
+import eletricidadesHori from '@/assets/images/hero/eletricidades-hori.jpg';
 
-const images = [img1, img2, img3];
+const images = [eletricidadesHori, eletricidadesHori, eletricidadesHori];
 
 const HeroBackgroundCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
