@@ -7,8 +7,9 @@
   @apply transition-colors duration-300;
 }
 
-.whatsapp-btn:hover, .whatsapp-btn:active {
-  @apply bg-green-500 border-green-500 text-white !important;
+.whatsapp-btn:hover, .whatsapp-btn:active,
+a[href*="wa.me"]:hover, a[href*="wa.me"]:active {
+  @apply bg-green-500 border-green-500 text-white transform -translate-y-1 !important;
 }
 
 /* Botão flutuante do WhatsApp */

@@ -41,7 +41,7 @@ const CTABanner = () => {
               href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Olá, gostaria de solicitar um orçamento.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-blue-600 text-white font-medium py-3 px-8 rounded-lg text-lg transition-all duration-300 shadow-md hover:shadow-lg hover:bg-green-500 active:bg-green-600"
+              className="inline-flex items-center justify-center bg-blue-600 text-white font-medium py-3 px-8 rounded-lg text-lg transition-all duration-300 shadow-md hover:shadow-lg hover:bg-green-500 active:bg-green-600 transform hover:-translate-y-1"
             >
               <i className="fab fa-whatsapp mr-2 text-xl"></i>
               Fale conosco
