@@ -3,6 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import MobileNavigation from "./MobileNavigation";
 import WhatsAppButton from "./WhatsAppButton";
+import WhatsAppPopupBanner from './WhatsAppPopupBanner';
 
 interface LayoutProps {
   children: ReactNode;
@@ -23,9 +24,10 @@ const Layout = ({ children }: LayoutProps) => {
           children
         )}
       </main>
+      <WhatsAppButton className="fixed" message="Olá, preciso de ajuda com um problema elétrico!" />
+      <WhatsAppPopupBanner />
       <Footer />
       <MobileNavigation />
-      <WhatsAppButton className="fixed" message="Olá, preciso de ajuda com um problema elétrico!" /> {/* Added WhatsApp button */}
     </div>
   );
 };
