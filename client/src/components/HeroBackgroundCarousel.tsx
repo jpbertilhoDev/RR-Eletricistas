@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import eletricidadeHorizontal from '@/assets/images/hero/eletricidade-horizontal.jpeg';
+import eletricidadeHorizontal from '@/assets/images/hero/eletricidades-hori.jpg';
 
 // Agora usando apenas uma imagem
 const images = [eletricidadeHorizontal];
