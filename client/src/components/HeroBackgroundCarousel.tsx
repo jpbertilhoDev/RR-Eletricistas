@@ -1,31 +1,35 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import eletricidadeHorizontal from '@/assets/images/hero/eletrecidade-horizontal.jpeg';
+import eletricidadeResidencial from '@/assets/images/hero/eletricidade-residencial.jpeg';
+import eletricidadeIndustrial from '@/assets/images/hero/eletricidade-industrial.jpeg';
 
-// Agora usando apenas uma imagem
-const images = [eletricidadeHorizontal];
+// Usando 3 imagens no carrossel
+const images = [eletricidadeHorizontal, eletricidadeResidencial, eletricidadeIndustrial];
 
 const HeroBackgroundCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [nextIndex, setNextIndex] = useState(0); // Mantendo o mesmo índice já que temos apenas uma imagem
+  const [nextIndex, setNextIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Mantendo o useEffect para compatibilidade, mas ele não vai mais alternar entre imagens
   useEffect(() => {
     const interval = setInterval(() => {
       if (!isTransitioning) {
         setIsTransitioning(true);
-        setNextIndex(0); // Sempre será 0 já que temos apenas uma imagem
+        
+        // Calcula o próximo índice circularmente
+        const next = (currentIndex + 1) % images.length;
+        setNextIndex(next);
 
         setTimeout(() => {
-          setCurrentIndex(0);
+          setCurrentIndex(next);
           setIsTransitioning(false);
         }, 1000);
       }
-    }, 4000);
+    }, 5000); // Intervalo de 5 segundos entre as imagens
 
     return () => clearInterval(interval);
-  }, [currentIndex, nextIndex, isTransitioning]);
+  }, [currentIndex, isTransitioning]);
 
   return (
     <div className="absolute inset-0 overflow-hidden w-full h-full">
@@ -38,10 +42,26 @@ const HeroBackgroundCarousel = () => {
         }}
       />
 
+      {/* Transition layer - para fade entre imagens */}
+      <AnimatePresence>
+        {isTransitioning && (
+          <motion.div
+            key={nextIndex}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ 
+              backgroundImage: `url(${images[nextIndex]})`,
+              filter: 'brightness(1.2) contrast(1.1)'
+            }}
+          />
+        )}
+      </AnimatePresence>
+
       {/* Light overlay gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-primary/10 w-full h-full" />
-
-      {/* Transition layer - removido pois só temos uma imagem */}
     </div>
   );
 };
