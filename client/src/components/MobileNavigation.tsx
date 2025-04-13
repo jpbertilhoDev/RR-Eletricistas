@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 
 const MOBILE_NAV_ITEMS = [
   { id: "inicio", label: "Início", icon: "fas fa-home" },
+  { id: "servicos", label: "Serviços", icon: "fas fa-bolt" },
   { id: "apresentacao", label: "Apresentação", icon: "fas fa-play" },
   { id: "depoimentos", label: "Clientes", icon: "fas fa-users" },
   { id: "quem-somos", label: "Sobre", icon: "fas fa-building" },
@@ -29,7 +30,7 @@ const MobileNavigation = () => {
 
   return (
     <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 border-t border-gray-100 backdrop-blur-sm">
-      <div className="grid grid-cols-5 px-2 py-3">
+      <div className="grid grid-cols-6 px-2 py-3">
         {MOBILE_NAV_ITEMS.map((item) => {
           const isActive = activeSection === item.id;
           return (

@@ -199,17 +199,24 @@ const Services = () => {
               transition={{ duration: 0.4, delay: index * 0.1 }}
               onHoverStart={() => !isMobile && handleCardInteraction(service.id, true)}
               onHoverEnd={() => !isMobile && handleCardInteraction(service.id, false)}
-              onClick={() => isMobile && handleCardInteraction(service.id, activeCard !== service.id)}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (isMobile) {
+                  handleCardInteraction(service.id, activeCard !== service.id);
+                }
+              }}
               onTouchStart={(e) => {
                 if (isMobile) {
-                  // Apenas para dispositivos móveis
+                  // Prevenir comportamentos padrão do navegador
                   e.stopPropagation();
                 }
               }}
               onTouchEnd={(e) => {
                 if (isMobile) {
-                  e.preventDefault(); // Prevent unwanted behavior on mobile
+                  e.preventDefault();
                   e.stopPropagation();
+                  handleCardInteraction(service.id, activeCard !== service.id);
                 }
               }}
               data-service-id={service.id}
