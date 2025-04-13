@@ -170,7 +170,7 @@ export const NAVIGATION_ITEMS = [
 ];
 
 export const CONTACT_INFO = {
-  phone: "(11) 97611-3122",
+  phone: "(11) 97246-0497",
   email: "rrmanutencoeseletricas1@gmail.com",
   address: "Rua barra de guabiraba, 436",
   addressDetails: "Atendemos toda a região metropolitana",
