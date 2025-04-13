@@ -142,7 +142,6 @@
     margin-left: 2px;
     animation: blink 0.75s step-end infinite;
     font-size: 2.5rem;
-    text-shadow: 0 2px 3px rgba(0,0,0,0.5);
   }
   
   @media (min-width: 768px) {
@@ -155,25 +154,6 @@
     .typewriter-container .cursor {
       font-size: 4rem;
     }
-  }
-  
-  /* Classe para textos claros sobre fundos variáveis */
-  .text-with-shadow {
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  }
-  
-  /* Overlay para melhorar legibilidade */
-  .readable-overlay {
-    position: relative;
-  }
-  
-  .readable-overlay::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.1));
-    z-index: -1;
-    border-radius: 0.5rem;
   }
 
   .btn-business {

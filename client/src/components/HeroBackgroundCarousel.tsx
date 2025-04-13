@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import eletricidadesHori from '@/assets/images/hero/eletricidades-hori.jpg';
+import img1 from '@/assets/images/img1.jpeg';
+import img2 from '@/assets/images/img2.jpeg';
+import img3 from '@/assets/images/img3.jpeg';
 
-const images = [eletricidadesHori, eletricidadesHori, eletricidadesHori];
+const images = [img1, img2, img3];
 
 const HeroBackgroundCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -36,8 +38,8 @@ const HeroBackgroundCarousel = () => {
         }}
       />
 
-      {/* Gradiente escuro para melhorar o contraste com o texto */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/15 to-primary/20 w-full h-full" />
+      {/* Light overlay gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-primary/10 w-full h-full" />
 
       {/* Transition layer */}
       {isTransitioning && (
