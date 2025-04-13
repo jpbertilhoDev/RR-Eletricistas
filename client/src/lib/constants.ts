@@ -25,7 +25,7 @@ export const SERVICES = [
   {
     id: 4,
     title: "Projetos Elétricos",
-    description: "Desenvolvimento de projetos elétricos completos para residências, comércios e pequenas indústrias, seguindo normas técnicas.",
+    description: "Desenvolvimento de projetos elétricos completos para residências, comércios, pequenas e grandes indústrias, seguindo normas técnicas.",
     icon: "fas fa-drafting-compass",
     imageSrc: "./src/assets/images/servicos/projeto-eletrico.jpeg"
   },
@@ -67,7 +67,7 @@ export const PROJECTS = [
   {
     id: 4,
     title: "Projetos Elétricos",
-    description: "Desenvolvimento de projetos elétricos completos para residências, comércios e pequenas indústrias, seguindo normas técnicas.",
+    description: "Desenvolvimento de projetos elétricos completos para residências, comércios, pequenas e grandes indústrias, seguindo normas técnicas.",
     imageSrc: "./src/assets/images/servicos/WhatsApp Image 2025-04-11 at 14.40.50.jpeg"
   },
   {
