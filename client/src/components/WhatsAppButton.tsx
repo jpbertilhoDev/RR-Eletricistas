@@ -52,7 +52,7 @@ const WhatsAppButton = ({
           href={whatsappLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center w-14 h-14 bg-white text-green-600 rounded-full shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100"
+          className="flex items-center justify-center w-12 h-12 bg-green-500 text-white rounded-full shadow-md hover:shadow-lg transition-all duration-300"
           aria-label="Fale conosco"
           animate={{
             boxShadow: [
@@ -67,7 +67,7 @@ const WhatsAppButton = ({
             repeatType: "reverse" 
           }}
         >
-          <i className="fab fa-whatsapp text-2xl"></i>
+          <i className="fab fa-whatsapp text-xl"></i>
         </motion.a>
       </motion.div>
     );
